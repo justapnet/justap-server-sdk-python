@@ -34,8 +34,8 @@ class V1ExtraAlipayExtendParams(object):
     """
     swagger_types = {
         'card_type': 'str',
-        'hb_fq_num': 'int',
-        'hb_fq_seller_percent': 'int',
+        'hb_fq_num': 'str',
+        'hb_fq_seller_percent': 'float',
         'industry_reflux_info': 'str',
         'specified_seller_name': 'str',
         'sys_service_provider_id': 'str'
@@ -64,23 +64,18 @@ class V1ExtraAlipayExtendParams(object):
         self._sys_service_provider_id = None
         self.discriminator = None
 
-        if card_type is not None:
-            self.card_type = card_type
-        if hb_fq_num is not None:
-            self.hb_fq_num = hb_fq_num
-        if hb_fq_seller_percent is not None:
-            self.hb_fq_seller_percent = hb_fq_seller_percent
-        if industry_reflux_info is not None:
-            self.industry_reflux_info = industry_reflux_info
-        if specified_seller_name is not None:
-            self.specified_seller_name = specified_seller_name
-        if sys_service_provider_id is not None:
-            self.sys_service_provider_id = sys_service_provider_id
+        self.card_type = card_type
+        self.hb_fq_num = hb_fq_num
+        self.hb_fq_seller_percent = hb_fq_seller_percent
+        self.industry_reflux_info = industry_reflux_info
+        self.specified_seller_name = specified_seller_name
+        self.sys_service_provider_id = sys_service_provider_id
 
     @property
     def card_type(self):
         """Gets the card_type of this V1ExtraAlipayExtendParams.  # noqa: E501
 
+        卡类型  # noqa: E501
 
         :return: The card_type of this V1ExtraAlipayExtendParams.  # noqa: E501
         :rtype: str
@@ -91,10 +86,13 @@ class V1ExtraAlipayExtendParams(object):
     def card_type(self, card_type):
         """Sets the card_type of this V1ExtraAlipayExtendParams.
 
+        卡类型  # noqa: E501
 
         :param card_type: The card_type of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and card_type is None:
+            raise ValueError("Invalid value for `card_type`, must not be `None`")  # noqa: E501
 
         self._card_type = card_type
 
@@ -102,9 +100,10 @@ class V1ExtraAlipayExtendParams(object):
     def hb_fq_num(self):
         """Gets the hb_fq_num of this V1ExtraAlipayExtendParams.  # noqa: E501
 
+        使用花呗分期要进行的分期数  # noqa: E501
 
         :return: The hb_fq_num of this V1ExtraAlipayExtendParams.  # noqa: E501
-        :rtype: int
+        :rtype: str
         """
         return self._hb_fq_num
 
@@ -112,10 +111,13 @@ class V1ExtraAlipayExtendParams(object):
     def hb_fq_num(self, hb_fq_num):
         """Sets the hb_fq_num of this V1ExtraAlipayExtendParams.
 
+        使用花呗分期要进行的分期数  # noqa: E501
 
         :param hb_fq_num: The hb_fq_num of this V1ExtraAlipayExtendParams.  # noqa: E501
-        :type: int
+        :type: str
         """
+        if self._configuration.client_side_validation and hb_fq_num is None:
+            raise ValueError("Invalid value for `hb_fq_num`, must not be `None`")  # noqa: E501
 
         self._hb_fq_num = hb_fq_num
 
@@ -123,9 +125,10 @@ class V1ExtraAlipayExtendParams(object):
     def hb_fq_seller_percent(self):
         """Gets the hb_fq_seller_percent of this V1ExtraAlipayExtendParams.  # noqa: E501
 
+        使用花呗分期需要卖家承担的手续费比例的百分值，传入100代表100%  # noqa: E501
 
         :return: The hb_fq_seller_percent of this V1ExtraAlipayExtendParams.  # noqa: E501
-        :rtype: int
+        :rtype: float
         """
         return self._hb_fq_seller_percent
 
@@ -133,10 +136,13 @@ class V1ExtraAlipayExtendParams(object):
     def hb_fq_seller_percent(self, hb_fq_seller_percent):
         """Sets the hb_fq_seller_percent of this V1ExtraAlipayExtendParams.
 
+        使用花呗分期需要卖家承担的手续费比例的百分值，传入100代表100%  # noqa: E501
 
         :param hb_fq_seller_percent: The hb_fq_seller_percent of this V1ExtraAlipayExtendParams.  # noqa: E501
-        :type: int
+        :type: float
         """
+        if self._configuration.client_side_validation and hb_fq_seller_percent is None:
+            raise ValueError("Invalid value for `hb_fq_seller_percent`, must not be `None`")  # noqa: E501
 
         self._hb_fq_seller_percent = hb_fq_seller_percent
 
@@ -144,6 +150,7 @@ class V1ExtraAlipayExtendParams(object):
     def industry_reflux_info(self):
         """Gets the industry_reflux_info of this V1ExtraAlipayExtendParams.  # noqa: E501
 
+        行业数据回流信息  # noqa: E501
 
         :return: The industry_reflux_info of this V1ExtraAlipayExtendParams.  # noqa: E501
         :rtype: str
@@ -154,10 +161,13 @@ class V1ExtraAlipayExtendParams(object):
     def industry_reflux_info(self, industry_reflux_info):
         """Sets the industry_reflux_info of this V1ExtraAlipayExtendParams.
 
+        行业数据回流信息  # noqa: E501
 
         :param industry_reflux_info: The industry_reflux_info of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and industry_reflux_info is None:
+            raise ValueError("Invalid value for `industry_reflux_info`, must not be `None`")  # noqa: E501
 
         self._industry_reflux_info = industry_reflux_info
 
@@ -165,6 +175,7 @@ class V1ExtraAlipayExtendParams(object):
     def specified_seller_name(self):
         """Gets the specified_seller_name of this V1ExtraAlipayExtendParams.  # noqa: E501
 
+        指定收款支付宝用户名  # noqa: E501
 
         :return: The specified_seller_name of this V1ExtraAlipayExtendParams.  # noqa: E501
         :rtype: str
@@ -175,10 +186,13 @@ class V1ExtraAlipayExtendParams(object):
     def specified_seller_name(self, specified_seller_name):
         """Sets the specified_seller_name of this V1ExtraAlipayExtendParams.
 
+        指定收款支付宝用户名  # noqa: E501
 
         :param specified_seller_name: The specified_seller_name of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and specified_seller_name is None:
+            raise ValueError("Invalid value for `specified_seller_name`, must not be `None`")  # noqa: E501
 
         self._specified_seller_name = specified_seller_name
 
@@ -186,6 +200,7 @@ class V1ExtraAlipayExtendParams(object):
     def sys_service_provider_id(self):
         """Gets the sys_service_provider_id of this V1ExtraAlipayExtendParams.  # noqa: E501
 
+        系统商编号，该参数作为系统商返佣数据提取的依据，请填写系统商签约协议的PID  # noqa: E501
 
         :return: The sys_service_provider_id of this V1ExtraAlipayExtendParams.  # noqa: E501
         :rtype: str
@@ -196,10 +211,13 @@ class V1ExtraAlipayExtendParams(object):
     def sys_service_provider_id(self, sys_service_provider_id):
         """Sets the sys_service_provider_id of this V1ExtraAlipayExtendParams.
 
+        系统商编号，该参数作为系统商返佣数据提取的依据，请填写系统商签约协议的PID  # noqa: E501
 
         :param sys_service_provider_id: The sys_service_provider_id of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and sys_service_provider_id is None:
+            raise ValueError("Invalid value for `sys_service_provider_id`, must not be `None`")  # noqa: E501
 
         self._sys_service_provider_id = sys_service_provider_id
 

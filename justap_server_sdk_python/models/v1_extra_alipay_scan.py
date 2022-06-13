@@ -40,24 +40,24 @@ class V1ExtraAlipayScan(object):
         'auth_no': 'str',
         'buyer_id': 'str',
         'buyer_logon_id': 'str',
-        'buyer_pay_amount': 'str',
+        'buyer_pay_amount': 'float',
         'buyer_user_id': 'str',
-        'discount_amount': 'str',
+        'discount_amount': 'float',
         'discount_goods_detail': 'str',
         'discountable_amount': 'float',
         'extend_params': 'V1ExtraAlipayExtendParams',
         'fund_bill_list': 'V1ExtraAlipayFundBillList',
         'gmt_payment': 'str',
         'goods_detail': 'list[V1ExtraAlipayGoodsDetail]',
-        'invoice_amount': 'str',
+        'invoice_amount': 'float',
         'is_async_pay': 'V1ExtraAlipayPayParams',
-        'mdiscount_amount': 'str',
+        'mdiscount_amount': 'float',
         'operator_id': 'str',
         'pay_params': 'str',
-        'point_amount': 'str',
+        'point_amount': 'float',
         'product_code': 'str',
         'query_options': 'str',
-        'receipt_amount': 'str',
+        'receipt_amount': 'float',
         'request_org_pid': 'str',
         'scene': 'str',
         'settle_info': 'V1ExtraAlipaySettleInfo',
@@ -65,7 +65,7 @@ class V1ExtraAlipayScan(object):
         'store_name': 'str',
         'sub_merchant': 'V1ExtraAlipaySubMerchant',
         'terminal_id': 'str',
-        'total_amount': 'str',
+        'total_amount': 'float',
         'undiscountable_amount': 'float',
         'voucher_detail_list': 'V1ExtraAlipayVoucherDetailList'
     }
@@ -151,74 +151,47 @@ class V1ExtraAlipayScan(object):
         self._voucher_detail_list = None
         self.discriminator = None
 
-        if advance_payment_type is not None:
-            self.advance_payment_type = advance_payment_type
+        self.advance_payment_type = advance_payment_type
         if agreement_params is not None:
             self.agreement_params = agreement_params
-        if auth_code is not None:
-            self.auth_code = auth_code
-        if auth_confirm_mode is not None:
-            self.auth_confirm_mode = auth_confirm_mode
-        if auth_no is not None:
-            self.auth_no = auth_no
-        if buyer_id is not None:
-            self.buyer_id = buyer_id
-        if buyer_logon_id is not None:
-            self.buyer_logon_id = buyer_logon_id
-        if buyer_pay_amount is not None:
-            self.buyer_pay_amount = buyer_pay_amount
-        if buyer_user_id is not None:
-            self.buyer_user_id = buyer_user_id
-        if discount_amount is not None:
-            self.discount_amount = discount_amount
-        if discount_goods_detail is not None:
-            self.discount_goods_detail = discount_goods_detail
-        if discountable_amount is not None:
-            self.discountable_amount = discountable_amount
+        self.auth_code = auth_code
+        self.auth_confirm_mode = auth_confirm_mode
+        self.auth_no = auth_no
+        self.buyer_id = buyer_id
+        self.buyer_logon_id = buyer_logon_id
+        self.buyer_pay_amount = buyer_pay_amount
+        self.buyer_user_id = buyer_user_id
+        self.discount_amount = discount_amount
+        self.discount_goods_detail = discount_goods_detail
+        self.discountable_amount = discountable_amount
         if extend_params is not None:
             self.extend_params = extend_params
         if fund_bill_list is not None:
             self.fund_bill_list = fund_bill_list
-        if gmt_payment is not None:
-            self.gmt_payment = gmt_payment
+        self.gmt_payment = gmt_payment
         if goods_detail is not None:
             self.goods_detail = goods_detail
-        if invoice_amount is not None:
-            self.invoice_amount = invoice_amount
+        self.invoice_amount = invoice_amount
         if is_async_pay is not None:
             self.is_async_pay = is_async_pay
-        if mdiscount_amount is not None:
-            self.mdiscount_amount = mdiscount_amount
-        if operator_id is not None:
-            self.operator_id = operator_id
-        if pay_params is not None:
-            self.pay_params = pay_params
-        if point_amount is not None:
-            self.point_amount = point_amount
-        if product_code is not None:
-            self.product_code = product_code
-        if query_options is not None:
-            self.query_options = query_options
-        if receipt_amount is not None:
-            self.receipt_amount = receipt_amount
-        if request_org_pid is not None:
-            self.request_org_pid = request_org_pid
-        if scene is not None:
-            self.scene = scene
+        self.mdiscount_amount = mdiscount_amount
+        self.operator_id = operator_id
+        self.pay_params = pay_params
+        self.point_amount = point_amount
+        self.product_code = product_code
+        self.query_options = query_options
+        self.receipt_amount = receipt_amount
+        self.request_org_pid = request_org_pid
+        self.scene = scene
         if settle_info is not None:
             self.settle_info = settle_info
-        if store_id is not None:
-            self.store_id = store_id
-        if store_name is not None:
-            self.store_name = store_name
+        self.store_id = store_id
+        self.store_name = store_name
         if sub_merchant is not None:
             self.sub_merchant = sub_merchant
-        if terminal_id is not None:
-            self.terminal_id = terminal_id
-        if total_amount is not None:
-            self.total_amount = total_amount
-        if undiscountable_amount is not None:
-            self.undiscountable_amount = undiscountable_amount
+        self.terminal_id = terminal_id
+        self.total_amount = total_amount
+        self.undiscountable_amount = undiscountable_amount
         if voucher_detail_list is not None:
             self.voucher_detail_list = voucher_detail_list
 
@@ -226,6 +199,7 @@ class V1ExtraAlipayScan(object):
     def advance_payment_type(self):
         """Gets the advance_payment_type of this V1ExtraAlipayScan.  # noqa: E501
 
+        预授权类型  # noqa: E501
 
         :return: The advance_payment_type of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -236,10 +210,13 @@ class V1ExtraAlipayScan(object):
     def advance_payment_type(self, advance_payment_type):
         """Sets the advance_payment_type of this V1ExtraAlipayScan.
 
+        预授权类型  # noqa: E501
 
         :param advance_payment_type: The advance_payment_type of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and advance_payment_type is None:
+            raise ValueError("Invalid value for `advance_payment_type`, must not be `None`")  # noqa: E501
 
         self._advance_payment_type = advance_payment_type
 
@@ -247,6 +224,7 @@ class V1ExtraAlipayScan(object):
     def agreement_params(self):
         """Gets the agreement_params of this V1ExtraAlipayScan.  # noqa: E501
 
+        协议参数  # noqa: E501
 
         :return: The agreement_params of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: V1ExtraAlipayAgreementParams
@@ -257,6 +235,7 @@ class V1ExtraAlipayScan(object):
     def agreement_params(self, agreement_params):
         """Sets the agreement_params of this V1ExtraAlipayScan.
 
+        协议参数  # noqa: E501
 
         :param agreement_params: The agreement_params of this V1ExtraAlipayScan.  # noqa: E501
         :type: V1ExtraAlipayAgreementParams
@@ -268,6 +247,7 @@ class V1ExtraAlipayScan(object):
     def auth_code(self):
         """Gets the auth_code of this V1ExtraAlipayScan.  # noqa: E501
 
+        用户的条码  # noqa: E501
 
         :return: The auth_code of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -278,10 +258,13 @@ class V1ExtraAlipayScan(object):
     def auth_code(self, auth_code):
         """Sets the auth_code of this V1ExtraAlipayScan.
 
+        用户的条码  # noqa: E501
 
         :param auth_code: The auth_code of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and auth_code is None:
+            raise ValueError("Invalid value for `auth_code`, must not be `None`")  # noqa: E501
 
         self._auth_code = auth_code
 
@@ -289,6 +272,7 @@ class V1ExtraAlipayScan(object):
     def auth_confirm_mode(self):
         """Gets the auth_confirm_mode of this V1ExtraAlipayScan.  # noqa: E501
 
+        授权确认方式  # noqa: E501
 
         :return: The auth_confirm_mode of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -299,10 +283,13 @@ class V1ExtraAlipayScan(object):
     def auth_confirm_mode(self, auth_confirm_mode):
         """Sets the auth_confirm_mode of this V1ExtraAlipayScan.
 
+        授权确认方式  # noqa: E501
 
         :param auth_confirm_mode: The auth_confirm_mode of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and auth_confirm_mode is None:
+            raise ValueError("Invalid value for `auth_confirm_mode`, must not be `None`")  # noqa: E501
 
         self._auth_confirm_mode = auth_confirm_mode
 
@@ -310,6 +297,7 @@ class V1ExtraAlipayScan(object):
     def auth_no(self):
         """Gets the auth_no of this V1ExtraAlipayScan.  # noqa: E501
 
+        授权号  # noqa: E501
 
         :return: The auth_no of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -320,10 +308,13 @@ class V1ExtraAlipayScan(object):
     def auth_no(self, auth_no):
         """Sets the auth_no of this V1ExtraAlipayScan.
 
+        授权号  # noqa: E501
 
         :param auth_no: The auth_no of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and auth_no is None:
+            raise ValueError("Invalid value for `auth_no`, must not be `None`")  # noqa: E501
 
         self._auth_no = auth_no
 
@@ -331,6 +322,7 @@ class V1ExtraAlipayScan(object):
     def buyer_id(self):
         """Gets the buyer_id of this V1ExtraAlipayScan.  # noqa: E501
 
+        买家的支付宝用户id  # noqa: E501
 
         :return: The buyer_id of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -341,10 +333,13 @@ class V1ExtraAlipayScan(object):
     def buyer_id(self, buyer_id):
         """Sets the buyer_id of this V1ExtraAlipayScan.
 
+        买家的支付宝用户id  # noqa: E501
 
         :param buyer_id: The buyer_id of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and buyer_id is None:
+            raise ValueError("Invalid value for `buyer_id`, must not be `None`")  # noqa: E501
 
         self._buyer_id = buyer_id
 
@@ -352,6 +347,7 @@ class V1ExtraAlipayScan(object):
     def buyer_logon_id(self):
         """Gets the buyer_logon_id of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 买家支付宝账号  # noqa: E501
 
         :return: The buyer_logon_id of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -362,10 +358,13 @@ class V1ExtraAlipayScan(object):
     def buyer_logon_id(self, buyer_logon_id):
         """Sets the buyer_logon_id of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 买家支付宝账号  # noqa: E501
 
         :param buyer_logon_id: The buyer_logon_id of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and buyer_logon_id is None:
+            raise ValueError("Invalid value for `buyer_logon_id`, must not be `None`")  # noqa: E501
 
         self._buyer_logon_id = buyer_logon_id
 
@@ -373,9 +372,10 @@ class V1ExtraAlipayScan(object):
     def buyer_pay_amount(self):
         """Gets the buyer_pay_amount of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 付款金额  # noqa: E501
 
         :return: The buyer_pay_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._buyer_pay_amount
 
@@ -383,10 +383,13 @@ class V1ExtraAlipayScan(object):
     def buyer_pay_amount(self, buyer_pay_amount):
         """Sets the buyer_pay_amount of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 付款金额  # noqa: E501
 
         :param buyer_pay_amount: The buyer_pay_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :type: str
+        :type: float
         """
+        if self._configuration.client_side_validation and buyer_pay_amount is None:
+            raise ValueError("Invalid value for `buyer_pay_amount`, must not be `None`")  # noqa: E501
 
         self._buyer_pay_amount = buyer_pay_amount
 
@@ -394,6 +397,7 @@ class V1ExtraAlipayScan(object):
     def buyer_user_id(self):
         """Gets the buyer_user_id of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 买家在支付宝的用户id  # noqa: E501
 
         :return: The buyer_user_id of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -404,10 +408,13 @@ class V1ExtraAlipayScan(object):
     def buyer_user_id(self, buyer_user_id):
         """Sets the buyer_user_id of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 买家在支付宝的用户id  # noqa: E501
 
         :param buyer_user_id: The buyer_user_id of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and buyer_user_id is None:
+            raise ValueError("Invalid value for `buyer_user_id`, must not be `None`")  # noqa: E501
 
         self._buyer_user_id = buyer_user_id
 
@@ -415,9 +422,10 @@ class V1ExtraAlipayScan(object):
     def discount_amount(self):
         """Gets the discount_amount of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 商家优惠金额  # noqa: E501
 
         :return: The discount_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._discount_amount
 
@@ -425,10 +433,13 @@ class V1ExtraAlipayScan(object):
     def discount_amount(self, discount_amount):
         """Sets the discount_amount of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 商家优惠金额  # noqa: E501
 
         :param discount_amount: The discount_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :type: str
+        :type: float
         """
+        if self._configuration.client_side_validation and discount_amount is None:
+            raise ValueError("Invalid value for `discount_amount`, must not be `None`")  # noqa: E501
 
         self._discount_amount = discount_amount
 
@@ -436,6 +447,7 @@ class V1ExtraAlipayScan(object):
     def discount_goods_detail(self):
         """Gets the discount_goods_detail of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 商家优惠商品明细  # noqa: E501
 
         :return: The discount_goods_detail of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -446,10 +458,13 @@ class V1ExtraAlipayScan(object):
     def discount_goods_detail(self, discount_goods_detail):
         """Sets the discount_goods_detail of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 商家优惠商品明细  # noqa: E501
 
         :param discount_goods_detail: The discount_goods_detail of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and discount_goods_detail is None:
+            raise ValueError("Invalid value for `discount_goods_detail`, must not be `None`")  # noqa: E501
 
         self._discount_goods_detail = discount_goods_detail
 
@@ -457,6 +472,7 @@ class V1ExtraAlipayScan(object):
     def discountable_amount(self):
         """Gets the discountable_amount of this V1ExtraAlipayScan.  # noqa: E501
 
+        可打折金额  # noqa: E501
 
         :return: The discountable_amount of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: float
@@ -467,10 +483,13 @@ class V1ExtraAlipayScan(object):
     def discountable_amount(self, discountable_amount):
         """Sets the discountable_amount of this V1ExtraAlipayScan.
 
+        可打折金额  # noqa: E501
 
         :param discountable_amount: The discountable_amount of this V1ExtraAlipayScan.  # noqa: E501
         :type: float
         """
+        if self._configuration.client_side_validation and discountable_amount is None:
+            raise ValueError("Invalid value for `discountable_amount`, must not be `None`")  # noqa: E501
 
         self._discountable_amount = discountable_amount
 
@@ -478,6 +497,7 @@ class V1ExtraAlipayScan(object):
     def extend_params(self):
         """Gets the extend_params of this V1ExtraAlipayScan.  # noqa: E501
 
+        业务扩展参数  # noqa: E501
 
         :return: The extend_params of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: V1ExtraAlipayExtendParams
@@ -488,6 +508,7 @@ class V1ExtraAlipayScan(object):
     def extend_params(self, extend_params):
         """Sets the extend_params of this V1ExtraAlipayScan.
 
+        业务扩展参数  # noqa: E501
 
         :param extend_params: The extend_params of this V1ExtraAlipayScan.  # noqa: E501
         :type: V1ExtraAlipayExtendParams
@@ -499,6 +520,7 @@ class V1ExtraAlipayScan(object):
     def fund_bill_list(self):
         """Gets the fund_bill_list of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 支付金额信息  # noqa: E501
 
         :return: The fund_bill_list of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: V1ExtraAlipayFundBillList
@@ -509,6 +531,7 @@ class V1ExtraAlipayScan(object):
     def fund_bill_list(self, fund_bill_list):
         """Sets the fund_bill_list of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 支付金额信息  # noqa: E501
 
         :param fund_bill_list: The fund_bill_list of this V1ExtraAlipayScan.  # noqa: E501
         :type: V1ExtraAlipayFundBillList
@@ -520,6 +543,7 @@ class V1ExtraAlipayScan(object):
     def gmt_payment(self):
         """Gets the gmt_payment of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 支付时间  # noqa: E501
 
         :return: The gmt_payment of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -530,10 +554,13 @@ class V1ExtraAlipayScan(object):
     def gmt_payment(self, gmt_payment):
         """Sets the gmt_payment of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 支付时间  # noqa: E501
 
         :param gmt_payment: The gmt_payment of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and gmt_payment is None:
+            raise ValueError("Invalid value for `gmt_payment`, must not be `None`")  # noqa: E501
 
         self._gmt_payment = gmt_payment
 
@@ -541,6 +568,7 @@ class V1ExtraAlipayScan(object):
     def goods_detail(self):
         """Gets the goods_detail of this V1ExtraAlipayScan.  # noqa: E501
 
+        商品明细列表  # noqa: E501
 
         :return: The goods_detail of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: list[V1ExtraAlipayGoodsDetail]
@@ -551,6 +579,7 @@ class V1ExtraAlipayScan(object):
     def goods_detail(self, goods_detail):
         """Sets the goods_detail of this V1ExtraAlipayScan.
 
+        商品明细列表  # noqa: E501
 
         :param goods_detail: The goods_detail of this V1ExtraAlipayScan.  # noqa: E501
         :type: list[V1ExtraAlipayGoodsDetail]
@@ -562,9 +591,10 @@ class V1ExtraAlipayScan(object):
     def invoice_amount(self):
         """Gets the invoice_amount of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 开票金额  # noqa: E501
 
         :return: The invoice_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._invoice_amount
 
@@ -572,10 +602,13 @@ class V1ExtraAlipayScan(object):
     def invoice_amount(self, invoice_amount):
         """Sets the invoice_amount of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 开票金额  # noqa: E501
 
         :param invoice_amount: The invoice_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :type: str
+        :type: float
         """
+        if self._configuration.client_side_validation and invoice_amount is None:
+            raise ValueError("Invalid value for `invoice_amount`, must not be `None`")  # noqa: E501
 
         self._invoice_amount = invoice_amount
 
@@ -583,6 +616,7 @@ class V1ExtraAlipayScan(object):
     def is_async_pay(self):
         """Gets the is_async_pay of this V1ExtraAlipayScan.  # noqa: E501
 
+        是否异步支付  # noqa: E501
 
         :return: The is_async_pay of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: V1ExtraAlipayPayParams
@@ -593,6 +627,7 @@ class V1ExtraAlipayScan(object):
     def is_async_pay(self, is_async_pay):
         """Sets the is_async_pay of this V1ExtraAlipayScan.
 
+        是否异步支付  # noqa: E501
 
         :param is_async_pay: The is_async_pay of this V1ExtraAlipayScan.  # noqa: E501
         :type: V1ExtraAlipayPayParams
@@ -604,9 +639,10 @@ class V1ExtraAlipayScan(object):
     def mdiscount_amount(self):
         """Gets the mdiscount_amount of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 平台优惠金额  # noqa: E501
 
         :return: The mdiscount_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._mdiscount_amount
 
@@ -614,10 +650,13 @@ class V1ExtraAlipayScan(object):
     def mdiscount_amount(self, mdiscount_amount):
         """Sets the mdiscount_amount of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 平台优惠金额  # noqa: E501
 
         :param mdiscount_amount: The mdiscount_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :type: str
+        :type: float
         """
+        if self._configuration.client_side_validation and mdiscount_amount is None:
+            raise ValueError("Invalid value for `mdiscount_amount`, must not be `None`")  # noqa: E501
 
         self._mdiscount_amount = mdiscount_amount
 
@@ -625,6 +664,7 @@ class V1ExtraAlipayScan(object):
     def operator_id(self):
         """Gets the operator_id of this V1ExtraAlipayScan.  # noqa: E501
 
+        商户操作员编号  # noqa: E501
 
         :return: The operator_id of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -635,10 +675,13 @@ class V1ExtraAlipayScan(object):
     def operator_id(self, operator_id):
         """Sets the operator_id of this V1ExtraAlipayScan.
 
+        商户操作员编号  # noqa: E501
 
         :param operator_id: The operator_id of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and operator_id is None:
+            raise ValueError("Invalid value for `operator_id`, must not be `None`")  # noqa: E501
 
         self._operator_id = operator_id
 
@@ -646,6 +689,7 @@ class V1ExtraAlipayScan(object):
     def pay_params(self):
         """Gets the pay_params of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 支付宝返回的支付参数  # noqa: E501
 
         :return: The pay_params of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -656,10 +700,13 @@ class V1ExtraAlipayScan(object):
     def pay_params(self, pay_params):
         """Sets the pay_params of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 支付宝返回的支付参数  # noqa: E501
 
         :param pay_params: The pay_params of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and pay_params is None:
+            raise ValueError("Invalid value for `pay_params`, must not be `None`")  # noqa: E501
 
         self._pay_params = pay_params
 
@@ -667,9 +714,10 @@ class V1ExtraAlipayScan(object):
     def point_amount(self):
         """Gets the point_amount of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 集分宝金额  # noqa: E501
 
         :return: The point_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._point_amount
 
@@ -677,10 +725,13 @@ class V1ExtraAlipayScan(object):
     def point_amount(self, point_amount):
         """Sets the point_amount of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 集分宝金额  # noqa: E501
 
         :param point_amount: The point_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :type: str
+        :type: float
         """
+        if self._configuration.client_side_validation and point_amount is None:
+            raise ValueError("Invalid value for `point_amount`, must not be `None`")  # noqa: E501
 
         self._point_amount = point_amount
 
@@ -688,6 +739,7 @@ class V1ExtraAlipayScan(object):
     def product_code(self):
         """Gets the product_code of this V1ExtraAlipayScan.  # noqa: E501
 
+        销售产品码  # noqa: E501
 
         :return: The product_code of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -698,10 +750,13 @@ class V1ExtraAlipayScan(object):
     def product_code(self, product_code):
         """Sets the product_code of this V1ExtraAlipayScan.
 
+        销售产品码  # noqa: E501
 
         :param product_code: The product_code of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and product_code is None:
+            raise ValueError("Invalid value for `product_code`, must not be `None`")  # noqa: E501
 
         self._product_code = product_code
 
@@ -709,6 +764,7 @@ class V1ExtraAlipayScan(object):
     def query_options(self):
         """Gets the query_options of this V1ExtraAlipayScan.  # noqa: E501
 
+        商户授权查询类型  # noqa: E501
 
         :return: The query_options of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -719,10 +775,13 @@ class V1ExtraAlipayScan(object):
     def query_options(self, query_options):
         """Sets the query_options of this V1ExtraAlipayScan.
 
+        商户授权查询类型  # noqa: E501
 
         :param query_options: The query_options of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and query_options is None:
+            raise ValueError("Invalid value for `query_options`, must not be `None`")  # noqa: E501
 
         self._query_options = query_options
 
@@ -730,9 +789,10 @@ class V1ExtraAlipayScan(object):
     def receipt_amount(self):
         """Gets the receipt_amount of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 实收金额  # noqa: E501
 
         :return: The receipt_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._receipt_amount
 
@@ -740,10 +800,13 @@ class V1ExtraAlipayScan(object):
     def receipt_amount(self, receipt_amount):
         """Sets the receipt_amount of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 实收金额  # noqa: E501
 
         :param receipt_amount: The receipt_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :type: str
+        :type: float
         """
+        if self._configuration.client_side_validation and receipt_amount is None:
+            raise ValueError("Invalid value for `receipt_amount`, must not be `None`")  # noqa: E501
 
         self._receipt_amount = receipt_amount
 
@@ -751,6 +814,7 @@ class V1ExtraAlipayScan(object):
     def request_org_pid(self):
         """Gets the request_org_pid of this V1ExtraAlipayScan.  # noqa: E501
 
+        请求方机构id  # noqa: E501
 
         :return: The request_org_pid of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -761,10 +825,13 @@ class V1ExtraAlipayScan(object):
     def request_org_pid(self, request_org_pid):
         """Sets the request_org_pid of this V1ExtraAlipayScan.
 
+        请求方机构id  # noqa: E501
 
         :param request_org_pid: The request_org_pid of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and request_org_pid is None:
+            raise ValueError("Invalid value for `request_org_pid`, must not be `None`")  # noqa: E501
 
         self._request_org_pid = request_org_pid
 
@@ -772,6 +839,7 @@ class V1ExtraAlipayScan(object):
     def scene(self):
         """Gets the scene of this V1ExtraAlipayScan.  # noqa: E501
 
+        支付场景  # noqa: E501
 
         :return: The scene of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -782,10 +850,13 @@ class V1ExtraAlipayScan(object):
     def scene(self, scene):
         """Sets the scene of this V1ExtraAlipayScan.
 
+        支付场景  # noqa: E501
 
         :param scene: The scene of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and scene is None:
+            raise ValueError("Invalid value for `scene`, must not be `None`")  # noqa: E501
 
         self._scene = scene
 
@@ -793,6 +864,7 @@ class V1ExtraAlipayScan(object):
     def settle_info(self):
         """Gets the settle_info of this V1ExtraAlipayScan.  # noqa: E501
 
+        结算信息  # noqa: E501
 
         :return: The settle_info of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: V1ExtraAlipaySettleInfo
@@ -803,6 +875,7 @@ class V1ExtraAlipayScan(object):
     def settle_info(self, settle_info):
         """Sets the settle_info of this V1ExtraAlipayScan.
 
+        结算信息  # noqa: E501
 
         :param settle_info: The settle_info of this V1ExtraAlipayScan.  # noqa: E501
         :type: V1ExtraAlipaySettleInfo
@@ -814,6 +887,7 @@ class V1ExtraAlipayScan(object):
     def store_id(self):
         """Gets the store_id of this V1ExtraAlipayScan.  # noqa: E501
 
+        商户门店编号  # noqa: E501
 
         :return: The store_id of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -824,10 +898,13 @@ class V1ExtraAlipayScan(object):
     def store_id(self, store_id):
         """Sets the store_id of this V1ExtraAlipayScan.
 
+        商户门店编号  # noqa: E501
 
         :param store_id: The store_id of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and store_id is None:
+            raise ValueError("Invalid value for `store_id`, must not be `None`")  # noqa: E501
 
         self._store_id = store_id
 
@@ -835,6 +912,7 @@ class V1ExtraAlipayScan(object):
     def store_name(self):
         """Gets the store_name of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 商户门店名称  # noqa: E501
 
         :return: The store_name of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -845,10 +923,13 @@ class V1ExtraAlipayScan(object):
     def store_name(self, store_name):
         """Sets the store_name of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 商户门店名称  # noqa: E501
 
         :param store_name: The store_name of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and store_name is None:
+            raise ValueError("Invalid value for `store_name`, must not be `None`")  # noqa: E501
 
         self._store_name = store_name
 
@@ -856,6 +937,7 @@ class V1ExtraAlipayScan(object):
     def sub_merchant(self):
         """Gets the sub_merchant of this V1ExtraAlipayScan.  # noqa: E501
 
+        子商户信息  # noqa: E501
 
         :return: The sub_merchant of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: V1ExtraAlipaySubMerchant
@@ -866,6 +948,7 @@ class V1ExtraAlipayScan(object):
     def sub_merchant(self, sub_merchant):
         """Sets the sub_merchant of this V1ExtraAlipayScan.
 
+        子商户信息  # noqa: E501
 
         :param sub_merchant: The sub_merchant of this V1ExtraAlipayScan.  # noqa: E501
         :type: V1ExtraAlipaySubMerchant
@@ -877,6 +960,7 @@ class V1ExtraAlipayScan(object):
     def terminal_id(self):
         """Gets the terminal_id of this V1ExtraAlipayScan.  # noqa: E501
 
+        商户机具终端编号  # noqa: E501
 
         :return: The terminal_id of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: str
@@ -887,10 +971,13 @@ class V1ExtraAlipayScan(object):
     def terminal_id(self, terminal_id):
         """Sets the terminal_id of this V1ExtraAlipayScan.
 
+        商户机具终端编号  # noqa: E501
 
         :param terminal_id: The terminal_id of this V1ExtraAlipayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and terminal_id is None:
+            raise ValueError("Invalid value for `terminal_id`, must not be `None`")  # noqa: E501
 
         self._terminal_id = terminal_id
 
@@ -898,9 +985,10 @@ class V1ExtraAlipayScan(object):
     def total_amount(self):
         """Gets the total_amount of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 订单金额  # noqa: E501
 
         :return: The total_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._total_amount
 
@@ -908,10 +996,13 @@ class V1ExtraAlipayScan(object):
     def total_amount(self, total_amount):
         """Sets the total_amount of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 订单金额  # noqa: E501
 
         :param total_amount: The total_amount of this V1ExtraAlipayScan.  # noqa: E501
-        :type: str
+        :type: float
         """
+        if self._configuration.client_side_validation and total_amount is None:
+            raise ValueError("Invalid value for `total_amount`, must not be `None`")  # noqa: E501
 
         self._total_amount = total_amount
 
@@ -919,6 +1010,7 @@ class V1ExtraAlipayScan(object):
     def undiscountable_amount(self):
         """Gets the undiscountable_amount of this V1ExtraAlipayScan.  # noqa: E501
 
+        不可打折金额  # noqa: E501
 
         :return: The undiscountable_amount of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: float
@@ -929,10 +1021,13 @@ class V1ExtraAlipayScan(object):
     def undiscountable_amount(self, undiscountable_amount):
         """Sets the undiscountable_amount of this V1ExtraAlipayScan.
 
+        不可打折金额  # noqa: E501
 
         :param undiscountable_amount: The undiscountable_amount of this V1ExtraAlipayScan.  # noqa: E501
         :type: float
         """
+        if self._configuration.client_side_validation and undiscountable_amount is None:
+            raise ValueError("Invalid value for `undiscountable_amount`, must not be `None`")  # noqa: E501
 
         self._undiscountable_amount = undiscountable_amount
 
@@ -940,6 +1035,7 @@ class V1ExtraAlipayScan(object):
     def voucher_detail_list(self):
         """Gets the voucher_detail_list of this V1ExtraAlipayScan.  # noqa: E501
 
+        [ONLY IN RESPONSE] 商家优惠明细列表  # noqa: E501
 
         :return: The voucher_detail_list of this V1ExtraAlipayScan.  # noqa: E501
         :rtype: V1ExtraAlipayVoucherDetailList
@@ -950,6 +1046,7 @@ class V1ExtraAlipayScan(object):
     def voucher_detail_list(self, voucher_detail_list):
         """Sets the voucher_detail_list of this V1ExtraAlipayScan.
 
+        [ONLY IN RESPONSE] 商家优惠明细列表  # noqa: E501
 
         :param voucher_detail_list: The voucher_detail_list of this V1ExtraAlipayScan.  # noqa: E501
         :type: V1ExtraAlipayVoucherDetailList

@@ -67,25 +67,19 @@ class V1ExtraWechatpayAppConfig(object):
         self._timestamp = None
         self.discriminator = None
 
-        if appid is not None:
-            self.appid = appid
-        if noncestr is not None:
-            self.noncestr = noncestr
-        if package is not None:
-            self.package = package
-        if partnerid is not None:
-            self.partnerid = partnerid
-        if prepayid is not None:
-            self.prepayid = prepayid
-        if sign is not None:
-            self.sign = sign
-        if timestamp is not None:
-            self.timestamp = timestamp
+        self.appid = appid
+        self.noncestr = noncestr
+        self.package = package
+        self.partnerid = partnerid
+        self.prepayid = prepayid
+        self.sign = sign
+        self.timestamp = timestamp
 
     @property
     def appid(self):
         """Gets the appid of this V1ExtraWechatpayAppConfig.  # noqa: E501
 
+        应用appid  # noqa: E501
 
         :return: The appid of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :rtype: str
@@ -96,10 +90,13 @@ class V1ExtraWechatpayAppConfig(object):
     def appid(self, appid):
         """Sets the appid of this V1ExtraWechatpayAppConfig.
 
+        应用appid  # noqa: E501
 
         :param appid: The appid of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and appid is None:
+            raise ValueError("Invalid value for `appid`, must not be `None`")  # noqa: E501
 
         self._appid = appid
 
@@ -107,6 +104,7 @@ class V1ExtraWechatpayAppConfig(object):
     def noncestr(self):
         """Gets the noncestr of this V1ExtraWechatpayAppConfig.  # noqa: E501
 
+        随机字符串  # noqa: E501
 
         :return: The noncestr of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :rtype: str
@@ -117,10 +115,13 @@ class V1ExtraWechatpayAppConfig(object):
     def noncestr(self, noncestr):
         """Sets the noncestr of this V1ExtraWechatpayAppConfig.
 
+        随机字符串  # noqa: E501
 
         :param noncestr: The noncestr of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and noncestr is None:
+            raise ValueError("Invalid value for `noncestr`, must not be `None`")  # noqa: E501
 
         self._noncestr = noncestr
 
@@ -128,6 +129,7 @@ class V1ExtraWechatpayAppConfig(object):
     def package(self):
         """Gets the package of this V1ExtraWechatpayAppConfig.  # noqa: E501
 
+        扩展字段  # noqa: E501
 
         :return: The package of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :rtype: str
@@ -138,10 +140,13 @@ class V1ExtraWechatpayAppConfig(object):
     def package(self, package):
         """Sets the package of this V1ExtraWechatpayAppConfig.
 
+        扩展字段  # noqa: E501
 
         :param package: The package of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and package is None:
+            raise ValueError("Invalid value for `package`, must not be `None`")  # noqa: E501
 
         self._package = package
 
@@ -149,6 +154,7 @@ class V1ExtraWechatpayAppConfig(object):
     def partnerid(self):
         """Gets the partnerid of this V1ExtraWechatpayAppConfig.  # noqa: E501
 
+        商户号  # noqa: E501
 
         :return: The partnerid of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :rtype: str
@@ -159,10 +165,13 @@ class V1ExtraWechatpayAppConfig(object):
     def partnerid(self, partnerid):
         """Sets the partnerid of this V1ExtraWechatpayAppConfig.
 
+        商户号  # noqa: E501
 
         :param partnerid: The partnerid of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and partnerid is None:
+            raise ValueError("Invalid value for `partnerid`, must not be `None`")  # noqa: E501
 
         self._partnerid = partnerid
 
@@ -170,6 +179,7 @@ class V1ExtraWechatpayAppConfig(object):
     def prepayid(self):
         """Gets the prepayid of this V1ExtraWechatpayAppConfig.  # noqa: E501
 
+        预支付交易会话标识  # noqa: E501
 
         :return: The prepayid of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :rtype: str
@@ -180,10 +190,13 @@ class V1ExtraWechatpayAppConfig(object):
     def prepayid(self, prepayid):
         """Sets the prepayid of this V1ExtraWechatpayAppConfig.
 
+        预支付交易会话标识  # noqa: E501
 
         :param prepayid: The prepayid of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and prepayid is None:
+            raise ValueError("Invalid value for `prepayid`, must not be `None`")  # noqa: E501
 
         self._prepayid = prepayid
 
@@ -191,6 +204,7 @@ class V1ExtraWechatpayAppConfig(object):
     def sign(self):
         """Gets the sign of this V1ExtraWechatpayAppConfig.  # noqa: E501
 
+        签名  # noqa: E501
 
         :return: The sign of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :rtype: str
@@ -201,10 +215,13 @@ class V1ExtraWechatpayAppConfig(object):
     def sign(self, sign):
         """Sets the sign of this V1ExtraWechatpayAppConfig.
 
+        签名  # noqa: E501
 
         :param sign: The sign of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and sign is None:
+            raise ValueError("Invalid value for `sign`, must not be `None`")  # noqa: E501
 
         self._sign = sign
 
@@ -212,6 +229,7 @@ class V1ExtraWechatpayAppConfig(object):
     def timestamp(self):
         """Gets the timestamp of this V1ExtraWechatpayAppConfig.  # noqa: E501
 
+        时间戳  # noqa: E501
 
         :return: The timestamp of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :rtype: str
@@ -222,10 +240,13 @@ class V1ExtraWechatpayAppConfig(object):
     def timestamp(self, timestamp):
         """Sets the timestamp of this V1ExtraWechatpayAppConfig.
 
+        时间戳  # noqa: E501
 
         :param timestamp: The timestamp of this V1ExtraWechatpayAppConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and timestamp is None:
+            raise ValueError("Invalid value for `timestamp`, must not be `None`")  # noqa: E501
 
         self._timestamp = timestamp
 

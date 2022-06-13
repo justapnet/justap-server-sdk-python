@@ -64,23 +64,18 @@ class V1ExtraWechatpayJsapiConfig(object):
         self._time_stamp = None
         self.discriminator = None
 
-        if app_id is not None:
-            self.app_id = app_id
-        if nonce_str is not None:
-            self.nonce_str = nonce_str
-        if package is not None:
-            self.package = package
-        if pay_sign is not None:
-            self.pay_sign = pay_sign
-        if sign_type is not None:
-            self.sign_type = sign_type
-        if time_stamp is not None:
-            self.time_stamp = time_stamp
+        self.app_id = app_id
+        self.nonce_str = nonce_str
+        self.package = package
+        self.pay_sign = pay_sign
+        self.sign_type = sign_type
+        self.time_stamp = time_stamp
 
     @property
     def app_id(self):
         """Gets the app_id of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
 
+        公众号appid  # noqa: E501
 
         :return: The app_id of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :rtype: str
@@ -91,10 +86,13 @@ class V1ExtraWechatpayJsapiConfig(object):
     def app_id(self, app_id):
         """Sets the app_id of this V1ExtraWechatpayJsapiConfig.
 
+        公众号appid  # noqa: E501
 
         :param app_id: The app_id of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and app_id is None:
+            raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
 
         self._app_id = app_id
 
@@ -102,6 +100,7 @@ class V1ExtraWechatpayJsapiConfig(object):
     def nonce_str(self):
         """Gets the nonce_str of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
 
+        随机字符串  # noqa: E501
 
         :return: The nonce_str of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :rtype: str
@@ -112,10 +111,13 @@ class V1ExtraWechatpayJsapiConfig(object):
     def nonce_str(self, nonce_str):
         """Sets the nonce_str of this V1ExtraWechatpayJsapiConfig.
 
+        随机字符串  # noqa: E501
 
         :param nonce_str: The nonce_str of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and nonce_str is None:
+            raise ValueError("Invalid value for `nonce_str`, must not be `None`")  # noqa: E501
 
         self._nonce_str = nonce_str
 
@@ -123,6 +125,7 @@ class V1ExtraWechatpayJsapiConfig(object):
     def package(self):
         """Gets the package of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
 
+        扩展字段  # noqa: E501
 
         :return: The package of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :rtype: str
@@ -133,10 +136,13 @@ class V1ExtraWechatpayJsapiConfig(object):
     def package(self, package):
         """Sets the package of this V1ExtraWechatpayJsapiConfig.
 
+        扩展字段  # noqa: E501
 
         :param package: The package of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and package is None:
+            raise ValueError("Invalid value for `package`, must not be `None`")  # noqa: E501
 
         self._package = package
 
@@ -144,6 +150,7 @@ class V1ExtraWechatpayJsapiConfig(object):
     def pay_sign(self):
         """Gets the pay_sign of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
 
+        签名  # noqa: E501
 
         :return: The pay_sign of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :rtype: str
@@ -154,10 +161,13 @@ class V1ExtraWechatpayJsapiConfig(object):
     def pay_sign(self, pay_sign):
         """Sets the pay_sign of this V1ExtraWechatpayJsapiConfig.
 
+        签名  # noqa: E501
 
         :param pay_sign: The pay_sign of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and pay_sign is None:
+            raise ValueError("Invalid value for `pay_sign`, must not be `None`")  # noqa: E501
 
         self._pay_sign = pay_sign
 
@@ -165,6 +175,7 @@ class V1ExtraWechatpayJsapiConfig(object):
     def sign_type(self):
         """Gets the sign_type of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
 
+        签名类型  # noqa: E501
 
         :return: The sign_type of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :rtype: str
@@ -175,10 +186,13 @@ class V1ExtraWechatpayJsapiConfig(object):
     def sign_type(self, sign_type):
         """Sets the sign_type of this V1ExtraWechatpayJsapiConfig.
 
+        签名类型  # noqa: E501
 
         :param sign_type: The sign_type of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and sign_type is None:
+            raise ValueError("Invalid value for `sign_type`, must not be `None`")  # noqa: E501
 
         self._sign_type = sign_type
 
@@ -186,6 +200,7 @@ class V1ExtraWechatpayJsapiConfig(object):
     def time_stamp(self):
         """Gets the time_stamp of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
 
+        时间戳  # noqa: E501
 
         :return: The time_stamp of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :rtype: str
@@ -196,10 +211,13 @@ class V1ExtraWechatpayJsapiConfig(object):
     def time_stamp(self, time_stamp):
         """Sets the time_stamp of this V1ExtraWechatpayJsapiConfig.
 
+        时间戳  # noqa: E501
 
         :param time_stamp: The time_stamp of this V1ExtraWechatpayJsapiConfig.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_stamp is None:
+            raise ValueError("Invalid value for `time_stamp`, must not be `None`")  # noqa: E501
 
         self._time_stamp = time_stamp
 

@@ -3,38 +3,38 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**amount** | **float** |  | [optional] 
-**amount_fee** | **float** |  | [optional] 
-**amount_refund** | **float** |  | [optional] 
-**amount_royalty** | **float** |  | [optional] 
-**amount_settle** | **float** |  | [optional] 
-**app_id** | **str** |  | [optional] 
-**body** | **str** |  | [optional] 
-**channel** | [**V1Channel**](V1Channel.md) |  | [optional] 
-**charge_id** | **str** |  | [optional] 
-**client_ip** | **str** |  | [optional] 
-**closed** | **bool** |  | [optional] 
-**closed_at** | **datetime** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
-**credential** | [**ProtobufAny**](ProtobufAny.md) |  | [optional] 
-**currency** | **str** |  | [optional] 
-**description** | **str** |  | [optional] 
-**extra** | [**V1ChargeExtra**](V1ChargeExtra.md) |  | [optional] 
-**failure_code** | **str** |  | [optional] 
-**failure_msg** | **str** |  | [optional] 
-**live_mode** | **bool** |  | [optional] 
-**merchant_trade_id** | **str** |  | [optional] 
-**metadata** | **dict(str, str)** |  | [optional] 
-**paid** | **bool** |  | [optional] 
-**paid_at** | **datetime** |  | [optional] 
-**refunded** | **bool** |  | [optional] 
-**refunds** | [**list[V1Refund]**](V1Refund.md) |  | [optional] 
-**reversed** | **bool** |  | [optional] 
-**reversed_at** | **datetime** |  | [optional] 
-**subject** | **str** |  | [optional] 
-**time_expire** | **datetime** |  | [optional] 
-**transaction_no** | **str** |  | [optional] 
-**ttl** | **int** |  | [optional] 
+**amount** | **float** | 订单金额 | [default to 0.0]
+**amount_fee** | **float** | 下单金额 | 
+**amount_refund** | **float** | 订单退款总金额 | 
+**amount_royalty** | **float** | 分账金额 | 
+**amount_settle** | **float** | 结算金额，不一定有，视支付通道情况返回 | 
+**app_id** | **str** | 应用ID | 
+**body** | **str** | 订单描述信息 | 
+**channel** | [**V1Channel**](V1Channel.md) | 支付渠道 | 
+**charge_id** | **str** | Charge 对象 id | 
+**client_ip** | **str** | 顾客IP | 
+**closed** | **bool** | 是否关闭 | [default to False]
+**closed_at** | **datetime** | 关闭时间 | [optional] 
+**created_at** | **datetime** | Charge 对象创建时间 | [optional] 
+**credential** | [**ProtobufAny**](ProtobufAny.md) | 支付凭证 | [optional] 
+**currency** | **str** | 货币单位，当前仅支持 CNY | 
+**description** | **str** | 描述信息 | 
+**extra** | [**V1ChargeExtra**](V1ChargeExtra.md) | 支付渠道元数据 | [optional] 
+**failure_code** | **str** | 收单机构错误码 | 
+**failure_msg** | **str** | 收单机构错误描述信息 | 
+**live_mode** | **bool** | 表明是否是沙箱环境 | [default to False]
+**merchant_trade_id** | **str** | 商户系统订单号，APP下需唯一 | 
+**metadata** | **dict(str, str)** | 订单元数据，原样返回 | [optional] 
+**paid** | **bool** | 表明是否已支付 | [default to False]
+**paid_at** | **datetime** | 支付时间 | [optional] 
+**refunded** | **bool** | 表明是否包含退款，含退款失败的 | [default to False]
+**refunds** | [**list[V1Refund]**](V1Refund.md) | Refund 对象列表 | [optional] 
+**reversed** | **bool** | 表明是否已经撤销 | [default to False]
+**reversed_at** | **datetime** | 冲正时间 | [optional] 
+**subject** | **str** | 订单描述主题 | 
+**time_expire** | **datetime** | 订单过期时间 | [optional] 
+**transaction_no** | **str** | Charge 的支付单号 | 
+**ttl** | **int** | 订单生存时间，单位秒 | [default to 0]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

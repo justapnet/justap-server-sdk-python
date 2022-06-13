@@ -60,6 +60,7 @@ class V1RefundResponse(object):
     def data(self):
         """Gets the data of this V1RefundResponse.  # noqa: E501
 
+        Refund 对象  # noqa: E501
 
         :return: The data of this V1RefundResponse.  # noqa: E501
         :rtype: V1Refund
@@ -70,6 +71,7 @@ class V1RefundResponse(object):
     def data(self, data):
         """Sets the data of this V1RefundResponse.
 
+        Refund 对象  # noqa: E501
 
         :param data: The data of this V1RefundResponse.  # noqa: E501
         :type: V1Refund

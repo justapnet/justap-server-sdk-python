@@ -49,13 +49,13 @@ class ExtraAlipayAgreementSignParamsAccessParams(object):
         self._channel = None
         self.discriminator = None
 
-        if channel is not None:
-            self.channel = channel
+        self.channel = channel
 
     @property
     def channel(self):
         """Gets the channel of this ExtraAlipayAgreementSignParamsAccessParams.  # noqa: E501
 
+        目前支持以下值：1. ALIPAYAPP （钱包h5页面签约）2. QRCODE(扫码签约)3. QRCODEORSMS(扫码签约或者短信签约)  # noqa: E501
 
         :return: The channel of this ExtraAlipayAgreementSignParamsAccessParams.  # noqa: E501
         :rtype: str
@@ -66,10 +66,13 @@ class ExtraAlipayAgreementSignParamsAccessParams(object):
     def channel(self, channel):
         """Sets the channel of this ExtraAlipayAgreementSignParamsAccessParams.
 
+        目前支持以下值：1. ALIPAYAPP （钱包h5页面签约）2. QRCODE(扫码签约)3. QRCODEORSMS(扫码签约或者短信签约)  # noqa: E501
 
         :param channel: The channel of this ExtraAlipayAgreementSignParamsAccessParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and channel is None:
+            raise ValueError("Invalid value for `channel`, must not be `None`")  # noqa: E501
 
         self._channel = channel
 

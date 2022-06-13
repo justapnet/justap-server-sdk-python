@@ -72,18 +72,13 @@ class V1ExtraAlipayAgreementSignParams(object):
 
         if access_params is not None:
             self.access_params = access_params
-        if external_agreement_no is not None:
-            self.external_agreement_no = external_agreement_no
-        if external_logon_id is not None:
-            self.external_logon_id = external_logon_id
+        self.external_agreement_no = external_agreement_no
+        self.external_logon_id = external_logon_id
         if period_rule_params is not None:
             self.period_rule_params = period_rule_params
-        if personal_product_code is not None:
-            self.personal_product_code = personal_product_code
-        if sign_notify_url is not None:
-            self.sign_notify_url = sign_notify_url
-        if sign_scene is not None:
-            self.sign_scene = sign_scene
+        self.personal_product_code = personal_product_code
+        self.sign_notify_url = sign_notify_url
+        self.sign_scene = sign_scene
         if sub_merchant is not None:
             self.sub_merchant = sub_merchant
 
@@ -91,6 +86,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def access_params(self):
         """Gets the access_params of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
 
+        请按当前接入的方式进行填充，且输入值必须为文档中的参数取值范围  # noqa: E501
 
         :return: The access_params of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :rtype: ExtraAlipayAgreementSignParamsAccessParams
@@ -101,6 +97,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def access_params(self, access_params):
         """Sets the access_params of this V1ExtraAlipayAgreementSignParams.
 
+        请按当前接入的方式进行填充，且输入值必须为文档中的参数取值范围  # noqa: E501
 
         :param access_params: The access_params of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :type: ExtraAlipayAgreementSignParamsAccessParams
@@ -112,6 +109,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def external_agreement_no(self):
         """Gets the external_agreement_no of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
 
+        外部协议号  # noqa: E501
 
         :return: The external_agreement_no of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :rtype: str
@@ -122,10 +120,13 @@ class V1ExtraAlipayAgreementSignParams(object):
     def external_agreement_no(self, external_agreement_no):
         """Sets the external_agreement_no of this V1ExtraAlipayAgreementSignParams.
 
+        外部协议号  # noqa: E501
 
         :param external_agreement_no: The external_agreement_no of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and external_agreement_no is None:
+            raise ValueError("Invalid value for `external_agreement_no`, must not be `None`")  # noqa: E501
 
         self._external_agreement_no = external_agreement_no
 
@@ -133,6 +134,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def external_logon_id(self):
         """Gets the external_logon_id of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
 
+        外部用户唯一标识  # noqa: E501
 
         :return: The external_logon_id of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :rtype: str
@@ -143,10 +145,13 @@ class V1ExtraAlipayAgreementSignParams(object):
     def external_logon_id(self, external_logon_id):
         """Sets the external_logon_id of this V1ExtraAlipayAgreementSignParams.
 
+        外部用户唯一标识  # noqa: E501
 
         :param external_logon_id: The external_logon_id of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and external_logon_id is None:
+            raise ValueError("Invalid value for `external_logon_id`, must not be `None`")  # noqa: E501
 
         self._external_logon_id = external_logon_id
 
@@ -154,6 +159,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def period_rule_params(self):
         """Gets the period_rule_params of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
 
+        周期管控规则参数period_rule_params，在签约周期扣款产品（如CYCLE_PAY_AUTH_P）时必传，在签约其他产品时无需传入。 周期扣款产品，会按照这里传入的参数提示用户，并对发起扣款的时间、金额、次数等做相应限制。  # noqa: E501
 
         :return: The period_rule_params of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :rtype: ExtraAlipayAgreementSignParamsPeriodRuleParams
@@ -164,6 +170,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def period_rule_params(self, period_rule_params):
         """Sets the period_rule_params of this V1ExtraAlipayAgreementSignParams.
 
+        周期管控规则参数period_rule_params，在签约周期扣款产品（如CYCLE_PAY_AUTH_P）时必传，在签约其他产品时无需传入。 周期扣款产品，会按照这里传入的参数提示用户，并对发起扣款的时间、金额、次数等做相应限制。  # noqa: E501
 
         :param period_rule_params: The period_rule_params of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :type: ExtraAlipayAgreementSignParamsPeriodRuleParams
@@ -175,6 +182,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def personal_product_code(self):
         """Gets the personal_product_code of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
 
+        个人签约产品码  # noqa: E501
 
         :return: The personal_product_code of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :rtype: str
@@ -185,10 +193,13 @@ class V1ExtraAlipayAgreementSignParams(object):
     def personal_product_code(self, personal_product_code):
         """Sets the personal_product_code of this V1ExtraAlipayAgreementSignParams.
 
+        个人签约产品码  # noqa: E501
 
         :param personal_product_code: The personal_product_code of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and personal_product_code is None:
+            raise ValueError("Invalid value for `personal_product_code`, must not be `None`")  # noqa: E501
 
         self._personal_product_code = personal_product_code
 
@@ -196,6 +207,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def sign_notify_url(self):
         """Gets the sign_notify_url of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
 
+        签约回调地址  # noqa: E501
 
         :return: The sign_notify_url of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :rtype: str
@@ -206,10 +218,13 @@ class V1ExtraAlipayAgreementSignParams(object):
     def sign_notify_url(self, sign_notify_url):
         """Sets the sign_notify_url of this V1ExtraAlipayAgreementSignParams.
 
+        签约回调地址  # noqa: E501
 
         :param sign_notify_url: The sign_notify_url of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and sign_notify_url is None:
+            raise ValueError("Invalid value for `sign_notify_url`, must not be `None`")  # noqa: E501
 
         self._sign_notify_url = sign_notify_url
 
@@ -217,6 +232,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def sign_scene(self):
         """Gets the sign_scene of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
 
+        签约场景  # noqa: E501
 
         :return: The sign_scene of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :rtype: str
@@ -227,10 +243,13 @@ class V1ExtraAlipayAgreementSignParams(object):
     def sign_scene(self, sign_scene):
         """Sets the sign_scene of this V1ExtraAlipayAgreementSignParams.
 
+        签约场景  # noqa: E501
 
         :param sign_scene: The sign_scene of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and sign_scene is None:
+            raise ValueError("Invalid value for `sign_scene`, must not be `None`")  # noqa: E501
 
         self._sign_scene = sign_scene
 
@@ -238,6 +257,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def sub_merchant(self):
         """Gets the sub_merchant of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
 
+        此参数用于传递子商户信息，无特殊需求时不用关注。目前商户代扣、海外代扣、淘旅行信用住产品支持传入该参数（在销售方案中“是否允许自定义子商户信息”需要选是）。  # noqa: E501
 
         :return: The sub_merchant of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :rtype: ExtraAlipayAgreementSignParamsSubMerchant
@@ -248,6 +268,7 @@ class V1ExtraAlipayAgreementSignParams(object):
     def sub_merchant(self, sub_merchant):
         """Sets the sub_merchant of this V1ExtraAlipayAgreementSignParams.
 
+        此参数用于传递子商户信息，无特殊需求时不用关注。目前商户代扣、海外代扣、淘旅行信用住产品支持传入该参数（在销售方案中“是否允许自定义子商户信息”需要选是）。  # noqa: E501
 
         :param sub_merchant: The sub_merchant of this V1ExtraAlipayAgreementSignParams.  # noqa: E501
         :type: ExtraAlipayAgreementSignParamsSubMerchant

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **currency** | **str** | 货币单位。国内收单机构仅支持 CNY | [default to 'CNY']
 **description** | **str** | [OPTIONAL] 交易描述 | 
 **extra** | [**V1CreateChargeRequestExtra**](V1CreateChargeRequestExtra.md) | [OPTIONAL] 各支付渠道元数据 | [optional] 
-**merchant_trade_id** | **str** | [REQUIRED] 客户系统的交易单号（订单号），必须在应用下唯一。长度不超过32字符 | 
+**merchant_trade_id** | **str** | [REQUIRED] 客户系统的交易单号（订单号），必须在应用下唯一。长度不超过30个字符 | 
 **metadata** | **dict(str, str)** | [OPTIONAL] 订单元数据，原样返回 | [optional] 
 **notification_area** | **str** | [OPTIONAL] 接受通知服务器所在区域，为确保消息能够送达，请选择服务器所在国家的国家码。如不填默认为 CN | [default to 'CN']
 **notify_url** | **str** | [OPTIONAL] 通知地址，如不传则使用 APP 设置中的通知地址。若都为空，则不发送通知 | 

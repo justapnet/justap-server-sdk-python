@@ -77,25 +77,21 @@ class V1ExtraWechatpayNative(object):
             self.attach = attach
         if detail is not None:
             self.detail = detail
-        if goods_tag is not None:
-            self.goods_tag = goods_tag
-        if qr_code is not None:
-            self.qr_code = qr_code
-        if qr_link is not None:
-            self.qr_link = qr_link
+        self.goods_tag = goods_tag
+        self.qr_code = qr_code
+        self.qr_link = qr_link
         if scene_info is not None:
             self.scene_info = scene_info
         if settle_info is not None:
             self.settle_info = settle_info
-        if time_expire is not None:
-            self.time_expire = time_expire
-        if time_start is not None:
-            self.time_start = time_start
+        self.time_expire = time_expire
+        self.time_start = time_start
 
     @property
     def attach(self):
         """Gets the attach of this V1ExtraWechatpayNative.  # noqa: E501
 
+        元数据  # noqa: E501
 
         :return: The attach of this V1ExtraWechatpayNative.  # noqa: E501
         :rtype: str
@@ -106,6 +102,7 @@ class V1ExtraWechatpayNative(object):
     def attach(self, attach):
         """Sets the attach of this V1ExtraWechatpayNative.
 
+        元数据  # noqa: E501
 
         :param attach: The attach of this V1ExtraWechatpayNative.  # noqa: E501
         :type: str
@@ -117,6 +114,7 @@ class V1ExtraWechatpayNative(object):
     def detail(self):
         """Gets the detail of this V1ExtraWechatpayNative.  # noqa: E501
 
+        商品详情  # noqa: E501
 
         :return: The detail of this V1ExtraWechatpayNative.  # noqa: E501
         :rtype: V1ExtraWechatpayDetail
@@ -127,6 +125,7 @@ class V1ExtraWechatpayNative(object):
     def detail(self, detail):
         """Sets the detail of this V1ExtraWechatpayNative.
 
+        商品详情  # noqa: E501
 
         :param detail: The detail of this V1ExtraWechatpayNative.  # noqa: E501
         :type: V1ExtraWechatpayDetail
@@ -138,6 +137,7 @@ class V1ExtraWechatpayNative(object):
     def goods_tag(self):
         """Gets the goods_tag of this V1ExtraWechatpayNative.  # noqa: E501
 
+        订单优惠标记  # noqa: E501
 
         :return: The goods_tag of this V1ExtraWechatpayNative.  # noqa: E501
         :rtype: str
@@ -148,10 +148,13 @@ class V1ExtraWechatpayNative(object):
     def goods_tag(self, goods_tag):
         """Sets the goods_tag of this V1ExtraWechatpayNative.
 
+        订单优惠标记  # noqa: E501
 
         :param goods_tag: The goods_tag of this V1ExtraWechatpayNative.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and goods_tag is None:
+            raise ValueError("Invalid value for `goods_tag`, must not be `None`")  # noqa: E501
 
         self._goods_tag = goods_tag
 
@@ -159,6 +162,7 @@ class V1ExtraWechatpayNative(object):
     def qr_code(self):
         """Gets the qr_code of this V1ExtraWechatpayNative.  # noqa: E501
 
+        二维码数据  # noqa: E501
 
         :return: The qr_code of this V1ExtraWechatpayNative.  # noqa: E501
         :rtype: str
@@ -169,10 +173,13 @@ class V1ExtraWechatpayNative(object):
     def qr_code(self, qr_code):
         """Sets the qr_code of this V1ExtraWechatpayNative.
 
+        二维码数据  # noqa: E501
 
         :param qr_code: The qr_code of this V1ExtraWechatpayNative.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and qr_code is None:
+            raise ValueError("Invalid value for `qr_code`, must not be `None`")  # noqa: E501
 
         self._qr_code = qr_code
 
@@ -180,6 +187,7 @@ class V1ExtraWechatpayNative(object):
     def qr_link(self):
         """Gets the qr_link of this V1ExtraWechatpayNative.  # noqa: E501
 
+        二维码链接  # noqa: E501
 
         :return: The qr_link of this V1ExtraWechatpayNative.  # noqa: E501
         :rtype: str
@@ -190,10 +198,13 @@ class V1ExtraWechatpayNative(object):
     def qr_link(self, qr_link):
         """Sets the qr_link of this V1ExtraWechatpayNative.
 
+        二维码链接  # noqa: E501
 
         :param qr_link: The qr_link of this V1ExtraWechatpayNative.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and qr_link is None:
+            raise ValueError("Invalid value for `qr_link`, must not be `None`")  # noqa: E501
 
         self._qr_link = qr_link
 
@@ -201,6 +212,7 @@ class V1ExtraWechatpayNative(object):
     def scene_info(self):
         """Gets the scene_info of this V1ExtraWechatpayNative.  # noqa: E501
 
+        场景信息  # noqa: E501
 
         :return: The scene_info of this V1ExtraWechatpayNative.  # noqa: E501
         :rtype: V1ExtraWechatpaySceneInfo
@@ -211,6 +223,7 @@ class V1ExtraWechatpayNative(object):
     def scene_info(self, scene_info):
         """Sets the scene_info of this V1ExtraWechatpayNative.
 
+        场景信息  # noqa: E501
 
         :param scene_info: The scene_info of this V1ExtraWechatpayNative.  # noqa: E501
         :type: V1ExtraWechatpaySceneInfo
@@ -222,6 +235,7 @@ class V1ExtraWechatpayNative(object):
     def settle_info(self):
         """Gets the settle_info of this V1ExtraWechatpayNative.  # noqa: E501
 
+        结算信息  # noqa: E501
 
         :return: The settle_info of this V1ExtraWechatpayNative.  # noqa: E501
         :rtype: V1ExtraWechatpaySettleInfo
@@ -232,6 +246,7 @@ class V1ExtraWechatpayNative(object):
     def settle_info(self, settle_info):
         """Sets the settle_info of this V1ExtraWechatpayNative.
 
+        结算信息  # noqa: E501
 
         :param settle_info: The settle_info of this V1ExtraWechatpayNative.  # noqa: E501
         :type: V1ExtraWechatpaySettleInfo
@@ -243,6 +258,7 @@ class V1ExtraWechatpayNative(object):
     def time_expire(self):
         """Gets the time_expire of this V1ExtraWechatpayNative.  # noqa: E501
 
+        交易过期时间  # noqa: E501
 
         :return: The time_expire of this V1ExtraWechatpayNative.  # noqa: E501
         :rtype: str
@@ -253,10 +269,13 @@ class V1ExtraWechatpayNative(object):
     def time_expire(self, time_expire):
         """Sets the time_expire of this V1ExtraWechatpayNative.
 
+        交易过期时间  # noqa: E501
 
         :param time_expire: The time_expire of this V1ExtraWechatpayNative.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_expire is None:
+            raise ValueError("Invalid value for `time_expire`, must not be `None`")  # noqa: E501
 
         self._time_expire = time_expire
 
@@ -264,6 +283,7 @@ class V1ExtraWechatpayNative(object):
     def time_start(self):
         """Gets the time_start of this V1ExtraWechatpayNative.  # noqa: E501
 
+        交易起始时间  # noqa: E501
 
         :return: The time_start of this V1ExtraWechatpayNative.  # noqa: E501
         :rtype: str
@@ -274,10 +294,13 @@ class V1ExtraWechatpayNative(object):
     def time_start(self, time_start):
         """Sets the time_start of this V1ExtraWechatpayNative.
 
+        交易起始时间  # noqa: E501
 
         :param time_start: The time_start of this V1ExtraWechatpayNative.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_start is None:
+            raise ValueError("Invalid value for `time_start`, must not be `None`")  # noqa: E501
 
         self._time_start = time_start
 

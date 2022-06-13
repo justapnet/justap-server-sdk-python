@@ -97,38 +97,28 @@ class V1ExtraAlipayLite(object):
         self._undiscountable_amount = None
         self.discriminator = None
 
-        if body is not None:
-            self.body = body
+        self.body = body
         if business_params is not None:
             self.business_params = business_params
-        if buyer_id is not None:
-            self.buyer_id = buyer_id
+        self.buyer_id = buyer_id
         if discountable_amount is not None:
             self.discountable_amount = discountable_amount
         if extend_params is not None:
             self.extend_params = extend_params
         if logistics_detail is not None:
             self.logistics_detail = logistics_detail
-        if operator_id is not None:
-            self.operator_id = operator_id
-        if product_code is not None:
-            self.product_code = product_code
+        self.operator_id = operator_id
+        self.product_code = product_code
         if receiver_address_info is not None:
             self.receiver_address_info = receiver_address_info
-        if seller_id is not None:
-            self.seller_id = seller_id
+        self.seller_id = seller_id
         if settle_info is not None:
             self.settle_info = settle_info
-        if store_id is not None:
-            self.store_id = store_id
-        if terminal_id is not None:
-            self.terminal_id = terminal_id
-        if time_expire is not None:
-            self.time_expire = time_expire
-        if timeout_express is not None:
-            self.timeout_express = timeout_express
-        if trade_no is not None:
-            self.trade_no = trade_no
+        self.store_id = store_id
+        self.terminal_id = terminal_id
+        self.time_expire = time_expire
+        self.timeout_express = timeout_express
+        self.trade_no = trade_no
         if undiscountable_amount is not None:
             self.undiscountable_amount = undiscountable_amount
 
@@ -136,6 +126,7 @@ class V1ExtraAlipayLite(object):
     def body(self):
         """Gets the body of this V1ExtraAlipayLite.  # noqa: E501
 
+        商品描述  # noqa: E501
 
         :return: The body of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -146,10 +137,13 @@ class V1ExtraAlipayLite(object):
     def body(self, body):
         """Sets the body of this V1ExtraAlipayLite.
 
+        商品描述  # noqa: E501
 
         :param body: The body of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and body is None:
+            raise ValueError("Invalid value for `body`, must not be `None`")  # noqa: E501
 
         self._body = body
 
@@ -157,6 +151,7 @@ class V1ExtraAlipayLite(object):
     def business_params(self):
         """Gets the business_params of this V1ExtraAlipayLite.  # noqa: E501
 
+        业务扩展参数  # noqa: E501
 
         :return: The business_params of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: V1ExtraAlipayBusinessParams
@@ -167,6 +162,7 @@ class V1ExtraAlipayLite(object):
     def business_params(self, business_params):
         """Sets the business_params of this V1ExtraAlipayLite.
 
+        业务扩展参数  # noqa: E501
 
         :param business_params: The business_params of this V1ExtraAlipayLite.  # noqa: E501
         :type: V1ExtraAlipayBusinessParams
@@ -178,6 +174,7 @@ class V1ExtraAlipayLite(object):
     def buyer_id(self):
         """Gets the buyer_id of this V1ExtraAlipayLite.  # noqa: E501
 
+        买家的支付宝唯一用户号（2088开头的16位纯数字）  # noqa: E501
 
         :return: The buyer_id of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -188,10 +185,13 @@ class V1ExtraAlipayLite(object):
     def buyer_id(self, buyer_id):
         """Sets the buyer_id of this V1ExtraAlipayLite.
 
+        买家的支付宝唯一用户号（2088开头的16位纯数字）  # noqa: E501
 
         :param buyer_id: The buyer_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and buyer_id is None:
+            raise ValueError("Invalid value for `buyer_id`, must not be `None`")  # noqa: E501
 
         self._buyer_id = buyer_id
 
@@ -199,6 +199,7 @@ class V1ExtraAlipayLite(object):
     def discountable_amount(self):
         """Gets the discountable_amount of this V1ExtraAlipayLite.  # noqa: E501
 
+        可打折金额. 参与优惠计算的金额，单位为元，精确到小数点后两位，取值范围[0.01,100000000] 如果该值未传入，但传入了【订单总金额】，【不可打折金额】则该值默认为【订单总金额】-【不可打折金额】  # noqa: E501
 
         :return: The discountable_amount of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: float
@@ -209,6 +210,7 @@ class V1ExtraAlipayLite(object):
     def discountable_amount(self, discountable_amount):
         """Sets the discountable_amount of this V1ExtraAlipayLite.
 
+        可打折金额. 参与优惠计算的金额，单位为元，精确到小数点后两位，取值范围[0.01,100000000] 如果该值未传入，但传入了【订单总金额】，【不可打折金额】则该值默认为【订单总金额】-【不可打折金额】  # noqa: E501
 
         :param discountable_amount: The discountable_amount of this V1ExtraAlipayLite.  # noqa: E501
         :type: float
@@ -220,6 +222,7 @@ class V1ExtraAlipayLite(object):
     def extend_params(self):
         """Gets the extend_params of this V1ExtraAlipayLite.  # noqa: E501
 
+        业务扩展参数  # noqa: E501
 
         :return: The extend_params of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: V1ExtraAlipayExtendParams
@@ -230,6 +233,7 @@ class V1ExtraAlipayLite(object):
     def extend_params(self, extend_params):
         """Sets the extend_params of this V1ExtraAlipayLite.
 
+        业务扩展参数  # noqa: E501
 
         :param extend_params: The extend_params of this V1ExtraAlipayLite.  # noqa: E501
         :type: V1ExtraAlipayExtendParams
@@ -241,6 +245,7 @@ class V1ExtraAlipayLite(object):
     def logistics_detail(self):
         """Gets the logistics_detail of this V1ExtraAlipayLite.  # noqa: E501
 
+        物流信息  # noqa: E501
 
         :return: The logistics_detail of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: V1ExtraAlipayLogisticsDetail
@@ -251,6 +256,7 @@ class V1ExtraAlipayLite(object):
     def logistics_detail(self, logistics_detail):
         """Sets the logistics_detail of this V1ExtraAlipayLite.
 
+        物流信息  # noqa: E501
 
         :param logistics_detail: The logistics_detail of this V1ExtraAlipayLite.  # noqa: E501
         :type: V1ExtraAlipayLogisticsDetail
@@ -262,6 +268,7 @@ class V1ExtraAlipayLite(object):
     def operator_id(self):
         """Gets the operator_id of this V1ExtraAlipayLite.  # noqa: E501
 
+        商户操作员编号  # noqa: E501
 
         :return: The operator_id of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -272,10 +279,13 @@ class V1ExtraAlipayLite(object):
     def operator_id(self, operator_id):
         """Sets the operator_id of this V1ExtraAlipayLite.
 
+        商户操作员编号  # noqa: E501
 
         :param operator_id: The operator_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and operator_id is None:
+            raise ValueError("Invalid value for `operator_id`, must not be `None`")  # noqa: E501
 
         self._operator_id = operator_id
 
@@ -283,6 +293,7 @@ class V1ExtraAlipayLite(object):
     def product_code(self):
         """Gets the product_code of this V1ExtraAlipayLite.  # noqa: E501
 
+        销售产品码，商家和支付宝签约的产品码，为固定值 FACE_TO_FACE_PAYMENT  # noqa: E501
 
         :return: The product_code of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -293,10 +304,13 @@ class V1ExtraAlipayLite(object):
     def product_code(self, product_code):
         """Sets the product_code of this V1ExtraAlipayLite.
 
+        销售产品码，商家和支付宝签约的产品码，为固定值 FACE_TO_FACE_PAYMENT  # noqa: E501
 
         :param product_code: The product_code of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and product_code is None:
+            raise ValueError("Invalid value for `product_code`, must not be `None`")  # noqa: E501
 
         self._product_code = product_code
 
@@ -304,6 +318,7 @@ class V1ExtraAlipayLite(object):
     def receiver_address_info(self):
         """Gets the receiver_address_info of this V1ExtraAlipayLite.  # noqa: E501
 
+        收货信息  # noqa: E501
 
         :return: The receiver_address_info of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: V1ExtraAlipayReceiverAddressInfo
@@ -314,6 +329,7 @@ class V1ExtraAlipayLite(object):
     def receiver_address_info(self, receiver_address_info):
         """Sets the receiver_address_info of this V1ExtraAlipayLite.
 
+        收货信息  # noqa: E501
 
         :param receiver_address_info: The receiver_address_info of this V1ExtraAlipayLite.  # noqa: E501
         :type: V1ExtraAlipayReceiverAddressInfo
@@ -325,6 +341,7 @@ class V1ExtraAlipayLite(object):
     def seller_id(self):
         """Gets the seller_id of this V1ExtraAlipayLite.  # noqa: E501
 
+        卖家支付宝用户号  # noqa: E501
 
         :return: The seller_id of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -335,10 +352,13 @@ class V1ExtraAlipayLite(object):
     def seller_id(self, seller_id):
         """Sets the seller_id of this V1ExtraAlipayLite.
 
+        卖家支付宝用户号  # noqa: E501
 
         :param seller_id: The seller_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and seller_id is None:
+            raise ValueError("Invalid value for `seller_id`, must not be `None`")  # noqa: E501
 
         self._seller_id = seller_id
 
@@ -346,6 +366,7 @@ class V1ExtraAlipayLite(object):
     def settle_info(self):
         """Gets the settle_info of this V1ExtraAlipayLite.  # noqa: E501
 
+        结算信息  # noqa: E501
 
         :return: The settle_info of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: V1ExtraAlipaySettleInfo
@@ -356,6 +377,7 @@ class V1ExtraAlipayLite(object):
     def settle_info(self, settle_info):
         """Sets the settle_info of this V1ExtraAlipayLite.
 
+        结算信息  # noqa: E501
 
         :param settle_info: The settle_info of this V1ExtraAlipayLite.  # noqa: E501
         :type: V1ExtraAlipaySettleInfo
@@ -367,6 +389,7 @@ class V1ExtraAlipayLite(object):
     def store_id(self):
         """Gets the store_id of this V1ExtraAlipayLite.  # noqa: E501
 
+        商户门店编号  # noqa: E501
 
         :return: The store_id of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -377,10 +400,13 @@ class V1ExtraAlipayLite(object):
     def store_id(self, store_id):
         """Sets the store_id of this V1ExtraAlipayLite.
 
+        商户门店编号  # noqa: E501
 
         :param store_id: The store_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and store_id is None:
+            raise ValueError("Invalid value for `store_id`, must not be `None`")  # noqa: E501
 
         self._store_id = store_id
 
@@ -388,6 +414,7 @@ class V1ExtraAlipayLite(object):
     def terminal_id(self):
         """Gets the terminal_id of this V1ExtraAlipayLite.  # noqa: E501
 
+        商户机具终端编号  # noqa: E501
 
         :return: The terminal_id of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -398,10 +425,13 @@ class V1ExtraAlipayLite(object):
     def terminal_id(self, terminal_id):
         """Sets the terminal_id of this V1ExtraAlipayLite.
 
+        商户机具终端编号  # noqa: E501
 
         :param terminal_id: The terminal_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and terminal_id is None:
+            raise ValueError("Invalid value for `terminal_id`, must not be `None`")  # noqa: E501
 
         self._terminal_id = terminal_id
 
@@ -409,6 +439,7 @@ class V1ExtraAlipayLite(object):
     def time_expire(self):
         """Gets the time_expire of this V1ExtraAlipayLite.  # noqa: E501
 
+        绝对超时时间，格式为yyyy-MM-dd HH:mm:ss  # noqa: E501
 
         :return: The time_expire of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -419,10 +450,13 @@ class V1ExtraAlipayLite(object):
     def time_expire(self, time_expire):
         """Sets the time_expire of this V1ExtraAlipayLite.
 
+        绝对超时时间，格式为yyyy-MM-dd HH:mm:ss  # noqa: E501
 
         :param time_expire: The time_expire of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_expire is None:
+            raise ValueError("Invalid value for `time_expire`, must not be `None`")  # noqa: E501
 
         self._time_expire = time_expire
 
@@ -430,6 +464,7 @@ class V1ExtraAlipayLite(object):
     def timeout_express(self):
         """Gets the timeout_express of this V1ExtraAlipayLite.  # noqa: E501
 
+        订单有效时间，该时间段内订单可以进行支付，结束后订单将关闭，天数为0表示永久有效  # noqa: E501
 
         :return: The timeout_express of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -440,10 +475,13 @@ class V1ExtraAlipayLite(object):
     def timeout_express(self, timeout_express):
         """Sets the timeout_express of this V1ExtraAlipayLite.
 
+        订单有效时间，该时间段内订单可以进行支付，结束后订单将关闭，天数为0表示永久有效  # noqa: E501
 
         :param timeout_express: The timeout_express of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and timeout_express is None:
+            raise ValueError("Invalid value for `timeout_express`, must not be `None`")  # noqa: E501
 
         self._timeout_express = timeout_express
 
@@ -451,6 +489,7 @@ class V1ExtraAlipayLite(object):
     def trade_no(self):
         """Gets the trade_no of this V1ExtraAlipayLite.  # noqa: E501
 
+        [ONLY IN RESPONSE] 支付宝交易号  # noqa: E501
 
         :return: The trade_no of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: str
@@ -461,10 +500,13 @@ class V1ExtraAlipayLite(object):
     def trade_no(self, trade_no):
         """Sets the trade_no of this V1ExtraAlipayLite.
 
+        [ONLY IN RESPONSE] 支付宝交易号  # noqa: E501
 
         :param trade_no: The trade_no of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and trade_no is None:
+            raise ValueError("Invalid value for `trade_no`, must not be `None`")  # noqa: E501
 
         self._trade_no = trade_no
 
@@ -472,6 +514,7 @@ class V1ExtraAlipayLite(object):
     def undiscountable_amount(self):
         """Gets the undiscountable_amount of this V1ExtraAlipayLite.  # noqa: E501
 
+        不可打折金额. 不参与优惠计算的金额，单位为元，精确到小数点后两位，取值范围[0.01,100000000] 如果该值未传入，但传入了【订单总金额】,【可打折金额】，则该值默认为【订单总金额】-【可打折金额】  # noqa: E501
 
         :return: The undiscountable_amount of this V1ExtraAlipayLite.  # noqa: E501
         :rtype: float
@@ -482,6 +525,7 @@ class V1ExtraAlipayLite(object):
     def undiscountable_amount(self, undiscountable_amount):
         """Sets the undiscountable_amount of this V1ExtraAlipayLite.
 
+        不可打折金额. 不参与优惠计算的金额，单位为元，精确到小数点后两位，取值范围[0.01,100000000] 如果该值未传入，但传入了【订单总金额】,【可打折金额】，则该值默认为【订单总金额】-【可打折金额】  # noqa: E501
 
         :param undiscountable_amount: The undiscountable_amount of this V1ExtraAlipayLite.  # noqa: E501
         :type: float

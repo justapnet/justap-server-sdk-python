@@ -33,45 +33,17 @@ class V1ExtraAlipayFace(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'hahaha': 'str'
     }
 
     attribute_map = {
-        'hahaha': 'hahaha'
     }
 
-    def __init__(self, hahaha=None, _configuration=None):  # noqa: E501
+    def __init__(self, _configuration=None):  # noqa: E501
         """V1ExtraAlipayFace - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
-
-        self._hahaha = None
         self.discriminator = None
-
-        if hahaha is not None:
-            self.hahaha = hahaha
-
-    @property
-    def hahaha(self):
-        """Gets the hahaha of this V1ExtraAlipayFace.  # noqa: E501
-
-
-        :return: The hahaha of this V1ExtraAlipayFace.  # noqa: E501
-        :rtype: str
-        """
-        return self._hahaha
-
-    @hahaha.setter
-    def hahaha(self, hahaha):
-        """Sets the hahaha of this V1ExtraAlipayFace.
-
-
-        :param hahaha: The hahaha of this V1ExtraAlipayFace.  # noqa: E501
-        :type: str
-        """
-
-        self._hahaha = hahaha
 
     def to_dict(self):
         """Returns the model properties as a dict"""

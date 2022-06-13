@@ -336,7 +336,7 @@ class V1CreateChargeRequest(object):
     def merchant_trade_id(self):
         """Gets the merchant_trade_id of this V1CreateChargeRequest.  # noqa: E501
 
-        [REQUIRED] 客户系统的交易单号（订单号），必须在应用下唯一。长度不超过32字符  # noqa: E501
+        [REQUIRED] 客户系统的交易单号（订单号），必须在应用下唯一。长度不超过30个字符  # noqa: E501
 
         :return: The merchant_trade_id of this V1CreateChargeRequest.  # noqa: E501
         :rtype: str
@@ -347,7 +347,7 @@ class V1CreateChargeRequest(object):
     def merchant_trade_id(self, merchant_trade_id):
         """Sets the merchant_trade_id of this V1CreateChargeRequest.
 
-        [REQUIRED] 客户系统的交易单号（订单号），必须在应用下唯一。长度不超过32字符  # noqa: E501
+        [REQUIRED] 客户系统的交易单号（订单号），必须在应用下唯一。长度不超过30个字符  # noqa: E501
 
         :param merchant_trade_id: The merchant_trade_id of this V1CreateChargeRequest.  # noqa: E501
         :type: str

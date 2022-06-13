@@ -76,31 +76,22 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
         self._trans_out_type = None
         self.discriminator = None
 
-        if amount is not None:
-            self.amount = amount
-        if amount_percentage is not None:
-            self.amount_percentage = amount_percentage
-        if batch_no is not None:
-            self.batch_no = batch_no
-        if desc is not None:
-            self.desc = desc
-        if out_relation_id is not None:
-            self.out_relation_id = out_relation_id
-        if serial_no is not None:
-            self.serial_no = serial_no
-        if trans_in is not None:
-            self.trans_in = trans_in
-        if trans_in_type is not None:
-            self.trans_in_type = trans_in_type
-        if trans_out is not None:
-            self.trans_out = trans_out
-        if trans_out_type is not None:
-            self.trans_out_type = trans_out_type
+        self.amount = amount
+        self.amount_percentage = amount_percentage
+        self.batch_no = batch_no
+        self.desc = desc
+        self.out_relation_id = out_relation_id
+        self.serial_no = serial_no
+        self.trans_in = trans_in
+        self.trans_in_type = trans_in_type
+        self.trans_out = trans_out
+        self.trans_out_type = trans_out_type
 
     @property
     def amount(self):
         """Gets the amount of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        分账的金额，单位为元  # noqa: E501
 
         :return: The amount of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -111,10 +102,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def amount(self, amount):
         """Sets the amount of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        分账的金额，单位为元  # noqa: E501
 
         :param amount: The amount of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and amount is None:
+            raise ValueError("Invalid value for `amount`, must not be `None`")  # noqa: E501
 
         self._amount = amount
 
@@ -122,6 +116,7 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def amount_percentage(self):
         """Gets the amount_percentage of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        分账的比例，值为20~100之间的整数，如：20，表示分账金额按20%来打分账  # noqa: E501
 
         :return: The amount_percentage of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -132,10 +127,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def amount_percentage(self, amount_percentage):
         """Sets the amount_percentage of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        分账的比例，值为20~100之间的整数，如：20，表示分账金额按20%来打分账  # noqa: E501
 
         :param amount_percentage: The amount_percentage of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and amount_percentage is None:
+            raise ValueError("Invalid value for `amount_percentage`, must not be `None`")  # noqa: E501
 
         self._amount_percentage = amount_percentage
 
@@ -143,6 +141,7 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def batch_no(self):
         """Gets the batch_no of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        分账批次号，格式为：当天日期[yyyyMMdd] + 四位流水号，如：20120220-00001  # noqa: E501
 
         :return: The batch_no of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -153,10 +152,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def batch_no(self, batch_no):
         """Sets the batch_no of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        分账批次号，格式为：当天日期[yyyyMMdd] + 四位流水号，如：20120220-00001  # noqa: E501
 
         :param batch_no: The batch_no of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and batch_no is None:
+            raise ValueError("Invalid value for `batch_no`, must not be `None`")  # noqa: E501
 
         self._batch_no = batch_no
 
@@ -164,6 +166,7 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def desc(self):
         """Gets the desc of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        分账描述信息  # noqa: E501
 
         :return: The desc of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -174,10 +177,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def desc(self, desc):
         """Sets the desc of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        分账描述信息  # noqa: E501
 
         :param desc: The desc of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and desc is None:
+            raise ValueError("Invalid value for `desc`, must not be `None`")  # noqa: E501
 
         self._desc = desc
 
@@ -185,6 +191,7 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def out_relation_id(self):
         """Gets the out_relation_id of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        商户分账的外部关联号，用于关联到每一笔分账信息，商户可自定义，如一笔分账多笔，则需要为每一笔分账都保持唯一，如果为空，则有利于商户排查问题  # noqa: E501
 
         :return: The out_relation_id of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -195,10 +202,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def out_relation_id(self, out_relation_id):
         """Sets the out_relation_id of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        商户分账的外部关联号，用于关联到每一笔分账信息，商户可自定义，如一笔分账多笔，则需要为每一笔分账都保持唯一，如果为空，则有利于商户排查问题  # noqa: E501
 
         :param out_relation_id: The out_relation_id of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and out_relation_id is None:
+            raise ValueError("Invalid value for `out_relation_id`, must not be `None`")  # noqa: E501
 
         self._out_relation_id = out_relation_id
 
@@ -206,6 +216,7 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def serial_no(self):
         """Gets the serial_no of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        分账序列号，表示分账执行的顺序，必须为正整数  # noqa: E501
 
         :return: The serial_no of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -216,10 +227,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def serial_no(self, serial_no):
         """Sets the serial_no of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        分账序列号，表示分账执行的顺序，必须为正整数  # noqa: E501
 
         :param serial_no: The serial_no of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and serial_no is None:
+            raise ValueError("Invalid value for `serial_no`, must not be `None`")  # noqa: E501
 
         self._serial_no = serial_no
 
@@ -227,6 +241,7 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def trans_in(self):
         """Gets the trans_in of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        如果转入账号类型为userId，本参数为接受分账金额的支付宝账号对应的支付宝唯一用户号。以2088开头的纯16位数字。 如果转入账号类型为bankIndex，本参数为28位的银行编号（商户和支付宝签约时确定）。如果转入账号类型为storeId，本参数为商户的门店ID。  # noqa: E501
 
         :return: The trans_in of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -237,10 +252,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def trans_in(self, trans_in):
         """Sets the trans_in of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        如果转入账号类型为userId，本参数为接受分账金额的支付宝账号对应的支付宝唯一用户号。以2088开头的纯16位数字。 如果转入账号类型为bankIndex，本参数为28位的银行编号（商户和支付宝签约时确定）。如果转入账号类型为storeId，本参数为商户的门店ID。  # noqa: E501
 
         :param trans_in: The trans_in of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and trans_in is None:
+            raise ValueError("Invalid value for `trans_in`, must not be `None`")  # noqa: E501
 
         self._trans_in = trans_in
 
@@ -248,6 +266,7 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def trans_in_type(self):
         """Gets the trans_in_type of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        接受分账金额的账户类型： userId：支付宝账号对应的支付宝唯一用户号。 bankIndex：分账到银行账户的银行编号。目前暂时只支持分账到一个银行编号。storeId：分账到门店对应的银行卡编号。默认值为userId。  # noqa: E501
 
         :return: The trans_in_type of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -258,10 +277,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def trans_in_type(self, trans_in_type):
         """Sets the trans_in_type of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        接受分账金额的账户类型： userId：支付宝账号对应的支付宝唯一用户号。 bankIndex：分账到银行账户的银行编号。目前暂时只支持分账到一个银行编号。storeId：分账到门店对应的银行卡编号。默认值为userId。  # noqa: E501
 
         :param trans_in_type: The trans_in_type of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and trans_in_type is None:
+            raise ValueError("Invalid value for `trans_in_type`, must not be `None`")  # noqa: E501
 
         self._trans_in_type = trans_in_type
 
@@ -269,6 +291,7 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def trans_out(self):
         """Gets the trans_out of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        如果转出账号类型为userId，本参数为要分账的支付宝账号对应的支付宝唯一用户号。以2088开头的纯16位数字。  # noqa: E501
 
         :return: The trans_out of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -279,10 +302,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def trans_out(self, trans_out):
         """Sets the trans_out of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        如果转出账号类型为userId，本参数为要分账的支付宝账号对应的支付宝唯一用户号。以2088开头的纯16位数字。  # noqa: E501
 
         :param trans_out: The trans_out of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and trans_out is None:
+            raise ValueError("Invalid value for `trans_out`, must not be `None`")  # noqa: E501
 
         self._trans_out = trans_out
 
@@ -290,6 +316,7 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def trans_out_type(self):
         """Gets the trans_out_type of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
 
+        要分账的账户类型。目前只支持userId：支付宝账号对应的支付宝唯一用户号。默认值为userId。  # noqa: E501
 
         :return: The trans_out_type of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :rtype: str
@@ -300,10 +327,13 @@ class ExtraAlipayRoyaltyInfoRoyaltyDetailInfos(object):
     def trans_out_type(self, trans_out_type):
         """Sets the trans_out_type of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.
 
+        要分账的账户类型。目前只支持userId：支付宝账号对应的支付宝唯一用户号。默认值为userId。  # noqa: E501
 
         :param trans_out_type: The trans_out_type of this ExtraAlipayRoyaltyInfoRoyaltyDetailInfos.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and trans_out_type is None:
+            raise ValueError("Invalid value for `trans_out_type`, must not be `None`")  # noqa: E501
 
         self._trans_out_type = trans_out_type
 

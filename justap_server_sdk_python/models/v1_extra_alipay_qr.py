@@ -79,33 +79,26 @@ class V1ExtraAlipayQr(object):
         self._terminal_id = None
         self.discriminator = None
 
-        if buyer_id is not None:
-            self.buyer_id = buyer_id
+        self.buyer_id = buyer_id
         if discountable_amount is not None:
             self.discountable_amount = discountable_amount
         if goods_detail is not None:
             self.goods_detail = goods_detail
-        if operator_id is not None:
-            self.operator_id = operator_id
-        if product_code is not None:
-            self.product_code = product_code
-        if qr_code is not None:
-            self.qr_code = qr_code
-        if qr_code_timeout_express is not None:
-            self.qr_code_timeout_express = qr_code_timeout_express
-        if qr_link is not None:
-            self.qr_link = qr_link
+        self.operator_id = operator_id
+        self.product_code = product_code
+        self.qr_code = qr_code
+        self.qr_code_timeout_express = qr_code_timeout_express
+        self.qr_link = qr_link
         if query_options is not None:
             self.query_options = query_options
-        if store_id is not None:
-            self.store_id = store_id
-        if terminal_id is not None:
-            self.terminal_id = terminal_id
+        self.store_id = store_id
+        self.terminal_id = terminal_id
 
     @property
     def buyer_id(self):
         """Gets the buyer_id of this V1ExtraAlipayQr.  # noqa: E501
 
+        买家的支付宝唯一用户号（2088开头的16位纯数字）  # noqa: E501
 
         :return: The buyer_id of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -116,10 +109,13 @@ class V1ExtraAlipayQr(object):
     def buyer_id(self, buyer_id):
         """Sets the buyer_id of this V1ExtraAlipayQr.
 
+        买家的支付宝唯一用户号（2088开头的16位纯数字）  # noqa: E501
 
         :param buyer_id: The buyer_id of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and buyer_id is None:
+            raise ValueError("Invalid value for `buyer_id`, must not be `None`")  # noqa: E501
 
         self._buyer_id = buyer_id
 
@@ -127,6 +123,7 @@ class V1ExtraAlipayQr(object):
     def discountable_amount(self):
         """Gets the discountable_amount of this V1ExtraAlipayQr.  # noqa: E501
 
+        可打折金额. 参与优惠计算的金额，单位为元，精确到小数点后两位，取值范围[0.01,100000000] 如果该值未传入，但传入了【订单总金额】，【不可打折金额】则该值默认为【订单总金额】-【不可打折金额】  # noqa: E501
 
         :return: The discountable_amount of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -137,6 +134,7 @@ class V1ExtraAlipayQr(object):
     def discountable_amount(self, discountable_amount):
         """Sets the discountable_amount of this V1ExtraAlipayQr.
 
+        可打折金额. 参与优惠计算的金额，单位为元，精确到小数点后两位，取值范围[0.01,100000000] 如果该值未传入，但传入了【订单总金额】，【不可打折金额】则该值默认为【订单总金额】-【不可打折金额】  # noqa: E501
 
         :param discountable_amount: The discountable_amount of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
@@ -148,6 +146,7 @@ class V1ExtraAlipayQr(object):
     def goods_detail(self):
         """Gets the goods_detail of this V1ExtraAlipayQr.  # noqa: E501
 
+        商品明细列表  # noqa: E501
 
         :return: The goods_detail of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: list[V1ExtraAlipayGoodsDetail]
@@ -158,6 +157,7 @@ class V1ExtraAlipayQr(object):
     def goods_detail(self, goods_detail):
         """Sets the goods_detail of this V1ExtraAlipayQr.
 
+        商品明细列表  # noqa: E501
 
         :param goods_detail: The goods_detail of this V1ExtraAlipayQr.  # noqa: E501
         :type: list[V1ExtraAlipayGoodsDetail]
@@ -169,6 +169,7 @@ class V1ExtraAlipayQr(object):
     def operator_id(self):
         """Gets the operator_id of this V1ExtraAlipayQr.  # noqa: E501
 
+        商户操作员编号  # noqa: E501
 
         :return: The operator_id of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -179,10 +180,13 @@ class V1ExtraAlipayQr(object):
     def operator_id(self, operator_id):
         """Sets the operator_id of this V1ExtraAlipayQr.
 
+        商户操作员编号  # noqa: E501
 
         :param operator_id: The operator_id of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and operator_id is None:
+            raise ValueError("Invalid value for `operator_id`, must not be `None`")  # noqa: E501
 
         self._operator_id = operator_id
 
@@ -190,6 +194,7 @@ class V1ExtraAlipayQr(object):
     def product_code(self):
         """Gets the product_code of this V1ExtraAlipayQr.  # noqa: E501
 
+        销售产品码，商家和支付宝签约的产品码，为固定值QUICK_MSECURITY_PAY  # noqa: E501
 
         :return: The product_code of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -200,10 +205,13 @@ class V1ExtraAlipayQr(object):
     def product_code(self, product_code):
         """Sets the product_code of this V1ExtraAlipayQr.
 
+        销售产品码，商家和支付宝签约的产品码，为固定值QUICK_MSECURITY_PAY  # noqa: E501
 
         :param product_code: The product_code of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and product_code is None:
+            raise ValueError("Invalid value for `product_code`, must not be `None`")  # noqa: E501
 
         self._product_code = product_code
 
@@ -211,6 +219,7 @@ class V1ExtraAlipayQr(object):
     def qr_code(self):
         """Gets the qr_code of this V1ExtraAlipayQr.  # noqa: E501
 
+        [ONLY IN RESPONSE] 二维码  # noqa: E501
 
         :return: The qr_code of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -221,10 +230,13 @@ class V1ExtraAlipayQr(object):
     def qr_code(self, qr_code):
         """Sets the qr_code of this V1ExtraAlipayQr.
 
+        [ONLY IN RESPONSE] 二维码  # noqa: E501
 
         :param qr_code: The qr_code of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and qr_code is None:
+            raise ValueError("Invalid value for `qr_code`, must not be `None`")  # noqa: E501
 
         self._qr_code = qr_code
 
@@ -232,6 +244,7 @@ class V1ExtraAlipayQr(object):
     def qr_code_timeout_express(self):
         """Gets the qr_code_timeout_express of this V1ExtraAlipayQr.  # noqa: E501
 
+        支付场景。 条码支付，取值：bar_code； 声波支付，取值：wave_code  # noqa: E501
 
         :return: The qr_code_timeout_express of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -242,10 +255,13 @@ class V1ExtraAlipayQr(object):
     def qr_code_timeout_express(self, qr_code_timeout_express):
         """Sets the qr_code_timeout_express of this V1ExtraAlipayQr.
 
+        支付场景。 条码支付，取值：bar_code； 声波支付，取值：wave_code  # noqa: E501
 
         :param qr_code_timeout_express: The qr_code_timeout_express of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and qr_code_timeout_express is None:
+            raise ValueError("Invalid value for `qr_code_timeout_express`, must not be `None`")  # noqa: E501
 
         self._qr_code_timeout_express = qr_code_timeout_express
 
@@ -253,6 +269,7 @@ class V1ExtraAlipayQr(object):
     def qr_link(self):
         """Gets the qr_link of this V1ExtraAlipayQr.  # noqa: E501
 
+        [ONLY IN RESPONSE] 二维码图片的URL地址  # noqa: E501
 
         :return: The qr_link of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -263,10 +280,13 @@ class V1ExtraAlipayQr(object):
     def qr_link(self, qr_link):
         """Sets the qr_link of this V1ExtraAlipayQr.
 
+        [ONLY IN RESPONSE] 二维码图片的URL地址  # noqa: E501
 
         :param qr_link: The qr_link of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and qr_link is None:
+            raise ValueError("Invalid value for `qr_link`, must not be `None`")  # noqa: E501
 
         self._qr_link = qr_link
 
@@ -274,6 +294,7 @@ class V1ExtraAlipayQr(object):
     def query_options(self):
         """Gets the query_options of this V1ExtraAlipayQr.  # noqa: E501
 
+        该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天（1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点， 如 1.5h，可转换为 90m。注：若为空，则默认为15d。  # noqa: E501
 
         :return: The query_options of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -284,6 +305,7 @@ class V1ExtraAlipayQr(object):
     def query_options(self, query_options):
         """Sets the query_options of this V1ExtraAlipayQr.
 
+        该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天（1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点， 如 1.5h，可转换为 90m。注：若为空，则默认为15d。  # noqa: E501
 
         :param query_options: The query_options of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
@@ -295,6 +317,7 @@ class V1ExtraAlipayQr(object):
     def store_id(self):
         """Gets the store_id of this V1ExtraAlipayQr.  # noqa: E501
 
+        商户门店编号  # noqa: E501
 
         :return: The store_id of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -305,10 +328,13 @@ class V1ExtraAlipayQr(object):
     def store_id(self, store_id):
         """Sets the store_id of this V1ExtraAlipayQr.
 
+        商户门店编号  # noqa: E501
 
         :param store_id: The store_id of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and store_id is None:
+            raise ValueError("Invalid value for `store_id`, must not be `None`")  # noqa: E501
 
         self._store_id = store_id
 
@@ -316,6 +342,7 @@ class V1ExtraAlipayQr(object):
     def terminal_id(self):
         """Gets the terminal_id of this V1ExtraAlipayQr.  # noqa: E501
 
+        商户机具终端编号  # noqa: E501
 
         :return: The terminal_id of this V1ExtraAlipayQr.  # noqa: E501
         :rtype: str
@@ -326,10 +353,13 @@ class V1ExtraAlipayQr(object):
     def terminal_id(self, terminal_id):
         """Sets the terminal_id of this V1ExtraAlipayQr.
 
+        商户机具终端编号  # noqa: E501
 
         :param terminal_id: The terminal_id of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and terminal_id is None:
+            raise ValueError("Invalid value for `terminal_id`, must not be `None`")  # noqa: E501
 
         self._terminal_id = terminal_id
 

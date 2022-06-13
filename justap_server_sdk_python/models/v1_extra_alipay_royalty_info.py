@@ -54,13 +54,13 @@ class V1ExtraAlipayRoyaltyInfo(object):
 
         if royalty_detail_infos is not None:
             self.royalty_detail_infos = royalty_detail_infos
-        if royalty_type is not None:
-            self.royalty_type = royalty_type
+        self.royalty_type = royalty_type
 
     @property
     def royalty_detail_infos(self):
         """Gets the royalty_detail_infos of this V1ExtraAlipayRoyaltyInfo.  # noqa: E501
 
+        分账明细的信息，可以描述多条分账指令，json数组。  # noqa: E501
 
         :return: The royalty_detail_infos of this V1ExtraAlipayRoyaltyInfo.  # noqa: E501
         :rtype: ExtraAlipayRoyaltyInfoRoyaltyDetailInfos
@@ -71,6 +71,7 @@ class V1ExtraAlipayRoyaltyInfo(object):
     def royalty_detail_infos(self, royalty_detail_infos):
         """Sets the royalty_detail_infos of this V1ExtraAlipayRoyaltyInfo.
 
+        分账明细的信息，可以描述多条分账指令，json数组。  # noqa: E501
 
         :param royalty_detail_infos: The royalty_detail_infos of this V1ExtraAlipayRoyaltyInfo.  # noqa: E501
         :type: ExtraAlipayRoyaltyInfoRoyaltyDetailInfos
@@ -82,6 +83,7 @@ class V1ExtraAlipayRoyaltyInfo(object):
     def royalty_type(self):
         """Gets the royalty_type of this V1ExtraAlipayRoyaltyInfo.  # noqa: E501
 
+        周期类型period_type是周期扣款产品必填，枚举值为DAY和MONTH  # noqa: E501
 
         :return: The royalty_type of this V1ExtraAlipayRoyaltyInfo.  # noqa: E501
         :rtype: str
@@ -92,10 +94,13 @@ class V1ExtraAlipayRoyaltyInfo(object):
     def royalty_type(self, royalty_type):
         """Sets the royalty_type of this V1ExtraAlipayRoyaltyInfo.
 
+        周期类型period_type是周期扣款产品必填，枚举值为DAY和MONTH  # noqa: E501
 
         :param royalty_type: The royalty_type of this V1ExtraAlipayRoyaltyInfo.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and royalty_type is None:
+            raise ValueError("Invalid value for `royalty_type`, must not be `None`")  # noqa: E501
 
         self._royalty_type = royalty_type
 

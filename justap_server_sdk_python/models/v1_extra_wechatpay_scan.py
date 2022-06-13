@@ -45,7 +45,7 @@ class V1ExtraWechatpayScan(object):
         'payer': 'V1ExtraWechatpayPayer',
         'scene_info': 'V1ExtraWechatpaySceneInfo',
         'settle_info': 'V1ExtraWechatpaySettleInfo',
-        'settlement_total_fee': 'str',
+        'settlement_total_fee': 'float',
         'spbill_create_ip': 'str',
         'sub_is_subscribe': 'bool',
         'sub_openid': 'str',
@@ -76,7 +76,7 @@ class V1ExtraWechatpayScan(object):
         'time_start': 'time_start'
     }
 
-    def __init__(self, attach=None, auth_code=None, bank_type=None, cash_fee=None, cash_fee_type=None, detail=None, fee_type=None, goods_tag=None, is_subscribe=None, payer=None, scene_info=None, settle_info=None, settlement_total_fee=None, spbill_create_ip=None, sub_is_subscribe=None, sub_openid=None, time_end=None, time_expire=None, time_start=None, _configuration=None):  # noqa: E501
+    def __init__(self, attach=None, auth_code=None, bank_type=None, cash_fee=None, cash_fee_type=None, detail=None, fee_type=None, goods_tag=None, is_subscribe=False, payer=None, scene_info=None, settle_info=None, settlement_total_fee=None, spbill_create_ip=None, sub_is_subscribe=False, sub_openid=None, time_end=None, time_expire=None, time_start=None, _configuration=None):  # noqa: E501
         """V1ExtraWechatpayScan - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -105,47 +105,34 @@ class V1ExtraWechatpayScan(object):
 
         if attach is not None:
             self.attach = attach
-        if auth_code is not None:
-            self.auth_code = auth_code
-        if bank_type is not None:
-            self.bank_type = bank_type
-        if cash_fee is not None:
-            self.cash_fee = cash_fee
-        if cash_fee_type is not None:
-            self.cash_fee_type = cash_fee_type
+        self.auth_code = auth_code
+        self.bank_type = bank_type
+        self.cash_fee = cash_fee
+        self.cash_fee_type = cash_fee_type
         if detail is not None:
             self.detail = detail
-        if fee_type is not None:
-            self.fee_type = fee_type
-        if goods_tag is not None:
-            self.goods_tag = goods_tag
-        if is_subscribe is not None:
-            self.is_subscribe = is_subscribe
+        self.fee_type = fee_type
+        self.goods_tag = goods_tag
+        self.is_subscribe = is_subscribe
         if payer is not None:
             self.payer = payer
         if scene_info is not None:
             self.scene_info = scene_info
         if settle_info is not None:
             self.settle_info = settle_info
-        if settlement_total_fee is not None:
-            self.settlement_total_fee = settlement_total_fee
-        if spbill_create_ip is not None:
-            self.spbill_create_ip = spbill_create_ip
-        if sub_is_subscribe is not None:
-            self.sub_is_subscribe = sub_is_subscribe
-        if sub_openid is not None:
-            self.sub_openid = sub_openid
-        if time_end is not None:
-            self.time_end = time_end
-        if time_expire is not None:
-            self.time_expire = time_expire
-        if time_start is not None:
-            self.time_start = time_start
+        self.settlement_total_fee = settlement_total_fee
+        self.spbill_create_ip = spbill_create_ip
+        self.sub_is_subscribe = sub_is_subscribe
+        self.sub_openid = sub_openid
+        self.time_end = time_end
+        self.time_expire = time_expire
+        self.time_start = time_start
 
     @property
     def attach(self):
         """Gets the attach of this V1ExtraWechatpayScan.  # noqa: E501
 
+        元数据  # noqa: E501
 
         :return: The attach of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -156,6 +143,7 @@ class V1ExtraWechatpayScan(object):
     def attach(self, attach):
         """Sets the attach of this V1ExtraWechatpayScan.
 
+        元数据  # noqa: E501
 
         :param attach: The attach of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
@@ -167,6 +155,7 @@ class V1ExtraWechatpayScan(object):
     def auth_code(self):
         """Gets the auth_code of this V1ExtraWechatpayScan.  # noqa: E501
 
+        授权码  # noqa: E501
 
         :return: The auth_code of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -177,10 +166,13 @@ class V1ExtraWechatpayScan(object):
     def auth_code(self, auth_code):
         """Sets the auth_code of this V1ExtraWechatpayScan.
 
+        授权码  # noqa: E501
 
         :param auth_code: The auth_code of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and auth_code is None:
+            raise ValueError("Invalid value for `auth_code`, must not be `None`")  # noqa: E501
 
         self._auth_code = auth_code
 
@@ -188,6 +180,7 @@ class V1ExtraWechatpayScan(object):
     def bank_type(self):
         """Gets the bank_type of this V1ExtraWechatpayScan.  # noqa: E501
 
+        付款银行  # noqa: E501
 
         :return: The bank_type of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -198,10 +191,13 @@ class V1ExtraWechatpayScan(object):
     def bank_type(self, bank_type):
         """Sets the bank_type of this V1ExtraWechatpayScan.
 
+        付款银行  # noqa: E501
 
         :param bank_type: The bank_type of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and bank_type is None:
+            raise ValueError("Invalid value for `bank_type`, must not be `None`")  # noqa: E501
 
         self._bank_type = bank_type
 
@@ -209,6 +205,7 @@ class V1ExtraWechatpayScan(object):
     def cash_fee(self):
         """Gets the cash_fee of this V1ExtraWechatpayScan.  # noqa: E501
 
+        现金支付金额  # noqa: E501
 
         :return: The cash_fee of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -219,10 +216,13 @@ class V1ExtraWechatpayScan(object):
     def cash_fee(self, cash_fee):
         """Sets the cash_fee of this V1ExtraWechatpayScan.
 
+        现金支付金额  # noqa: E501
 
         :param cash_fee: The cash_fee of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and cash_fee is None:
+            raise ValueError("Invalid value for `cash_fee`, must not be `None`")  # noqa: E501
 
         self._cash_fee = cash_fee
 
@@ -230,6 +230,7 @@ class V1ExtraWechatpayScan(object):
     def cash_fee_type(self):
         """Gets the cash_fee_type of this V1ExtraWechatpayScan.  # noqa: E501
 
+        现金支付币种  # noqa: E501
 
         :return: The cash_fee_type of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -240,10 +241,13 @@ class V1ExtraWechatpayScan(object):
     def cash_fee_type(self, cash_fee_type):
         """Sets the cash_fee_type of this V1ExtraWechatpayScan.
 
+        现金支付币种  # noqa: E501
 
         :param cash_fee_type: The cash_fee_type of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and cash_fee_type is None:
+            raise ValueError("Invalid value for `cash_fee_type`, must not be `None`")  # noqa: E501
 
         self._cash_fee_type = cash_fee_type
 
@@ -251,6 +255,7 @@ class V1ExtraWechatpayScan(object):
     def detail(self):
         """Gets the detail of this V1ExtraWechatpayScan.  # noqa: E501
 
+        商品详情  # noqa: E501
 
         :return: The detail of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: V1ExtraWechatpayDetail
@@ -261,6 +266,7 @@ class V1ExtraWechatpayScan(object):
     def detail(self, detail):
         """Sets the detail of this V1ExtraWechatpayScan.
 
+        商品详情  # noqa: E501
 
         :param detail: The detail of this V1ExtraWechatpayScan.  # noqa: E501
         :type: V1ExtraWechatpayDetail
@@ -272,6 +278,7 @@ class V1ExtraWechatpayScan(object):
     def fee_type(self):
         """Gets the fee_type of this V1ExtraWechatpayScan.  # noqa: E501
 
+        货币种类  # noqa: E501
 
         :return: The fee_type of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -282,10 +289,13 @@ class V1ExtraWechatpayScan(object):
     def fee_type(self, fee_type):
         """Sets the fee_type of this V1ExtraWechatpayScan.
 
+        货币种类  # noqa: E501
 
         :param fee_type: The fee_type of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and fee_type is None:
+            raise ValueError("Invalid value for `fee_type`, must not be `None`")  # noqa: E501
 
         self._fee_type = fee_type
 
@@ -293,6 +303,7 @@ class V1ExtraWechatpayScan(object):
     def goods_tag(self):
         """Gets the goods_tag of this V1ExtraWechatpayScan.  # noqa: E501
 
+        订单优惠标记  # noqa: E501
 
         :return: The goods_tag of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -303,10 +314,13 @@ class V1ExtraWechatpayScan(object):
     def goods_tag(self, goods_tag):
         """Sets the goods_tag of this V1ExtraWechatpayScan.
 
+        订单优惠标记  # noqa: E501
 
         :param goods_tag: The goods_tag of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and goods_tag is None:
+            raise ValueError("Invalid value for `goods_tag`, must not be `None`")  # noqa: E501
 
         self._goods_tag = goods_tag
 
@@ -314,6 +328,7 @@ class V1ExtraWechatpayScan(object):
     def is_subscribe(self):
         """Gets the is_subscribe of this V1ExtraWechatpayScan.  # noqa: E501
 
+        是否关注公众账号  # noqa: E501
 
         :return: The is_subscribe of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: bool
@@ -324,10 +339,13 @@ class V1ExtraWechatpayScan(object):
     def is_subscribe(self, is_subscribe):
         """Sets the is_subscribe of this V1ExtraWechatpayScan.
 
+        是否关注公众账号  # noqa: E501
 
         :param is_subscribe: The is_subscribe of this V1ExtraWechatpayScan.  # noqa: E501
         :type: bool
         """
+        if self._configuration.client_side_validation and is_subscribe is None:
+            raise ValueError("Invalid value for `is_subscribe`, must not be `None`")  # noqa: E501
 
         self._is_subscribe = is_subscribe
 
@@ -335,6 +353,7 @@ class V1ExtraWechatpayScan(object):
     def payer(self):
         """Gets the payer of this V1ExtraWechatpayScan.  # noqa: E501
 
+        付款人信息  # noqa: E501
 
         :return: The payer of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: V1ExtraWechatpayPayer
@@ -345,6 +364,7 @@ class V1ExtraWechatpayScan(object):
     def payer(self, payer):
         """Sets the payer of this V1ExtraWechatpayScan.
 
+        付款人信息  # noqa: E501
 
         :param payer: The payer of this V1ExtraWechatpayScan.  # noqa: E501
         :type: V1ExtraWechatpayPayer
@@ -356,6 +376,7 @@ class V1ExtraWechatpayScan(object):
     def scene_info(self):
         """Gets the scene_info of this V1ExtraWechatpayScan.  # noqa: E501
 
+        场景信息  # noqa: E501
 
         :return: The scene_info of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: V1ExtraWechatpaySceneInfo
@@ -366,6 +387,7 @@ class V1ExtraWechatpayScan(object):
     def scene_info(self, scene_info):
         """Sets the scene_info of this V1ExtraWechatpayScan.
 
+        场景信息  # noqa: E501
 
         :param scene_info: The scene_info of this V1ExtraWechatpayScan.  # noqa: E501
         :type: V1ExtraWechatpaySceneInfo
@@ -377,6 +399,7 @@ class V1ExtraWechatpayScan(object):
     def settle_info(self):
         """Gets the settle_info of this V1ExtraWechatpayScan.  # noqa: E501
 
+        结算信息  # noqa: E501
 
         :return: The settle_info of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: V1ExtraWechatpaySettleInfo
@@ -387,6 +410,7 @@ class V1ExtraWechatpayScan(object):
     def settle_info(self, settle_info):
         """Sets the settle_info of this V1ExtraWechatpayScan.
 
+        结算信息  # noqa: E501
 
         :param settle_info: The settle_info of this V1ExtraWechatpayScan.  # noqa: E501
         :type: V1ExtraWechatpaySettleInfo
@@ -398,9 +422,10 @@ class V1ExtraWechatpayScan(object):
     def settlement_total_fee(self):
         """Gets the settlement_total_fee of this V1ExtraWechatpayScan.  # noqa: E501
 
+        应结订单金额  # noqa: E501
 
         :return: The settlement_total_fee of this V1ExtraWechatpayScan.  # noqa: E501
-        :rtype: str
+        :rtype: float
         """
         return self._settlement_total_fee
 
@@ -408,10 +433,13 @@ class V1ExtraWechatpayScan(object):
     def settlement_total_fee(self, settlement_total_fee):
         """Sets the settlement_total_fee of this V1ExtraWechatpayScan.
 
+        应结订单金额  # noqa: E501
 
         :param settlement_total_fee: The settlement_total_fee of this V1ExtraWechatpayScan.  # noqa: E501
-        :type: str
+        :type: float
         """
+        if self._configuration.client_side_validation and settlement_total_fee is None:
+            raise ValueError("Invalid value for `settlement_total_fee`, must not be `None`")  # noqa: E501
 
         self._settlement_total_fee = settlement_total_fee
 
@@ -419,6 +447,7 @@ class V1ExtraWechatpayScan(object):
     def spbill_create_ip(self):
         """Gets the spbill_create_ip of this V1ExtraWechatpayScan.  # noqa: E501
 
+        终端IP  # noqa: E501
 
         :return: The spbill_create_ip of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -429,10 +458,13 @@ class V1ExtraWechatpayScan(object):
     def spbill_create_ip(self, spbill_create_ip):
         """Sets the spbill_create_ip of this V1ExtraWechatpayScan.
 
+        终端IP  # noqa: E501
 
         :param spbill_create_ip: The spbill_create_ip of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and spbill_create_ip is None:
+            raise ValueError("Invalid value for `spbill_create_ip`, must not be `None`")  # noqa: E501
 
         self._spbill_create_ip = spbill_create_ip
 
@@ -440,6 +472,7 @@ class V1ExtraWechatpayScan(object):
     def sub_is_subscribe(self):
         """Gets the sub_is_subscribe of this V1ExtraWechatpayScan.  # noqa: E501
 
+        子商户是否关注公众账号  # noqa: E501
 
         :return: The sub_is_subscribe of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: bool
@@ -450,10 +483,13 @@ class V1ExtraWechatpayScan(object):
     def sub_is_subscribe(self, sub_is_subscribe):
         """Sets the sub_is_subscribe of this V1ExtraWechatpayScan.
 
+        子商户是否关注公众账号  # noqa: E501
 
         :param sub_is_subscribe: The sub_is_subscribe of this V1ExtraWechatpayScan.  # noqa: E501
         :type: bool
         """
+        if self._configuration.client_side_validation and sub_is_subscribe is None:
+            raise ValueError("Invalid value for `sub_is_subscribe`, must not be `None`")  # noqa: E501
 
         self._sub_is_subscribe = sub_is_subscribe
 
@@ -461,6 +497,7 @@ class V1ExtraWechatpayScan(object):
     def sub_openid(self):
         """Gets the sub_openid of this V1ExtraWechatpayScan.  # noqa: E501
 
+        子商户openid  # noqa: E501
 
         :return: The sub_openid of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -471,10 +508,13 @@ class V1ExtraWechatpayScan(object):
     def sub_openid(self, sub_openid):
         """Sets the sub_openid of this V1ExtraWechatpayScan.
 
+        子商户openid  # noqa: E501
 
         :param sub_openid: The sub_openid of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and sub_openid is None:
+            raise ValueError("Invalid value for `sub_openid`, must not be `None`")  # noqa: E501
 
         self._sub_openid = sub_openid
 
@@ -482,6 +522,7 @@ class V1ExtraWechatpayScan(object):
     def time_end(self):
         """Gets the time_end of this V1ExtraWechatpayScan.  # noqa: E501
 
+        支付完成时间  # noqa: E501
 
         :return: The time_end of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -492,10 +533,13 @@ class V1ExtraWechatpayScan(object):
     def time_end(self, time_end):
         """Sets the time_end of this V1ExtraWechatpayScan.
 
+        支付完成时间  # noqa: E501
 
         :param time_end: The time_end of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_end is None:
+            raise ValueError("Invalid value for `time_end`, must not be `None`")  # noqa: E501
 
         self._time_end = time_end
 
@@ -503,6 +547,7 @@ class V1ExtraWechatpayScan(object):
     def time_expire(self):
         """Gets the time_expire of this V1ExtraWechatpayScan.  # noqa: E501
 
+        交易结束时间  # noqa: E501
 
         :return: The time_expire of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -513,10 +558,13 @@ class V1ExtraWechatpayScan(object):
     def time_expire(self, time_expire):
         """Sets the time_expire of this V1ExtraWechatpayScan.
 
+        交易结束时间  # noqa: E501
 
         :param time_expire: The time_expire of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_expire is None:
+            raise ValueError("Invalid value for `time_expire`, must not be `None`")  # noqa: E501
 
         self._time_expire = time_expire
 
@@ -524,6 +572,7 @@ class V1ExtraWechatpayScan(object):
     def time_start(self):
         """Gets the time_start of this V1ExtraWechatpayScan.  # noqa: E501
 
+        交易起始时间  # noqa: E501
 
         :return: The time_start of this V1ExtraWechatpayScan.  # noqa: E501
         :rtype: str
@@ -534,10 +583,13 @@ class V1ExtraWechatpayScan(object):
     def time_start(self, time_start):
         """Sets the time_start of this V1ExtraWechatpayScan.
 
+        交易起始时间  # noqa: E501
 
         :param time_start: The time_start of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_start is None:
+            raise ValueError("Invalid value for `time_start`, must not be `None`")  # noqa: E501
 
         self._time_start = time_start
 

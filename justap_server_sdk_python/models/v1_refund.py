@@ -68,7 +68,7 @@ class V1Refund(object):
         'transaction_no': 'transaction_no'
     }
 
-    def __init__(self, account=None, amount=None, charge_id=None, charge_merchant_trade_id=None, created_at=None, description=None, failure_code=None, failure_msg=None, is_success=None, metadata=None, refund_id=None, refund_no=None, status=None, success_at=None, transaction_no=None, _configuration=None):  # noqa: E501
+    def __init__(self, account=None, amount=None, charge_id=None, charge_merchant_trade_id=None, created_at=None, description=None, failure_code=None, failure_msg=None, is_success=False, metadata=None, refund_id=None, refund_no=None, status=None, success_at=None, transaction_no=None, _configuration=None):  # noqa: E501
         """V1Refund - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -93,34 +93,23 @@ class V1Refund(object):
 
         if account is not None:
             self.account = account
-        if amount is not None:
-            self.amount = amount
-        if charge_id is not None:
-            self.charge_id = charge_id
-        if charge_merchant_trade_id is not None:
-            self.charge_merchant_trade_id = charge_merchant_trade_id
+        self.amount = amount
+        self.charge_id = charge_id
+        self.charge_merchant_trade_id = charge_merchant_trade_id
         if created_at is not None:
             self.created_at = created_at
-        if description is not None:
-            self.description = description
-        if failure_code is not None:
-            self.failure_code = failure_code
-        if failure_msg is not None:
-            self.failure_msg = failure_msg
-        if is_success is not None:
-            self.is_success = is_success
+        self.description = description
+        self.failure_code = failure_code
+        self.failure_msg = failure_msg
+        self.is_success = is_success
         if metadata is not None:
             self.metadata = metadata
-        if refund_id is not None:
-            self.refund_id = refund_id
-        if refund_no is not None:
-            self.refund_no = refund_no
-        if status is not None:
-            self.status = status
+        self.refund_id = refund_id
+        self.refund_no = refund_no
+        self.status = status
         if success_at is not None:
             self.success_at = success_at
-        if transaction_no is not None:
-            self.transaction_no = transaction_no
+        self.transaction_no = transaction_no
 
     @property
     def account(self):
@@ -149,6 +138,7 @@ class V1Refund(object):
     def amount(self):
         """Gets the amount of this V1Refund.  # noqa: E501
 
+        退款金额  # noqa: E501
 
         :return: The amount of this V1Refund.  # noqa: E501
         :rtype: float
@@ -159,10 +149,13 @@ class V1Refund(object):
     def amount(self, amount):
         """Sets the amount of this V1Refund.
 
+        退款金额  # noqa: E501
 
         :param amount: The amount of this V1Refund.  # noqa: E501
         :type: float
         """
+        if self._configuration.client_side_validation and amount is None:
+            raise ValueError("Invalid value for `amount`, must not be `None`")  # noqa: E501
 
         self._amount = amount
 
@@ -170,6 +163,7 @@ class V1Refund(object):
     def charge_id(self):
         """Gets the charge_id of this V1Refund.  # noqa: E501
 
+        Charge 对象 id  # noqa: E501
 
         :return: The charge_id of this V1Refund.  # noqa: E501
         :rtype: str
@@ -180,10 +174,13 @@ class V1Refund(object):
     def charge_id(self, charge_id):
         """Sets the charge_id of this V1Refund.
 
+        Charge 对象 id  # noqa: E501
 
         :param charge_id: The charge_id of this V1Refund.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and charge_id is None:
+            raise ValueError("Invalid value for `charge_id`, must not be `None`")  # noqa: E501
 
         self._charge_id = charge_id
 
@@ -191,6 +188,7 @@ class V1Refund(object):
     def charge_merchant_trade_id(self):
         """Gets the charge_merchant_trade_id of this V1Refund.  # noqa: E501
 
+        商户系统订单号  # noqa: E501
 
         :return: The charge_merchant_trade_id of this V1Refund.  # noqa: E501
         :rtype: str
@@ -201,10 +199,13 @@ class V1Refund(object):
     def charge_merchant_trade_id(self, charge_merchant_trade_id):
         """Sets the charge_merchant_trade_id of this V1Refund.
 
+        商户系统订单号  # noqa: E501
 
         :param charge_merchant_trade_id: The charge_merchant_trade_id of this V1Refund.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and charge_merchant_trade_id is None:
+            raise ValueError("Invalid value for `charge_merchant_trade_id`, must not be `None`")  # noqa: E501
 
         self._charge_merchant_trade_id = charge_merchant_trade_id
 
@@ -212,6 +213,7 @@ class V1Refund(object):
     def created_at(self):
         """Gets the created_at of this V1Refund.  # noqa: E501
 
+        退款创建时间  # noqa: E501
 
         :return: The created_at of this V1Refund.  # noqa: E501
         :rtype: datetime
@@ -222,6 +224,7 @@ class V1Refund(object):
     def created_at(self, created_at):
         """Sets the created_at of this V1Refund.
 
+        退款创建时间  # noqa: E501
 
         :param created_at: The created_at of this V1Refund.  # noqa: E501
         :type: datetime
@@ -233,6 +236,7 @@ class V1Refund(object):
     def description(self):
         """Gets the description of this V1Refund.  # noqa: E501
 
+        退款说明  # noqa: E501
 
         :return: The description of this V1Refund.  # noqa: E501
         :rtype: str
@@ -243,10 +247,13 @@ class V1Refund(object):
     def description(self, description):
         """Sets the description of this V1Refund.
 
+        退款说明  # noqa: E501
 
         :param description: The description of this V1Refund.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and description is None:
+            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
 
         self._description = description
 
@@ -254,6 +261,7 @@ class V1Refund(object):
     def failure_code(self):
         """Gets the failure_code of this V1Refund.  # noqa: E501
 
+        支付渠道失败错误码  # noqa: E501
 
         :return: The failure_code of this V1Refund.  # noqa: E501
         :rtype: str
@@ -264,10 +272,13 @@ class V1Refund(object):
     def failure_code(self, failure_code):
         """Sets the failure_code of this V1Refund.
 
+        支付渠道失败错误码  # noqa: E501
 
         :param failure_code: The failure_code of this V1Refund.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and failure_code is None:
+            raise ValueError("Invalid value for `failure_code`, must not be `None`")  # noqa: E501
 
         self._failure_code = failure_code
 
@@ -275,6 +286,7 @@ class V1Refund(object):
     def failure_msg(self):
         """Gets the failure_msg of this V1Refund.  # noqa: E501
 
+        支付渠道失败原因描述  # noqa: E501
 
         :return: The failure_msg of this V1Refund.  # noqa: E501
         :rtype: str
@@ -285,10 +297,13 @@ class V1Refund(object):
     def failure_msg(self, failure_msg):
         """Sets the failure_msg of this V1Refund.
 
+        支付渠道失败原因描述  # noqa: E501
 
         :param failure_msg: The failure_msg of this V1Refund.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and failure_msg is None:
+            raise ValueError("Invalid value for `failure_msg`, must not be `None`")  # noqa: E501
 
         self._failure_msg = failure_msg
 
@@ -296,6 +311,7 @@ class V1Refund(object):
     def is_success(self):
         """Gets the is_success of this V1Refund.  # noqa: E501
 
+        退款是否成功  # noqa: E501
 
         :return: The is_success of this V1Refund.  # noqa: E501
         :rtype: bool
@@ -306,10 +322,13 @@ class V1Refund(object):
     def is_success(self, is_success):
         """Sets the is_success of this V1Refund.
 
+        退款是否成功  # noqa: E501
 
         :param is_success: The is_success of this V1Refund.  # noqa: E501
         :type: bool
         """
+        if self._configuration.client_side_validation and is_success is None:
+            raise ValueError("Invalid value for `is_success`, must not be `None`")  # noqa: E501
 
         self._is_success = is_success
 
@@ -317,6 +336,7 @@ class V1Refund(object):
     def metadata(self):
         """Gets the metadata of this V1Refund.  # noqa: E501
 
+        元数据，原样返回  # noqa: E501
 
         :return: The metadata of this V1Refund.  # noqa: E501
         :rtype: dict(str, str)
@@ -327,6 +347,7 @@ class V1Refund(object):
     def metadata(self, metadata):
         """Sets the metadata of this V1Refund.
 
+        元数据，原样返回  # noqa: E501
 
         :param metadata: The metadata of this V1Refund.  # noqa: E501
         :type: dict(str, str)
@@ -338,6 +359,7 @@ class V1Refund(object):
     def refund_id(self):
         """Gets the refund_id of this V1Refund.  # noqa: E501
 
+        Refund 对象 ID  # noqa: E501
 
         :return: The refund_id of this V1Refund.  # noqa: E501
         :rtype: str
@@ -348,10 +370,13 @@ class V1Refund(object):
     def refund_id(self, refund_id):
         """Sets the refund_id of this V1Refund.
 
+        Refund 对象 ID  # noqa: E501
 
         :param refund_id: The refund_id of this V1Refund.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and refund_id is None:
+            raise ValueError("Invalid value for `refund_id`, must not be `None`")  # noqa: E501
 
         self._refund_id = refund_id
 
@@ -359,6 +384,7 @@ class V1Refund(object):
     def refund_no(self):
         """Gets the refund_no of this V1Refund.  # noqa: E501
 
+        退款单号  # noqa: E501
 
         :return: The refund_no of this V1Refund.  # noqa: E501
         :rtype: str
@@ -369,10 +395,13 @@ class V1Refund(object):
     def refund_no(self, refund_no):
         """Sets the refund_no of this V1Refund.
 
+        退款单号  # noqa: E501
 
         :param refund_no: The refund_no of this V1Refund.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and refund_no is None:
+            raise ValueError("Invalid value for `refund_no`, must not be `None`")  # noqa: E501
 
         self._refund_no = refund_no
 
@@ -380,6 +409,7 @@ class V1Refund(object):
     def status(self):
         """Gets the status of this V1Refund.  # noqa: E501
 
+        退款状态  # noqa: E501
 
         :return: The status of this V1Refund.  # noqa: E501
         :rtype: str
@@ -390,10 +420,13 @@ class V1Refund(object):
     def status(self, status):
         """Sets the status of this V1Refund.
 
+        退款状态  # noqa: E501
 
         :param status: The status of this V1Refund.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and status is None:
+            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
         self._status = status
 
@@ -401,6 +434,7 @@ class V1Refund(object):
     def success_at(self):
         """Gets the success_at of this V1Refund.  # noqa: E501
 
+        退款成功时间  # noqa: E501
 
         :return: The success_at of this V1Refund.  # noqa: E501
         :rtype: datetime
@@ -411,6 +445,7 @@ class V1Refund(object):
     def success_at(self, success_at):
         """Sets the success_at of this V1Refund.
 
+        退款成功时间  # noqa: E501
 
         :param success_at: The success_at of this V1Refund.  # noqa: E501
         :type: datetime
@@ -422,6 +457,7 @@ class V1Refund(object):
     def transaction_no(self):
         """Gets the transaction_no of this V1Refund.  # noqa: E501
 
+        交易号  # noqa: E501
 
         :return: The transaction_no of this V1Refund.  # noqa: E501
         :rtype: str
@@ -432,10 +468,13 @@ class V1Refund(object):
     def transaction_no(self, transaction_no):
         """Sets the transaction_no of this V1Refund.
 
+        交易号  # noqa: E501
 
         :param transaction_no: The transaction_no of this V1Refund.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and transaction_no is None:
+            raise ValueError("Invalid value for `transaction_no`, must not be `None`")  # noqa: E501
 
         self._transaction_no = transaction_no
 

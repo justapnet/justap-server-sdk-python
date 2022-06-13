@@ -61,7 +61,7 @@ class V1RefundExtraWechatPay(object):
     def account(self):
         """Gets the account of this V1RefundExtraWechatPay.  # noqa: E501
 
-        订单金额信息  # noqa: E501
+        出资账户信息  # noqa: E501
 
         :return: The account of this V1RefundExtraWechatPay.  # noqa: E501
         :rtype: RefundExtraWechatPayAccount
@@ -72,7 +72,7 @@ class V1RefundExtraWechatPay(object):
     def account(self, account):
         """Sets the account of this V1RefundExtraWechatPay.
 
-        订单金额信息  # noqa: E501
+        出资账户信息  # noqa: E501
 
         :param account: The account of this V1RefundExtraWechatPay.  # noqa: E501
         :type: RefundExtraWechatPayAccount

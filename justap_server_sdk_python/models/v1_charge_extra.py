@@ -116,6 +116,7 @@ class V1ChargeExtra(object):
     def alipay_app(self):
         """Gets the alipay_app of this V1ChargeExtra.  # noqa: E501
 
+        支付宝 App 支付渠道元数据  # noqa: E501
 
         :return: The alipay_app of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraAlipayApp
@@ -126,6 +127,7 @@ class V1ChargeExtra(object):
     def alipay_app(self, alipay_app):
         """Sets the alipay_app of this V1ChargeExtra.
 
+        支付宝 App 支付渠道元数据  # noqa: E501
 
         :param alipay_app: The alipay_app of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraAlipayApp
@@ -137,6 +139,7 @@ class V1ChargeExtra(object):
     def alipay_face(self):
         """Gets the alipay_face of this V1ChargeExtra.  # noqa: E501
 
+        支付宝 刷脸 支付渠道元数据  # noqa: E501
 
         :return: The alipay_face of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraAlipayFace
@@ -147,6 +150,7 @@ class V1ChargeExtra(object):
     def alipay_face(self, alipay_face):
         """Sets the alipay_face of this V1ChargeExtra.
 
+        支付宝 刷脸 支付渠道元数据  # noqa: E501
 
         :param alipay_face: The alipay_face of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraAlipayFace
@@ -158,6 +162,7 @@ class V1ChargeExtra(object):
     def alipay_lite(self):
         """Gets the alipay_lite of this V1ChargeExtra.  # noqa: E501
 
+        支付宝 小程序 支付渠道元数据  # noqa: E501
 
         :return: The alipay_lite of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraAlipayLite
@@ -168,6 +173,7 @@ class V1ChargeExtra(object):
     def alipay_lite(self, alipay_lite):
         """Sets the alipay_lite of this V1ChargeExtra.
 
+        支付宝 小程序 支付渠道元数据  # noqa: E501
 
         :param alipay_lite: The alipay_lite of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraAlipayLite
@@ -179,6 +185,7 @@ class V1ChargeExtra(object):
     def alipay_page(self):
         """Gets the alipay_page of this V1ChargeExtra.  # noqa: E501
 
+        支付宝 电脑网站 支付渠道元数据  # noqa: E501
 
         :return: The alipay_page of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraAlipayPage
@@ -189,6 +196,7 @@ class V1ChargeExtra(object):
     def alipay_page(self, alipay_page):
         """Sets the alipay_page of this V1ChargeExtra.
 
+        支付宝 电脑网站 支付渠道元数据  # noqa: E501
 
         :param alipay_page: The alipay_page of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraAlipayPage
@@ -200,6 +208,7 @@ class V1ChargeExtra(object):
     def alipay_qr(self):
         """Gets the alipay_qr of this V1ChargeExtra.  # noqa: E501
 
+        支付宝 当面付 支付渠道元数据  # noqa: E501
 
         :return: The alipay_qr of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraAlipayQr
@@ -210,6 +219,7 @@ class V1ChargeExtra(object):
     def alipay_qr(self, alipay_qr):
         """Sets the alipay_qr of this V1ChargeExtra.
 
+        支付宝 当面付 支付渠道元数据  # noqa: E501
 
         :param alipay_qr: The alipay_qr of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraAlipayQr
@@ -221,6 +231,7 @@ class V1ChargeExtra(object):
     def alipay_scan(self):
         """Gets the alipay_scan of this V1ChargeExtra.  # noqa: E501
 
+        支付宝 扫码(被扫) 支付渠道元数据  # noqa: E501
 
         :return: The alipay_scan of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraAlipayScan
@@ -231,6 +242,7 @@ class V1ChargeExtra(object):
     def alipay_scan(self, alipay_scan):
         """Sets the alipay_scan of this V1ChargeExtra.
 
+        支付宝 扫码(被扫) 支付渠道元数据  # noqa: E501
 
         :param alipay_scan: The alipay_scan of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraAlipayScan
@@ -242,6 +254,7 @@ class V1ChargeExtra(object):
     def alipay_wap(self):
         """Gets the alipay_wap of this V1ChargeExtra.  # noqa: E501
 
+        支付宝 手机网站 支付渠道元数据  # noqa: E501
 
         :return: The alipay_wap of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraAlipayWap
@@ -252,6 +265,7 @@ class V1ChargeExtra(object):
     def alipay_wap(self, alipay_wap):
         """Sets the alipay_wap of this V1ChargeExtra.
 
+        支付宝 手机网站 支付渠道元数据  # noqa: E501
 
         :param alipay_wap: The alipay_wap of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraAlipayWap
@@ -263,6 +277,7 @@ class V1ChargeExtra(object):
     def wechatpay_app(self):
         """Gets the wechatpay_app of this V1ChargeExtra.  # noqa: E501
 
+        微信支付 App 支付渠道元数据  # noqa: E501
 
         :return: The wechatpay_app of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraWechatpayApp
@@ -273,6 +288,7 @@ class V1ChargeExtra(object):
     def wechatpay_app(self, wechatpay_app):
         """Sets the wechatpay_app of this V1ChargeExtra.
 
+        微信支付 App 支付渠道元数据  # noqa: E501
 
         :param wechatpay_app: The wechatpay_app of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraWechatpayApp
@@ -284,6 +300,7 @@ class V1ChargeExtra(object):
     def wechatpay_h5(self):
         """Gets the wechatpay_h5 of this V1ChargeExtra.  # noqa: E501
 
+        微信支付 H5 支付渠道元数据  # noqa: E501
 
         :return: The wechatpay_h5 of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraWechatpayH5
@@ -294,6 +311,7 @@ class V1ChargeExtra(object):
     def wechatpay_h5(self, wechatpay_h5):
         """Sets the wechatpay_h5 of this V1ChargeExtra.
 
+        微信支付 H5 支付渠道元数据  # noqa: E501
 
         :param wechatpay_h5: The wechatpay_h5 of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraWechatpayH5
@@ -305,6 +323,7 @@ class V1ChargeExtra(object):
     def wechatpay_jsapi(self):
         """Gets the wechatpay_jsapi of this V1ChargeExtra.  # noqa: E501
 
+        微信支付 公众号 支付渠道元数据  # noqa: E501
 
         :return: The wechatpay_jsapi of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraWechatpayJsapi
@@ -315,6 +334,7 @@ class V1ChargeExtra(object):
     def wechatpay_jsapi(self, wechatpay_jsapi):
         """Sets the wechatpay_jsapi of this V1ChargeExtra.
 
+        微信支付 公众号 支付渠道元数据  # noqa: E501
 
         :param wechatpay_jsapi: The wechatpay_jsapi of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraWechatpayJsapi
@@ -326,6 +346,7 @@ class V1ChargeExtra(object):
     def wechatpay_lite(self):
         """Gets the wechatpay_lite of this V1ChargeExtra.  # noqa: E501
 
+        微信支付 小程序 支付渠道元数据  # noqa: E501
 
         :return: The wechatpay_lite of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraWechatpayLite
@@ -336,6 +357,7 @@ class V1ChargeExtra(object):
     def wechatpay_lite(self, wechatpay_lite):
         """Sets the wechatpay_lite of this V1ChargeExtra.
 
+        微信支付 小程序 支付渠道元数据  # noqa: E501
 
         :param wechatpay_lite: The wechatpay_lite of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraWechatpayLite
@@ -347,6 +369,7 @@ class V1ChargeExtra(object):
     def wechatpay_native(self):
         """Gets the wechatpay_native of this V1ChargeExtra.  # noqa: E501
 
+        微信支付 扫码(被扫) 支付渠道元数据  # noqa: E501
 
         :return: The wechatpay_native of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraWechatpayNative
@@ -357,6 +380,7 @@ class V1ChargeExtra(object):
     def wechatpay_native(self, wechatpay_native):
         """Sets the wechatpay_native of this V1ChargeExtra.
 
+        微信支付 扫码(被扫) 支付渠道元数据  # noqa: E501
 
         :param wechatpay_native: The wechatpay_native of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraWechatpayNative
@@ -368,6 +392,7 @@ class V1ChargeExtra(object):
     def wechatpay_scan(self):
         """Gets the wechatpay_scan of this V1ChargeExtra.  # noqa: E501
 
+        微信支付 扫码(被扫) 支付渠道元数据  # noqa: E501
 
         :return: The wechatpay_scan of this V1ChargeExtra.  # noqa: E501
         :rtype: V1ExtraWechatpayScan
@@ -378,6 +403,7 @@ class V1ChargeExtra(object):
     def wechatpay_scan(self, wechatpay_scan):
         """Sets the wechatpay_scan of this V1ChargeExtra.
 
+        微信支付 扫码(被扫) 支付渠道元数据  # noqa: E501
 
         :param wechatpay_scan: The wechatpay_scan of this V1ChargeExtra.  # noqa: E501
         :type: V1ExtraWechatpayScan

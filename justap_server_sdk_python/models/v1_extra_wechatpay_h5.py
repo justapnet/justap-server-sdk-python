@@ -86,31 +86,24 @@ class V1ExtraWechatpayH5(object):
             self.attach = attach
         if detail is not None:
             self.detail = detail
-        if goods_tag is not None:
-            self.goods_tag = goods_tag
-        if pay_sign is not None:
-            self.pay_sign = pay_sign
-        if pay_url is not None:
-            self.pay_url = pay_url
-        if prepay_id is not None:
-            self.prepay_id = prepay_id
+        self.goods_tag = goods_tag
+        self.pay_sign = pay_sign
+        self.pay_url = pay_url
+        self.prepay_id = prepay_id
         if scene_info is not None:
             self.scene_info = scene_info
         if settle_info is not None:
             self.settle_info = settle_info
-        if time_expire is not None:
-            self.time_expire = time_expire
-        if time_start is not None:
-            self.time_start = time_start
-        if wap_name is not None:
-            self.wap_name = wap_name
-        if wap_url is not None:
-            self.wap_url = wap_url
+        self.time_expire = time_expire
+        self.time_start = time_start
+        self.wap_name = wap_name
+        self.wap_url = wap_url
 
     @property
     def attach(self):
         """Gets the attach of this V1ExtraWechatpayH5.  # noqa: E501
 
+        元数据  # noqa: E501
 
         :return: The attach of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: str
@@ -121,6 +114,7 @@ class V1ExtraWechatpayH5(object):
     def attach(self, attach):
         """Sets the attach of this V1ExtraWechatpayH5.
 
+        元数据  # noqa: E501
 
         :param attach: The attach of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
@@ -132,6 +126,7 @@ class V1ExtraWechatpayH5(object):
     def detail(self):
         """Gets the detail of this V1ExtraWechatpayH5.  # noqa: E501
 
+        商品详情  # noqa: E501
 
         :return: The detail of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: V1ExtraWechatpayDetail
@@ -142,6 +137,7 @@ class V1ExtraWechatpayH5(object):
     def detail(self, detail):
         """Sets the detail of this V1ExtraWechatpayH5.
 
+        商品详情  # noqa: E501
 
         :param detail: The detail of this V1ExtraWechatpayH5.  # noqa: E501
         :type: V1ExtraWechatpayDetail
@@ -153,6 +149,7 @@ class V1ExtraWechatpayH5(object):
     def goods_tag(self):
         """Gets the goods_tag of this V1ExtraWechatpayH5.  # noqa: E501
 
+        订单优惠标记  # noqa: E501
 
         :return: The goods_tag of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: str
@@ -163,10 +160,13 @@ class V1ExtraWechatpayH5(object):
     def goods_tag(self, goods_tag):
         """Sets the goods_tag of this V1ExtraWechatpayH5.
 
+        订单优惠标记  # noqa: E501
 
         :param goods_tag: The goods_tag of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and goods_tag is None:
+            raise ValueError("Invalid value for `goods_tag`, must not be `None`")  # noqa: E501
 
         self._goods_tag = goods_tag
 
@@ -174,6 +174,7 @@ class V1ExtraWechatpayH5(object):
     def pay_sign(self):
         """Gets the pay_sign of this V1ExtraWechatpayH5.  # noqa: E501
 
+        支付签名  # noqa: E501
 
         :return: The pay_sign of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: str
@@ -184,10 +185,13 @@ class V1ExtraWechatpayH5(object):
     def pay_sign(self, pay_sign):
         """Sets the pay_sign of this V1ExtraWechatpayH5.
 
+        支付签名  # noqa: E501
 
         :param pay_sign: The pay_sign of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and pay_sign is None:
+            raise ValueError("Invalid value for `pay_sign`, must not be `None`")  # noqa: E501
 
         self._pay_sign = pay_sign
 
@@ -195,6 +199,7 @@ class V1ExtraWechatpayH5(object):
     def pay_url(self):
         """Gets the pay_url of this V1ExtraWechatpayH5.  # noqa: E501
 
+        支付链接  # noqa: E501
 
         :return: The pay_url of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: str
@@ -205,10 +210,13 @@ class V1ExtraWechatpayH5(object):
     def pay_url(self, pay_url):
         """Sets the pay_url of this V1ExtraWechatpayH5.
 
+        支付链接  # noqa: E501
 
         :param pay_url: The pay_url of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and pay_url is None:
+            raise ValueError("Invalid value for `pay_url`, must not be `None`")  # noqa: E501
 
         self._pay_url = pay_url
 
@@ -216,6 +224,7 @@ class V1ExtraWechatpayH5(object):
     def prepay_id(self):
         """Gets the prepay_id of this V1ExtraWechatpayH5.  # noqa: E501
 
+        预支付交易会话标识  # noqa: E501
 
         :return: The prepay_id of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: str
@@ -226,10 +235,13 @@ class V1ExtraWechatpayH5(object):
     def prepay_id(self, prepay_id):
         """Sets the prepay_id of this V1ExtraWechatpayH5.
 
+        预支付交易会话标识  # noqa: E501
 
         :param prepay_id: The prepay_id of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and prepay_id is None:
+            raise ValueError("Invalid value for `prepay_id`, must not be `None`")  # noqa: E501
 
         self._prepay_id = prepay_id
 
@@ -237,6 +249,7 @@ class V1ExtraWechatpayH5(object):
     def scene_info(self):
         """Gets the scene_info of this V1ExtraWechatpayH5.  # noqa: E501
 
+        场景信息  # noqa: E501
 
         :return: The scene_info of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: V1ExtraWechatpaySceneInfo
@@ -247,6 +260,7 @@ class V1ExtraWechatpayH5(object):
     def scene_info(self, scene_info):
         """Sets the scene_info of this V1ExtraWechatpayH5.
 
+        场景信息  # noqa: E501
 
         :param scene_info: The scene_info of this V1ExtraWechatpayH5.  # noqa: E501
         :type: V1ExtraWechatpaySceneInfo
@@ -258,6 +272,7 @@ class V1ExtraWechatpayH5(object):
     def settle_info(self):
         """Gets the settle_info of this V1ExtraWechatpayH5.  # noqa: E501
 
+        结算信息  # noqa: E501
 
         :return: The settle_info of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: V1ExtraWechatpaySettleInfo
@@ -268,6 +283,7 @@ class V1ExtraWechatpayH5(object):
     def settle_info(self, settle_info):
         """Sets the settle_info of this V1ExtraWechatpayH5.
 
+        结算信息  # noqa: E501
 
         :param settle_info: The settle_info of this V1ExtraWechatpayH5.  # noqa: E501
         :type: V1ExtraWechatpaySettleInfo
@@ -279,6 +295,7 @@ class V1ExtraWechatpayH5(object):
     def time_expire(self):
         """Gets the time_expire of this V1ExtraWechatpayH5.  # noqa: E501
 
+        交易结束时间  # noqa: E501
 
         :return: The time_expire of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: str
@@ -289,10 +306,13 @@ class V1ExtraWechatpayH5(object):
     def time_expire(self, time_expire):
         """Sets the time_expire of this V1ExtraWechatpayH5.
 
+        交易结束时间  # noqa: E501
 
         :param time_expire: The time_expire of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_expire is None:
+            raise ValueError("Invalid value for `time_expire`, must not be `None`")  # noqa: E501
 
         self._time_expire = time_expire
 
@@ -300,6 +320,7 @@ class V1ExtraWechatpayH5(object):
     def time_start(self):
         """Gets the time_start of this V1ExtraWechatpayH5.  # noqa: E501
 
+        交易起始时间  # noqa: E501
 
         :return: The time_start of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: str
@@ -310,10 +331,13 @@ class V1ExtraWechatpayH5(object):
     def time_start(self, time_start):
         """Sets the time_start of this V1ExtraWechatpayH5.
 
+        交易起始时间  # noqa: E501
 
         :param time_start: The time_start of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_start is None:
+            raise ValueError("Invalid value for `time_start`, must not be `None`")  # noqa: E501
 
         self._time_start = time_start
 
@@ -321,6 +345,7 @@ class V1ExtraWechatpayH5(object):
     def wap_name(self):
         """Gets the wap_name of this V1ExtraWechatpayH5.  # noqa: E501
 
+        WAP网站名  # noqa: E501
 
         :return: The wap_name of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: str
@@ -331,10 +356,13 @@ class V1ExtraWechatpayH5(object):
     def wap_name(self, wap_name):
         """Sets the wap_name of this V1ExtraWechatpayH5.
 
+        WAP网站名  # noqa: E501
 
         :param wap_name: The wap_name of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and wap_name is None:
+            raise ValueError("Invalid value for `wap_name`, must not be `None`")  # noqa: E501
 
         self._wap_name = wap_name
 
@@ -342,6 +370,7 @@ class V1ExtraWechatpayH5(object):
     def wap_url(self):
         """Gets the wap_url of this V1ExtraWechatpayH5.  # noqa: E501
 
+        WAP网站URL  # noqa: E501
 
         :return: The wap_url of this V1ExtraWechatpayH5.  # noqa: E501
         :rtype: str
@@ -352,10 +381,13 @@ class V1ExtraWechatpayH5(object):
     def wap_url(self, wap_url):
         """Sets the wap_url of this V1ExtraWechatpayH5.
 
+        WAP网站URL  # noqa: E501
 
         :param wap_url: The wap_url of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and wap_url is None:
+            raise ValueError("Invalid value for `wap_url`, must not be `None`")  # noqa: E501
 
         self._wap_url = wap_url
 

@@ -52,15 +52,14 @@ class V1ExtraAlipaySubMerchant(object):
         self._merchant_type = None
         self.discriminator = None
 
-        if merchant_id is not None:
-            self.merchant_id = merchant_id
-        if merchant_type is not None:
-            self.merchant_type = merchant_type
+        self.merchant_id = merchant_id
+        self.merchant_type = merchant_type
 
     @property
     def merchant_id(self):
         """Gets the merchant_id of this V1ExtraAlipaySubMerchant.  # noqa: E501
 
+        商户的支付宝user_id  # noqa: E501
 
         :return: The merchant_id of this V1ExtraAlipaySubMerchant.  # noqa: E501
         :rtype: str
@@ -71,10 +70,13 @@ class V1ExtraAlipaySubMerchant(object):
     def merchant_id(self, merchant_id):
         """Sets the merchant_id of this V1ExtraAlipaySubMerchant.
 
+        商户的支付宝user_id  # noqa: E501
 
         :param merchant_id: The merchant_id of this V1ExtraAlipaySubMerchant.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and merchant_id is None:
+            raise ValueError("Invalid value for `merchant_id`, must not be `None`")  # noqa: E501
 
         self._merchant_id = merchant_id
 
@@ -82,6 +84,7 @@ class V1ExtraAlipaySubMerchant(object):
     def merchant_type(self):
         """Gets the merchant_type of this V1ExtraAlipaySubMerchant.  # noqa: E501
 
+        商户类型，1：支付宝服务窗，2：第三方App，目前只支持支付宝服务窗，默认为1  # noqa: E501
 
         :return: The merchant_type of this V1ExtraAlipaySubMerchant.  # noqa: E501
         :rtype: str
@@ -92,10 +95,13 @@ class V1ExtraAlipaySubMerchant(object):
     def merchant_type(self, merchant_type):
         """Sets the merchant_type of this V1ExtraAlipaySubMerchant.
 
+        商户类型，1：支付宝服务窗，2：第三方App，目前只支持支付宝服务窗，默认为1  # noqa: E501
 
         :param merchant_type: The merchant_type of this V1ExtraAlipaySubMerchant.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and merchant_type is None:
+            raise ValueError("Invalid value for `merchant_type`, must not be `None`")  # noqa: E501
 
         self._merchant_type = merchant_type
 

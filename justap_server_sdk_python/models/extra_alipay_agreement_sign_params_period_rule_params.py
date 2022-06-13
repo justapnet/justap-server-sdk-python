@@ -64,23 +64,18 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
         self._total_payments = None
         self.discriminator = None
 
-        if execute_time is not None:
-            self.execute_time = execute_time
-        if period is not None:
-            self.period = period
-        if period_type is not None:
-            self.period_type = period_type
-        if single_amount is not None:
-            self.single_amount = single_amount
-        if total_amount is not None:
-            self.total_amount = total_amount
-        if total_payments is not None:
-            self.total_payments = total_payments
+        self.execute_time = execute_time
+        self.period = period
+        self.period_type = period_type
+        self.single_amount = single_amount
+        self.total_amount = total_amount
+        self.total_payments = total_payments
 
     @property
     def execute_time(self):
         """Gets the execute_time of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
 
+        扣款执行时间execute_time是周期扣款产品必填，枚举值为TIMING和FIXED  # noqa: E501
 
         :return: The execute_time of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :rtype: str
@@ -91,10 +86,13 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def execute_time(self, execute_time):
         """Sets the execute_time of this ExtraAlipayAgreementSignParamsPeriodRuleParams.
 
+        扣款执行时间execute_time是周期扣款产品必填，枚举值为TIMING和FIXED  # noqa: E501
 
         :param execute_time: The execute_time of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and execute_time is None:
+            raise ValueError("Invalid value for `execute_time`, must not be `None`")  # noqa: E501
 
         self._execute_time = execute_time
 
@@ -102,6 +100,7 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def period(self):
         """Gets the period of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
 
+        周期数period是周期扣款产品必填。与另一参数period_type组合使用确定扣款周期，例如period_type为DAY，period=90，则扣款周期为90天  # noqa: E501
 
         :return: The period of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :rtype: str
@@ -112,10 +111,13 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def period(self, period):
         """Sets the period of this ExtraAlipayAgreementSignParamsPeriodRuleParams.
 
+        周期数period是周期扣款产品必填。与另一参数period_type组合使用确定扣款周期，例如period_type为DAY，period=90，则扣款周期为90天  # noqa: E501
 
         :param period: The period of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and period is None:
+            raise ValueError("Invalid value for `period`, must not be `None`")  # noqa: E501
 
         self._period = period
 
@@ -123,6 +125,7 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def period_type(self):
         """Gets the period_type of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
 
+        周期类型period_type是周期扣款产品必填，枚举值为DAY和MONTH  # noqa: E501
 
         :return: The period_type of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :rtype: str
@@ -133,10 +136,13 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def period_type(self, period_type):
         """Sets the period_type of this ExtraAlipayAgreementSignParamsPeriodRuleParams.
 
+        周期类型period_type是周期扣款产品必填，枚举值为DAY和MONTH  # noqa: E501
 
         :param period_type: The period_type of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and period_type is None:
+            raise ValueError("Invalid value for `period_type`, must not be `None`")  # noqa: E501
 
         self._period_type = period_type
 
@@ -144,6 +150,7 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def single_amount(self):
         """Gets the single_amount of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
 
+        单笔扣款金额single_amount是周期扣款产品必填，单位为元  # noqa: E501
 
         :return: The single_amount of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :rtype: str
@@ -154,10 +161,13 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def single_amount(self, single_amount):
         """Sets the single_amount of this ExtraAlipayAgreementSignParamsPeriodRuleParams.
 
+        单笔扣款金额single_amount是周期扣款产品必填，单位为元  # noqa: E501
 
         :param single_amount: The single_amount of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and single_amount is None:
+            raise ValueError("Invalid value for `single_amount`, must not be `None`")  # noqa: E501
 
         self._single_amount = single_amount
 
@@ -165,6 +175,7 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def total_amount(self):
         """Gets the total_amount of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
 
+        扣款总金额total_amount是周期扣款产品必填，单位为元  # noqa: E501
 
         :return: The total_amount of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :rtype: str
@@ -175,10 +186,13 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def total_amount(self, total_amount):
         """Sets the total_amount of this ExtraAlipayAgreementSignParamsPeriodRuleParams.
 
+        扣款总金额total_amount是周期扣款产品必填，单位为元  # noqa: E501
 
         :param total_amount: The total_amount of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and total_amount is None:
+            raise ValueError("Invalid value for `total_amount`, must not be `None`")  # noqa: E501
 
         self._total_amount = total_amount
 
@@ -186,6 +200,7 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def total_payments(self):
         """Gets the total_payments of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
 
+        扣款总笔数total_payments是周期扣款产品必填，单位为笔  # noqa: E501
 
         :return: The total_payments of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :rtype: str
@@ -196,10 +211,13 @@ class ExtraAlipayAgreementSignParamsPeriodRuleParams(object):
     def total_payments(self, total_payments):
         """Sets the total_payments of this ExtraAlipayAgreementSignParamsPeriodRuleParams.
 
+        扣款总笔数total_payments是周期扣款产品必填，单位为笔  # noqa: E501
 
         :param total_payments: The total_payments of this ExtraAlipayAgreementSignParamsPeriodRuleParams.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and total_payments is None:
+            raise ValueError("Invalid value for `total_payments`, must not be `None`")  # noqa: E501
 
         self._total_payments = total_payments
 

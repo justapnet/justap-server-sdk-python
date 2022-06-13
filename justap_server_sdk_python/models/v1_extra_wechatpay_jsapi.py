@@ -80,27 +80,24 @@ class V1ExtraWechatpayJsapi(object):
             self.attach = attach
         if detail is not None:
             self.detail = detail
-        if goods_tag is not None:
-            self.goods_tag = goods_tag
+        self.goods_tag = goods_tag
         if jsapi_config is not None:
             self.jsapi_config = jsapi_config
         if payer is not None:
             self.payer = payer
-        if prepay_id is not None:
-            self.prepay_id = prepay_id
+        self.prepay_id = prepay_id
         if scene_info is not None:
             self.scene_info = scene_info
         if settle_info is not None:
             self.settle_info = settle_info
-        if time_expire is not None:
-            self.time_expire = time_expire
-        if time_start is not None:
-            self.time_start = time_start
+        self.time_expire = time_expire
+        self.time_start = time_start
 
     @property
     def attach(self):
         """Gets the attach of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        元数据  # noqa: E501
 
         :return: The attach of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: str
@@ -111,6 +108,7 @@ class V1ExtraWechatpayJsapi(object):
     def attach(self, attach):
         """Sets the attach of this V1ExtraWechatpayJsapi.
 
+        元数据  # noqa: E501
 
         :param attach: The attach of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: str
@@ -122,6 +120,7 @@ class V1ExtraWechatpayJsapi(object):
     def detail(self):
         """Gets the detail of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        商品详情  # noqa: E501
 
         :return: The detail of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: V1ExtraWechatpayDetail
@@ -132,6 +131,7 @@ class V1ExtraWechatpayJsapi(object):
     def detail(self, detail):
         """Sets the detail of this V1ExtraWechatpayJsapi.
 
+        商品详情  # noqa: E501
 
         :param detail: The detail of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: V1ExtraWechatpayDetail
@@ -143,6 +143,7 @@ class V1ExtraWechatpayJsapi(object):
     def goods_tag(self):
         """Gets the goods_tag of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        订单优惠标记  # noqa: E501
 
         :return: The goods_tag of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: str
@@ -153,10 +154,13 @@ class V1ExtraWechatpayJsapi(object):
     def goods_tag(self, goods_tag):
         """Sets the goods_tag of this V1ExtraWechatpayJsapi.
 
+        订单优惠标记  # noqa: E501
 
         :param goods_tag: The goods_tag of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and goods_tag is None:
+            raise ValueError("Invalid value for `goods_tag`, must not be `None`")  # noqa: E501
 
         self._goods_tag = goods_tag
 
@@ -164,6 +168,7 @@ class V1ExtraWechatpayJsapi(object):
     def jsapi_config(self):
         """Gets the jsapi_config of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        jsapi支付配置信息  # noqa: E501
 
         :return: The jsapi_config of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: V1ExtraWechatpayJsapiConfig
@@ -174,6 +179,7 @@ class V1ExtraWechatpayJsapi(object):
     def jsapi_config(self, jsapi_config):
         """Sets the jsapi_config of this V1ExtraWechatpayJsapi.
 
+        jsapi支付配置信息  # noqa: E501
 
         :param jsapi_config: The jsapi_config of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: V1ExtraWechatpayJsapiConfig
@@ -185,6 +191,7 @@ class V1ExtraWechatpayJsapi(object):
     def payer(self):
         """Gets the payer of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        支付者信息  # noqa: E501
 
         :return: The payer of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: V1ExtraWechatpayPayer
@@ -195,6 +202,7 @@ class V1ExtraWechatpayJsapi(object):
     def payer(self, payer):
         """Sets the payer of this V1ExtraWechatpayJsapi.
 
+        支付者信息  # noqa: E501
 
         :param payer: The payer of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: V1ExtraWechatpayPayer
@@ -206,6 +214,7 @@ class V1ExtraWechatpayJsapi(object):
     def prepay_id(self):
         """Gets the prepay_id of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        预支付交易会话标识  # noqa: E501
 
         :return: The prepay_id of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: str
@@ -216,10 +225,13 @@ class V1ExtraWechatpayJsapi(object):
     def prepay_id(self, prepay_id):
         """Sets the prepay_id of this V1ExtraWechatpayJsapi.
 
+        预支付交易会话标识  # noqa: E501
 
         :param prepay_id: The prepay_id of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and prepay_id is None:
+            raise ValueError("Invalid value for `prepay_id`, must not be `None`")  # noqa: E501
 
         self._prepay_id = prepay_id
 
@@ -227,6 +239,7 @@ class V1ExtraWechatpayJsapi(object):
     def scene_info(self):
         """Gets the scene_info of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        场景信息  # noqa: E501
 
         :return: The scene_info of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: V1ExtraWechatpaySceneInfo
@@ -237,6 +250,7 @@ class V1ExtraWechatpayJsapi(object):
     def scene_info(self, scene_info):
         """Sets the scene_info of this V1ExtraWechatpayJsapi.
 
+        场景信息  # noqa: E501
 
         :param scene_info: The scene_info of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: V1ExtraWechatpaySceneInfo
@@ -248,6 +262,7 @@ class V1ExtraWechatpayJsapi(object):
     def settle_info(self):
         """Gets the settle_info of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        结算信息  # noqa: E501
 
         :return: The settle_info of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: V1ExtraWechatpaySettleInfo
@@ -258,6 +273,7 @@ class V1ExtraWechatpayJsapi(object):
     def settle_info(self, settle_info):
         """Sets the settle_info of this V1ExtraWechatpayJsapi.
 
+        结算信息  # noqa: E501
 
         :param settle_info: The settle_info of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: V1ExtraWechatpaySettleInfo
@@ -269,6 +285,7 @@ class V1ExtraWechatpayJsapi(object):
     def time_expire(self):
         """Gets the time_expire of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        交易结束时间  # noqa: E501
 
         :return: The time_expire of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: str
@@ -279,10 +296,13 @@ class V1ExtraWechatpayJsapi(object):
     def time_expire(self, time_expire):
         """Sets the time_expire of this V1ExtraWechatpayJsapi.
 
+        交易结束时间  # noqa: E501
 
         :param time_expire: The time_expire of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_expire is None:
+            raise ValueError("Invalid value for `time_expire`, must not be `None`")  # noqa: E501
 
         self._time_expire = time_expire
 
@@ -290,6 +310,7 @@ class V1ExtraWechatpayJsapi(object):
     def time_start(self):
         """Gets the time_start of this V1ExtraWechatpayJsapi.  # noqa: E501
 
+        交易起始时间  # noqa: E501
 
         :return: The time_start of this V1ExtraWechatpayJsapi.  # noqa: E501
         :rtype: str
@@ -300,10 +321,13 @@ class V1ExtraWechatpayJsapi(object):
     def time_start(self, time_start):
         """Sets the time_start of this V1ExtraWechatpayJsapi.
 
+        交易起始时间  # noqa: E501
 
         :param time_start: The time_start of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: str
         """
+        if self._configuration.client_side_validation and time_start is None:
+            raise ValueError("Invalid value for `time_start`, must not be `None`")  # noqa: E501
 
         self._time_start = time_start
 
