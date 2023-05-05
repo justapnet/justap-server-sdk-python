@@ -37,7 +37,6 @@ class V1ExtraAlipayWap(object):
         'business_params': 'str',
         'disable_pay_channels': 'str',
         'enable_pay_channels': 'str',
-        'ext_user_info': 'V1ExtraAlipayExtUserInfo',
         'extend_params': 'V1ExtraAlipayExtendParams',
         'fund_bill_list': 'list[str]',
         'goods_detail': 'list[V1ExtraAlipayGoodsDetail]',
@@ -58,7 +57,6 @@ class V1ExtraAlipayWap(object):
         'business_params': 'business_params',
         'disable_pay_channels': 'disable_pay_channels',
         'enable_pay_channels': 'enable_pay_channels',
-        'ext_user_info': 'ext_user_info',
         'extend_params': 'extend_params',
         'fund_bill_list': 'fund_bill_list',
         'goods_detail': 'goods_detail',
@@ -74,7 +72,7 @@ class V1ExtraAlipayWap(object):
         'voucher_detail_list': 'voucher_detail_list'
     }
 
-    def __init__(self, auth_token=None, business_params=None, disable_pay_channels=None, enable_pay_channels=None, ext_user_info=None, extend_params=None, fund_bill_list=None, goods_detail=None, goods_type=None, merchant_trade_id=None, pay_url=None, product_code=None, promo_params=None, quit_url=None, return_url=None, seller_id=None, store_id=None, voucher_detail_list=None, _configuration=None):  # noqa: E501
+    def __init__(self, auth_token=None, business_params=None, disable_pay_channels=None, enable_pay_channels=None, extend_params=None, fund_bill_list=None, goods_detail=None, goods_type=None, merchant_trade_id=None, pay_url=None, product_code=None, promo_params=None, quit_url=None, return_url=None, seller_id=None, store_id=None, voucher_detail_list=None, _configuration=None):  # noqa: E501
         """V1ExtraAlipayWap - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -84,7 +82,6 @@ class V1ExtraAlipayWap(object):
         self._business_params = None
         self._disable_pay_channels = None
         self._enable_pay_channels = None
-        self._ext_user_info = None
         self._extend_params = None
         self._fund_bill_list = None
         self._goods_detail = None
@@ -100,27 +97,38 @@ class V1ExtraAlipayWap(object):
         self._voucher_detail_list = None
         self.discriminator = None
 
-        self.auth_token = auth_token
-        self.business_params = business_params
-        self.disable_pay_channels = disable_pay_channels
-        self.enable_pay_channels = enable_pay_channels
-        if ext_user_info is not None:
-            self.ext_user_info = ext_user_info
+        if auth_token is not None:
+            self.auth_token = auth_token
+        if business_params is not None:
+            self.business_params = business_params
+        if disable_pay_channels is not None:
+            self.disable_pay_channels = disable_pay_channels
+        if enable_pay_channels is not None:
+            self.enable_pay_channels = enable_pay_channels
         if extend_params is not None:
             self.extend_params = extend_params
         if fund_bill_list is not None:
             self.fund_bill_list = fund_bill_list
         if goods_detail is not None:
             self.goods_detail = goods_detail
-        self.goods_type = goods_type
-        self.merchant_trade_id = merchant_trade_id
-        self.pay_url = pay_url
-        self.product_code = product_code
-        self.promo_params = promo_params
-        self.quit_url = quit_url
-        self.return_url = return_url
-        self.seller_id = seller_id
-        self.store_id = store_id
+        if goods_type is not None:
+            self.goods_type = goods_type
+        if merchant_trade_id is not None:
+            self.merchant_trade_id = merchant_trade_id
+        if pay_url is not None:
+            self.pay_url = pay_url
+        if product_code is not None:
+            self.product_code = product_code
+        if promo_params is not None:
+            self.promo_params = promo_params
+        if quit_url is not None:
+            self.quit_url = quit_url
+        if return_url is not None:
+            self.return_url = return_url
+        if seller_id is not None:
+            self.seller_id = seller_id
+        if store_id is not None:
+            self.store_id = store_id
         if voucher_detail_list is not None:
             self.voucher_detail_list = voucher_detail_list
 
@@ -144,8 +152,6 @@ class V1ExtraAlipayWap(object):
         :param auth_token: The auth_token of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and auth_token is None:
-            raise ValueError("Invalid value for `auth_token`, must not be `None`")  # noqa: E501
 
         self._auth_token = auth_token
 
@@ -169,8 +175,6 @@ class V1ExtraAlipayWap(object):
         :param business_params: The business_params of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and business_params is None:
-            raise ValueError("Invalid value for `business_params`, must not be `None`")  # noqa: E501
 
         self._business_params = business_params
 
@@ -194,8 +198,6 @@ class V1ExtraAlipayWap(object):
         :param disable_pay_channels: The disable_pay_channels of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and disable_pay_channels is None:
-            raise ValueError("Invalid value for `disable_pay_channels`, must not be `None`")  # noqa: E501
 
         self._disable_pay_channels = disable_pay_channels
 
@@ -219,33 +221,8 @@ class V1ExtraAlipayWap(object):
         :param enable_pay_channels: The enable_pay_channels of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and enable_pay_channels is None:
-            raise ValueError("Invalid value for `enable_pay_channels`, must not be `None`")  # noqa: E501
 
         self._enable_pay_channels = enable_pay_channels
-
-    @property
-    def ext_user_info(self):
-        """Gets the ext_user_info of this V1ExtraAlipayWap.  # noqa: E501
-
-        支付宝用户信息  # noqa: E501
-
-        :return: The ext_user_info of this V1ExtraAlipayWap.  # noqa: E501
-        :rtype: V1ExtraAlipayExtUserInfo
-        """
-        return self._ext_user_info
-
-    @ext_user_info.setter
-    def ext_user_info(self, ext_user_info):
-        """Sets the ext_user_info of this V1ExtraAlipayWap.
-
-        支付宝用户信息  # noqa: E501
-
-        :param ext_user_info: The ext_user_info of this V1ExtraAlipayWap.  # noqa: E501
-        :type: V1ExtraAlipayExtUserInfo
-        """
-
-        self._ext_user_info = ext_user_info
 
     @property
     def extend_params(self):
@@ -336,8 +313,6 @@ class V1ExtraAlipayWap(object):
         :param goods_type: The goods_type of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and goods_type is None:
-            raise ValueError("Invalid value for `goods_type`, must not be `None`")  # noqa: E501
 
         self._goods_type = goods_type
 
@@ -361,8 +336,6 @@ class V1ExtraAlipayWap(object):
         :param merchant_trade_id: The merchant_trade_id of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and merchant_trade_id is None:
-            raise ValueError("Invalid value for `merchant_trade_id`, must not be `None`")  # noqa: E501
 
         self._merchant_trade_id = merchant_trade_id
 
@@ -386,8 +359,6 @@ class V1ExtraAlipayWap(object):
         :param pay_url: The pay_url of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and pay_url is None:
-            raise ValueError("Invalid value for `pay_url`, must not be `None`")  # noqa: E501
 
         self._pay_url = pay_url
 
@@ -411,8 +382,6 @@ class V1ExtraAlipayWap(object):
         :param product_code: The product_code of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and product_code is None:
-            raise ValueError("Invalid value for `product_code`, must not be `None`")  # noqa: E501
 
         self._product_code = product_code
 
@@ -436,8 +405,6 @@ class V1ExtraAlipayWap(object):
         :param promo_params: The promo_params of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and promo_params is None:
-            raise ValueError("Invalid value for `promo_params`, must not be `None`")  # noqa: E501
 
         self._promo_params = promo_params
 
@@ -461,8 +428,6 @@ class V1ExtraAlipayWap(object):
         :param quit_url: The quit_url of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and quit_url is None:
-            raise ValueError("Invalid value for `quit_url`, must not be `None`")  # noqa: E501
 
         self._quit_url = quit_url
 
@@ -486,8 +451,6 @@ class V1ExtraAlipayWap(object):
         :param return_url: The return_url of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and return_url is None:
-            raise ValueError("Invalid value for `return_url`, must not be `None`")  # noqa: E501
 
         self._return_url = return_url
 
@@ -511,8 +474,6 @@ class V1ExtraAlipayWap(object):
         :param seller_id: The seller_id of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and seller_id is None:
-            raise ValueError("Invalid value for `seller_id`, must not be `None`")  # noqa: E501
 
         self._seller_id = seller_id
 
@@ -536,8 +497,6 @@ class V1ExtraAlipayWap(object):
         :param store_id: The store_id of this V1ExtraAlipayWap.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and store_id is None:
-            raise ValueError("Invalid value for `store_id`, must not be `None`")  # noqa: E501
 
         self._store_id = store_id
 

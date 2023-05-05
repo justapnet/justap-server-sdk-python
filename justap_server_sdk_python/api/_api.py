@@ -33,39 +33,39 @@ class DefaultApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def trade_service_charges(self, body, **kwargs):  # noqa: E501
+    def charge_service_charges(self, body, **kwargs):  # noqa: E501
         """创建 Charge 对象  # noqa: E501
 
         发起一次支付请求时需要创建一个新的 charge 对象，获取一个可用的支付凭据用于客户端向第三方渠道发起支付请求。如果使用测试模式的 API Key，则不会发生真实交易。当支付成功后，会发送 Webhooks 通知。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_charges(body, async_req=True)
+        >>> thread = api.charge_service_charges(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateChargeRequest body: (required)
+        :param V1CreateChargeRequest body: 你可以创建一个 charge 对象向用户收款。charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 charge 对象，也可以随时查询一个或者多个 charge 对象的状态。每个 charge 对象都拥有一个标识 id，该 id 在系统内唯一。 (required)
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.trade_service_charges_with_http_info(body, **kwargs)  # noqa: E501
+            return self.charge_service_charges_with_http_info(body, **kwargs)  # noqa: E501
         else:
-            (data) = self.trade_service_charges_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.charge_service_charges_with_http_info(body, **kwargs)  # noqa: E501
             return data
 
-    def trade_service_charges_with_http_info(self, body, **kwargs):  # noqa: E501
+    def charge_service_charges_with_http_info(self, body, **kwargs):  # noqa: E501
         """创建 Charge 对象  # noqa: E501
 
         发起一次支付请求时需要创建一个新的 charge 对象，获取一个可用的支付凭据用于客户端向第三方渠道发起支付请求。如果使用测试模式的 API Key，则不会发生真实交易。当支付成功后，会发送 Webhooks 通知。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_charges_with_http_info(body, async_req=True)
+        >>> thread = api.charge_service_charges_with_http_info(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateChargeRequest body: (required)
+        :param V1CreateChargeRequest body: 你可以创建一个 charge 对象向用户收款。charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 charge 对象，也可以随时查询一个或者多个 charge 对象的状态。每个 charge 对象都拥有一个标识 id，该 id 在系统内唯一。 (required)
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -82,14 +82,14 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method trade_service_charges" % key
+                    " to method charge_service_charges" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'body' is set
         if self.api_client.client_side_validation and ('body' not in params or
                                                        params['body'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `body` when calling `trade_service_charges`")  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `charge_service_charges`")  # noqa: E501
 
         collection_formats = {}
 
@@ -132,13 +132,112 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def trade_service_query_charge(self, charge_id, **kwargs):  # noqa: E501
+    def charge_service_charges2(self, body, **kwargs):  # noqa: E501
+        """创建 Charge 对象  # noqa: E501
+
+        发起一次支付请求时需要创建一个新的 charge 对象，获取一个可用的支付凭据用于客户端向第三方渠道发起支付请求。如果使用测试模式的 API Key，则不会发生真实交易。当支付成功后，会发送 Webhooks 通知。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_charges2(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateChargeRequest body: 你可以创建一个 charge 对象向用户收款。charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 charge 对象，也可以随时查询一个或者多个 charge 对象的状态。每个 charge 对象都拥有一个标识 id，该 id 在系统内唯一。 (required)
+        :return: V1ChargeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.charge_service_charges2_with_http_info(body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.charge_service_charges2_with_http_info(body, **kwargs)  # noqa: E501
+            return data
+
+    def charge_service_charges2_with_http_info(self, body, **kwargs):  # noqa: E501
+        """创建 Charge 对象  # noqa: E501
+
+        发起一次支付请求时需要创建一个新的 charge 对象，获取一个可用的支付凭据用于客户端向第三方渠道发起支付请求。如果使用测试模式的 API Key，则不会发生真实交易。当支付成功后，会发送 Webhooks 通知。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_charges2_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateChargeRequest body: 你可以创建一个 charge 对象向用户收款。charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 charge 对象，也可以随时查询一个或者多个 charge 对象的状态。每个 charge 对象都拥有一个标识 id，该 id 在系统内唯一。 (required)
+        :return: V1ChargeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method charge_service_charges2" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `charge_service_charges2`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/charges', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1ChargeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def charge_service_query_charge(self, charge_id, **kwargs):  # noqa: E501
         """查询 Charge 对象  # noqa: E501
 
         你可以在后台异步通知之前，通过查询接口确认支付状态。通过charge对象的id查询一个已创建的charge对象。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_query_charge(charge_id, async_req=True)
+        >>> thread = api.charge_service_query_charge(charge_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -150,18 +249,18 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.trade_service_query_charge_with_http_info(charge_id, **kwargs)  # noqa: E501
+            return self.charge_service_query_charge_with_http_info(charge_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.trade_service_query_charge_with_http_info(charge_id, **kwargs)  # noqa: E501
+            (data) = self.charge_service_query_charge_with_http_info(charge_id, **kwargs)  # noqa: E501
             return data
 
-    def trade_service_query_charge_with_http_info(self, charge_id, **kwargs):  # noqa: E501
+    def charge_service_query_charge_with_http_info(self, charge_id, **kwargs):  # noqa: E501
         """查询 Charge 对象  # noqa: E501
 
         你可以在后台异步通知之前，通过查询接口确认支付状态。通过charge对象的id查询一个已创建的charge对象。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_query_charge_with_http_info(charge_id, async_req=True)
+        >>> thread = api.charge_service_query_charge_with_http_info(charge_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -183,14 +282,14 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method trade_service_query_charge" % key
+                    " to method charge_service_query_charge" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'charge_id' is set
         if self.api_client.client_side_validation and ('charge_id' not in params or
                                                        params['charge_id'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `charge_id` when calling `trade_service_query_charge`")  # noqa: E501
+            raise ValueError("Missing the required parameter `charge_id` when calling `charge_service_query_charge`")  # noqa: E501
 
         collection_formats = {}
 
@@ -235,13 +334,116 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def trade_service_query_charge_list(self, **kwargs):  # noqa: E501
+    def charge_service_query_charge2(self, charge_id, **kwargs):  # noqa: E501
+        """查询 Charge 对象  # noqa: E501
+
+        你可以在后台异步通知之前，通过查询接口确认支付状态。通过charge对象的id查询一个已创建的charge对象。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_query_charge2(charge_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str charge_id: [REQUIRED] Charge 对象 id (required)
+        :param str app_id: [REQUIRED] 应用 id
+        :return: V1ChargeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.charge_service_query_charge2_with_http_info(charge_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.charge_service_query_charge2_with_http_info(charge_id, **kwargs)  # noqa: E501
+            return data
+
+    def charge_service_query_charge2_with_http_info(self, charge_id, **kwargs):  # noqa: E501
+        """查询 Charge 对象  # noqa: E501
+
+        你可以在后台异步通知之前，通过查询接口确认支付状态。通过charge对象的id查询一个已创建的charge对象。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_query_charge2_with_http_info(charge_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str charge_id: [REQUIRED] Charge 对象 id (required)
+        :param str app_id: [REQUIRED] 应用 id
+        :return: V1ChargeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['charge_id', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method charge_service_query_charge2" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'charge_id' is set
+        if self.api_client.client_side_validation and ('charge_id' not in params or
+                                                       params['charge_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `charge_id` when calling `charge_service_query_charge2`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'charge_id' in params:
+            path_params['charge_id'] = params['charge_id']  # noqa: E501
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/charges/{charge_id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1ChargeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def charge_service_query_charge_list(self, **kwargs):  # noqa: E501
         """查询 Charge 对象列表  # noqa: E501
 
         返回之前创建过 charge 对象的一个列表。列表是按创建时间进行排序，总是将最新的 charge 对象显示在最前。如果不设置 created 参数，默认查询近一个月的数据；设置了 created 参数，会按照对应的时间段查询。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_query_charge_list(async_req=True)
+        >>> thread = api.charge_service_query_charge_list(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -266,18 +468,18 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.trade_service_query_charge_list_with_http_info(**kwargs)  # noqa: E501
+            return self.charge_service_query_charge_list_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.trade_service_query_charge_list_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.charge_service_query_charge_list_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def trade_service_query_charge_list_with_http_info(self, **kwargs):  # noqa: E501
+    def charge_service_query_charge_list_with_http_info(self, **kwargs):  # noqa: E501
         """查询 Charge 对象列表  # noqa: E501
 
         返回之前创建过 charge 对象的一个列表。列表是按创建时间进行排序，总是将最新的 charge 对象显示在最前。如果不设置 created 参数，默认查询近一个月的数据；设置了 created 参数，会按照对应的时间段查询。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_query_charge_list_with_http_info(async_req=True)
+        >>> thread = api.charge_service_query_charge_list_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -312,7 +514,7 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method trade_service_query_charge_list" % key
+                    " to method charge_service_query_charge_list" % key
                 )
             params[key] = val
         del params['kwargs']
@@ -386,13 +588,370 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def trade_service_query_refund(self, charge_id, refund_id, **kwargs):  # noqa: E501
+    def charge_service_query_charge_list2(self, **kwargs):  # noqa: E501
+        """查询 Charge 对象列表  # noqa: E501
+
+        返回之前创建过 charge 对象的一个列表。列表是按创建时间进行排序，总是将最新的 charge 对象显示在最前。如果不设置 created 参数，默认查询近一个月的数据；设置了 created 参数，会按照对应的时间段查询。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_query_charge_list2(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str app_id: [REQUIRED] 应用 id
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :param str merchant_trade_id: [OPTIONAL] 客户系统订单号
+        :param int created_lt: 大于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付
+        :param bool paid: [OPTIONAL] 是否已付款
+        :param bool refunded: [OPTIONAL] 是否存在退款信息，无论退款是否成功。
+        :param bool reversed: [OPTIONAL] 是否已撤销
+        :param bool closed: [OPTIONAL] 是否已关闭
+        :param bool expired: [OPTIONAL] 是否已过期
+        :return: V1ChargeListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.charge_service_query_charge_list2_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.charge_service_query_charge_list2_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def charge_service_query_charge_list2_with_http_info(self, **kwargs):  # noqa: E501
+        """查询 Charge 对象列表  # noqa: E501
+
+        返回之前创建过 charge 对象的一个列表。列表是按创建时间进行排序，总是将最新的 charge 对象显示在最前。如果不设置 created 参数，默认查询近一个月的数据；设置了 created 参数，会按照对应的时间段查询。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_query_charge_list2_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str app_id: [REQUIRED] 应用 id
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :param str merchant_trade_id: [OPTIONAL] 客户系统订单号
+        :param int created_lt: 大于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付
+        :param bool paid: [OPTIONAL] 是否已付款
+        :param bool refunded: [OPTIONAL] 是否存在退款信息，无论退款是否成功。
+        :param bool reversed: [OPTIONAL] 是否已撤销
+        :param bool closed: [OPTIONAL] 是否已关闭
+        :param bool expired: [OPTIONAL] 是否已过期
+        :return: V1ChargeListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['app_id', 'limit', 'starting_after', 'ending_before', 'merchant_trade_id', 'created_lt', 'created_lte', 'created_gt', 'created_gte', 'channel', 'paid', 'refunded', 'reversed', 'closed', 'expired']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method charge_service_query_charge_list2" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'starting_after' in params:
+            query_params.append(('starting_after', params['starting_after']))  # noqa: E501
+        if 'ending_before' in params:
+            query_params.append(('ending_before', params['ending_before']))  # noqa: E501
+        if 'merchant_trade_id' in params:
+            query_params.append(('merchant_trade_id', params['merchant_trade_id']))  # noqa: E501
+        if 'created_lt' in params:
+            query_params.append(('created.lt', params['created_lt']))  # noqa: E501
+        if 'created_lte' in params:
+            query_params.append(('created.lte', params['created_lte']))  # noqa: E501
+        if 'created_gt' in params:
+            query_params.append(('created.gt', params['created_gt']))  # noqa: E501
+        if 'created_gte' in params:
+            query_params.append(('created.gte', params['created_gte']))  # noqa: E501
+        if 'channel' in params:
+            query_params.append(('channel', params['channel']))  # noqa: E501
+        if 'paid' in params:
+            query_params.append(('paid', params['paid']))  # noqa: E501
+        if 'refunded' in params:
+            query_params.append(('refunded', params['refunded']))  # noqa: E501
+        if 'reversed' in params:
+            query_params.append(('reversed', params['reversed']))  # noqa: E501
+        if 'closed' in params:
+            query_params.append(('closed', params['closed']))  # noqa: E501
+        if 'expired' in params:
+            query_params.append(('expired', params['expired']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/charges', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1ChargeListResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def charge_service_reverse_charge(self, charge_id, **kwargs):  # noqa: E501
+        """撤销 Charge 对象  # noqa: E501
+
+        针对已经创建的 Charge，你可以调用撤销接口进行交易的关闭。接口支持对于未成功付款的订单进行撤销，则关闭交易。调用此接口后用户后期不能支付成功。  注：撤销订单在不同收单机构会有不同的行为。对于成功付款的订单请使用 退款 接口进行退款处理。只有针对未支付的订单，我们建议你调用撤销接口。  - 微信支付：如果此订单用户支付失败，微信支付系统会将此订单关闭；如果用户支付成功，微信支付系统会将此订单资金退还给用户。(7天以内的交易单可调用撤销) - 支付宝：如果此订单用户支付失败，支付宝系统会将此订单关闭；如果用户支付成功，支付宝系统会将此订单资金退还给用户。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_reverse_charge(charge_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str charge_id: Charge 对象 id (required)
+        :param str app_id: [REQUIRED] 应用 id
+        :return: V1ChargeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.charge_service_reverse_charge_with_http_info(charge_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.charge_service_reverse_charge_with_http_info(charge_id, **kwargs)  # noqa: E501
+            return data
+
+    def charge_service_reverse_charge_with_http_info(self, charge_id, **kwargs):  # noqa: E501
+        """撤销 Charge 对象  # noqa: E501
+
+        针对已经创建的 Charge，你可以调用撤销接口进行交易的关闭。接口支持对于未成功付款的订单进行撤销，则关闭交易。调用此接口后用户后期不能支付成功。  注：撤销订单在不同收单机构会有不同的行为。对于成功付款的订单请使用 退款 接口进行退款处理。只有针对未支付的订单，我们建议你调用撤销接口。  - 微信支付：如果此订单用户支付失败，微信支付系统会将此订单关闭；如果用户支付成功，微信支付系统会将此订单资金退还给用户。(7天以内的交易单可调用撤销) - 支付宝：如果此订单用户支付失败，支付宝系统会将此订单关闭；如果用户支付成功，支付宝系统会将此订单资金退还给用户。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_reverse_charge_with_http_info(charge_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str charge_id: Charge 对象 id (required)
+        :param str app_id: [REQUIRED] 应用 id
+        :return: V1ChargeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['charge_id', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method charge_service_reverse_charge" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'charge_id' is set
+        if self.api_client.client_side_validation and ('charge_id' not in params or
+                                                       params['charge_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `charge_id` when calling `charge_service_reverse_charge`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'charge_id' in params:
+            path_params['charge_id'] = params['charge_id']  # noqa: E501
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/transaction/v1/charges/{charge_id}/reverse', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1ChargeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def charge_service_reverse_charge2(self, charge_id, **kwargs):  # noqa: E501
+        """撤销 Charge 对象  # noqa: E501
+
+        针对已经创建的 Charge，你可以调用撤销接口进行交易的关闭。接口支持对于未成功付款的订单进行撤销，则关闭交易。调用此接口后用户后期不能支付成功。  注：撤销订单在不同收单机构会有不同的行为。对于成功付款的订单请使用 退款 接口进行退款处理。只有针对未支付的订单，我们建议你调用撤销接口。  - 微信支付：如果此订单用户支付失败，微信支付系统会将此订单关闭；如果用户支付成功，微信支付系统会将此订单资金退还给用户。(7天以内的交易单可调用撤销) - 支付宝：如果此订单用户支付失败，支付宝系统会将此订单关闭；如果用户支付成功，支付宝系统会将此订单资金退还给用户。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_reverse_charge2(charge_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str charge_id: Charge 对象 id (required)
+        :param str app_id: [REQUIRED] 应用 id
+        :return: V1ChargeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.charge_service_reverse_charge2_with_http_info(charge_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.charge_service_reverse_charge2_with_http_info(charge_id, **kwargs)  # noqa: E501
+            return data
+
+    def charge_service_reverse_charge2_with_http_info(self, charge_id, **kwargs):  # noqa: E501
+        """撤销 Charge 对象  # noqa: E501
+
+        针对已经创建的 Charge，你可以调用撤销接口进行交易的关闭。接口支持对于未成功付款的订单进行撤销，则关闭交易。调用此接口后用户后期不能支付成功。  注：撤销订单在不同收单机构会有不同的行为。对于成功付款的订单请使用 退款 接口进行退款处理。只有针对未支付的订单，我们建议你调用撤销接口。  - 微信支付：如果此订单用户支付失败，微信支付系统会将此订单关闭；如果用户支付成功，微信支付系统会将此订单资金退还给用户。(7天以内的交易单可调用撤销) - 支付宝：如果此订单用户支付失败，支付宝系统会将此订单关闭；如果用户支付成功，支付宝系统会将此订单资金退还给用户。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.charge_service_reverse_charge2_with_http_info(charge_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str charge_id: Charge 对象 id (required)
+        :param str app_id: [REQUIRED] 应用 id
+        :return: V1ChargeResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['charge_id', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method charge_service_reverse_charge2" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'charge_id' is set
+        if self.api_client.client_side_validation and ('charge_id' not in params or
+                                                       params['charge_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `charge_id` when calling `charge_service_reverse_charge2`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'charge_id' in params:
+            path_params['charge_id'] = params['charge_id']  # noqa: E501
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/charges/{charge_id}/reverse', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1ChargeResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def refund_service_query_refund(self, charge_id, refund_id, **kwargs):  # noqa: E501
         """查询 Refund 对象  # noqa: E501
 
         可以通过 charge 对象的查询接口查询某一个 charge 对象的退款列表，也可以通过 refund 对象的 id 查询一个已创建的 refund 对象。可以在 Webhooks 通知之前，通过查询接口确认退款状态。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_query_refund(charge_id, refund_id, async_req=True)
+        >>> thread = api.refund_service_query_refund(charge_id, refund_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -405,18 +964,18 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.trade_service_query_refund_with_http_info(charge_id, refund_id, **kwargs)  # noqa: E501
+            return self.refund_service_query_refund_with_http_info(charge_id, refund_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.trade_service_query_refund_with_http_info(charge_id, refund_id, **kwargs)  # noqa: E501
+            (data) = self.refund_service_query_refund_with_http_info(charge_id, refund_id, **kwargs)  # noqa: E501
             return data
 
-    def trade_service_query_refund_with_http_info(self, charge_id, refund_id, **kwargs):  # noqa: E501
+    def refund_service_query_refund_with_http_info(self, charge_id, refund_id, **kwargs):  # noqa: E501
         """查询 Refund 对象  # noqa: E501
 
         可以通过 charge 对象的查询接口查询某一个 charge 对象的退款列表，也可以通过 refund 对象的 id 查询一个已创建的 refund 对象。可以在 Webhooks 通知之前，通过查询接口确认退款状态。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_query_refund_with_http_info(charge_id, refund_id, async_req=True)
+        >>> thread = api.refund_service_query_refund_with_http_info(charge_id, refund_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -439,18 +998,18 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method trade_service_query_refund" % key
+                    " to method refund_service_query_refund" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'charge_id' is set
         if self.api_client.client_side_validation and ('charge_id' not in params or
                                                        params['charge_id'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `charge_id` when calling `trade_service_query_refund`")  # noqa: E501
+            raise ValueError("Missing the required parameter `charge_id` when calling `refund_service_query_refund`")  # noqa: E501
         # verify the required parameter 'refund_id' is set
         if self.api_client.client_side_validation and ('refund_id' not in params or
                                                        params['refund_id'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `refund_id` when calling `trade_service_query_refund`")  # noqa: E501
+            raise ValueError("Missing the required parameter `refund_id` when calling `refund_service_query_refund`")  # noqa: E501
 
         collection_formats = {}
 
@@ -497,13 +1056,120 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def trade_service_query_refund_list(self, charge_id, **kwargs):  # noqa: E501
+    def refund_service_query_refund2(self, refund_id, **kwargs):  # noqa: E501
+        """查询 Refund 对象  # noqa: E501
+
+        可以通过 charge 对象的查询接口查询某一个 charge 对象的退款列表，也可以通过 refund 对象的 id 查询一个已创建的 refund 对象。可以在 Webhooks 通知之前，通过查询接口确认退款状态。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.refund_service_query_refund2(refund_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str refund_id: [REQUIRED] Refund 对象 id (required)
+        :param str charge_id: [REQUIRED] 支付 Charge Id
+        :param str app_id: [REQUIRED] 应用 id
+        :return: V1RefundResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.refund_service_query_refund2_with_http_info(refund_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.refund_service_query_refund2_with_http_info(refund_id, **kwargs)  # noqa: E501
+            return data
+
+    def refund_service_query_refund2_with_http_info(self, refund_id, **kwargs):  # noqa: E501
+        """查询 Refund 对象  # noqa: E501
+
+        可以通过 charge 对象的查询接口查询某一个 charge 对象的退款列表，也可以通过 refund 对象的 id 查询一个已创建的 refund 对象。可以在 Webhooks 通知之前，通过查询接口确认退款状态。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.refund_service_query_refund2_with_http_info(refund_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str refund_id: [REQUIRED] Refund 对象 id (required)
+        :param str charge_id: [REQUIRED] 支付 Charge Id
+        :param str app_id: [REQUIRED] 应用 id
+        :return: V1RefundResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['refund_id', 'charge_id', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method refund_service_query_refund2" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'refund_id' is set
+        if self.api_client.client_side_validation and ('refund_id' not in params or
+                                                       params['refund_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `refund_id` when calling `refund_service_query_refund2`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'refund_id' in params:
+            path_params['refund_id'] = params['refund_id']  # noqa: E501
+
+        query_params = []
+        if 'charge_id' in params:
+            query_params.append(('charge_id', params['charge_id']))  # noqa: E501
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/refunds/{refund_id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1RefundResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def refund_service_query_refund_list(self, charge_id, **kwargs):  # noqa: E501
         """查询 Refund 对象列表  # noqa: E501
 
         返回之前创建 charge 对象的一个 refund 对象列表。列表是按创建时间进行排序，总是将最新的 refund 对象显示在最前。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_query_refund_list(charge_id, async_req=True)
+        >>> thread = api.refund_service_query_refund_list(charge_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -518,18 +1184,18 @@ class DefaultApi(object):
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.trade_service_query_refund_list_with_http_info(charge_id, **kwargs)  # noqa: E501
+            return self.refund_service_query_refund_list_with_http_info(charge_id, **kwargs)  # noqa: E501
         else:
-            (data) = self.trade_service_query_refund_list_with_http_info(charge_id, **kwargs)  # noqa: E501
+            (data) = self.refund_service_query_refund_list_with_http_info(charge_id, **kwargs)  # noqa: E501
             return data
 
-    def trade_service_query_refund_list_with_http_info(self, charge_id, **kwargs):  # noqa: E501
+    def refund_service_query_refund_list_with_http_info(self, charge_id, **kwargs):  # noqa: E501
         """查询 Refund 对象列表  # noqa: E501
 
         返回之前创建 charge 对象的一个 refund 对象列表。列表是按创建时间进行排序，总是将最新的 refund 对象显示在最前。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_query_refund_list_with_http_info(charge_id, async_req=True)
+        >>> thread = api.refund_service_query_refund_list_with_http_info(charge_id, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
@@ -554,14 +1220,14 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method trade_service_query_refund_list" % key
+                    " to method refund_service_query_refund_list" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'charge_id' is set
         if self.api_client.client_side_validation and ('charge_id' not in params or
                                                        params['charge_id'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `charge_id` when calling `trade_service_query_refund_list`")  # noqa: E501
+            raise ValueError("Missing the required parameter `charge_id` when calling `refund_service_query_refund_list`")  # noqa: E501
 
         collection_formats = {}
 
@@ -612,39 +1278,150 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def trade_service_refunds(self, body, **kwargs):  # noqa: E501
+    def refund_service_query_refund_list2(self, **kwargs):  # noqa: E501
+        """查询 Refund 对象列表  # noqa: E501
+
+        返回之前创建 charge 对象的一个 refund 对象列表。列表是按创建时间进行排序，总是将最新的 refund 对象显示在最前。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.refund_service_query_refund_list2(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str charge_id: [REQUIRED] 支付 Charge Id
+        :param str app_id: [REQUIRED] 应用 id
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :return: V1RefundListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.refund_service_query_refund_list2_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.refund_service_query_refund_list2_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def refund_service_query_refund_list2_with_http_info(self, **kwargs):  # noqa: E501
+        """查询 Refund 对象列表  # noqa: E501
+
+        返回之前创建 charge 对象的一个 refund 对象列表。列表是按创建时间进行排序，总是将最新的 refund 对象显示在最前。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.refund_service_query_refund_list2_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str charge_id: [REQUIRED] 支付 Charge Id
+        :param str app_id: [REQUIRED] 应用 id
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :return: V1RefundListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['charge_id', 'app_id', 'limit', 'starting_after', 'ending_before']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method refund_service_query_refund_list2" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'charge_id' in params:
+            query_params.append(('charge_id', params['charge_id']))  # noqa: E501
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'starting_after' in params:
+            query_params.append(('starting_after', params['starting_after']))  # noqa: E501
+        if 'ending_before' in params:
+            query_params.append(('ending_before', params['ending_before']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/refunds', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1RefundListResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def refund_service_refunds(self, body, **kwargs):  # noqa: E501
         """创建 Refund 对象  # noqa: E501
 
         通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_refunds(body, async_req=True)
+        >>> thread = api.refund_service_refunds(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateRefundRequest body: (required)
+        :param V1CreateRefundRequest body: 通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。 (required)
         :return: V1RefundResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.trade_service_refunds_with_http_info(body, **kwargs)  # noqa: E501
+            return self.refund_service_refunds_with_http_info(body, **kwargs)  # noqa: E501
         else:
-            (data) = self.trade_service_refunds_with_http_info(body, **kwargs)  # noqa: E501
+            (data) = self.refund_service_refunds_with_http_info(body, **kwargs)  # noqa: E501
             return data
 
-    def trade_service_refunds_with_http_info(self, body, **kwargs):  # noqa: E501
+    def refund_service_refunds_with_http_info(self, body, **kwargs):  # noqa: E501
         """创建 Refund 对象  # noqa: E501
 
         通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_refunds_with_http_info(body, async_req=True)
+        >>> thread = api.refund_service_refunds_with_http_info(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateRefundRequest body: (required)
+        :param V1CreateRefundRequest body: 通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。 (required)
         :return: V1RefundResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -661,14 +1438,14 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method trade_service_refunds" % key
+                    " to method refund_service_refunds" % key
                 )
             params[key] = val
         del params['kwargs']
         # verify the required parameter 'body' is set
         if self.api_client.client_side_validation and ('body' not in params or
                                                        params['body'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `body` when calling `trade_service_refunds`")  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `refund_service_refunds`")  # noqa: E501
 
         collection_formats = {}
 
@@ -711,47 +1488,45 @@ class DefaultApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def trade_service_reverse_charge(self, charge_id, **kwargs):  # noqa: E501
-        """撤销 Charge 对象  # noqa: E501
+    def refund_service_refunds2(self, body, **kwargs):  # noqa: E501
+        """创建 Refund 对象  # noqa: E501
 
-        针对已经创建的 Charge，你可以调用撤销接口进行交易的关闭。接口支持对于未成功付款的订单进行撤销，则关闭交易。调用此接口后用户后期不能支付成功。  注：撤销订单在不同收单机构会有不同的行为。对于成功付款的订单请使用 退款 接口进行退款处理。只有针对未支付的订单，我们建议你调用撤销接口。  - 微信支付：如果此订单用户支付失败，微信支付系统会将此订单关闭；如果用户支付成功，微信支付系统会将此订单资金退还给用户。(7天以内的交易单可调用撤销) - 支付宝：如果此订单用户支付失败，支付宝系统会将此订单关闭；如果用户支付成功，支付宝系统会将此订单资金退还给用户。  # noqa: E501
+        通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_reverse_charge(charge_id, async_req=True)
+        >>> thread = api.refund_service_refunds2(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str charge_id: Charge 对象 id (required)
-        :param str app_id: [REQUIRED] 应用 id
-        :return: V1ChargeResponse
+        :param V1CreateRefundRequest body: 通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。 (required)
+        :return: V1RefundResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.trade_service_reverse_charge_with_http_info(charge_id, **kwargs)  # noqa: E501
+            return self.refund_service_refunds2_with_http_info(body, **kwargs)  # noqa: E501
         else:
-            (data) = self.trade_service_reverse_charge_with_http_info(charge_id, **kwargs)  # noqa: E501
+            (data) = self.refund_service_refunds2_with_http_info(body, **kwargs)  # noqa: E501
             return data
 
-    def trade_service_reverse_charge_with_http_info(self, charge_id, **kwargs):  # noqa: E501
-        """撤销 Charge 对象  # noqa: E501
+    def refund_service_refunds2_with_http_info(self, body, **kwargs):  # noqa: E501
+        """创建 Refund 对象  # noqa: E501
 
-        针对已经创建的 Charge，你可以调用撤销接口进行交易的关闭。接口支持对于未成功付款的订单进行撤销，则关闭交易。调用此接口后用户后期不能支付成功。  注：撤销订单在不同收单机构会有不同的行为。对于成功付款的订单请使用 退款 接口进行退款处理。只有针对未支付的订单，我们建议你调用撤销接口。  - 微信支付：如果此订单用户支付失败，微信支付系统会将此订单关闭；如果用户支付成功，微信支付系统会将此订单资金退还给用户。(7天以内的交易单可调用撤销) - 支付宝：如果此订单用户支付失败，支付宝系统会将此订单关闭；如果用户支付成功，支付宝系统会将此订单资金退还给用户。  # noqa: E501
+        通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.trade_service_reverse_charge_with_http_info(charge_id, async_req=True)
+        >>> thread = api.refund_service_refunds2_with_http_info(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str charge_id: Charge 对象 id (required)
-        :param str app_id: [REQUIRED] 应用 id
-        :return: V1ChargeResponse
+        :param V1CreateRefundRequest body: 通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。 (required)
+        :return: V1RefundResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['charge_id', 'app_id']  # noqa: E501
+        all_params = ['body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -762,24 +1537,20 @@ class DefaultApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method trade_service_reverse_charge" % key
+                    " to method refund_service_refunds2" % key
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'charge_id' is set
-        if self.api_client.client_side_validation and ('charge_id' not in params or
-                                                       params['charge_id'] is None):  # noqa: E501
-            raise ValueError("Missing the required parameter `charge_id` when calling `trade_service_reverse_charge`")  # noqa: E501
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `refund_service_refunds2`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
-        if 'charge_id' in params:
-            path_params['charge_id'] = params['charge_id']  # noqa: E501
 
         query_params = []
-        if 'app_id' in params:
-            query_params.append(('app_id', params['app_id']))  # noqa: E501
 
         header_params = {}
 
@@ -787,6 +1558,8 @@ class DefaultApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'body' in params:
+            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -799,14 +1572,14 @@ class DefaultApi(object):
         auth_settings = ['ApiKeyAuth']  # noqa: E501
 
         return self.api_client.call_api(
-            '/transaction/v1/charges/{charge_id}/reverse', 'POST',
+            '/v1/refunds', 'POST',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='V1ChargeResponse',  # noqa: E501
+            response_type='V1RefundResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

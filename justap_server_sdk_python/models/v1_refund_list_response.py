@@ -46,7 +46,7 @@ class V1RefundListResponse(object):
         'total': 'total'
     }
 
-    def __init__(self, data=None, has_more=False, object='Refund', total=0, _configuration=None):  # noqa: E501
+    def __init__(self, data=None, has_more=False, object='RefundList', total=0, _configuration=None):  # noqa: E501
         """V1RefundListResponse - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -60,9 +60,12 @@ class V1RefundListResponse(object):
 
         if data is not None:
             self.data = data
-        self.has_more = has_more
-        self.object = object
-        self.total = total
+        if has_more is not None:
+            self.has_more = has_more
+        if object is not None:
+            self.object = object
+        if total is not None:
+            self.total = total
 
     @property
     def data(self):
@@ -107,8 +110,6 @@ class V1RefundListResponse(object):
         :param has_more: The has_more of this V1RefundListResponse.  # noqa: E501
         :type: bool
         """
-        if self._configuration.client_side_validation and has_more is None:
-            raise ValueError("Invalid value for `has_more`, must not be `None`")  # noqa: E501
 
         self._has_more = has_more
 
@@ -132,8 +133,6 @@ class V1RefundListResponse(object):
         :param object: The object of this V1RefundListResponse.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and object is None:
-            raise ValueError("Invalid value for `object`, must not be `None`")  # noqa: E501
 
         self._object = object
 
@@ -157,8 +156,6 @@ class V1RefundListResponse(object):
         :param total: The total of this V1RefundListResponse.  # noqa: E501
         :type: int
         """
-        if self._configuration.client_side_validation and total is None:
-            raise ValueError("Invalid value for `total`, must not be `None`")  # noqa: E501
 
         self._total = total
 

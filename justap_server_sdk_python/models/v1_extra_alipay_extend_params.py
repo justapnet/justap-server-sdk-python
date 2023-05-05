@@ -64,12 +64,18 @@ class V1ExtraAlipayExtendParams(object):
         self._sys_service_provider_id = None
         self.discriminator = None
 
-        self.card_type = card_type
-        self.hb_fq_num = hb_fq_num
-        self.hb_fq_seller_percent = hb_fq_seller_percent
-        self.industry_reflux_info = industry_reflux_info
-        self.specified_seller_name = specified_seller_name
-        self.sys_service_provider_id = sys_service_provider_id
+        if card_type is not None:
+            self.card_type = card_type
+        if hb_fq_num is not None:
+            self.hb_fq_num = hb_fq_num
+        if hb_fq_seller_percent is not None:
+            self.hb_fq_seller_percent = hb_fq_seller_percent
+        if industry_reflux_info is not None:
+            self.industry_reflux_info = industry_reflux_info
+        if specified_seller_name is not None:
+            self.specified_seller_name = specified_seller_name
+        if sys_service_provider_id is not None:
+            self.sys_service_provider_id = sys_service_provider_id
 
     @property
     def card_type(self):
@@ -91,8 +97,6 @@ class V1ExtraAlipayExtendParams(object):
         :param card_type: The card_type of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and card_type is None:
-            raise ValueError("Invalid value for `card_type`, must not be `None`")  # noqa: E501
 
         self._card_type = card_type
 
@@ -116,8 +120,6 @@ class V1ExtraAlipayExtendParams(object):
         :param hb_fq_num: The hb_fq_num of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and hb_fq_num is None:
-            raise ValueError("Invalid value for `hb_fq_num`, must not be `None`")  # noqa: E501
 
         self._hb_fq_num = hb_fq_num
 
@@ -141,8 +143,6 @@ class V1ExtraAlipayExtendParams(object):
         :param hb_fq_seller_percent: The hb_fq_seller_percent of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and hb_fq_seller_percent is None:
-            raise ValueError("Invalid value for `hb_fq_seller_percent`, must not be `None`")  # noqa: E501
 
         self._hb_fq_seller_percent = hb_fq_seller_percent
 
@@ -166,8 +166,6 @@ class V1ExtraAlipayExtendParams(object):
         :param industry_reflux_info: The industry_reflux_info of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and industry_reflux_info is None:
-            raise ValueError("Invalid value for `industry_reflux_info`, must not be `None`")  # noqa: E501
 
         self._industry_reflux_info = industry_reflux_info
 
@@ -191,8 +189,6 @@ class V1ExtraAlipayExtendParams(object):
         :param specified_seller_name: The specified_seller_name of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and specified_seller_name is None:
-            raise ValueError("Invalid value for `specified_seller_name`, must not be `None`")  # noqa: E501
 
         self._specified_seller_name = specified_seller_name
 
@@ -216,8 +212,6 @@ class V1ExtraAlipayExtendParams(object):
         :param sys_service_provider_id: The sys_service_provider_id of this V1ExtraAlipayExtendParams.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and sys_service_provider_id is None:
-            raise ValueError("Invalid value for `sys_service_provider_id`, must not be `None`")  # noqa: E501
 
         self._sys_service_provider_id = sys_service_provider_id
 

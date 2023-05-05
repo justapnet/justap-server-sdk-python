@@ -40,23 +40,27 @@ class V1Charge(object):
         'amount_settle': 'float',
         'app_id': 'str',
         'body': 'str',
-        'channel': 'V1Channel',
+        'channel': 'Tradev1Channel',
         'charge_id': 'str',
         'client_ip': 'str',
         'closed': 'bool',
         'closed_at': 'datetime',
+        'closed_ts': 'str',
         'created_at': 'datetime',
         'credential': 'ProtobufAny',
         'currency': 'str',
         'description': 'str',
+        'expired_ts': 'str',
         'extra': 'V1ChargeExtra',
         'failure_code': 'str',
         'failure_msg': 'str',
         'live_mode': 'bool',
         'merchant_trade_id': 'str',
         'metadata': 'dict(str, str)',
+        'object': 'str',
         'paid': 'bool',
         'paid_at': 'datetime',
+        'paid_ts': 'str',
         'refunded': 'bool',
         'refunds': 'list[V1Refund]',
         'reversed': 'bool',
@@ -80,18 +84,22 @@ class V1Charge(object):
         'client_ip': 'client_ip',
         'closed': 'closed',
         'closed_at': 'closed_at',
+        'closed_ts': 'closed_ts',
         'created_at': 'created_at',
         'credential': 'credential',
         'currency': 'currency',
         'description': 'description',
+        'expired_ts': 'expired_ts',
         'extra': 'extra',
         'failure_code': 'failure_code',
         'failure_msg': 'failure_msg',
         'live_mode': 'live_mode',
         'merchant_trade_id': 'merchant_trade_id',
         'metadata': 'metadata',
+        'object': 'object',
         'paid': 'paid',
         'paid_at': 'paid_at',
+        'paid_ts': 'paid_ts',
         'refunded': 'refunded',
         'refunds': 'refunds',
         'reversed': 'reversed',
@@ -102,7 +110,7 @@ class V1Charge(object):
         'ttl': 'ttl'
     }
 
-    def __init__(self, amount=0.0, amount_fee=None, amount_refund=None, amount_royalty=None, amount_settle=None, app_id=None, body=None, channel=None, charge_id=None, client_ip=None, closed=False, closed_at=None, created_at=None, credential=None, currency=None, description=None, extra=None, failure_code=None, failure_msg=None, live_mode=False, merchant_trade_id=None, metadata=None, paid=False, paid_at=None, refunded=False, refunds=None, reversed=False, reversed_at=None, subject=None, time_expire=None, transaction_no=None, ttl=0, _configuration=None):  # noqa: E501
+    def __init__(self, amount=0.0, amount_fee=None, amount_refund=None, amount_royalty=None, amount_settle=None, app_id=None, body=None, channel=None, charge_id=None, client_ip=None, closed=False, closed_at=None, closed_ts=None, created_at=None, credential=None, currency=None, description=None, expired_ts=None, extra=None, failure_code=None, failure_msg=None, live_mode=False, merchant_trade_id=None, metadata=None, object='Charge', paid=False, paid_at=None, paid_ts=None, refunded=False, refunds=None, reversed=False, reversed_at=None, subject=None, time_expire=None, transaction_no=None, ttl=0, _configuration=None):  # noqa: E501
         """V1Charge - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -120,18 +128,22 @@ class V1Charge(object):
         self._client_ip = None
         self._closed = None
         self._closed_at = None
+        self._closed_ts = None
         self._created_at = None
         self._credential = None
         self._currency = None
         self._description = None
+        self._expired_ts = None
         self._extra = None
         self._failure_code = None
         self._failure_msg = None
         self._live_mode = None
         self._merchant_trade_id = None
         self._metadata = None
+        self._object = None
         self._paid = None
         self._paid_at = None
+        self._paid_ts = None
         self._refunded = None
         self._refunds = None
         self._reversed = None
@@ -142,47 +154,78 @@ class V1Charge(object):
         self._ttl = None
         self.discriminator = None
 
-        self.amount = amount
-        self.amount_fee = amount_fee
-        self.amount_refund = amount_refund
-        self.amount_royalty = amount_royalty
-        self.amount_settle = amount_settle
-        self.app_id = app_id
-        self.body = body
-        self.channel = channel
-        self.charge_id = charge_id
-        self.client_ip = client_ip
-        self.closed = closed
+        if amount is not None:
+            self.amount = amount
+        if amount_fee is not None:
+            self.amount_fee = amount_fee
+        if amount_refund is not None:
+            self.amount_refund = amount_refund
+        if amount_royalty is not None:
+            self.amount_royalty = amount_royalty
+        if amount_settle is not None:
+            self.amount_settle = amount_settle
+        if app_id is not None:
+            self.app_id = app_id
+        if body is not None:
+            self.body = body
+        if channel is not None:
+            self.channel = channel
+        if charge_id is not None:
+            self.charge_id = charge_id
+        if client_ip is not None:
+            self.client_ip = client_ip
+        if closed is not None:
+            self.closed = closed
         if closed_at is not None:
             self.closed_at = closed_at
+        if closed_ts is not None:
+            self.closed_ts = closed_ts
         if created_at is not None:
             self.created_at = created_at
         if credential is not None:
             self.credential = credential
-        self.currency = currency
-        self.description = description
+        if currency is not None:
+            self.currency = currency
+        if description is not None:
+            self.description = description
+        if expired_ts is not None:
+            self.expired_ts = expired_ts
         if extra is not None:
             self.extra = extra
-        self.failure_code = failure_code
-        self.failure_msg = failure_msg
-        self.live_mode = live_mode
-        self.merchant_trade_id = merchant_trade_id
+        if failure_code is not None:
+            self.failure_code = failure_code
+        if failure_msg is not None:
+            self.failure_msg = failure_msg
+        if live_mode is not None:
+            self.live_mode = live_mode
+        if merchant_trade_id is not None:
+            self.merchant_trade_id = merchant_trade_id
         if metadata is not None:
             self.metadata = metadata
-        self.paid = paid
+        if object is not None:
+            self.object = object
+        if paid is not None:
+            self.paid = paid
         if paid_at is not None:
             self.paid_at = paid_at
-        self.refunded = refunded
+        if paid_ts is not None:
+            self.paid_ts = paid_ts
+        if refunded is not None:
+            self.refunded = refunded
         if refunds is not None:
             self.refunds = refunds
-        self.reversed = reversed
+        if reversed is not None:
+            self.reversed = reversed
         if reversed_at is not None:
             self.reversed_at = reversed_at
-        self.subject = subject
+        if subject is not None:
+            self.subject = subject
         if time_expire is not None:
             self.time_expire = time_expire
-        self.transaction_no = transaction_no
-        self.ttl = ttl
+        if transaction_no is not None:
+            self.transaction_no = transaction_no
+        if ttl is not None:
+            self.ttl = ttl
 
     @property
     def amount(self):
@@ -204,8 +247,6 @@ class V1Charge(object):
         :param amount: The amount of this V1Charge.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and amount is None:
-            raise ValueError("Invalid value for `amount`, must not be `None`")  # noqa: E501
 
         self._amount = amount
 
@@ -229,8 +270,6 @@ class V1Charge(object):
         :param amount_fee: The amount_fee of this V1Charge.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and amount_fee is None:
-            raise ValueError("Invalid value for `amount_fee`, must not be `None`")  # noqa: E501
 
         self._amount_fee = amount_fee
 
@@ -254,8 +293,6 @@ class V1Charge(object):
         :param amount_refund: The amount_refund of this V1Charge.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and amount_refund is None:
-            raise ValueError("Invalid value for `amount_refund`, must not be `None`")  # noqa: E501
 
         self._amount_refund = amount_refund
 
@@ -279,8 +316,6 @@ class V1Charge(object):
         :param amount_royalty: The amount_royalty of this V1Charge.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and amount_royalty is None:
-            raise ValueError("Invalid value for `amount_royalty`, must not be `None`")  # noqa: E501
 
         self._amount_royalty = amount_royalty
 
@@ -304,8 +339,6 @@ class V1Charge(object):
         :param amount_settle: The amount_settle of this V1Charge.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and amount_settle is None:
-            raise ValueError("Invalid value for `amount_settle`, must not be `None`")  # noqa: E501
 
         self._amount_settle = amount_settle
 
@@ -329,8 +362,6 @@ class V1Charge(object):
         :param app_id: The app_id of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and app_id is None:
-            raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
 
         self._app_id = app_id
 
@@ -354,8 +385,6 @@ class V1Charge(object):
         :param body: The body of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and body is None:
-            raise ValueError("Invalid value for `body`, must not be `None`")  # noqa: E501
 
         self._body = body
 
@@ -366,7 +395,7 @@ class V1Charge(object):
         支付渠道  # noqa: E501
 
         :return: The channel of this V1Charge.  # noqa: E501
-        :rtype: V1Channel
+        :rtype: Tradev1Channel
         """
         return self._channel
 
@@ -377,10 +406,8 @@ class V1Charge(object):
         支付渠道  # noqa: E501
 
         :param channel: The channel of this V1Charge.  # noqa: E501
-        :type: V1Channel
+        :type: Tradev1Channel
         """
-        if self._configuration.client_side_validation and channel is None:
-            raise ValueError("Invalid value for `channel`, must not be `None`")  # noqa: E501
 
         self._channel = channel
 
@@ -404,8 +431,6 @@ class V1Charge(object):
         :param charge_id: The charge_id of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and charge_id is None:
-            raise ValueError("Invalid value for `charge_id`, must not be `None`")  # noqa: E501
 
         self._charge_id = charge_id
 
@@ -429,8 +454,6 @@ class V1Charge(object):
         :param client_ip: The client_ip of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and client_ip is None:
-            raise ValueError("Invalid value for `client_ip`, must not be `None`")  # noqa: E501
 
         self._client_ip = client_ip
 
@@ -454,8 +477,6 @@ class V1Charge(object):
         :param closed: The closed of this V1Charge.  # noqa: E501
         :type: bool
         """
-        if self._configuration.client_side_validation and closed is None:
-            raise ValueError("Invalid value for `closed`, must not be `None`")  # noqa: E501
 
         self._closed = closed
 
@@ -481,6 +502,29 @@ class V1Charge(object):
         """
 
         self._closed_at = closed_at
+
+    @property
+    def closed_ts(self):
+        """Gets the closed_ts of this V1Charge.  # noqa: E501
+
+        关闭时间戳  # noqa: E501
+
+        :return: The closed_ts of this V1Charge.  # noqa: E501
+        :rtype: str
+        """
+        return self._closed_ts
+
+    @closed_ts.setter
+    def closed_ts(self, closed_ts):
+        """Sets the closed_ts of this V1Charge.
+
+        关闭时间戳  # noqa: E501
+
+        :param closed_ts: The closed_ts of this V1Charge.  # noqa: E501
+        :type: str
+        """
+
+        self._closed_ts = closed_ts
 
     @property
     def created_at(self):
@@ -548,8 +592,6 @@ class V1Charge(object):
         :param currency: The currency of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and currency is None:
-            raise ValueError("Invalid value for `currency`, must not be `None`")  # noqa: E501
 
         self._currency = currency
 
@@ -573,10 +615,31 @@ class V1Charge(object):
         :param description: The description of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and description is None:
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
 
         self._description = description
+
+    @property
+    def expired_ts(self):
+        """Gets the expired_ts of this V1Charge.  # noqa: E501
+
+        订单过期时间戳  # noqa: E501
+
+        :return: The expired_ts of this V1Charge.  # noqa: E501
+        :rtype: str
+        """
+        return self._expired_ts
+
+    @expired_ts.setter
+    def expired_ts(self, expired_ts):
+        """Sets the expired_ts of this V1Charge.
+
+        订单过期时间戳  # noqa: E501
+
+        :param expired_ts: The expired_ts of this V1Charge.  # noqa: E501
+        :type: str
+        """
+
+        self._expired_ts = expired_ts
 
     @property
     def extra(self):
@@ -621,8 +684,6 @@ class V1Charge(object):
         :param failure_code: The failure_code of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and failure_code is None:
-            raise ValueError("Invalid value for `failure_code`, must not be `None`")  # noqa: E501
 
         self._failure_code = failure_code
 
@@ -646,8 +707,6 @@ class V1Charge(object):
         :param failure_msg: The failure_msg of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and failure_msg is None:
-            raise ValueError("Invalid value for `failure_msg`, must not be `None`")  # noqa: E501
 
         self._failure_msg = failure_msg
 
@@ -671,8 +730,6 @@ class V1Charge(object):
         :param live_mode: The live_mode of this V1Charge.  # noqa: E501
         :type: bool
         """
-        if self._configuration.client_side_validation and live_mode is None:
-            raise ValueError("Invalid value for `live_mode`, must not be `None`")  # noqa: E501
 
         self._live_mode = live_mode
 
@@ -696,8 +753,6 @@ class V1Charge(object):
         :param merchant_trade_id: The merchant_trade_id of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and merchant_trade_id is None:
-            raise ValueError("Invalid value for `merchant_trade_id`, must not be `None`")  # noqa: E501
 
         self._merchant_trade_id = merchant_trade_id
 
@@ -725,6 +780,29 @@ class V1Charge(object):
         self._metadata = metadata
 
     @property
+    def object(self):
+        """Gets the object of this V1Charge.  # noqa: E501
+
+        对象类型  # noqa: E501
+
+        :return: The object of this V1Charge.  # noqa: E501
+        :rtype: str
+        """
+        return self._object
+
+    @object.setter
+    def object(self, object):
+        """Sets the object of this V1Charge.
+
+        对象类型  # noqa: E501
+
+        :param object: The object of this V1Charge.  # noqa: E501
+        :type: str
+        """
+
+        self._object = object
+
+    @property
     def paid(self):
         """Gets the paid of this V1Charge.  # noqa: E501
 
@@ -744,8 +822,6 @@ class V1Charge(object):
         :param paid: The paid of this V1Charge.  # noqa: E501
         :type: bool
         """
-        if self._configuration.client_side_validation and paid is None:
-            raise ValueError("Invalid value for `paid`, must not be `None`")  # noqa: E501
 
         self._paid = paid
 
@@ -773,6 +849,29 @@ class V1Charge(object):
         self._paid_at = paid_at
 
     @property
+    def paid_ts(self):
+        """Gets the paid_ts of this V1Charge.  # noqa: E501
+
+        支付时间戳  # noqa: E501
+
+        :return: The paid_ts of this V1Charge.  # noqa: E501
+        :rtype: str
+        """
+        return self._paid_ts
+
+    @paid_ts.setter
+    def paid_ts(self, paid_ts):
+        """Sets the paid_ts of this V1Charge.
+
+        支付时间戳  # noqa: E501
+
+        :param paid_ts: The paid_ts of this V1Charge.  # noqa: E501
+        :type: str
+        """
+
+        self._paid_ts = paid_ts
+
+    @property
     def refunded(self):
         """Gets the refunded of this V1Charge.  # noqa: E501
 
@@ -792,8 +891,6 @@ class V1Charge(object):
         :param refunded: The refunded of this V1Charge.  # noqa: E501
         :type: bool
         """
-        if self._configuration.client_side_validation and refunded is None:
-            raise ValueError("Invalid value for `refunded`, must not be `None`")  # noqa: E501
 
         self._refunded = refunded
 
@@ -840,8 +937,6 @@ class V1Charge(object):
         :param reversed: The reversed of this V1Charge.  # noqa: E501
         :type: bool
         """
-        if self._configuration.client_side_validation and reversed is None:
-            raise ValueError("Invalid value for `reversed`, must not be `None`")  # noqa: E501
 
         self._reversed = reversed
 
@@ -888,8 +983,6 @@ class V1Charge(object):
         :param subject: The subject of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and subject is None:
-            raise ValueError("Invalid value for `subject`, must not be `None`")  # noqa: E501
 
         self._subject = subject
 
@@ -936,8 +1029,6 @@ class V1Charge(object):
         :param transaction_no: The transaction_no of this V1Charge.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and transaction_no is None:
-            raise ValueError("Invalid value for `transaction_no`, must not be `None`")  # noqa: E501
 
         self._transaction_no = transaction_no
 
@@ -961,8 +1052,6 @@ class V1Charge(object):
         :param ttl: The ttl of this V1Charge.  # noqa: E501
         :type: int
         """
-        if self._configuration.client_side_validation and ttl is None:
-            raise ValueError("Invalid value for `ttl`, must not be `None`")  # noqa: E501
 
         self._ttl = ttl
 

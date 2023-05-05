@@ -67,13 +67,20 @@ class V1ExtraAlipayExtUserInfo(object):
         self._need_check_info = None
         self.discriminator = None
 
-        self.cert_no = cert_no
-        self.cert_type = cert_type
-        self.fix_buyer = fix_buyer
-        self.min_age = min_age
-        self.mobile = mobile
-        self.name = name
-        self.need_check_info = need_check_info
+        if cert_no is not None:
+            self.cert_no = cert_no
+        if cert_type is not None:
+            self.cert_type = cert_type
+        if fix_buyer is not None:
+            self.fix_buyer = fix_buyer
+        if min_age is not None:
+            self.min_age = min_age
+        if mobile is not None:
+            self.mobile = mobile
+        if name is not None:
+            self.name = name
+        if need_check_info is not None:
+            self.need_check_info = need_check_info
 
     @property
     def cert_no(self):
@@ -95,8 +102,6 @@ class V1ExtraAlipayExtUserInfo(object):
         :param cert_no: The cert_no of this V1ExtraAlipayExtUserInfo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and cert_no is None:
-            raise ValueError("Invalid value for `cert_no`, must not be `None`")  # noqa: E501
 
         self._cert_no = cert_no
 
@@ -120,8 +125,6 @@ class V1ExtraAlipayExtUserInfo(object):
         :param cert_type: The cert_type of this V1ExtraAlipayExtUserInfo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and cert_type is None:
-            raise ValueError("Invalid value for `cert_type`, must not be `None`")  # noqa: E501
 
         self._cert_type = cert_type
 
@@ -145,8 +148,6 @@ class V1ExtraAlipayExtUserInfo(object):
         :param fix_buyer: The fix_buyer of this V1ExtraAlipayExtUserInfo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and fix_buyer is None:
-            raise ValueError("Invalid value for `fix_buyer`, must not be `None`")  # noqa: E501
 
         self._fix_buyer = fix_buyer
 
@@ -170,8 +171,6 @@ class V1ExtraAlipayExtUserInfo(object):
         :param min_age: The min_age of this V1ExtraAlipayExtUserInfo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and min_age is None:
-            raise ValueError("Invalid value for `min_age`, must not be `None`")  # noqa: E501
 
         self._min_age = min_age
 
@@ -195,8 +194,6 @@ class V1ExtraAlipayExtUserInfo(object):
         :param mobile: The mobile of this V1ExtraAlipayExtUserInfo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and mobile is None:
-            raise ValueError("Invalid value for `mobile`, must not be `None`")  # noqa: E501
 
         self._mobile = mobile
 
@@ -220,8 +217,6 @@ class V1ExtraAlipayExtUserInfo(object):
         :param name: The name of this V1ExtraAlipayExtUserInfo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
 
         self._name = name
 
@@ -245,8 +240,6 @@ class V1ExtraAlipayExtUserInfo(object):
         :param need_check_info: The need_check_info of this V1ExtraAlipayExtUserInfo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and need_check_info is None:
-            raise ValueError("Invalid value for `need_check_info`, must not be `None`")  # noqa: E501
 
         self._need_check_info = need_check_info
 

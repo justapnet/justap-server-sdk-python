@@ -54,7 +54,8 @@ class V1RefundResponse(object):
 
         if data is not None:
             self.data = data
-        self.object = object
+        if object is not None:
+            self.object = object
 
     @property
     def data(self):
@@ -99,8 +100,6 @@ class V1RefundResponse(object):
         :param object: The object of this V1RefundResponse.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and object is None:
-            raise ValueError("Invalid value for `object`, must not be `None`")  # noqa: E501
 
         self._object = object
 

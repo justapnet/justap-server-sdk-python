@@ -4,3 +4,8 @@ from __future__ import absolute_import
 
 # import apis into api package
 from justap_server_sdk_python.api.default_api import DefaultApi
+from justap_server_sdk_python.api.business_user_service_api import BusinessUserServiceApi
+from justap_server_sdk_python.api.checkout_service_api import CheckoutServiceApi
+from justap_server_sdk_python.api.customer_service_api import CustomerServiceApi
+from justap_server_sdk_python.api.royalty_service_api import RoyaltyServiceApi
+from justap_server_sdk_python.api.settlement_service_api import SettlementServiceApi

@@ -54,7 +54,8 @@ class V1ChargeResponse(object):
 
         if data is not None:
             self.data = data
-        self.object = object
+        if object is not None:
+            self.object = object
 
     @property
     def data(self):
@@ -83,7 +84,7 @@ class V1ChargeResponse(object):
     def object(self):
         """Gets the object of this V1ChargeResponse.  # noqa: E501
 
-        对象类型  # noqa: E501
+        支付凭据 charge 对象  # noqa: E501
 
         :return: The object of this V1ChargeResponse.  # noqa: E501
         :rtype: str
@@ -94,13 +95,11 @@ class V1ChargeResponse(object):
     def object(self, object):
         """Sets the object of this V1ChargeResponse.
 
-        对象类型  # noqa: E501
+        支付凭据 charge 对象  # noqa: E501
 
         :param object: The object of this V1ChargeResponse.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and object is None:
-            raise ValueError("Invalid value for `object`, must not be `None`")  # noqa: E501
 
         self._object = object
 

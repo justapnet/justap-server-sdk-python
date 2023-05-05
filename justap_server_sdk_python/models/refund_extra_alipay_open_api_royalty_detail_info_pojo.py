@@ -94,23 +94,38 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         self._trans_out_type = None
         self.discriminator = None
 
-        self.amount = amount
-        self.buyer_logon_id = buyer_logon_id
-        self.buyer_user_id = buyer_user_id
-        self.desc = desc
-        self.fund_change = fund_change
+        if amount is not None:
+            self.amount = amount
+        if buyer_logon_id is not None:
+            self.buyer_logon_id = buyer_logon_id
+        if buyer_user_id is not None:
+            self.buyer_user_id = buyer_user_id
+        if desc is not None:
+            self.desc = desc
+        if fund_change is not None:
+            self.fund_change = fund_change
         if refund_detail_item_list is not None:
             self.refund_detail_item_list = refund_detail_item_list
-        self.refund_fee = refund_fee
-        self.royalty_scene = royalty_scene
-        self.royalty_type = royalty_type
-        self.send_back_fee = send_back_fee
-        self.store_name = store_name
-        self.trans_in = trans_in
-        self.trans_in_name = trans_in_name
-        self.trans_in_type = trans_in_type
-        self.trans_out = trans_out
-        self.trans_out_type = trans_out_type
+        if refund_fee is not None:
+            self.refund_fee = refund_fee
+        if royalty_scene is not None:
+            self.royalty_scene = royalty_scene
+        if royalty_type is not None:
+            self.royalty_type = royalty_type
+        if send_back_fee is not None:
+            self.send_back_fee = send_back_fee
+        if store_name is not None:
+            self.store_name = store_name
+        if trans_in is not None:
+            self.trans_in = trans_in
+        if trans_in_name is not None:
+            self.trans_in_name = trans_in_name
+        if trans_in_type is not None:
+            self.trans_in_type = trans_in_type
+        if trans_out is not None:
+            self.trans_out = trans_out
+        if trans_out_type is not None:
+            self.trans_out_type = trans_out_type
 
     @property
     def amount(self):
@@ -132,8 +147,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param amount: The amount of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and amount is None:
-            raise ValueError("Invalid value for `amount`, must not be `None`")  # noqa: E501
 
         self._amount = amount
 
@@ -157,8 +170,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param buyer_logon_id: The buyer_logon_id of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and buyer_logon_id is None:
-            raise ValueError("Invalid value for `buyer_logon_id`, must not be `None`")  # noqa: E501
 
         self._buyer_logon_id = buyer_logon_id
 
@@ -182,8 +193,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param buyer_user_id: The buyer_user_id of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and buyer_user_id is None:
-            raise ValueError("Invalid value for `buyer_user_id`, must not be `None`")  # noqa: E501
 
         self._buyer_user_id = buyer_user_id
 
@@ -207,8 +216,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param desc: The desc of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and desc is None:
-            raise ValueError("Invalid value for `desc`, must not be `None`")  # noqa: E501
 
         self._desc = desc
 
@@ -232,8 +239,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param fund_change: The fund_change of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and fund_change is None:
-            raise ValueError("Invalid value for `fund_change`, must not be `None`")  # noqa: E501
 
         self._fund_change = fund_change
 
@@ -280,8 +285,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param refund_fee: The refund_fee of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and refund_fee is None:
-            raise ValueError("Invalid value for `refund_fee`, must not be `None`")  # noqa: E501
 
         self._refund_fee = refund_fee
 
@@ -305,8 +308,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param royalty_scene: The royalty_scene of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and royalty_scene is None:
-            raise ValueError("Invalid value for `royalty_scene`, must not be `None`")  # noqa: E501
 
         self._royalty_scene = royalty_scene
 
@@ -330,8 +331,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param royalty_type: The royalty_type of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and royalty_type is None:
-            raise ValueError("Invalid value for `royalty_type`, must not be `None`")  # noqa: E501
 
         self._royalty_type = royalty_type
 
@@ -355,8 +354,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param send_back_fee: The send_back_fee of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and send_back_fee is None:
-            raise ValueError("Invalid value for `send_back_fee`, must not be `None`")  # noqa: E501
 
         self._send_back_fee = send_back_fee
 
@@ -380,8 +377,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param store_name: The store_name of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and store_name is None:
-            raise ValueError("Invalid value for `store_name`, must not be `None`")  # noqa: E501
 
         self._store_name = store_name
 
@@ -405,8 +400,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param trans_in: The trans_in of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and trans_in is None:
-            raise ValueError("Invalid value for `trans_in`, must not be `None`")  # noqa: E501
 
         self._trans_in = trans_in
 
@@ -430,8 +423,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param trans_in_name: The trans_in_name of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and trans_in_name is None:
-            raise ValueError("Invalid value for `trans_in_name`, must not be `None`")  # noqa: E501
 
         self._trans_in_name = trans_in_name
 
@@ -455,8 +446,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param trans_in_type: The trans_in_type of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and trans_in_type is None:
-            raise ValueError("Invalid value for `trans_in_type`, must not be `None`")  # noqa: E501
 
         self._trans_in_type = trans_in_type
 
@@ -480,8 +469,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param trans_out: The trans_out of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and trans_out is None:
-            raise ValueError("Invalid value for `trans_out`, must not be `None`")  # noqa: E501
 
         self._trans_out = trans_out
 
@@ -505,8 +492,6 @@ class RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo(object):
         :param trans_out_type: The trans_out_type of this RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and trans_out_type is None:
-            raise ValueError("Invalid value for `trans_out_type`, must not be `None`")  # noqa: E501
 
         self._trans_out_type = trans_out_type
 

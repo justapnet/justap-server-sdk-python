@@ -41,7 +41,6 @@ class V1ExtraAlipayQr(object):
         'qr_code': 'str',
         'qr_code_timeout_express': 'str',
         'qr_link': 'str',
-        'query_options': 'str',
         'store_id': 'str',
         'terminal_id': 'str'
     }
@@ -55,12 +54,11 @@ class V1ExtraAlipayQr(object):
         'qr_code': 'qr_code',
         'qr_code_timeout_express': 'qr_code_timeout_express',
         'qr_link': 'qr_link',
-        'query_options': 'query_options',
         'store_id': 'store_id',
         'terminal_id': 'terminal_id'
     }
 
-    def __init__(self, buyer_id=None, discountable_amount=None, goods_detail=None, operator_id=None, product_code=None, qr_code=None, qr_code_timeout_express=None, qr_link=None, query_options=None, store_id=None, terminal_id=None, _configuration=None):  # noqa: E501
+    def __init__(self, buyer_id=None, discountable_amount=None, goods_detail=None, operator_id=None, product_code=None, qr_code=None, qr_code_timeout_express=None, qr_link=None, store_id=None, terminal_id=None, _configuration=None):  # noqa: E501
         """V1ExtraAlipayQr - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -74,25 +72,30 @@ class V1ExtraAlipayQr(object):
         self._qr_code = None
         self._qr_code_timeout_express = None
         self._qr_link = None
-        self._query_options = None
         self._store_id = None
         self._terminal_id = None
         self.discriminator = None
 
-        self.buyer_id = buyer_id
+        if buyer_id is not None:
+            self.buyer_id = buyer_id
         if discountable_amount is not None:
             self.discountable_amount = discountable_amount
         if goods_detail is not None:
             self.goods_detail = goods_detail
-        self.operator_id = operator_id
-        self.product_code = product_code
-        self.qr_code = qr_code
-        self.qr_code_timeout_express = qr_code_timeout_express
-        self.qr_link = qr_link
-        if query_options is not None:
-            self.query_options = query_options
-        self.store_id = store_id
-        self.terminal_id = terminal_id
+        if operator_id is not None:
+            self.operator_id = operator_id
+        if product_code is not None:
+            self.product_code = product_code
+        if qr_code is not None:
+            self.qr_code = qr_code
+        if qr_code_timeout_express is not None:
+            self.qr_code_timeout_express = qr_code_timeout_express
+        if qr_link is not None:
+            self.qr_link = qr_link
+        if store_id is not None:
+            self.store_id = store_id
+        if terminal_id is not None:
+            self.terminal_id = terminal_id
 
     @property
     def buyer_id(self):
@@ -114,8 +117,6 @@ class V1ExtraAlipayQr(object):
         :param buyer_id: The buyer_id of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and buyer_id is None:
-            raise ValueError("Invalid value for `buyer_id`, must not be `None`")  # noqa: E501
 
         self._buyer_id = buyer_id
 
@@ -185,8 +186,6 @@ class V1ExtraAlipayQr(object):
         :param operator_id: The operator_id of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and operator_id is None:
-            raise ValueError("Invalid value for `operator_id`, must not be `None`")  # noqa: E501
 
         self._operator_id = operator_id
 
@@ -210,8 +209,6 @@ class V1ExtraAlipayQr(object):
         :param product_code: The product_code of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and product_code is None:
-            raise ValueError("Invalid value for `product_code`, must not be `None`")  # noqa: E501
 
         self._product_code = product_code
 
@@ -235,8 +232,6 @@ class V1ExtraAlipayQr(object):
         :param qr_code: The qr_code of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and qr_code is None:
-            raise ValueError("Invalid value for `qr_code`, must not be `None`")  # noqa: E501
 
         self._qr_code = qr_code
 
@@ -260,8 +255,6 @@ class V1ExtraAlipayQr(object):
         :param qr_code_timeout_express: The qr_code_timeout_express of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and qr_code_timeout_express is None:
-            raise ValueError("Invalid value for `qr_code_timeout_express`, must not be `None`")  # noqa: E501
 
         self._qr_code_timeout_express = qr_code_timeout_express
 
@@ -285,33 +278,8 @@ class V1ExtraAlipayQr(object):
         :param qr_link: The qr_link of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and qr_link is None:
-            raise ValueError("Invalid value for `qr_link`, must not be `None`")  # noqa: E501
 
         self._qr_link = qr_link
-
-    @property
-    def query_options(self):
-        """Gets the query_options of this V1ExtraAlipayQr.  # noqa: E501
-
-        该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天（1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点， 如 1.5h，可转换为 90m。注：若为空，则默认为15d。  # noqa: E501
-
-        :return: The query_options of this V1ExtraAlipayQr.  # noqa: E501
-        :rtype: str
-        """
-        return self._query_options
-
-    @query_options.setter
-    def query_options(self, query_options):
-        """Sets the query_options of this V1ExtraAlipayQr.
-
-        该笔订单允许的最晚付款时间，逾期将关闭交易。取值范围：1m～15d。m-分钟，h-小时，d-天，1c-当天（1c-当天的情况下，无论交易何时创建，都在0点关闭）。 该参数数值不接受小数点， 如 1.5h，可转换为 90m。注：若为空，则默认为15d。  # noqa: E501
-
-        :param query_options: The query_options of this V1ExtraAlipayQr.  # noqa: E501
-        :type: str
-        """
-
-        self._query_options = query_options
 
     @property
     def store_id(self):
@@ -333,8 +301,6 @@ class V1ExtraAlipayQr(object):
         :param store_id: The store_id of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and store_id is None:
-            raise ValueError("Invalid value for `store_id`, must not be `None`")  # noqa: E501
 
         self._store_id = store_id
 
@@ -358,8 +324,6 @@ class V1ExtraAlipayQr(object):
         :param terminal_id: The terminal_id of this V1ExtraAlipayQr.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and terminal_id is None:
-            raise ValueError("Invalid value for `terminal_id`, must not be `None`")  # noqa: E501
 
         self._terminal_id = terminal_id
 

@@ -64,12 +64,18 @@ class RefundExtraWechatPayGoodsDetailItem(object):
         self._wechatpay_goods_id = None
         self.discriminator = None
 
-        self.goods_name = goods_name
-        self.merchant_goods_id = merchant_goods_id
-        self.refund_amount = refund_amount
-        self.refund_quantity = refund_quantity
-        self.unit_price = unit_price
-        self.wechatpay_goods_id = wechatpay_goods_id
+        if goods_name is not None:
+            self.goods_name = goods_name
+        if merchant_goods_id is not None:
+            self.merchant_goods_id = merchant_goods_id
+        if refund_amount is not None:
+            self.refund_amount = refund_amount
+        if refund_quantity is not None:
+            self.refund_quantity = refund_quantity
+        if unit_price is not None:
+            self.unit_price = unit_price
+        if wechatpay_goods_id is not None:
+            self.wechatpay_goods_id = wechatpay_goods_id
 
     @property
     def goods_name(self):
@@ -91,8 +97,6 @@ class RefundExtraWechatPayGoodsDetailItem(object):
         :param goods_name: The goods_name of this RefundExtraWechatPayGoodsDetailItem.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and goods_name is None:
-            raise ValueError("Invalid value for `goods_name`, must not be `None`")  # noqa: E501
 
         self._goods_name = goods_name
 
@@ -116,8 +120,6 @@ class RefundExtraWechatPayGoodsDetailItem(object):
         :param merchant_goods_id: The merchant_goods_id of this RefundExtraWechatPayGoodsDetailItem.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and merchant_goods_id is None:
-            raise ValueError("Invalid value for `merchant_goods_id`, must not be `None`")  # noqa: E501
 
         self._merchant_goods_id = merchant_goods_id
 
@@ -141,8 +143,6 @@ class RefundExtraWechatPayGoodsDetailItem(object):
         :param refund_amount: The refund_amount of this RefundExtraWechatPayGoodsDetailItem.  # noqa: E501
         :type: int
         """
-        if self._configuration.client_side_validation and refund_amount is None:
-            raise ValueError("Invalid value for `refund_amount`, must not be `None`")  # noqa: E501
 
         self._refund_amount = refund_amount
 
@@ -166,8 +166,6 @@ class RefundExtraWechatPayGoodsDetailItem(object):
         :param refund_quantity: The refund_quantity of this RefundExtraWechatPayGoodsDetailItem.  # noqa: E501
         :type: int
         """
-        if self._configuration.client_side_validation and refund_quantity is None:
-            raise ValueError("Invalid value for `refund_quantity`, must not be `None`")  # noqa: E501
 
         self._refund_quantity = refund_quantity
 
@@ -191,8 +189,6 @@ class RefundExtraWechatPayGoodsDetailItem(object):
         :param unit_price: The unit_price of this RefundExtraWechatPayGoodsDetailItem.  # noqa: E501
         :type: int
         """
-        if self._configuration.client_side_validation and unit_price is None:
-            raise ValueError("Invalid value for `unit_price`, must not be `None`")  # noqa: E501
 
         self._unit_price = unit_price
 
@@ -216,8 +212,6 @@ class RefundExtraWechatPayGoodsDetailItem(object):
         :param wechatpay_goods_id: The wechatpay_goods_id of this RefundExtraWechatPayGoodsDetailItem.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and wechatpay_goods_id is None:
-            raise ValueError("Invalid value for `wechatpay_goods_id`, must not be `None`")  # noqa: E501
 
         self._wechatpay_goods_id = wechatpay_goods_id
 

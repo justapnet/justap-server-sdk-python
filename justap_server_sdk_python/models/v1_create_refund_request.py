@@ -67,13 +67,18 @@ class V1CreateRefundRequest(object):
         self._metadata = None
         self.discriminator = None
 
-        self.amount = amount
-        self.app_id = app_id
-        self.charge_id = charge_id
-        self.description = description
+        if amount is not None:
+            self.amount = amount
+        if app_id is not None:
+            self.app_id = app_id
+        if charge_id is not None:
+            self.charge_id = charge_id
+        if description is not None:
+            self.description = description
         if extra is not None:
             self.extra = extra
-        self.merchant_refund_id = merchant_refund_id
+        if merchant_refund_id is not None:
+            self.merchant_refund_id = merchant_refund_id
         if metadata is not None:
             self.metadata = metadata
 
@@ -97,8 +102,6 @@ class V1CreateRefundRequest(object):
         :param amount: The amount of this V1CreateRefundRequest.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and amount is None:
-            raise ValueError("Invalid value for `amount`, must not be `None`")  # noqa: E501
 
         self._amount = amount
 
@@ -122,8 +125,6 @@ class V1CreateRefundRequest(object):
         :param app_id: The app_id of this V1CreateRefundRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and app_id is None:
-            raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
 
         self._app_id = app_id
 
@@ -147,8 +148,6 @@ class V1CreateRefundRequest(object):
         :param charge_id: The charge_id of this V1CreateRefundRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and charge_id is None:
-            raise ValueError("Invalid value for `charge_id`, must not be `None`")  # noqa: E501
 
         self._charge_id = charge_id
 
@@ -172,8 +171,6 @@ class V1CreateRefundRequest(object):
         :param description: The description of this V1CreateRefundRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and description is None:
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
 
         self._description = description
 
@@ -220,8 +217,6 @@ class V1CreateRefundRequest(object):
         :param merchant_refund_id: The merchant_refund_id of this V1CreateRefundRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and merchant_refund_id is None:
-            raise ValueError("Invalid value for `merchant_refund_id`, must not be `None`")  # noqa: E501
 
         self._merchant_refund_id = merchant_refund_id
 

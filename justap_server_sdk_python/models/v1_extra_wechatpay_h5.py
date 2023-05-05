@@ -86,18 +86,26 @@ class V1ExtraWechatpayH5(object):
             self.attach = attach
         if detail is not None:
             self.detail = detail
-        self.goods_tag = goods_tag
-        self.pay_sign = pay_sign
-        self.pay_url = pay_url
-        self.prepay_id = prepay_id
+        if goods_tag is not None:
+            self.goods_tag = goods_tag
+        if pay_sign is not None:
+            self.pay_sign = pay_sign
+        if pay_url is not None:
+            self.pay_url = pay_url
+        if prepay_id is not None:
+            self.prepay_id = prepay_id
         if scene_info is not None:
             self.scene_info = scene_info
         if settle_info is not None:
             self.settle_info = settle_info
-        self.time_expire = time_expire
-        self.time_start = time_start
-        self.wap_name = wap_name
-        self.wap_url = wap_url
+        if time_expire is not None:
+            self.time_expire = time_expire
+        if time_start is not None:
+            self.time_start = time_start
+        if wap_name is not None:
+            self.wap_name = wap_name
+        if wap_url is not None:
+            self.wap_url = wap_url
 
     @property
     def attach(self):
@@ -165,8 +173,6 @@ class V1ExtraWechatpayH5(object):
         :param goods_tag: The goods_tag of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and goods_tag is None:
-            raise ValueError("Invalid value for `goods_tag`, must not be `None`")  # noqa: E501
 
         self._goods_tag = goods_tag
 
@@ -190,8 +196,6 @@ class V1ExtraWechatpayH5(object):
         :param pay_sign: The pay_sign of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and pay_sign is None:
-            raise ValueError("Invalid value for `pay_sign`, must not be `None`")  # noqa: E501
 
         self._pay_sign = pay_sign
 
@@ -215,8 +219,6 @@ class V1ExtraWechatpayH5(object):
         :param pay_url: The pay_url of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and pay_url is None:
-            raise ValueError("Invalid value for `pay_url`, must not be `None`")  # noqa: E501
 
         self._pay_url = pay_url
 
@@ -240,8 +242,6 @@ class V1ExtraWechatpayH5(object):
         :param prepay_id: The prepay_id of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and prepay_id is None:
-            raise ValueError("Invalid value for `prepay_id`, must not be `None`")  # noqa: E501
 
         self._prepay_id = prepay_id
 
@@ -311,8 +311,6 @@ class V1ExtraWechatpayH5(object):
         :param time_expire: The time_expire of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and time_expire is None:
-            raise ValueError("Invalid value for `time_expire`, must not be `None`")  # noqa: E501
 
         self._time_expire = time_expire
 
@@ -336,8 +334,6 @@ class V1ExtraWechatpayH5(object):
         :param time_start: The time_start of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and time_start is None:
-            raise ValueError("Invalid value for `time_start`, must not be `None`")  # noqa: E501
 
         self._time_start = time_start
 
@@ -361,8 +357,6 @@ class V1ExtraWechatpayH5(object):
         :param wap_name: The wap_name of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and wap_name is None:
-            raise ValueError("Invalid value for `wap_name`, must not be `None`")  # noqa: E501
 
         self._wap_name = wap_name
 
@@ -386,8 +380,6 @@ class V1ExtraWechatpayH5(object):
         :param wap_url: The wap_url of this V1ExtraWechatpayH5.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and wap_url is None:
-            raise ValueError("Invalid value for `wap_url`, must not be `None`")  # noqa: E501
 
         self._wap_url = wap_url
 

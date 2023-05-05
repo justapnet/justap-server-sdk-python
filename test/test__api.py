@@ -29,52 +29,101 @@ class TestDefaultApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_trade_service_charges(self):
-        """Test case for trade_service_charges
+    def test_charge_service_charges(self):
+        """Test case for charge_service_charges
 
         创建 Charge 对象  # noqa: E501
         """
         pass
 
-    def test_trade_service_query_charge(self):
-        """Test case for trade_service_query_charge
+    def test_charge_service_charges2(self):
+        """Test case for charge_service_charges2
+
+        创建 Charge 对象  # noqa: E501
+        """
+        pass
+
+    def test_charge_service_query_charge(self):
+        """Test case for charge_service_query_charge
 
         查询 Charge 对象  # noqa: E501
         """
         pass
 
-    def test_trade_service_query_charge_list(self):
-        """Test case for trade_service_query_charge_list
+    def test_charge_service_query_charge2(self):
+        """Test case for charge_service_query_charge2
+
+        查询 Charge 对象  # noqa: E501
+        """
+        pass
+
+    def test_charge_service_query_charge_list(self):
+        """Test case for charge_service_query_charge_list
 
         查询 Charge 对象列表  # noqa: E501
         """
         pass
 
-    def test_trade_service_query_refund(self):
-        """Test case for trade_service_query_refund
+    def test_charge_service_query_charge_list2(self):
+        """Test case for charge_service_query_charge_list2
+
+        查询 Charge 对象列表  # noqa: E501
+        """
+        pass
+
+    def test_charge_service_reverse_charge(self):
+        """Test case for charge_service_reverse_charge
+
+        撤销 Charge 对象  # noqa: E501
+        """
+        pass
+
+    def test_charge_service_reverse_charge2(self):
+        """Test case for charge_service_reverse_charge2
+
+        撤销 Charge 对象  # noqa: E501
+        """
+        pass
+
+    def test_refund_service_query_refund(self):
+        """Test case for refund_service_query_refund
 
         查询 Refund 对象  # noqa: E501
         """
         pass
 
-    def test_trade_service_query_refund_list(self):
-        """Test case for trade_service_query_refund_list
+    def test_refund_service_query_refund2(self):
+        """Test case for refund_service_query_refund2
+
+        查询 Refund 对象  # noqa: E501
+        """
+        pass
+
+    def test_refund_service_query_refund_list(self):
+        """Test case for refund_service_query_refund_list
 
         查询 Refund 对象列表  # noqa: E501
         """
         pass
 
-    def test_trade_service_refunds(self):
-        """Test case for trade_service_refunds
+    def test_refund_service_query_refund_list2(self):
+        """Test case for refund_service_query_refund_list2
+
+        查询 Refund 对象列表  # noqa: E501
+        """
+        pass
+
+    def test_refund_service_refunds(self):
+        """Test case for refund_service_refunds
 
         创建 Refund 对象  # noqa: E501
         """
         pass
 
-    def test_trade_service_reverse_charge(self):
-        """Test case for trade_service_reverse_charge
+    def test_refund_service_refunds2(self):
+        """Test case for refund_service_refunds2
 
-        撤销 Charge 对象  # noqa: E501
+        创建 Refund 对象  # noqa: E501
         """
         pass
 

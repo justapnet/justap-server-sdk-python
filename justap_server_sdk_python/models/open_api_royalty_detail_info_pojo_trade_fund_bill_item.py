@@ -58,10 +58,14 @@ class OpenApiRoyaltyDetailInfoPojoTradeFundBillItem(object):
         self._real_amount = None
         self.discriminator = None
 
-        self.amount = amount
-        self.fund_channel = fund_channel
-        self.fund_type = fund_type
-        self.real_amount = real_amount
+        if amount is not None:
+            self.amount = amount
+        if fund_channel is not None:
+            self.fund_channel = fund_channel
+        if fund_type is not None:
+            self.fund_type = fund_type
+        if real_amount is not None:
+            self.real_amount = real_amount
 
     @property
     def amount(self):
@@ -83,8 +87,6 @@ class OpenApiRoyaltyDetailInfoPojoTradeFundBillItem(object):
         :param amount: The amount of this OpenApiRoyaltyDetailInfoPojoTradeFundBillItem.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and amount is None:
-            raise ValueError("Invalid value for `amount`, must not be `None`")  # noqa: E501
 
         self._amount = amount
 
@@ -108,8 +110,6 @@ class OpenApiRoyaltyDetailInfoPojoTradeFundBillItem(object):
         :param fund_channel: The fund_channel of this OpenApiRoyaltyDetailInfoPojoTradeFundBillItem.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and fund_channel is None:
-            raise ValueError("Invalid value for `fund_channel`, must not be `None`")  # noqa: E501
 
         self._fund_channel = fund_channel
 
@@ -133,8 +133,6 @@ class OpenApiRoyaltyDetailInfoPojoTradeFundBillItem(object):
         :param fund_type: The fund_type of this OpenApiRoyaltyDetailInfoPojoTradeFundBillItem.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and fund_type is None:
-            raise ValueError("Invalid value for `fund_type`, must not be `None`")  # noqa: E501
 
         self._fund_type = fund_type
 
@@ -158,8 +156,6 @@ class OpenApiRoyaltyDetailInfoPojoTradeFundBillItem(object):
         :param real_amount: The real_amount of this OpenApiRoyaltyDetailInfoPojoTradeFundBillItem.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and real_amount is None:
-            raise ValueError("Invalid value for `real_amount`, must not be `None`")  # noqa: E501
 
         self._real_amount = real_amount
 

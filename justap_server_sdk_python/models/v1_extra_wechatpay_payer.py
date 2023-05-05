@@ -61,6 +61,7 @@ class V1ExtraWechatpayPayer(object):
     def appid(self):
         """Gets the appid of this V1ExtraWechatpayPayer.  # noqa: E501
 
+        应用下的 appid，必需和 Openid 一致  # noqa: E501
 
         :return: The appid of this V1ExtraWechatpayPayer.  # noqa: E501
         :rtype: str
@@ -71,6 +72,7 @@ class V1ExtraWechatpayPayer(object):
     def appid(self, appid):
         """Sets the appid of this V1ExtraWechatpayPayer.
 
+        应用下的 appid，必需和 Openid 一致  # noqa: E501
 
         :param appid: The appid of this V1ExtraWechatpayPayer.  # noqa: E501
         :type: str
@@ -82,6 +84,7 @@ class V1ExtraWechatpayPayer(object):
     def openid(self):
         """Gets the openid of this V1ExtraWechatpayPayer.  # noqa: E501
 
+        下单前需获取到用户的 Openid。必需和 appid 一致  # noqa: E501
 
         :return: The openid of this V1ExtraWechatpayPayer.  # noqa: E501
         :rtype: str
@@ -92,6 +95,7 @@ class V1ExtraWechatpayPayer(object):
     def openid(self, openid):
         """Sets the openid of this V1ExtraWechatpayPayer.
 
+        下单前需获取到用户的 Openid。必需和 appid 一致  # noqa: E501
 
         :param openid: The openid of this V1ExtraWechatpayPayer.  # noqa: E501
         :type: str

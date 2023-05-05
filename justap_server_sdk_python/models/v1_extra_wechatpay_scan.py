@@ -105,28 +105,42 @@ class V1ExtraWechatpayScan(object):
 
         if attach is not None:
             self.attach = attach
-        self.auth_code = auth_code
-        self.bank_type = bank_type
-        self.cash_fee = cash_fee
-        self.cash_fee_type = cash_fee_type
+        if auth_code is not None:
+            self.auth_code = auth_code
+        if bank_type is not None:
+            self.bank_type = bank_type
+        if cash_fee is not None:
+            self.cash_fee = cash_fee
+        if cash_fee_type is not None:
+            self.cash_fee_type = cash_fee_type
         if detail is not None:
             self.detail = detail
-        self.fee_type = fee_type
-        self.goods_tag = goods_tag
-        self.is_subscribe = is_subscribe
+        if fee_type is not None:
+            self.fee_type = fee_type
+        if goods_tag is not None:
+            self.goods_tag = goods_tag
+        if is_subscribe is not None:
+            self.is_subscribe = is_subscribe
         if payer is not None:
             self.payer = payer
         if scene_info is not None:
             self.scene_info = scene_info
         if settle_info is not None:
             self.settle_info = settle_info
-        self.settlement_total_fee = settlement_total_fee
-        self.spbill_create_ip = spbill_create_ip
-        self.sub_is_subscribe = sub_is_subscribe
-        self.sub_openid = sub_openid
-        self.time_end = time_end
-        self.time_expire = time_expire
-        self.time_start = time_start
+        if settlement_total_fee is not None:
+            self.settlement_total_fee = settlement_total_fee
+        if spbill_create_ip is not None:
+            self.spbill_create_ip = spbill_create_ip
+        if sub_is_subscribe is not None:
+            self.sub_is_subscribe = sub_is_subscribe
+        if sub_openid is not None:
+            self.sub_openid = sub_openid
+        if time_end is not None:
+            self.time_end = time_end
+        if time_expire is not None:
+            self.time_expire = time_expire
+        if time_start is not None:
+            self.time_start = time_start
 
     @property
     def attach(self):
@@ -171,8 +185,6 @@ class V1ExtraWechatpayScan(object):
         :param auth_code: The auth_code of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and auth_code is None:
-            raise ValueError("Invalid value for `auth_code`, must not be `None`")  # noqa: E501
 
         self._auth_code = auth_code
 
@@ -196,8 +208,6 @@ class V1ExtraWechatpayScan(object):
         :param bank_type: The bank_type of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and bank_type is None:
-            raise ValueError("Invalid value for `bank_type`, must not be `None`")  # noqa: E501
 
         self._bank_type = bank_type
 
@@ -221,8 +231,6 @@ class V1ExtraWechatpayScan(object):
         :param cash_fee: The cash_fee of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and cash_fee is None:
-            raise ValueError("Invalid value for `cash_fee`, must not be `None`")  # noqa: E501
 
         self._cash_fee = cash_fee
 
@@ -246,8 +254,6 @@ class V1ExtraWechatpayScan(object):
         :param cash_fee_type: The cash_fee_type of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and cash_fee_type is None:
-            raise ValueError("Invalid value for `cash_fee_type`, must not be `None`")  # noqa: E501
 
         self._cash_fee_type = cash_fee_type
 
@@ -294,8 +300,6 @@ class V1ExtraWechatpayScan(object):
         :param fee_type: The fee_type of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and fee_type is None:
-            raise ValueError("Invalid value for `fee_type`, must not be `None`")  # noqa: E501
 
         self._fee_type = fee_type
 
@@ -319,8 +323,6 @@ class V1ExtraWechatpayScan(object):
         :param goods_tag: The goods_tag of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and goods_tag is None:
-            raise ValueError("Invalid value for `goods_tag`, must not be `None`")  # noqa: E501
 
         self._goods_tag = goods_tag
 
@@ -344,8 +346,6 @@ class V1ExtraWechatpayScan(object):
         :param is_subscribe: The is_subscribe of this V1ExtraWechatpayScan.  # noqa: E501
         :type: bool
         """
-        if self._configuration.client_side_validation and is_subscribe is None:
-            raise ValueError("Invalid value for `is_subscribe`, must not be `None`")  # noqa: E501
 
         self._is_subscribe = is_subscribe
 
@@ -438,8 +438,6 @@ class V1ExtraWechatpayScan(object):
         :param settlement_total_fee: The settlement_total_fee of this V1ExtraWechatpayScan.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and settlement_total_fee is None:
-            raise ValueError("Invalid value for `settlement_total_fee`, must not be `None`")  # noqa: E501
 
         self._settlement_total_fee = settlement_total_fee
 
@@ -463,8 +461,6 @@ class V1ExtraWechatpayScan(object):
         :param spbill_create_ip: The spbill_create_ip of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and spbill_create_ip is None:
-            raise ValueError("Invalid value for `spbill_create_ip`, must not be `None`")  # noqa: E501
 
         self._spbill_create_ip = spbill_create_ip
 
@@ -488,8 +484,6 @@ class V1ExtraWechatpayScan(object):
         :param sub_is_subscribe: The sub_is_subscribe of this V1ExtraWechatpayScan.  # noqa: E501
         :type: bool
         """
-        if self._configuration.client_side_validation and sub_is_subscribe is None:
-            raise ValueError("Invalid value for `sub_is_subscribe`, must not be `None`")  # noqa: E501
 
         self._sub_is_subscribe = sub_is_subscribe
 
@@ -513,8 +507,6 @@ class V1ExtraWechatpayScan(object):
         :param sub_openid: The sub_openid of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and sub_openid is None:
-            raise ValueError("Invalid value for `sub_openid`, must not be `None`")  # noqa: E501
 
         self._sub_openid = sub_openid
 
@@ -538,8 +530,6 @@ class V1ExtraWechatpayScan(object):
         :param time_end: The time_end of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and time_end is None:
-            raise ValueError("Invalid value for `time_end`, must not be `None`")  # noqa: E501
 
         self._time_end = time_end
 
@@ -563,8 +553,6 @@ class V1ExtraWechatpayScan(object):
         :param time_expire: The time_expire of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and time_expire is None:
-            raise ValueError("Invalid value for `time_expire`, must not be `None`")  # noqa: E501
 
         self._time_expire = time_expire
 
@@ -588,8 +576,6 @@ class V1ExtraWechatpayScan(object):
         :param time_start: The time_start of this V1ExtraWechatpayScan.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and time_start is None:
-            raise ValueError("Invalid value for `time_start`, must not be `None`")  # noqa: E501
 
         self._time_start = time_start
 

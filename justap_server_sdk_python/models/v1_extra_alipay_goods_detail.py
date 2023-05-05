@@ -73,15 +73,24 @@ class V1ExtraAlipayGoodsDetail(object):
         self._show_url = None
         self.discriminator = None
 
-        self.alipay_goods_id = alipay_goods_id
-        self.body = body
-        self.categories_tree = categories_tree
-        self.goods_category = goods_category
-        self.goods_id = goods_id
-        self.goods_name = goods_name
-        self.price = price
-        self.quantity = quantity
-        self.show_url = show_url
+        if alipay_goods_id is not None:
+            self.alipay_goods_id = alipay_goods_id
+        if body is not None:
+            self.body = body
+        if categories_tree is not None:
+            self.categories_tree = categories_tree
+        if goods_category is not None:
+            self.goods_category = goods_category
+        if goods_id is not None:
+            self.goods_id = goods_id
+        if goods_name is not None:
+            self.goods_name = goods_name
+        if price is not None:
+            self.price = price
+        if quantity is not None:
+            self.quantity = quantity
+        if show_url is not None:
+            self.show_url = show_url
 
     @property
     def alipay_goods_id(self):
@@ -103,8 +112,6 @@ class V1ExtraAlipayGoodsDetail(object):
         :param alipay_goods_id: The alipay_goods_id of this V1ExtraAlipayGoodsDetail.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and alipay_goods_id is None:
-            raise ValueError("Invalid value for `alipay_goods_id`, must not be `None`")  # noqa: E501
 
         self._alipay_goods_id = alipay_goods_id
 
@@ -128,8 +135,6 @@ class V1ExtraAlipayGoodsDetail(object):
         :param body: The body of this V1ExtraAlipayGoodsDetail.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and body is None:
-            raise ValueError("Invalid value for `body`, must not be `None`")  # noqa: E501
 
         self._body = body
 
@@ -153,8 +158,6 @@ class V1ExtraAlipayGoodsDetail(object):
         :param categories_tree: The categories_tree of this V1ExtraAlipayGoodsDetail.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and categories_tree is None:
-            raise ValueError("Invalid value for `categories_tree`, must not be `None`")  # noqa: E501
 
         self._categories_tree = categories_tree
 
@@ -178,8 +181,6 @@ class V1ExtraAlipayGoodsDetail(object):
         :param goods_category: The goods_category of this V1ExtraAlipayGoodsDetail.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and goods_category is None:
-            raise ValueError("Invalid value for `goods_category`, must not be `None`")  # noqa: E501
 
         self._goods_category = goods_category
 
@@ -203,8 +204,6 @@ class V1ExtraAlipayGoodsDetail(object):
         :param goods_id: The goods_id of this V1ExtraAlipayGoodsDetail.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and goods_id is None:
-            raise ValueError("Invalid value for `goods_id`, must not be `None`")  # noqa: E501
 
         self._goods_id = goods_id
 
@@ -228,8 +227,6 @@ class V1ExtraAlipayGoodsDetail(object):
         :param goods_name: The goods_name of this V1ExtraAlipayGoodsDetail.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and goods_name is None:
-            raise ValueError("Invalid value for `goods_name`, must not be `None`")  # noqa: E501
 
         self._goods_name = goods_name
 
@@ -253,8 +250,6 @@ class V1ExtraAlipayGoodsDetail(object):
         :param price: The price of this V1ExtraAlipayGoodsDetail.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and price is None:
-            raise ValueError("Invalid value for `price`, must not be `None`")  # noqa: E501
 
         self._price = price
 
@@ -278,8 +273,6 @@ class V1ExtraAlipayGoodsDetail(object):
         :param quantity: The quantity of this V1ExtraAlipayGoodsDetail.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and quantity is None:
-            raise ValueError("Invalid value for `quantity`, must not be `None`")  # noqa: E501
 
         self._quantity = quantity
 
@@ -303,8 +296,6 @@ class V1ExtraAlipayGoodsDetail(object):
         :param show_url: The show_url of this V1ExtraAlipayGoodsDetail.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and show_url is None:
-            raise ValueError("Invalid value for `show_url`, must not be `None`")  # noqa: E501
 
         self._show_url = show_url
 

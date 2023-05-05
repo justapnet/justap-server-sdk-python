@@ -97,28 +97,38 @@ class V1ExtraAlipayLite(object):
         self._undiscountable_amount = None
         self.discriminator = None
 
-        self.body = body
+        if body is not None:
+            self.body = body
         if business_params is not None:
             self.business_params = business_params
-        self.buyer_id = buyer_id
+        if buyer_id is not None:
+            self.buyer_id = buyer_id
         if discountable_amount is not None:
             self.discountable_amount = discountable_amount
         if extend_params is not None:
             self.extend_params = extend_params
         if logistics_detail is not None:
             self.logistics_detail = logistics_detail
-        self.operator_id = operator_id
-        self.product_code = product_code
+        if operator_id is not None:
+            self.operator_id = operator_id
+        if product_code is not None:
+            self.product_code = product_code
         if receiver_address_info is not None:
             self.receiver_address_info = receiver_address_info
-        self.seller_id = seller_id
+        if seller_id is not None:
+            self.seller_id = seller_id
         if settle_info is not None:
             self.settle_info = settle_info
-        self.store_id = store_id
-        self.terminal_id = terminal_id
-        self.time_expire = time_expire
-        self.timeout_express = timeout_express
-        self.trade_no = trade_no
+        if store_id is not None:
+            self.store_id = store_id
+        if terminal_id is not None:
+            self.terminal_id = terminal_id
+        if time_expire is not None:
+            self.time_expire = time_expire
+        if timeout_express is not None:
+            self.timeout_express = timeout_express
+        if trade_no is not None:
+            self.trade_no = trade_no
         if undiscountable_amount is not None:
             self.undiscountable_amount = undiscountable_amount
 
@@ -142,8 +152,6 @@ class V1ExtraAlipayLite(object):
         :param body: The body of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and body is None:
-            raise ValueError("Invalid value for `body`, must not be `None`")  # noqa: E501
 
         self._body = body
 
@@ -190,8 +198,6 @@ class V1ExtraAlipayLite(object):
         :param buyer_id: The buyer_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and buyer_id is None:
-            raise ValueError("Invalid value for `buyer_id`, must not be `None`")  # noqa: E501
 
         self._buyer_id = buyer_id
 
@@ -284,8 +290,6 @@ class V1ExtraAlipayLite(object):
         :param operator_id: The operator_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and operator_id is None:
-            raise ValueError("Invalid value for `operator_id`, must not be `None`")  # noqa: E501
 
         self._operator_id = operator_id
 
@@ -309,8 +313,6 @@ class V1ExtraAlipayLite(object):
         :param product_code: The product_code of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and product_code is None:
-            raise ValueError("Invalid value for `product_code`, must not be `None`")  # noqa: E501
 
         self._product_code = product_code
 
@@ -357,8 +359,6 @@ class V1ExtraAlipayLite(object):
         :param seller_id: The seller_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and seller_id is None:
-            raise ValueError("Invalid value for `seller_id`, must not be `None`")  # noqa: E501
 
         self._seller_id = seller_id
 
@@ -405,8 +405,6 @@ class V1ExtraAlipayLite(object):
         :param store_id: The store_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and store_id is None:
-            raise ValueError("Invalid value for `store_id`, must not be `None`")  # noqa: E501
 
         self._store_id = store_id
 
@@ -430,8 +428,6 @@ class V1ExtraAlipayLite(object):
         :param terminal_id: The terminal_id of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and terminal_id is None:
-            raise ValueError("Invalid value for `terminal_id`, must not be `None`")  # noqa: E501
 
         self._terminal_id = terminal_id
 
@@ -455,8 +451,6 @@ class V1ExtraAlipayLite(object):
         :param time_expire: The time_expire of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and time_expire is None:
-            raise ValueError("Invalid value for `time_expire`, must not be `None`")  # noqa: E501
 
         self._time_expire = time_expire
 
@@ -480,8 +474,6 @@ class V1ExtraAlipayLite(object):
         :param timeout_express: The timeout_express of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and timeout_express is None:
-            raise ValueError("Invalid value for `timeout_express`, must not be `None`")  # noqa: E501
 
         self._timeout_express = timeout_express
 
@@ -505,8 +497,6 @@ class V1ExtraAlipayLite(object):
         :param trade_no: The trade_no of this V1ExtraAlipayLite.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and trade_no is None:
-            raise ValueError("Invalid value for `trade_no`, must not be `None`")  # noqa: E501
 
         self._trade_no = trade_no
 

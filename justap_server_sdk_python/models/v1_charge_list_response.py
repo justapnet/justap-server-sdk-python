@@ -44,7 +44,7 @@ class V1ChargeListResponse(object):
         'object': 'object'
     }
 
-    def __init__(self, data=None, has_more=False, object='Charge', _configuration=None):  # noqa: E501
+    def __init__(self, data=None, has_more=False, object=None, _configuration=None):  # noqa: E501
         """V1ChargeListResponse - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -57,8 +57,10 @@ class V1ChargeListResponse(object):
 
         if data is not None:
             self.data = data
-        self.has_more = has_more
-        self.object = object
+        if has_more is not None:
+            self.has_more = has_more
+        if object is not None:
+            self.object = object
 
     @property
     def data(self):
@@ -103,8 +105,6 @@ class V1ChargeListResponse(object):
         :param has_more: The has_more of this V1ChargeListResponse.  # noqa: E501
         :type: bool
         """
-        if self._configuration.client_side_validation and has_more is None:
-            raise ValueError("Invalid value for `has_more`, must not be `None`")  # noqa: E501
 
         self._has_more = has_more
 
@@ -112,7 +112,7 @@ class V1ChargeListResponse(object):
     def object(self):
         """Gets the object of this V1ChargeListResponse.  # noqa: E501
 
-        对象类型  # noqa: E501
+        返回对象的类型，此值为 ChargeList  # noqa: E501
 
         :return: The object of this V1ChargeListResponse.  # noqa: E501
         :rtype: str
@@ -123,13 +123,11 @@ class V1ChargeListResponse(object):
     def object(self, object):
         """Sets the object of this V1ChargeListResponse.
 
-        对象类型  # noqa: E501
+        返回对象的类型，此值为 ChargeList  # noqa: E501
 
         :param object: The object of this V1ChargeListResponse.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and object is None:
-            raise ValueError("Invalid value for `object`, must not be `None`")  # noqa: E501
 
         self._object = object
 

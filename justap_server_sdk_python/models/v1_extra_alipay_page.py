@@ -33,11 +33,9 @@ class V1ExtraAlipayPage(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'agreement_sign_params': 'V1ExtraAlipayAgreementSignParams',
         'business_params': 'float',
         'disable_pay_channels': 'str',
         'enable_pay_channels': 'str',
-        'ext_user_info': 'V1ExtraAlipayExtUserInfo',
         'extend_params': 'V1ExtraAlipayExtendParams',
         'goods_detail': 'list[V1ExtraAlipayGoodsDetail]',
         'goods_type': 'str',
@@ -49,20 +47,16 @@ class V1ExtraAlipayPage(object):
         'qr_pay_mode': 'str',
         'qrcode_width': 'float',
         'request_from_url': 'float',
-        'royalty_info': 'V1ExtraAlipayRoyaltyInfo',
         'seller_id': 'str',
-        'settle_info': 'V1ExtraAlipaySettleInfo',
         'store_id': 'str',
         'sub_merchant': 'V1ExtraAlipaySubMerchant',
         'time_expire': 'int'
     }
 
     attribute_map = {
-        'agreement_sign_params': 'agreement_sign_params',
         'business_params': 'business_params',
         'disable_pay_channels': 'disable_pay_channels',
         'enable_pay_channels': 'enable_pay_channels',
-        'ext_user_info': 'ext_user_info',
         'extend_params': 'extend_params',
         'goods_detail': 'goods_detail',
         'goods_type': 'goods_type',
@@ -74,25 +68,21 @@ class V1ExtraAlipayPage(object):
         'qr_pay_mode': 'qr_pay_mode',
         'qrcode_width': 'qrcode_width',
         'request_from_url': 'request_from_url',
-        'royalty_info': 'royalty_info',
         'seller_id': 'seller_id',
-        'settle_info': 'settle_info',
         'store_id': 'store_id',
         'sub_merchant': 'sub_merchant',
         'time_expire': 'time_expire'
     }
 
-    def __init__(self, agreement_sign_params=None, business_params=None, disable_pay_channels=None, enable_pay_channels=None, ext_user_info=None, extend_params=None, goods_detail=None, goods_type=None, integration_type=None, invoice_info=None, merchant_trade_id=None, pay_url=None, promo_params=None, qr_pay_mode=None, qrcode_width=None, request_from_url=None, royalty_info=None, seller_id=None, settle_info=None, store_id=None, sub_merchant=None, time_expire=None, _configuration=None):  # noqa: E501
+    def __init__(self, business_params=None, disable_pay_channels=None, enable_pay_channels=None, extend_params=None, goods_detail=None, goods_type=None, integration_type=None, invoice_info=None, merchant_trade_id=None, pay_url=None, promo_params=None, qr_pay_mode=None, qrcode_width=None, request_from_url=None, seller_id=None, store_id=None, sub_merchant=None, time_expire=None, _configuration=None):  # noqa: E501
         """V1ExtraAlipayPage - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
-        self._agreement_sign_params = None
         self._business_params = None
         self._disable_pay_channels = None
         self._enable_pay_channels = None
-        self._ext_user_info = None
         self._extend_params = None
         self._goods_detail = None
         self._goods_type = None
@@ -104,68 +94,48 @@ class V1ExtraAlipayPage(object):
         self._qr_pay_mode = None
         self._qrcode_width = None
         self._request_from_url = None
-        self._royalty_info = None
         self._seller_id = None
-        self._settle_info = None
         self._store_id = None
         self._sub_merchant = None
         self._time_expire = None
         self.discriminator = None
 
-        if agreement_sign_params is not None:
-            self.agreement_sign_params = agreement_sign_params
-        self.business_params = business_params
-        self.disable_pay_channels = disable_pay_channels
-        self.enable_pay_channels = enable_pay_channels
-        if ext_user_info is not None:
-            self.ext_user_info = ext_user_info
+        if business_params is not None:
+            self.business_params = business_params
+        if disable_pay_channels is not None:
+            self.disable_pay_channels = disable_pay_channels
+        if enable_pay_channels is not None:
+            self.enable_pay_channels = enable_pay_channels
         if extend_params is not None:
             self.extend_params = extend_params
         if goods_detail is not None:
             self.goods_detail = goods_detail
-        self.goods_type = goods_type
-        self.integration_type = integration_type
+        if goods_type is not None:
+            self.goods_type = goods_type
+        if integration_type is not None:
+            self.integration_type = integration_type
         if invoice_info is not None:
             self.invoice_info = invoice_info
-        self.merchant_trade_id = merchant_trade_id
-        self.pay_url = pay_url
-        self.promo_params = promo_params
-        self.qr_pay_mode = qr_pay_mode
-        self.qrcode_width = qrcode_width
-        self.request_from_url = request_from_url
-        if royalty_info is not None:
-            self.royalty_info = royalty_info
-        self.seller_id = seller_id
-        if settle_info is not None:
-            self.settle_info = settle_info
-        self.store_id = store_id
+        if merchant_trade_id is not None:
+            self.merchant_trade_id = merchant_trade_id
+        if pay_url is not None:
+            self.pay_url = pay_url
+        if promo_params is not None:
+            self.promo_params = promo_params
+        if qr_pay_mode is not None:
+            self.qr_pay_mode = qr_pay_mode
+        if qrcode_width is not None:
+            self.qrcode_width = qrcode_width
+        if request_from_url is not None:
+            self.request_from_url = request_from_url
+        if seller_id is not None:
+            self.seller_id = seller_id
+        if store_id is not None:
+            self.store_id = store_id
         if sub_merchant is not None:
             self.sub_merchant = sub_merchant
         if time_expire is not None:
             self.time_expire = time_expire
-
-    @property
-    def agreement_sign_params(self):
-        """Gets the agreement_sign_params of this V1ExtraAlipayPage.  # noqa: E501
-
-        签约参数。如果希望在sdk中支付并签约，需要在这里传入签约信息。周期扣款场景 product_code 为 CYCLE_PAY_AUTH 时必填。  # noqa: E501
-
-        :return: The agreement_sign_params of this V1ExtraAlipayPage.  # noqa: E501
-        :rtype: V1ExtraAlipayAgreementSignParams
-        """
-        return self._agreement_sign_params
-
-    @agreement_sign_params.setter
-    def agreement_sign_params(self, agreement_sign_params):
-        """Sets the agreement_sign_params of this V1ExtraAlipayPage.
-
-        签约参数。如果希望在sdk中支付并签约，需要在这里传入签约信息。周期扣款场景 product_code 为 CYCLE_PAY_AUTH 时必填。  # noqa: E501
-
-        :param agreement_sign_params: The agreement_sign_params of this V1ExtraAlipayPage.  # noqa: E501
-        :type: V1ExtraAlipayAgreementSignParams
-        """
-
-        self._agreement_sign_params = agreement_sign_params
 
     @property
     def business_params(self):
@@ -187,8 +157,6 @@ class V1ExtraAlipayPage(object):
         :param business_params: The business_params of this V1ExtraAlipayPage.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and business_params is None:
-            raise ValueError("Invalid value for `business_params`, must not be `None`")  # noqa: E501
 
         self._business_params = business_params
 
@@ -212,8 +180,6 @@ class V1ExtraAlipayPage(object):
         :param disable_pay_channels: The disable_pay_channels of this V1ExtraAlipayPage.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and disable_pay_channels is None:
-            raise ValueError("Invalid value for `disable_pay_channels`, must not be `None`")  # noqa: E501
 
         self._disable_pay_channels = disable_pay_channels
 
@@ -237,33 +203,8 @@ class V1ExtraAlipayPage(object):
         :param enable_pay_channels: The enable_pay_channels of this V1ExtraAlipayPage.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and enable_pay_channels is None:
-            raise ValueError("Invalid value for `enable_pay_channels`, must not be `None`")  # noqa: E501
 
         self._enable_pay_channels = enable_pay_channels
-
-    @property
-    def ext_user_info(self):
-        """Gets the ext_user_info of this V1ExtraAlipayPage.  # noqa: E501
-
-        支付宝用户信息  # noqa: E501
-
-        :return: The ext_user_info of this V1ExtraAlipayPage.  # noqa: E501
-        :rtype: V1ExtraAlipayExtUserInfo
-        """
-        return self._ext_user_info
-
-    @ext_user_info.setter
-    def ext_user_info(self, ext_user_info):
-        """Sets the ext_user_info of this V1ExtraAlipayPage.
-
-        支付宝用户信息  # noqa: E501
-
-        :param ext_user_info: The ext_user_info of this V1ExtraAlipayPage.  # noqa: E501
-        :type: V1ExtraAlipayExtUserInfo
-        """
-
-        self._ext_user_info = ext_user_info
 
     @property
     def extend_params(self):
@@ -331,8 +272,6 @@ class V1ExtraAlipayPage(object):
         :param goods_type: The goods_type of this V1ExtraAlipayPage.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and goods_type is None:
-            raise ValueError("Invalid value for `goods_type`, must not be `None`")  # noqa: E501
 
         self._goods_type = goods_type
 
@@ -356,8 +295,6 @@ class V1ExtraAlipayPage(object):
         :param integration_type: The integration_type of this V1ExtraAlipayPage.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and integration_type is None:
-            raise ValueError("Invalid value for `integration_type`, must not be `None`")  # noqa: E501
 
         self._integration_type = integration_type
 
@@ -404,8 +341,6 @@ class V1ExtraAlipayPage(object):
         :param merchant_trade_id: The merchant_trade_id of this V1ExtraAlipayPage.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and merchant_trade_id is None:
-            raise ValueError("Invalid value for `merchant_trade_id`, must not be `None`")  # noqa: E501
 
         self._merchant_trade_id = merchant_trade_id
 
@@ -429,8 +364,6 @@ class V1ExtraAlipayPage(object):
         :param pay_url: The pay_url of this V1ExtraAlipayPage.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and pay_url is None:
-            raise ValueError("Invalid value for `pay_url`, must not be `None`")  # noqa: E501
 
         self._pay_url = pay_url
 
@@ -454,8 +387,6 @@ class V1ExtraAlipayPage(object):
         :param promo_params: The promo_params of this V1ExtraAlipayPage.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and promo_params is None:
-            raise ValueError("Invalid value for `promo_params`, must not be `None`")  # noqa: E501
 
         self._promo_params = promo_params
 
@@ -479,8 +410,6 @@ class V1ExtraAlipayPage(object):
         :param qr_pay_mode: The qr_pay_mode of this V1ExtraAlipayPage.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and qr_pay_mode is None:
-            raise ValueError("Invalid value for `qr_pay_mode`, must not be `None`")  # noqa: E501
 
         self._qr_pay_mode = qr_pay_mode
 
@@ -504,8 +433,6 @@ class V1ExtraAlipayPage(object):
         :param qrcode_width: The qrcode_width of this V1ExtraAlipayPage.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and qrcode_width is None:
-            raise ValueError("Invalid value for `qrcode_width`, must not be `None`")  # noqa: E501
 
         self._qrcode_width = qrcode_width
 
@@ -529,33 +456,8 @@ class V1ExtraAlipayPage(object):
         :param request_from_url: The request_from_url of this V1ExtraAlipayPage.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and request_from_url is None:
-            raise ValueError("Invalid value for `request_from_url`, must not be `None`")  # noqa: E501
 
         self._request_from_url = request_from_url
-
-    @property
-    def royalty_info(self):
-        """Gets the royalty_info of this V1ExtraAlipayPage.  # noqa: E501
-
-        分账类型卖家的分账类型，目前只支持传入ROYALTY（普通分账类型）。  # noqa: E501
-
-        :return: The royalty_info of this V1ExtraAlipayPage.  # noqa: E501
-        :rtype: V1ExtraAlipayRoyaltyInfo
-        """
-        return self._royalty_info
-
-    @royalty_info.setter
-    def royalty_info(self, royalty_info):
-        """Sets the royalty_info of this V1ExtraAlipayPage.
-
-        分账类型卖家的分账类型，目前只支持传入ROYALTY（普通分账类型）。  # noqa: E501
-
-        :param royalty_info: The royalty_info of this V1ExtraAlipayPage.  # noqa: E501
-        :type: V1ExtraAlipayRoyaltyInfo
-        """
-
-        self._royalty_info = royalty_info
 
     @property
     def seller_id(self):
@@ -577,33 +479,8 @@ class V1ExtraAlipayPage(object):
         :param seller_id: The seller_id of this V1ExtraAlipayPage.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and seller_id is None:
-            raise ValueError("Invalid value for `seller_id`, must not be `None`")  # noqa: E501
 
         self._seller_id = seller_id
-
-    @property
-    def settle_info(self):
-        """Gets the settle_info of this V1ExtraAlipayPage.  # noqa: E501
-
-        结算信息  # noqa: E501
-
-        :return: The settle_info of this V1ExtraAlipayPage.  # noqa: E501
-        :rtype: V1ExtraAlipaySettleInfo
-        """
-        return self._settle_info
-
-    @settle_info.setter
-    def settle_info(self, settle_info):
-        """Sets the settle_info of this V1ExtraAlipayPage.
-
-        结算信息  # noqa: E501
-
-        :param settle_info: The settle_info of this V1ExtraAlipayPage.  # noqa: E501
-        :type: V1ExtraAlipaySettleInfo
-        """
-
-        self._settle_info = settle_info
 
     @property
     def store_id(self):
@@ -625,8 +502,6 @@ class V1ExtraAlipayPage(object):
         :param store_id: The store_id of this V1ExtraAlipayPage.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and store_id is None:
-            raise ValueError("Invalid value for `store_id`, must not be `None`")  # noqa: E501
 
         self._store_id = store_id
 

@@ -52,8 +52,10 @@ class V1ExtraAlipaySubMerchant(object):
         self._merchant_type = None
         self.discriminator = None
 
-        self.merchant_id = merchant_id
-        self.merchant_type = merchant_type
+        if merchant_id is not None:
+            self.merchant_id = merchant_id
+        if merchant_type is not None:
+            self.merchant_type = merchant_type
 
     @property
     def merchant_id(self):
@@ -75,8 +77,6 @@ class V1ExtraAlipaySubMerchant(object):
         :param merchant_id: The merchant_id of this V1ExtraAlipaySubMerchant.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and merchant_id is None:
-            raise ValueError("Invalid value for `merchant_id`, must not be `None`")  # noqa: E501
 
         self._merchant_id = merchant_id
 
@@ -100,8 +100,6 @@ class V1ExtraAlipaySubMerchant(object):
         :param merchant_type: The merchant_type of this V1ExtraAlipaySubMerchant.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and merchant_type is None:
-            raise ValueError("Invalid value for `merchant_type`, must not be `None`")  # noqa: E501
 
         self._merchant_type = merchant_type
 

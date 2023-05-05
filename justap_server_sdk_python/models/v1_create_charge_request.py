@@ -37,7 +37,7 @@ class V1CreateChargeRequest(object):
         'app_id': 'str',
         'body': 'str',
         'callback_url': 'str',
-        'channel': 'V1Channel',
+        'channel': 'Tradev1Channel',
         'client_ip': 'str',
         'currency': 'str',
         'description': 'str',
@@ -91,23 +91,36 @@ class V1CreateChargeRequest(object):
         self._ttl = None
         self.discriminator = None
 
-        self.amount = amount
-        self.app_id = app_id
-        self.body = body
-        self.callback_url = callback_url
-        self.channel = channel
-        self.client_ip = client_ip
-        self.currency = currency
-        self.description = description
+        if amount is not None:
+            self.amount = amount
+        if app_id is not None:
+            self.app_id = app_id
+        if body is not None:
+            self.body = body
+        if callback_url is not None:
+            self.callback_url = callback_url
+        if channel is not None:
+            self.channel = channel
+        if client_ip is not None:
+            self.client_ip = client_ip
+        if currency is not None:
+            self.currency = currency
+        if description is not None:
+            self.description = description
         if extra is not None:
             self.extra = extra
-        self.merchant_trade_id = merchant_trade_id
+        if merchant_trade_id is not None:
+            self.merchant_trade_id = merchant_trade_id
         if metadata is not None:
             self.metadata = metadata
-        self.notification_area = notification_area
-        self.notify_url = notify_url
-        self.subject = subject
-        self.ttl = ttl
+        if notification_area is not None:
+            self.notification_area = notification_area
+        if notify_url is not None:
+            self.notify_url = notify_url
+        if subject is not None:
+            self.subject = subject
+        if ttl is not None:
+            self.ttl = ttl
 
     @property
     def amount(self):
@@ -129,8 +142,6 @@ class V1CreateChargeRequest(object):
         :param amount: The amount of this V1CreateChargeRequest.  # noqa: E501
         :type: float
         """
-        if self._configuration.client_side_validation and amount is None:
-            raise ValueError("Invalid value for `amount`, must not be `None`")  # noqa: E501
 
         self._amount = amount
 
@@ -154,8 +165,6 @@ class V1CreateChargeRequest(object):
         :param app_id: The app_id of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and app_id is None:
-            raise ValueError("Invalid value for `app_id`, must not be `None`")  # noqa: E501
 
         self._app_id = app_id
 
@@ -179,8 +188,6 @@ class V1CreateChargeRequest(object):
         :param body: The body of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and body is None:
-            raise ValueError("Invalid value for `body`, must not be `None`")  # noqa: E501
 
         self._body = body
 
@@ -204,8 +211,6 @@ class V1CreateChargeRequest(object):
         :param callback_url: The callback_url of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and callback_url is None:
-            raise ValueError("Invalid value for `callback_url`, must not be `None`")  # noqa: E501
 
         self._callback_url = callback_url
 
@@ -216,7 +221,7 @@ class V1CreateChargeRequest(object):
         [REQUIRED] 渠道名称  # noqa: E501
 
         :return: The channel of this V1CreateChargeRequest.  # noqa: E501
-        :rtype: V1Channel
+        :rtype: Tradev1Channel
         """
         return self._channel
 
@@ -227,10 +232,8 @@ class V1CreateChargeRequest(object):
         [REQUIRED] 渠道名称  # noqa: E501
 
         :param channel: The channel of this V1CreateChargeRequest.  # noqa: E501
-        :type: V1Channel
+        :type: Tradev1Channel
         """
-        if self._configuration.client_side_validation and channel is None:
-            raise ValueError("Invalid value for `channel`, must not be `None`")  # noqa: E501
 
         self._channel = channel
 
@@ -254,8 +257,6 @@ class V1CreateChargeRequest(object):
         :param client_ip: The client_ip of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and client_ip is None:
-            raise ValueError("Invalid value for `client_ip`, must not be `None`")  # noqa: E501
 
         self._client_ip = client_ip
 
@@ -279,8 +280,6 @@ class V1CreateChargeRequest(object):
         :param currency: The currency of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and currency is None:
-            raise ValueError("Invalid value for `currency`, must not be `None`")  # noqa: E501
 
         self._currency = currency
 
@@ -304,8 +303,6 @@ class V1CreateChargeRequest(object):
         :param description: The description of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and description is None:
-            raise ValueError("Invalid value for `description`, must not be `None`")  # noqa: E501
 
         self._description = description
 
@@ -352,8 +349,6 @@ class V1CreateChargeRequest(object):
         :param merchant_trade_id: The merchant_trade_id of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and merchant_trade_id is None:
-            raise ValueError("Invalid value for `merchant_trade_id`, must not be `None`")  # noqa: E501
 
         self._merchant_trade_id = merchant_trade_id
 
@@ -400,8 +395,6 @@ class V1CreateChargeRequest(object):
         :param notification_area: The notification_area of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and notification_area is None:
-            raise ValueError("Invalid value for `notification_area`, must not be `None`")  # noqa: E501
 
         self._notification_area = notification_area
 
@@ -425,8 +418,6 @@ class V1CreateChargeRequest(object):
         :param notify_url: The notify_url of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and notify_url is None:
-            raise ValueError("Invalid value for `notify_url`, must not be `None`")  # noqa: E501
 
         self._notify_url = notify_url
 
@@ -450,8 +441,6 @@ class V1CreateChargeRequest(object):
         :param subject: The subject of this V1CreateChargeRequest.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and subject is None:
-            raise ValueError("Invalid value for `subject`, must not be `None`")  # noqa: E501
 
         self._subject = subject
 
@@ -475,8 +464,6 @@ class V1CreateChargeRequest(object):
         :param ttl: The ttl of this V1CreateChargeRequest.  # noqa: E501
         :type: int
         """
-        if self._configuration.client_side_validation and ttl is None:
-            raise ValueError("Invalid value for `ttl`, must not be `None`")  # noqa: E501
 
         self._ttl = ttl
 

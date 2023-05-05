@@ -80,18 +80,22 @@ class V1ExtraWechatpayJsapi(object):
             self.attach = attach
         if detail is not None:
             self.detail = detail
-        self.goods_tag = goods_tag
+        if goods_tag is not None:
+            self.goods_tag = goods_tag
         if jsapi_config is not None:
             self.jsapi_config = jsapi_config
         if payer is not None:
             self.payer = payer
-        self.prepay_id = prepay_id
+        if prepay_id is not None:
+            self.prepay_id = prepay_id
         if scene_info is not None:
             self.scene_info = scene_info
         if settle_info is not None:
             self.settle_info = settle_info
-        self.time_expire = time_expire
-        self.time_start = time_start
+        if time_expire is not None:
+            self.time_expire = time_expire
+        if time_start is not None:
+            self.time_start = time_start
 
     @property
     def attach(self):
@@ -159,8 +163,6 @@ class V1ExtraWechatpayJsapi(object):
         :param goods_tag: The goods_tag of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and goods_tag is None:
-            raise ValueError("Invalid value for `goods_tag`, must not be `None`")  # noqa: E501
 
         self._goods_tag = goods_tag
 
@@ -230,8 +232,6 @@ class V1ExtraWechatpayJsapi(object):
         :param prepay_id: The prepay_id of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and prepay_id is None:
-            raise ValueError("Invalid value for `prepay_id`, must not be `None`")  # noqa: E501
 
         self._prepay_id = prepay_id
 
@@ -301,8 +301,6 @@ class V1ExtraWechatpayJsapi(object):
         :param time_expire: The time_expire of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and time_expire is None:
-            raise ValueError("Invalid value for `time_expire`, must not be `None`")  # noqa: E501
 
         self._time_expire = time_expire
 
@@ -326,8 +324,6 @@ class V1ExtraWechatpayJsapi(object):
         :param time_start: The time_start of this V1ExtraWechatpayJsapi.  # noqa: E501
         :type: str
         """
-        if self._configuration.client_side_validation and time_start is None:
-            raise ValueError("Invalid value for `time_start`, must not be `None`")  # noqa: E501
 
         self._time_start = time_start
 
