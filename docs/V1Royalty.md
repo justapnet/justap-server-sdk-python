@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **livemode** | **bool** |  | [optional] 
 **metadata** | **dict(str, str)** |  | [optional] 
-**method** | [**V1RoyaltyMethod**](V1RoyaltyMethod.md) |  | [optional] 
+**method** | [**Tradev1RoyaltyMethod**](Tradev1RoyaltyMethod.md) |  | [optional] 
 **object** | **str** | 对象类型 | [optional] [default to 'Royalty']
 **order_id** | **str** |  | [optional] 
 **payer_app_id** | **str** |  | [optional] 

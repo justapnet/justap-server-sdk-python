@@ -51,6 +51,7 @@ class SettlementServiceApi(object):
         :param bool recipient_wechatpay_channel_recipient_force_check: 是否强制校验收款人姓名
         :param str recipient_wechatpay_channel_recipient_type: 微信支付分账接收方类型
         :param str recipient_wechatpay_channel_recipient_account_type: 微信支付分账接收方账户类型   - ACCOUNT_TYPE_UNSET: 未设置  - MERCHANT_ID: 分账到微信商户号  - OPENID: 分账到个人微信号（父公众号的openid，或服务商的openid））  - SUB_OPENID: 分账到个人微信号，子账号的  - LOGIN_NAME: 分账到微信登录号
+        :param str recipient_wechatpay_channel_recipient_app_id: 微信支付分账接收方 openid 所对应的公众号 ID
         :param str recipient_alipay_channel_recipient_account: 支付宝账号，账号ID或者登录邮箱
         :param str recipient_alipay_channel_recipient_name: 支付宝账号真实姓名
         :param str recipient_alipay_channel_recipient_type: 支付宝账号类型
@@ -91,6 +92,7 @@ class SettlementServiceApi(object):
         :param bool recipient_wechatpay_channel_recipient_force_check: 是否强制校验收款人姓名
         :param str recipient_wechatpay_channel_recipient_type: 微信支付分账接收方类型
         :param str recipient_wechatpay_channel_recipient_account_type: 微信支付分账接收方账户类型   - ACCOUNT_TYPE_UNSET: 未设置  - MERCHANT_ID: 分账到微信商户号  - OPENID: 分账到个人微信号（父公众号的openid，或服务商的openid））  - SUB_OPENID: 分账到个人微信号，子账号的  - LOGIN_NAME: 分账到微信登录号
+        :param str recipient_wechatpay_channel_recipient_app_id: 微信支付分账接收方 openid 所对应的公众号 ID
         :param str recipient_alipay_channel_recipient_account: 支付宝账号，账号ID或者登录邮箱
         :param str recipient_alipay_channel_recipient_name: 支付宝账号真实姓名
         :param str recipient_alipay_channel_recipient_type: 支付宝账号类型
@@ -107,7 +109,7 @@ class SettlementServiceApi(object):
                  returns the request thread.
         """
 
-        all_params = ['app_id', 'user_id', 'customer_id', 'channel', 'recipient_wechatpay_channel_recipient_account', 'recipient_wechatpay_channel_recipient_name', 'recipient_wechatpay_channel_recipient_force_check', 'recipient_wechatpay_channel_recipient_type', 'recipient_wechatpay_channel_recipient_account_type', 'recipient_alipay_channel_recipient_account', 'recipient_alipay_channel_recipient_name', 'recipient_alipay_channel_recipient_type', 'recipient_alipay_channel_recipient_account_type', 'recipient_bank_channel_recipient_account', 'recipient_bank_channel_recipient_name', 'recipient_bank_channel_recipient_type', 'recipient_bank_channel_recipient_bank_name', 'recipient_bank_channel_recipient_bank_branch', 'recipient_bank_channel_recipient_bank_province', 'recipient_bank_channel_recipient_bank_city']  # noqa: E501
+        all_params = ['app_id', 'user_id', 'customer_id', 'channel', 'recipient_wechatpay_channel_recipient_account', 'recipient_wechatpay_channel_recipient_name', 'recipient_wechatpay_channel_recipient_force_check', 'recipient_wechatpay_channel_recipient_type', 'recipient_wechatpay_channel_recipient_account_type', 'recipient_wechatpay_channel_recipient_app_id', 'recipient_alipay_channel_recipient_account', 'recipient_alipay_channel_recipient_name', 'recipient_alipay_channel_recipient_type', 'recipient_alipay_channel_recipient_account_type', 'recipient_bank_channel_recipient_account', 'recipient_bank_channel_recipient_name', 'recipient_bank_channel_recipient_type', 'recipient_bank_channel_recipient_bank_name', 'recipient_bank_channel_recipient_bank_branch', 'recipient_bank_channel_recipient_bank_province', 'recipient_bank_channel_recipient_bank_city']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -146,6 +148,8 @@ class SettlementServiceApi(object):
             query_params.append(('recipient.wechatpay_channel_recipient.type', params['recipient_wechatpay_channel_recipient_type']))  # noqa: E501
         if 'recipient_wechatpay_channel_recipient_account_type' in params:
             query_params.append(('recipient.wechatpay_channel_recipient.account_type', params['recipient_wechatpay_channel_recipient_account_type']))  # noqa: E501
+        if 'recipient_wechatpay_channel_recipient_app_id' in params:
+            query_params.append(('recipient.wechatpay_channel_recipient.app_id', params['recipient_wechatpay_channel_recipient_app_id']))  # noqa: E501
         if 'recipient_alipay_channel_recipient_account' in params:
             query_params.append(('recipient.alipay_channel_recipient.account', params['recipient_alipay_channel_recipient_account']))  # noqa: E501
         if 'recipient_alipay_channel_recipient_name' in params:
@@ -457,6 +461,7 @@ class SettlementServiceApi(object):
         :param bool data_recipient_wechatpay_channel_recipient_force_check: 是否强制校验收款人姓名
         :param str data_recipient_wechatpay_channel_recipient_type: 微信支付分账接收方类型
         :param str data_recipient_wechatpay_channel_recipient_account_type: 微信支付分账接收方账户类型   - ACCOUNT_TYPE_UNSET: 未设置  - MERCHANT_ID: 分账到微信商户号  - OPENID: 分账到个人微信号（父公众号的openid，或服务商的openid））  - SUB_OPENID: 分账到个人微信号，子账号的  - LOGIN_NAME: 分账到微信登录号
+        :param str data_recipient_wechatpay_channel_recipient_app_id: 微信支付分账接收方 openid 所对应的公众号 ID
         :param str data_recipient_alipay_channel_recipient_account: 支付宝账号，账号ID或者登录邮箱
         :param str data_recipient_alipay_channel_recipient_name: 支付宝账号真实姓名
         :param str data_recipient_alipay_channel_recipient_type: 支付宝账号类型
@@ -503,6 +508,7 @@ class SettlementServiceApi(object):
         :param bool data_recipient_wechatpay_channel_recipient_force_check: 是否强制校验收款人姓名
         :param str data_recipient_wechatpay_channel_recipient_type: 微信支付分账接收方类型
         :param str data_recipient_wechatpay_channel_recipient_account_type: 微信支付分账接收方账户类型   - ACCOUNT_TYPE_UNSET: 未设置  - MERCHANT_ID: 分账到微信商户号  - OPENID: 分账到个人微信号（父公众号的openid，或服务商的openid））  - SUB_OPENID: 分账到个人微信号，子账号的  - LOGIN_NAME: 分账到微信登录号
+        :param str data_recipient_wechatpay_channel_recipient_app_id: 微信支付分账接收方 openid 所对应的公众号 ID
         :param str data_recipient_alipay_channel_recipient_account: 支付宝账号，账号ID或者登录邮箱
         :param str data_recipient_alipay_channel_recipient_name: 支付宝账号真实姓名
         :param str data_recipient_alipay_channel_recipient_type: 支付宝账号类型
@@ -522,7 +528,7 @@ class SettlementServiceApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'app_id', 'object', 'data_id', 'data_app_id', 'data_user_id', 'data_channel', 'data_recipient_wechatpay_channel_recipient_account', 'data_recipient_wechatpay_channel_recipient_name', 'data_recipient_wechatpay_channel_recipient_force_check', 'data_recipient_wechatpay_channel_recipient_type', 'data_recipient_wechatpay_channel_recipient_account_type', 'data_recipient_alipay_channel_recipient_account', 'data_recipient_alipay_channel_recipient_name', 'data_recipient_alipay_channel_recipient_type', 'data_recipient_alipay_channel_recipient_account_type', 'data_recipient_bank_channel_recipient_account', 'data_recipient_bank_channel_recipient_name', 'data_recipient_bank_channel_recipient_type', 'data_recipient_bank_channel_recipient_bank_name', 'data_recipient_bank_channel_recipient_bank_branch', 'data_recipient_bank_channel_recipient_bank_province', 'data_recipient_bank_channel_recipient_bank_city', 'data_created', 'data_updated', 'data_object']  # noqa: E501
+        all_params = ['id', 'app_id', 'object', 'data_id', 'data_app_id', 'data_user_id', 'data_channel', 'data_recipient_wechatpay_channel_recipient_account', 'data_recipient_wechatpay_channel_recipient_name', 'data_recipient_wechatpay_channel_recipient_force_check', 'data_recipient_wechatpay_channel_recipient_type', 'data_recipient_wechatpay_channel_recipient_account_type', 'data_recipient_wechatpay_channel_recipient_app_id', 'data_recipient_alipay_channel_recipient_account', 'data_recipient_alipay_channel_recipient_name', 'data_recipient_alipay_channel_recipient_type', 'data_recipient_alipay_channel_recipient_account_type', 'data_recipient_bank_channel_recipient_account', 'data_recipient_bank_channel_recipient_name', 'data_recipient_bank_channel_recipient_type', 'data_recipient_bank_channel_recipient_bank_name', 'data_recipient_bank_channel_recipient_bank_branch', 'data_recipient_bank_channel_recipient_bank_province', 'data_recipient_bank_channel_recipient_bank_city', 'data_created', 'data_updated', 'data_object']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -571,6 +577,8 @@ class SettlementServiceApi(object):
             query_params.append(('data.recipient.wechatpay_channel_recipient.type', params['data_recipient_wechatpay_channel_recipient_type']))  # noqa: E501
         if 'data_recipient_wechatpay_channel_recipient_account_type' in params:
             query_params.append(('data.recipient.wechatpay_channel_recipient.account_type', params['data_recipient_wechatpay_channel_recipient_account_type']))  # noqa: E501
+        if 'data_recipient_wechatpay_channel_recipient_app_id' in params:
+            query_params.append(('data.recipient.wechatpay_channel_recipient.app_id', params['data_recipient_wechatpay_channel_recipient_app_id']))  # noqa: E501
         if 'data_recipient_alipay_channel_recipient_account' in params:
             query_params.append(('data.recipient.alipay_channel_recipient.account', params['data_recipient_alipay_channel_recipient_account']))  # noqa: E501
         if 'data_recipient_alipay_channel_recipient_name' in params:
@@ -748,6 +756,7 @@ class SettlementServiceApi(object):
         :param bool recipient_wechatpay_channel_recipient_force_check: 是否强制校验收款人姓名
         :param str recipient_wechatpay_channel_recipient_type: 微信支付分账接收方类型
         :param str recipient_wechatpay_channel_recipient_account_type: 微信支付分账接收方账户类型   - ACCOUNT_TYPE_UNSET: 未设置  - MERCHANT_ID: 分账到微信商户号  - OPENID: 分账到个人微信号（父公众号的openid，或服务商的openid））  - SUB_OPENID: 分账到个人微信号，子账号的  - LOGIN_NAME: 分账到微信登录号
+        :param str recipient_wechatpay_channel_recipient_app_id: 微信支付分账接收方 openid 所对应的公众号 ID
         :param str recipient_alipay_channel_recipient_account: 支付宝账号，账号ID或者登录邮箱
         :param str recipient_alipay_channel_recipient_name: 支付宝账号真实姓名
         :param str recipient_alipay_channel_recipient_type: 支付宝账号类型
@@ -788,6 +797,7 @@ class SettlementServiceApi(object):
         :param bool recipient_wechatpay_channel_recipient_force_check: 是否强制校验收款人姓名
         :param str recipient_wechatpay_channel_recipient_type: 微信支付分账接收方类型
         :param str recipient_wechatpay_channel_recipient_account_type: 微信支付分账接收方账户类型   - ACCOUNT_TYPE_UNSET: 未设置  - MERCHANT_ID: 分账到微信商户号  - OPENID: 分账到个人微信号（父公众号的openid，或服务商的openid））  - SUB_OPENID: 分账到个人微信号，子账号的  - LOGIN_NAME: 分账到微信登录号
+        :param str recipient_wechatpay_channel_recipient_app_id: 微信支付分账接收方 openid 所对应的公众号 ID
         :param str recipient_alipay_channel_recipient_account: 支付宝账号，账号ID或者登录邮箱
         :param str recipient_alipay_channel_recipient_name: 支付宝账号真实姓名
         :param str recipient_alipay_channel_recipient_type: 支付宝账号类型
@@ -804,7 +814,7 @@ class SettlementServiceApi(object):
                  returns the request thread.
         """
 
-        all_params = ['id', 'customer_id', 'user_id', 'channel', 'recipient_wechatpay_channel_recipient_account', 'recipient_wechatpay_channel_recipient_name', 'recipient_wechatpay_channel_recipient_force_check', 'recipient_wechatpay_channel_recipient_type', 'recipient_wechatpay_channel_recipient_account_type', 'recipient_alipay_channel_recipient_account', 'recipient_alipay_channel_recipient_name', 'recipient_alipay_channel_recipient_type', 'recipient_alipay_channel_recipient_account_type', 'recipient_bank_channel_recipient_account', 'recipient_bank_channel_recipient_name', 'recipient_bank_channel_recipient_type', 'recipient_bank_channel_recipient_bank_name', 'recipient_bank_channel_recipient_bank_branch', 'recipient_bank_channel_recipient_bank_province', 'recipient_bank_channel_recipient_bank_city']  # noqa: E501
+        all_params = ['id', 'customer_id', 'user_id', 'channel', 'recipient_wechatpay_channel_recipient_account', 'recipient_wechatpay_channel_recipient_name', 'recipient_wechatpay_channel_recipient_force_check', 'recipient_wechatpay_channel_recipient_type', 'recipient_wechatpay_channel_recipient_account_type', 'recipient_wechatpay_channel_recipient_app_id', 'recipient_alipay_channel_recipient_account', 'recipient_alipay_channel_recipient_name', 'recipient_alipay_channel_recipient_type', 'recipient_alipay_channel_recipient_account_type', 'recipient_bank_channel_recipient_account', 'recipient_bank_channel_recipient_name', 'recipient_bank_channel_recipient_type', 'recipient_bank_channel_recipient_bank_name', 'recipient_bank_channel_recipient_bank_branch', 'recipient_bank_channel_recipient_bank_province', 'recipient_bank_channel_recipient_bank_city']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -847,6 +857,8 @@ class SettlementServiceApi(object):
             query_params.append(('recipient.wechatpay_channel_recipient.type', params['recipient_wechatpay_channel_recipient_type']))  # noqa: E501
         if 'recipient_wechatpay_channel_recipient_account_type' in params:
             query_params.append(('recipient.wechatpay_channel_recipient.account_type', params['recipient_wechatpay_channel_recipient_account_type']))  # noqa: E501
+        if 'recipient_wechatpay_channel_recipient_app_id' in params:
+            query_params.append(('recipient.wechatpay_channel_recipient.app_id', params['recipient_wechatpay_channel_recipient_app_id']))  # noqa: E501
         if 'recipient_alipay_channel_recipient_account' in params:
             query_params.append(('recipient.alipay_channel_recipient.account', params['recipient_alipay_channel_recipient_account']))  # noqa: E501
         if 'recipient_alipay_channel_recipient_name' in params:

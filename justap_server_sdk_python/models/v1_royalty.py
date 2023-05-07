@@ -40,7 +40,7 @@ class V1Royalty(object):
         'id': 'str',
         'livemode': 'bool',
         'metadata': 'dict(str, str)',
-        'method': 'V1RoyaltyMethod',
+        'method': 'Tradev1RoyaltyMethod',
         'object': 'str',
         'order_id': 'str',
         'payer_app_id': 'str',
@@ -290,7 +290,7 @@ class V1Royalty(object):
 
 
         :return: The method of this V1Royalty.  # noqa: E501
-        :rtype: V1RoyaltyMethod
+        :rtype: Tradev1RoyaltyMethod
         """
         return self._method
 
@@ -300,7 +300,7 @@ class V1Royalty(object):
 
 
         :param method: The method of this V1Royalty.  # noqa: E501
-        :type: V1RoyaltyMethod
+        :type: Tradev1RoyaltyMethod
         """
 
         self._method = method

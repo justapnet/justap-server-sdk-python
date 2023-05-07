@@ -47,7 +47,7 @@ class V1RoyaltySettlement(object):
         'id': 'str',
         'livemode': 'bool',
         'metadata': 'dict(str, str)',
-        'method': 'V1RoyaltyMethod',
+        'method': 'Tradev1RoyaltyMethod',
         'object': 'str',
         'operation_url': 'str',
         'source': 'V1RoyaltySettlementSource',
@@ -452,7 +452,7 @@ class V1RoyaltySettlement(object):
 
 
         :return: The method of this V1RoyaltySettlement.  # noqa: E501
-        :rtype: V1RoyaltyMethod
+        :rtype: Tradev1RoyaltyMethod
         """
         return self._method
 
@@ -462,7 +462,7 @@ class V1RoyaltySettlement(object):
 
 
         :param method: The method of this V1RoyaltySettlement.  # noqa: E501
-        :type: V1RoyaltyMethod
+        :type: Tradev1RoyaltyMethod
         """
 
         self._method = method

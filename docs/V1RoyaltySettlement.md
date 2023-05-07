@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **id** | **str** |  | [optional] 
 **livemode** | **bool** |  | [optional] 
 **metadata** | **dict(str, str)** |  | [optional] 
-**method** | [**V1RoyaltyMethod**](V1RoyaltyMethod.md) |  | [optional] 
+**method** | [**Tradev1RoyaltyMethod**](Tradev1RoyaltyMethod.md) |  | [optional] 
 **object** | **str** | 对象类型 | [optional] [default to 'RoyaltySettlement']
 **operation_url** | **str** |  | [optional] 
 **source** | [**V1RoyaltySettlementSource**](V1RoyaltySettlementSource.md) |  | [optional] 
