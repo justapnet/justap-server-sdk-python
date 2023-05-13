@@ -21,8 +21,13 @@ import tempfile
 import hashlib
 import json
 import time
-from cryptography.hazmat.primitives.asymmetric import rsa
-
+import string
+import base64
+import os
+import random
+from Crypto.Signature import pkcs1_15
+from Crypto.Hash import SHA256
+from Crypto.PublicKey import RSA
 # python 2 and python 3 compatibility library
 import six
 from six.moves.urllib.parse import quote
@@ -155,6 +160,10 @@ class ApiClient(object):
         if body:
             body = self.sanitize_for_serialization(body)
 
+        def base64_encode(data) ->string:
+            # encode bytes to base64 string
+            return base64.b64encode(data).decode('utf-8')
+
         # body content to json string
         body_json = json.dumps(body)
 
@@ -166,19 +175,25 @@ class ApiClient(object):
 
         hl = hashlib.md5()
         hl.update(data_to_sign.encode(encoding='utf-8'))
-        message = hl.hexdigest()
+        bh = hl.hexdigest()
+        data_to_sign = '{0}{1}'.format(bh, nonce_str)
 
+        # https://pycryptodome.readthedocs.io/en/latest/src/signature/pkcs1_v1_5.html
         # sign bh and get signature
-        request_signature = self.configuration.private_key.sign(
-            bh,
-            padding.PSS(
-                mgf=padding.MGF1(hashes.SHA256()),
-                salt_length=padding.PSS.MAX_LENGTH
-            ),
-            hashes.SHA256()
-        )
+        key = RSA.import_key(open(self.configuration.get_private_key_path()).read())
+        h = SHA256.new(bytes(data_to_sign, encoding='utf8'))
+        signature = pkcs1_15.new(key).sign(h)
+        request_signature = base64_encode(signature)
 
-        header_params['X-Justap-Signature'] = base64_encode(request_signature);
+        # debug message
+        # print("bh: ", bh)
+        # print("request_time: ", request_time)
+        # print("nonce_str: ", nonce_str)
+        # print("data_to_sign: ", data_to_sign)
+        # print("self.configuration.set_private_key: ", self.configuration.get_private_key_path())
+        # print("request_signature: ", request_signature)
+
+        header_params['X-Justap-Signature'] = request_signature;
         header_params['X-Justap-Request-Time'] = request_time
         header_params['X-Justap-Nonce'] = nonce_str
         header_params['X-Justap-Body-Hash'] = bh

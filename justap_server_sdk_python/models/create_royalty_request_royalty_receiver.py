@@ -35,11 +35,11 @@ class CreateRoyaltyRequestRoyaltyReceiver(object):
     swagger_types = {
         'amount': 'float',
         'fee': 'float',
-        'fee_model': 'CreateRoyaltyRequestRoyaltyFeeMode',
+        'fee_model': 'RoyaltyReceiverRoyaltyFeeMode',
         'fee_ratio': 'float',
         'ratio': 'float',
         'recipient_business_user_id': 'str',
-        'royalty_mode': 'V1RoyaltyMode'
+        'royalty_mode': 'CreateRoyaltyRequestRoyaltyMode'
     }
 
     attribute_map = {
@@ -135,7 +135,7 @@ class CreateRoyaltyRequestRoyaltyReceiver(object):
         [OPTIONAL] 手续费模式，fixed 表示固定金额，rate 表示按比例计算手续费。此参数传手续费比例，0.1 表示 10%  # noqa: E501
 
         :return: The fee_model of this CreateRoyaltyRequestRoyaltyReceiver.  # noqa: E501
-        :rtype: CreateRoyaltyRequestRoyaltyFeeMode
+        :rtype: RoyaltyReceiverRoyaltyFeeMode
         """
         return self._fee_model
 
@@ -146,7 +146,7 @@ class CreateRoyaltyRequestRoyaltyReceiver(object):
         [OPTIONAL] 手续费模式，fixed 表示固定金额，rate 表示按比例计算手续费。此参数传手续费比例，0.1 表示 10%  # noqa: E501
 
         :param fee_model: The fee_model of this CreateRoyaltyRequestRoyaltyReceiver.  # noqa: E501
-        :type: CreateRoyaltyRequestRoyaltyFeeMode
+        :type: RoyaltyReceiverRoyaltyFeeMode
         """
 
         self._fee_model = fee_model
@@ -227,7 +227,7 @@ class CreateRoyaltyRequestRoyaltyReceiver(object):
         [REQUIRED] 分润模式，free 表示不收取，fixed 表示固定金额，rate 表示按比例分润  # noqa: E501
 
         :return: The royalty_mode of this CreateRoyaltyRequestRoyaltyReceiver.  # noqa: E501
-        :rtype: V1RoyaltyMode
+        :rtype: CreateRoyaltyRequestRoyaltyMode
         """
         return self._royalty_mode
 
@@ -238,7 +238,7 @@ class CreateRoyaltyRequestRoyaltyReceiver(object):
         [REQUIRED] 分润模式，free 表示不收取，fixed 表示固定金额，rate 表示按比例分润  # noqa: E501
 
         :param royalty_mode: The royalty_mode of this CreateRoyaltyRequestRoyaltyReceiver.  # noqa: E501
-        :type: V1RoyaltyMode
+        :type: CreateRoyaltyRequestRoyaltyMode
         """
 
         self._royalty_mode = royalty_mode

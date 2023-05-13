@@ -33,6 +33,7 @@ class V1RoyaltyRoutingRequestRoyaltyMethod(object):
     QUERY_ROYALTY = "QUERY_ROYALTY"
     FINISH_ROYALTY = "Finish_ROYALTY"
     RETURN_ROYALTY = "RETURN_ROYALTY"
+    QUERY_RETURN_ROYALTY = "QUERY_RETURN_ROYALTY"
 
     """
     Attributes:

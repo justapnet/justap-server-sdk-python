@@ -36,6 +36,7 @@ class V1CreateRoyaltyRequest(object):
         'app_id': 'str',
         'callback_url': 'str',
         'charge_id': 'str',
+        'description': 'str',
         'order_id': 'str',
         'receivers': 'list[CreateRoyaltyRequestRoyaltyReceiver]'
     }
@@ -44,11 +45,12 @@ class V1CreateRoyaltyRequest(object):
         'app_id': 'app_id',
         'callback_url': 'callback_url',
         'charge_id': 'charge_id',
+        'description': 'description',
         'order_id': 'order_id',
         'receivers': 'receivers'
     }
 
-    def __init__(self, app_id=None, callback_url=None, charge_id=None, order_id=None, receivers=None, _configuration=None):  # noqa: E501
+    def __init__(self, app_id=None, callback_url=None, charge_id=None, description=None, order_id=None, receivers=None, _configuration=None):  # noqa: E501
         """V1CreateRoyaltyRequest - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -57,6 +59,7 @@ class V1CreateRoyaltyRequest(object):
         self._app_id = None
         self._callback_url = None
         self._charge_id = None
+        self._description = None
         self._order_id = None
         self._receivers = None
         self.discriminator = None
@@ -67,6 +70,8 @@ class V1CreateRoyaltyRequest(object):
             self.callback_url = callback_url
         if charge_id is not None:
             self.charge_id = charge_id
+        if description is not None:
+            self.description = description
         if order_id is not None:
             self.order_id = order_id
         if receivers is not None:
@@ -140,6 +145,29 @@ class V1CreateRoyaltyRequest(object):
         """
 
         self._charge_id = charge_id
+
+    @property
+    def description(self):
+        """Gets the description of this V1CreateRoyaltyRequest.  # noqa: E501
+
+        分账的原因描述，分账账单中需要体现，不超过 80 个字符  # noqa: E501
+
+        :return: The description of this V1CreateRoyaltyRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._description
+
+    @description.setter
+    def description(self, description):
+        """Sets the description of this V1CreateRoyaltyRequest.
+
+        分账的原因描述，分账账单中需要体现，不超过 80 个字符  # noqa: E501
+
+        :param description: The description of this V1CreateRoyaltyRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._description = description
 
     @property
     def order_id(self):

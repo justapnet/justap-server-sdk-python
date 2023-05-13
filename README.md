@@ -115,7 +115,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [CreateRoyaltyRequestRoyaltyFeeMode](docs/CreateRoyaltyRequestRoyaltyFeeMode.md)
+ - [CreateRoyaltyRequestRoyaltyMode](docs/CreateRoyaltyRequestRoyaltyMode.md)
  - [CreateRoyaltyRequestRoyaltyReceiver](docs/CreateRoyaltyRequestRoyaltyReceiver.md)
  - [ExtraAlipayInvoiceInfoKeyInfo](docs/ExtraAlipayInvoiceInfoKeyInfo.md)
  - [ExtraAlipaySettleInfoSettleDetailInfos](docs/ExtraAlipaySettleInfoSettleDetailInfos.md)
@@ -127,6 +127,8 @@ Class | Method | HTTP request | Description
  - [RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo](docs/RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.md)
  - [RefundExtraWechatPayAccount](docs/RefundExtraWechatPayAccount.md)
  - [RefundExtraWechatPayGoodsDetailItem](docs/RefundExtraWechatPayGoodsDetailItem.md)
+ - [RoyaltyReceiverRoyaltyFeeMode](docs/RoyaltyReceiverRoyaltyFeeMode.md)
+ - [RoyaltySettlementRoyaltySettlementStatus](docs/RoyaltySettlementRoyaltySettlementStatus.md)
  - [RpcStatus](docs/RpcStatus.md)
  - [SettlementAccountRecipientAccountType](docs/SettlementAccountRecipientAccountType.md)
  - [SettlementAccountRecipientAlipayChannelRecipient](docs/SettlementAccountRecipientAlipayChannelRecipient.md)
@@ -210,7 +212,6 @@ Class | Method | HTTP request | Description
  - [V1RefundRoutingResponse](docs/V1RefundRoutingResponse.md)
  - [V1Royalty](docs/V1Royalty.md)
  - [V1RoyaltyListResponse](docs/V1RoyaltyListResponse.md)
- - [V1RoyaltyMode](docs/V1RoyaltyMode.md)
  - [V1RoyaltyResponse](docs/V1RoyaltyResponse.md)
  - [V1RoyaltyRoutingRequestRoyaltyMethod](docs/V1RoyaltyRoutingRequestRoyaltyMethod.md)
  - [V1RoyaltyRoutingResponse](docs/V1RoyaltyRoutingResponse.md)
@@ -224,6 +225,7 @@ Class | Method | HTTP request | Description
  - [V1RoyaltySettlementTransactionResponse](docs/V1RoyaltySettlementTransactionResponse.md)
  - [V1SearchCustomersRequestCreated](docs/V1SearchCustomersRequestCreated.md)
  - [V1SearchUsersRequestCreated](docs/V1SearchUsersRequestCreated.md)
+ - [V1ServiceError](docs/V1ServiceError.md)
  - [V1SettlementAccount](docs/V1SettlementAccount.md)
  - [V1SettlementAccountChannel](docs/V1SettlementAccountChannel.md)
  - [V1SettlementAccountListResponse](docs/V1SettlementAccountListResponse.md)

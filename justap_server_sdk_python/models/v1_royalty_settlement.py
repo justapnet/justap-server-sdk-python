@@ -42,16 +42,14 @@ class V1RoyaltySettlement(object):
         'count_canceled': 'str',
         'count_failed': 'str',
         'count_succeeded': 'str',
-        'created': 'str',
         'fee': 'float',
         'id': 'str',
         'livemode': 'bool',
         'metadata': 'dict(str, str)',
-        'method': 'Tradev1RoyaltyMethod',
         'object': 'str',
         'operation_url': 'str',
         'source': 'V1RoyaltySettlementSource',
-        'status': 'str',
+        'status': 'RoyaltySettlementRoyaltySettlementStatus',
         'time_finished': 'str',
         'transactions': 'list[V1RoyaltySettlementTransaction]'
     }
@@ -66,12 +64,10 @@ class V1RoyaltySettlement(object):
         'count_canceled': 'count_canceled',
         'count_failed': 'count_failed',
         'count_succeeded': 'count_succeeded',
-        'created': 'created',
         'fee': 'fee',
         'id': 'id',
         'livemode': 'livemode',
         'metadata': 'metadata',
-        'method': 'method',
         'object': 'object',
         'operation_url': 'operation_url',
         'source': 'source',
@@ -80,7 +76,7 @@ class V1RoyaltySettlement(object):
         'transactions': 'transactions'
     }
 
-    def __init__(self, amount=None, amount_canceled=None, amount_failed=None, amount_succeeded=None, app_id=None, count=None, count_canceled=None, count_failed=None, count_succeeded=None, created=None, fee=None, id=None, livemode=None, metadata=None, method=None, object='RoyaltySettlement', operation_url=None, source=None, status=None, time_finished=None, transactions=None, _configuration=None):  # noqa: E501
+    def __init__(self, amount=None, amount_canceled=None, amount_failed=None, amount_succeeded=None, app_id=None, count=None, count_canceled=None, count_failed=None, count_succeeded=None, fee=None, id=None, livemode=None, metadata=None, object='RoyaltySettlement', operation_url=None, source=None, status=None, time_finished=None, transactions=None, _configuration=None):  # noqa: E501
         """V1RoyaltySettlement - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -95,12 +91,10 @@ class V1RoyaltySettlement(object):
         self._count_canceled = None
         self._count_failed = None
         self._count_succeeded = None
-        self._created = None
         self._fee = None
         self._id = None
         self._livemode = None
         self._metadata = None
-        self._method = None
         self._object = None
         self._operation_url = None
         self._source = None
@@ -127,8 +121,6 @@ class V1RoyaltySettlement(object):
             self.count_failed = count_failed
         if count_succeeded is not None:
             self.count_succeeded = count_succeeded
-        if created is not None:
-            self.created = created
         if fee is not None:
             self.fee = fee
         if id is not None:
@@ -137,8 +129,6 @@ class V1RoyaltySettlement(object):
             self.livemode = livemode
         if metadata is not None:
             self.metadata = metadata
-        if method is not None:
-            self.method = method
         if object is not None:
             self.object = object
         if operation_url is not None:
@@ -342,27 +332,6 @@ class V1RoyaltySettlement(object):
         self._count_succeeded = count_succeeded
 
     @property
-    def created(self):
-        """Gets the created of this V1RoyaltySettlement.  # noqa: E501
-
-
-        :return: The created of this V1RoyaltySettlement.  # noqa: E501
-        :rtype: str
-        """
-        return self._created
-
-    @created.setter
-    def created(self, created):
-        """Sets the created of this V1RoyaltySettlement.
-
-
-        :param created: The created of this V1RoyaltySettlement.  # noqa: E501
-        :type: str
-        """
-
-        self._created = created
-
-    @property
     def fee(self):
         """Gets the fee of this V1RoyaltySettlement.  # noqa: E501
 
@@ -447,27 +416,6 @@ class V1RoyaltySettlement(object):
         self._metadata = metadata
 
     @property
-    def method(self):
-        """Gets the method of this V1RoyaltySettlement.  # noqa: E501
-
-
-        :return: The method of this V1RoyaltySettlement.  # noqa: E501
-        :rtype: Tradev1RoyaltyMethod
-        """
-        return self._method
-
-    @method.setter
-    def method(self, method):
-        """Sets the method of this V1RoyaltySettlement.
-
-
-        :param method: The method of this V1RoyaltySettlement.  # noqa: E501
-        :type: Tradev1RoyaltyMethod
-        """
-
-        self._method = method
-
-    @property
     def object(self):
         """Gets the object of this V1RoyaltySettlement.  # noqa: E501
 
@@ -538,7 +486,7 @@ class V1RoyaltySettlement(object):
 
 
         :return: The status of this V1RoyaltySettlement.  # noqa: E501
-        :rtype: str
+        :rtype: RoyaltySettlementRoyaltySettlementStatus
         """
         return self._status
 
@@ -548,7 +496,7 @@ class V1RoyaltySettlement(object):
 
 
         :param status: The status of this V1RoyaltySettlement.  # noqa: E501
-        :type: str
+        :type: RoyaltySettlementRoyaltySettlementStatus
         """
 
         self._status = status

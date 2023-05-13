@@ -18,10 +18,9 @@ import logging
 import multiprocessing
 import sys
 import urllib3
-
+import os
 import six
 from six.moves import http_client as httplib
-from cryptography.hazmat.primitives.asymmetric import rsa
 from cryptography.hazmat.primitives import serialization
 
 
@@ -105,6 +104,7 @@ class Configuration(object):
         self.merchant_private_key = None
 
         self.private_key = None
+        self.private_key_path = None
 
     @classmethod
     def set_default(cls, default):
@@ -262,6 +262,7 @@ class Configuration(object):
                format(env=sys.platform, pyversion=sys.version)
 
     def set_private_key(self, pem_path):
+        self.private_key_path = pem_path
         if not os.path.exists(pem_path):
             raise Exception("Private key file not found")
 
@@ -270,5 +271,8 @@ class Configuration(object):
                 key_file.read(),
                 password=None,
             )
+            
+        self.private_key = private_key
 
-        this.private_key = private_key
+    def get_private_key_path(self):
+        return self.private_key_path

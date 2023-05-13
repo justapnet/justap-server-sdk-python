@@ -1,4 +1,4 @@
-# V1RoyaltyMode
+# RoyaltySettlementRoyaltySettlementStatus
 
 ## Properties
 Name | Type | Description | Notes
