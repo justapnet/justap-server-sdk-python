@@ -14,7 +14,7 @@
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "justap-server-sdk-python"
-VERSION = "1.5.3"
+VERSION = "1.5.4"
 # To install the library, run the following
 #
 # python setup.py install
