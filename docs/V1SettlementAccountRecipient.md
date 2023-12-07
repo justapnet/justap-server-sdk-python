@@ -3,9 +3,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**alipay_channel_recipient** | [**SettlementAccountRecipientAlipayChannelRecipient**](SettlementAccountRecipientAlipayChannelRecipient.md) |  | [optional] 
-**bank_channel_recipient** | [**SettlementAccountRecipientBankChannelRecipient**](SettlementAccountRecipientBankChannelRecipient.md) |  | [optional] 
-**wechatpay_channel_recipient** | [**SettlementAccountRecipientWechatpayChannelRecipient**](SettlementAccountRecipientWechatpayChannelRecipient.md) |  | [optional] 
+**balance** | [**SettlementAccountRecipientBalanceChannelRecipient**](SettlementAccountRecipientBalanceChannelRecipient.md) |  | [optional] 
+**bank** | [**SettlementAccountRecipientBankChannelRecipient**](SettlementAccountRecipientBankChannelRecipient.md) |  | [optional] 
+**payment_alipay** | [**SettlementAccountRecipientAlipayChannelRecipient**](SettlementAccountRecipientAlipayChannelRecipient.md) |  | [optional] 
+**wechatpay** | [**SettlementAccountRecipientWechatpayChannelRecipient**](SettlementAccountRecipientWechatpayChannelRecipient.md) |  | [optional] 
+**ysepay_merchant** | [**SettlementAccountRecipientYsepayMerchantRecipient**](SettlementAccountRecipientYsepayMerchantRecipient.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

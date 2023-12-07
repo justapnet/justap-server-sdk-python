@@ -60,14 +60,14 @@ configuration.api_key['X-JUSTAP-API-KEY'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = justap_server_sdk_python.DefaultApi(justap_server_sdk_python.ApiClient(configuration))
-body = justap_server_sdk_python.V1CreateChargeRequest() # V1CreateChargeRequest | 你可以创建一个 charge 对象向用户收款。charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 charge 对象，也可以随时查询一个或者多个 charge 对象的状态。每个 charge 对象都拥有一个标识 id，该 id 在系统内唯一。
+body = justap_server_sdk_python.V1CreateUserRequest() # V1CreateUserRequest | 
 
 try:
-    # 创建 Charge 对象
-    api_response = api_instance.charge_service_charges(body)
+    # 创建 Business User 对象
+    api_response = api_instance.business_user_service_create_user(body)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling DefaultApi->charge_service_charges: %s\n" % e)
+    print("Exception when calling DefaultApi->business_user_service_create_user: %s\n" % e)
 
 ```
 
@@ -77,6 +77,13 @@ All URIs are relative to *http://127.0.0.1:21011*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*DefaultApi* | [**business_user_service_create_user**](docs/DefaultApi.md#business_user_service_create_user) | **POST** /v1/business_users | 创建 Business User 对象
+*DefaultApi* | [**business_user_service_delete_user**](docs/DefaultApi.md#business_user_service_delete_user) | **DELETE** /v1/business_users/{id} | 删除 Business User 对象
+*DefaultApi* | [**business_user_service_list_all_users**](docs/DefaultApi.md#business_user_service_list_all_users) | **GET** /v1/business_users | 查询 Business User 对象列表
+*DefaultApi* | [**business_user_service_retrieve_user**](docs/DefaultApi.md#business_user_service_retrieve_user) | **GET** /v1/business_users/{id} | 查询 Business User 对象
+*DefaultApi* | [**business_user_service_search_users**](docs/DefaultApi.md#business_user_service_search_users) | **GET** /v1/business_users/search | 查询 Business User 对象列表
+*DefaultApi* | [**business_user_service_update_user**](docs/DefaultApi.md#business_user_service_update_user) | **PUT** /v1/business_users/{user.id} | 更新 Business User 对象
+*DefaultApi* | [**business_user_service_update_user2**](docs/DefaultApi.md#business_user_service_update_user2) | **PATCH** /v1/business_users/{user.id} | 更新 Business User 对象
 *DefaultApi* | [**charge_service_charges**](docs/DefaultApi.md#charge_service_charges) | **POST** /transaction/v1/charges | 创建 Charge 对象
 *DefaultApi* | [**charge_service_charges2**](docs/DefaultApi.md#charge_service_charges2) | **POST** /v1/charges | 创建 Charge 对象
 *DefaultApi* | [**charge_service_query_charge**](docs/DefaultApi.md#charge_service_query_charge) | **GET** /transaction/v1/charges/{charge_id} | 查询 Charge 对象
@@ -91,12 +98,16 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**refund_service_query_refund_list2**](docs/DefaultApi.md#refund_service_query_refund_list2) | **GET** /v1/refunds | 查询 Refund 对象列表
 *DefaultApi* | [**refund_service_refunds**](docs/DefaultApi.md#refund_service_refunds) | **POST** /transaction/v1/refunds | 创建 Refund 对象
 *DefaultApi* | [**refund_service_refunds2**](docs/DefaultApi.md#refund_service_refunds2) | **POST** /v1/refunds | 创建 Refund 对象
-*BusinessUserServiceApi* | [**business_user_service_create_user**](docs/BusinessUserServiceApi.md#business_user_service_create_user) | **POST** /v1/business_users | 创建 BusinessUser 对象
-*BusinessUserServiceApi* | [**business_user_service_delete_user**](docs/BusinessUserServiceApi.md#business_user_service_delete_user) | **DELETE** /v1/business_users/{id} | 删除 BusinessUser 对象
-*BusinessUserServiceApi* | [**business_user_service_list_all_users**](docs/BusinessUserServiceApi.md#business_user_service_list_all_users) | **GET** /v1/business_users | 查询 BusinessUser 对象列表
-*BusinessUserServiceApi* | [**business_user_service_retrieve_user**](docs/BusinessUserServiceApi.md#business_user_service_retrieve_user) | **GET** /v1/business_users/{id} | 查询 BusinessUser 对象
-*BusinessUserServiceApi* | [**business_user_service_search_users**](docs/BusinessUserServiceApi.md#business_user_service_search_users) | **GET** /v1/business_users/search | 搜索 BusinessUser 对象
-*BusinessUserServiceApi* | [**business_user_service_update_user**](docs/BusinessUserServiceApi.md#business_user_service_update_user) | **POST** /v1/business_users/{id} | 更新 BusinessUser 对象
+*DefaultApi* | [**royalty_service_create_royalty**](docs/DefaultApi.md#royalty_service_create_royalty) | **POST** /v1/royalties | 创建 Royalty 对象
+*DefaultApi* | [**royalty_service_list_all_royalties**](docs/DefaultApi.md#royalty_service_list_all_royalties) | **GET** /v1/royalties | 查询 Royalty 对象列表
+*DefaultApi* | [**royalty_service_retrieve_royalty**](docs/DefaultApi.md#royalty_service_retrieve_royalty) | **GET** /v1/royalties/{id} | 查询 Royalty 对象
+*DefaultApi* | [**settlement_service_create_settlement_account**](docs/DefaultApi.md#settlement_service_create_settlement_account) | **POST** /v1/settlement_accounts | 创建结算账户
+*DefaultApi* | [**settlement_service_delete_settlement_account**](docs/DefaultApi.md#settlement_service_delete_settlement_account) | **DELETE** /v1/settlement_accounts/{id} | 删除结算账户
+*DefaultApi* | [**settlement_service_list_all_settlement_accounts**](docs/DefaultApi.md#settlement_service_list_all_settlement_accounts) | **GET** /v1/settlement_accounts | 查询结算账户列表
+*DefaultApi* | [**settlement_service_retrieve_settlement_account**](docs/DefaultApi.md#settlement_service_retrieve_settlement_account) | **GET** /v1/settlement_accounts/{id} | 查询结算账户
+*DefaultApi* | [**settlement_service_search_settlement_accounts**](docs/DefaultApi.md#settlement_service_search_settlement_accounts) | **GET** /v1/settlement_accounts/search | 查询结算账户列表
+*DefaultApi* | [**settlement_service_update_settlement_account**](docs/DefaultApi.md#settlement_service_update_settlement_account) | **PUT** /v1/settlement_accounts/{settlementAccount.id} | 更新结算账户
+*DefaultApi* | [**settlement_service_update_settlement_account2**](docs/DefaultApi.md#settlement_service_update_settlement_account2) | **PATCH** /v1/settlement_accounts/{settlementAccount.id} | 更新结算账户
 *CheckoutServiceApi* | [**checkout_service_create_union_qr_checkout**](docs/CheckoutServiceApi.md#checkout_service_create_union_qr_checkout) | **POST** /v1/checkout/union_qr | 通过聚合收款码创建订单
 *CustomerServiceApi* | [**customer_service_create_customer**](docs/CustomerServiceApi.md#customer_service_create_customer) | **POST** /v1/customers | 
 *CustomerServiceApi* | [**customer_service_delete_customer**](docs/CustomerServiceApi.md#customer_service_delete_customer) | **DELETE** /v1/customers/{id} | 
@@ -104,17 +115,11 @@ Class | Method | HTTP request | Description
 *CustomerServiceApi* | [**customer_service_retrieve_customer**](docs/CustomerServiceApi.md#customer_service_retrieve_customer) | **GET** /v1/customers/{id} | 
 *CustomerServiceApi* | [**customer_service_search_customers**](docs/CustomerServiceApi.md#customer_service_search_customers) | **GET** /v1/customers/search | 
 *CustomerServiceApi* | [**customer_service_update_customer**](docs/CustomerServiceApi.md#customer_service_update_customer) | **POST** /v1/customers/{id} | 
-*RoyaltyServiceApi* | [**royalty_service_create_royalty**](docs/RoyaltyServiceApi.md#royalty_service_create_royalty) | **POST** /v1/royalties | 创建 Royalty 对象
-*SettlementServiceApi* | [**settlement_service_create_settlement_account**](docs/SettlementServiceApi.md#settlement_service_create_settlement_account) | **POST** /v1/settlement_accounts | 创建 SettlementAccount 对象
-*SettlementServiceApi* | [**settlement_service_delete_settlement_account**](docs/SettlementServiceApi.md#settlement_service_delete_settlement_account) | **DELETE** /v1/settlement_accounts/{id} | 删除 SettlementAccount 对象
-*SettlementServiceApi* | [**settlement_service_list_all_settlement_accounts**](docs/SettlementServiceApi.md#settlement_service_list_all_settlement_accounts) | **GET** /v1/settlement_accounts | 查询 SettlementAccount 对象列表
-*SettlementServiceApi* | [**settlement_service_retrieve_settlement_account**](docs/SettlementServiceApi.md#settlement_service_retrieve_settlement_account) | **GET** /v1/settlement_accounts/{id} | 查询 SettlementAccount 对象
-*SettlementServiceApi* | [**settlement_service_search_settlement_accounts**](docs/SettlementServiceApi.md#settlement_service_search_settlement_accounts) | **GET** /v1/settlement_accounts/search | 搜索 SettlementAccount 对象
-*SettlementServiceApi* | [**settlement_service_update_settlement_account**](docs/SettlementServiceApi.md#settlement_service_update_settlement_account) | **POST** /v1/settlement_accounts/{id} | 更新 SettlementAccount 对象
 
 
 ## Documentation For Models
 
+ - [ChargeRoutingRequestChargeMethod](docs/ChargeRoutingRequestChargeMethod.md)
  - [CreateRoyaltyRequestRoyaltyMode](docs/CreateRoyaltyRequestRoyaltyMode.md)
  - [CreateRoyaltyRequestRoyaltyReceiver](docs/CreateRoyaltyRequestRoyaltyReceiver.md)
  - [ExtraAlipayInvoiceInfoKeyInfo](docs/ExtraAlipayInvoiceInfoKeyInfo.md)
@@ -127,21 +132,32 @@ Class | Method | HTTP request | Description
  - [RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo](docs/RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.md)
  - [RefundExtraWechatPayAccount](docs/RefundExtraWechatPayAccount.md)
  - [RefundExtraWechatPayGoodsDetailItem](docs/RefundExtraWechatPayGoodsDetailItem.md)
+ - [RefundRoutingRequestRefundMethod](docs/RefundRoutingRequestRefundMethod.md)
  - [RoyaltyReceiverRoyaltyFeeMode](docs/RoyaltyReceiverRoyaltyFeeMode.md)
  - [RoyaltySettlementRoyaltySettlementStatus](docs/RoyaltySettlementRoyaltySettlementStatus.md)
  - [RpcStatus](docs/RpcStatus.md)
  - [SettlementAccountRecipientAccountType](docs/SettlementAccountRecipientAccountType.md)
  - [SettlementAccountRecipientAlipayChannelRecipient](docs/SettlementAccountRecipientAlipayChannelRecipient.md)
+ - [SettlementAccountRecipientBalanceChannelRecipient](docs/SettlementAccountRecipientBalanceChannelRecipient.md)
  - [SettlementAccountRecipientBankChannelRecipient](docs/SettlementAccountRecipientBankChannelRecipient.md)
  - [SettlementAccountRecipientRecipientType](docs/SettlementAccountRecipientRecipientType.md)
  - [SettlementAccountRecipientWechatpayChannelRecipient](docs/SettlementAccountRecipientWechatpayChannelRecipient.md)
+ - [SettlementAccountRecipientYsepayMerchantRecipient](docs/SettlementAccountRecipientYsepayMerchantRecipient.md)
  - [Tradev1Channel](docs/Tradev1Channel.md)
  - [Tradev1RoyaltyMethod](docs/Tradev1RoyaltyMethod.md)
+ - [V1AcquirerCloseTransactionResponse](docs/V1AcquirerCloseTransactionResponse.md)
+ - [V1AcquirerCreateRefundResponse](docs/V1AcquirerCreateRefundResponse.md)
  - [V1AcquirerCreateRoyaltyResponse](docs/V1AcquirerCreateRoyaltyResponse.md)
+ - [V1AcquirerCreateTransactionResponse](docs/V1AcquirerCreateTransactionResponse.md)
+ - [V1AcquirerPaymentNotifyResponse](docs/V1AcquirerPaymentNotifyResponse.md)
+ - [V1AcquirerQueryRefundResponse](docs/V1AcquirerQueryRefundResponse.md)
  - [V1AcquirerQueryRoyaltyResponse](docs/V1AcquirerQueryRoyaltyResponse.md)
+ - [V1AcquirerQueryTransactionResponse](docs/V1AcquirerQueryTransactionResponse.md)
+ - [V1AcquirerRefundNotifyResponse](docs/V1AcquirerRefundNotifyResponse.md)
  - [V1AcquirerRoyaltyNotifyResponse](docs/V1AcquirerRoyaltyNotifyResponse.md)
  - [V1AlipayCallbackResponse](docs/V1AlipayCallbackResponse.md)
  - [V1AlipayNotifyResponse](docs/V1AlipayNotifyResponse.md)
+ - [V1BusinessUser](docs/V1BusinessUser.md)
  - [V1CallbackRoutingResponse](docs/V1CallbackRoutingResponse.md)
  - [V1Charge](docs/V1Charge.md)
  - [V1ChargeExtra](docs/V1ChargeExtra.md)
@@ -153,6 +169,7 @@ Class | Method | HTTP request | Description
  - [V1CreateCustomerRequest](docs/V1CreateCustomerRequest.md)
  - [V1CreateRefundRequest](docs/V1CreateRefundRequest.md)
  - [V1CreateRoyaltyRequest](docs/V1CreateRoyaltyRequest.md)
+ - [V1CreateSettlementAccountRequest](docs/V1CreateSettlementAccountRequest.md)
  - [V1CreateUserRequest](docs/V1CreateUserRequest.md)
  - [V1Customer](docs/V1Customer.md)
  - [V1CustomerListResponse](docs/V1CustomerListResponse.md)
@@ -197,6 +214,7 @@ Class | Method | HTTP request | Description
  - [V1Gender](docs/V1Gender.md)
  - [V1ListAllCustomersRequestCreated](docs/V1ListAllCustomersRequestCreated.md)
  - [V1ListAllRoyaltiesRequestCreated](docs/V1ListAllRoyaltiesRequestCreated.md)
+ - [V1ListAllRoyaltiesResponse](docs/V1ListAllRoyaltiesResponse.md)
  - [V1ListAllSettlementAccountsRequestCreated](docs/V1ListAllSettlementAccountsRequestCreated.md)
  - [V1ListAllUsersRequestCreated](docs/V1ListAllUsersRequestCreated.md)
  - [V1NotifyRoutingResponse](docs/V1NotifyRoutingResponse.md)
@@ -211,7 +229,6 @@ Class | Method | HTTP request | Description
  - [V1RefundResponse](docs/V1RefundResponse.md)
  - [V1RefundRoutingResponse](docs/V1RefundRoutingResponse.md)
  - [V1Royalty](docs/V1Royalty.md)
- - [V1RoyaltyListResponse](docs/V1RoyaltyListResponse.md)
  - [V1RoyaltyResponse](docs/V1RoyaltyResponse.md)
  - [V1RoyaltyRoutingRequestRoyaltyMethod](docs/V1RoyaltyRoutingRequestRoyaltyMethod.md)
  - [V1RoyaltyRoutingResponse](docs/V1RoyaltyRoutingResponse.md)
@@ -224,6 +241,7 @@ Class | Method | HTTP request | Description
  - [V1RoyaltySettlementTransactionListResponse](docs/V1RoyaltySettlementTransactionListResponse.md)
  - [V1RoyaltySettlementTransactionResponse](docs/V1RoyaltySettlementTransactionResponse.md)
  - [V1SearchCustomersRequestCreated](docs/V1SearchCustomersRequestCreated.md)
+ - [V1SearchRoyaltiesResponse](docs/V1SearchRoyaltiesResponse.md)
  - [V1SearchUsersRequestCreated](docs/V1SearchUsersRequestCreated.md)
  - [V1ServiceError](docs/V1ServiceError.md)
  - [V1SettlementAccount](docs/V1SettlementAccount.md)
@@ -233,6 +251,7 @@ Class | Method | HTTP request | Description
  - [V1SettlementAccountResponse](docs/V1SettlementAccountResponse.md)
  - [V1TransferRoutingResponse](docs/V1TransferRoutingResponse.md)
  - [V1UnionQrRequest](docs/V1UnionQrRequest.md)
+ - [V1UpdateAndPatchRequestBody](docs/V1UpdateAndPatchRequestBody.md)
  - [V1User](docs/V1User.md)
  - [V1UserListResponse](docs/V1UserListResponse.md)
  - [V1UserResponse](docs/V1UserResponse.md)

@@ -3,7 +3,7 @@
 """
     Justap API
 
-    欢迎阅读 Justap Api 文档  Justap 是为移动端应用和PC端应用打造的下一代聚合支付SAAS服务平台，通过一个 SDK 即可快速的支持各种形式的应用，并且一次接口完成多个不同支付渠道的接入。平台除了支持服务商子商户模式，同时还对商家自有商户（即自己前往微信、支付宝等机构开户）提供了完整的支持。  感谢您的支持，我们将不断探索，为您提供更优质的服务！如需技术支持可前往商户中心提交工单，支持工程师会尽快与您取得联系！  # 文档说明 采用 REST 风格设计。所有接口请求地址都是可预期的以及面向资源的。使用规范的 HTTP 响应代码来表示请求结果的正确或错误信息。使用 HTTP 内置的特性，如 HTTP Authentication 和 HTTP 请求方法让接口易于理解。  ## HTTP 状态码 HTTP 状态码可以用于表明服务的状态。服务器返回的 HTTP 状态码遵循 [RFC 7231](http://tools.ietf.org/html/rfc7231#section-6) 和 [IANA Status Code Registry](http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) 标准。  ## 认证 在调用 API 时，必须提供 API Key 作为每个请求的身份验证。你可以在管理平台内管理你的 API Key。API Key 是商户在系统中的身份标识，请安全存储，确保其不要被泄露。如需获取或更新 API Key ，也可以在商户中心内进行操作。 Api Key 在使用自定义的 HTTP Header 进行传递。  ``` X-Justap-Api-Key ```  API Key 分为 live 和 test 两种模式。分别对应真实交易环境和模拟测试交易环境并且可以实时切换。 测试模式下的 API Key 会模拟交易等请求，但是不会产生任何真实交易行为和费用，便于调试和接入。  **⚠️ 注意**：在使用 live 模式前，需要先前往 `商户中心 -> 应用设置 -> 开发参数` 开启 live 模式。  <SecurityDefinitions />  ## 请求类型 所有的 API 请求只支持 HTTPS 方式调用。  ## 路由参数 路由参数是指出现在 URL 路径中的可变变量。在本文档中，使用 `{}` 包裹的部分。 例如： `{charge_id}`，在实际使用是，需要将 `{charge_id}` 替换为实际值 `charge_8a8sdf888888`  ## MIME Type MIME 类型用于指示服务器返回的数据格式。服务器目前默认采用 `application/json`。  例如: ``` application/json ```  ## 错误 服务器使用 HTTP 状态码 (status code) 来表明一个 API 请求的成功或失败状态。返回 HTTP 2XX 表明 API 请求成功。返回 HTTP 4XX 表明在请求 API 时提供了错误信息，例如参数缺失、参数错误、支付渠道错误等。返回 HTTP 5XX 表明 API 请求时，服务器发生了错误。 在返回错误的状态码时，回同时返回一些错误信息提示出错原因。  具体的错误码我们正在整理当中。  ## 分页 所有的 Justap 资源都可以被 list API 方法支持，例如分页 charges 和 refunds。这些 list API 方法拥有相同的数据结构。Justap 是基于 cursor 的分页机制，使用参数 starting_after 来决定列表从何处开始，使用参数 ending_before 来决定列表从何处结束。  ## 参数说明 请求参数中包含的以下字段释义请参考：  - REQUIRED: 必填参数 - OPTIONAL: 可选参数，可以在请求当前接口时按需传入 - CONDITIONAL: 在某些条件下必传 - RESPONSE-ONLY: 标示该参数仅在接口返回参数中出现，调用 API 时无需传入  # 如何保证幂等性 如果发生请求超时或服务器内部错误，客户端可能会尝试重发请求。您可以在请求中设置 ClientToken 参数避免多次重试带来重复操作的问题。  ## 什么是幂等性 在数学计算或者计算机科学中，幂等性（idempotence）是指相同操作或资源在一次或多次请求中具有同样效果的作用。幂等性是在分布式系统设计中具有十分重要的地位。  ## 保证幂等性 通常情况下，客户端只需要在500（InternalErrorInternalError）或503（ServiceUnavailable）错误，或者无法获取响应结果时重试。充实时您可以从客户端生成一个参数值不超过64个的ASCII字符，并将值赋予 ClientToken，保证重试请求的幂等性。  ## ClientToken 详解 ClientToken参数的详细信息如下所示。  - ClientToken 是一个由客户端生成的唯一的、大小写敏感、不超过64个ASCII字符的字符串。例如，`ClientToken=123e4567-e89b-12d3-a456-426655440000`。 - 如果您提供了一个已经使用过的 ClientToken，但其他请求参数**有变化**，则服务器会返回 IdempotentParameterMismatch 的错误代码。 - 如果您提供了一个已经使用过的 ClientToken，且其他请求参数**不变**，则服务器会尝试返回 ClientToken 对应的记录。  ## API列表 以下为部分包含了 ClientToken 参数的API，供您参考。具体哪些API支持 ClientToken 参数请以各 API 文档为准，此处不一一列举。  - [申请退款接口](https://www.justap.cn/docs#operation/TradeService_Refunds)  # 签名 为保证安全，JUSTAP 所有接口均需要对请求进行签名。服务器收到请求后进行签名的验证。如果签名验证不通过，将会拒绝处理请求，并返回 401 Unauthorized。  签名算法：  ``` base64Encode(hamc-sha256(md5(请求 body + 请求时间戳 + 一次性随机字符串) + 一次性随机字符串)) ```  ## 准备 首先需要在 Justap 创建一个应用，商户需要生成一对 RSA 密钥对，并将公钥配置到 `商户中心 -> 开发配置`。 RSA 可以使用支付宝提供的 [密钥生成工具](https://opendocs.alipay.com/common/02kipl) 来生成。  商户在使用时，可以按照下述步骤生成请求的签名。   ## 算法描述: - 在请求发送前，取完整的**请求 body** - 生成一个随机的32位字符串，得到 **一次性随机字符串** - 获取当前时间的时间戳，得到 **请求时间戳** - 在请求字符串后面拼接上 **请求时间戳** 和 **一次性随机字符串**，得到 **待 Hash 字符串** - 对 **待 Hash 字符串** 计算 md5，得到 **待签名字符串** - **待签名字符串** 后面拼接上 一次性随机字符串，得到完整的 **待签名字符串** - 使用商户 RSA 私钥，对 **待签名字符串** 计算签名，并对 结果 进行 base64 编码，即可得到 **签名**  ## 设置HTTP头 Justap 要求请求通过 自定义头部 来传递签名。具体定义如下:  ``` X-Justap-Signature: 签名 X-Justap-Request-Time: 请求时间戳 X-Justap-Nonce: 一次性随机字符串 X-Justap-Body-Hash: 待签名字符串 ```  具体的签名算法实现，可参考我们提供的各语言 SDK。  # WebHooks   # noqa: E501
+    欢迎阅读 Justap Api 文档  Justap 是为移动端应用和PC端应用打造的下一代聚合支付SAAS服务平台，通过一个 SDK 即可快速的支持各种形式的应用，并且一次接口完成多个不同支付渠道的接入。平台除了支持服务商子商户模式，同时还对商家自有商户（即自己前往微信、支付宝等机构开户）提供了完整的支持。  感谢您的支持，我们将不断探索，为您提供更优质的服务！如需技术支持可前往商户中心提交工单，支持工程师会尽快与您取得联系！  # 文档说明 采用 REST 风格设计。所有接口请求地址都是可预期的以及面向资源的。使用规范的 HTTP 响应代码来表示请求结果的正确或错误信息。使用 HTTP 内置的特性，如 HTTP Authentication 和 HTTP 请求方法让接口易于理解。  ## HTTP 状态码 HTTP 状态码可以用于表明服务的状态。服务器返回的 HTTP 状态码遵循 [RFC 7231](http://tools.ietf.org/html/rfc7231#section-6) 和 [IANA Status Code Registry](http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml) 标准。  ## 认证 在调用 API 时，必须提供 API Key 作为每个请求的身份验证。你可以在管理平台内管理你的 API Key。API Key 是商户在系统中的身份标识，请安全存储，确保其不要被泄露。如需获取或更新 API Key ，也可以在商户中心内进行操作。 Api Key 在使用自定义的 HTTP Header 进行传递。  ``` X-Justap-Api-Key ```  API Key 分为 live 和 test 两种模式。分别对应真实交易环境和模拟测试交易环境并且可以实时切换。 测试模式下的 API Key 会模拟交易等请求，但是不会产生任何真实交易行为和费用，便于调试和接入。  **⚠️ 注意**：在使用 live 模式前，需要先前往 `商户中心 -> 应用设置 -> 开发参数` 开启 live 模式。  <SecurityDefinitions />  ## 请求类型 所有的 API 请求只支持 HTTPS 方式调用。  ## 路由参数 路由参数是指出现在 URL 路径中的可变变量。在本文档中，使用 `{}` 包裹的部分。 例如： `{charge_id}`，在实际使用是，需要将 `{charge_id}` 替换为实际值 `charge_8a8sdf888888`  ## MIME Type MIME 类型用于指示服务器返回的数据格式。服务器目前默认采用 `application/json`。  例如: ``` application/json ```  ## 错误 服务器使用 HTTP 状态码 (status code) 来表明一个 API 请求的成功或失败状态。返回 HTTP 2XX 表明 API 请求成功。返回 HTTP 4XX 表明在请求 API 时提供了错误信息，例如参数缺失、参数错误、支付渠道错误等。返回 HTTP 5XX 表明 API 请求时，服务器发生了错误。 在返回错误的状态码时，回同时返回一些错误信息提示出错原因。  具体的错误码我们正在整理当中。  ## 分页 所有的 Justap 资源都可以被 list API 方法支持，例如分页 charges 和 refunds。这些 list API 方法拥有相同的数据结构。Justap 是基于 cursor 的分页机制，使用参数 starting_after 来决定列表从何处开始，使用参数 ending_before 来决定列表从何处结束。  ## 参数说明 请求参数中包含的以下字段释义请参考：  - REQUIRED: 必填参数 - OPTIONAL: 可选参数，可以在请求当前接口时按需传入 - CONDITIONAL: 在某些条件下必传 - RESPONSE-ONLY: 标示该参数仅在接口返回参数中出现，调用 API 时无需传入  # 如何保证幂等性 如果发生请求超时或服务器内部错误，客户端可能会尝试重发请求。您可以在请求中设置 ClientToken 参数避免多次重试带来重复操作的问题。  ## 什么是幂等性 在数学计算或者计算机科学中，幂等性（idempotence）是指相同操作或资源在一次或多次请求中具有同样效果的作用。幂等性是在分布式系统设计中具有十分重要的地位。  ## 保证幂等性 通常情况下，客户端只需要在500（InternalErrorInternalError）或503（ServiceUnavailable）错误，或者无法获取响应结果时重试。充实时您可以从客户端生成一个参数值不超过64个的ASCII字符，并将值赋予 ClientToken，保证重试请求的幂等性。  ## ClientToken 详解 ClientToken参数的详细信息如下所示。  - ClientToken 是一个由客户端生成的唯一的、大小写敏感、不超过64个ASCII字符的字符串。例如，`ClientToken=123e4567-e89b-12d3-a456-426655440000`。 - 如果您提供了一个已经使用过的 ClientToken，但其他请求参数**有变化**，则服务器会返回 IdempotentParameterMismatch 的错误代码。 - 如果您提供了一个已经使用过的 ClientToken，且其他请求参数**不变**，则服务器会尝试返回 ClientToken 对应的记录。  ## API列表 以下为部分包含了 ClientToken 参数的API，供您参考。具体哪些API支持 ClientToken 参数请以各 API 文档为准，此处不一一列举。  - [申请退款接口](https://www.justap.cn/docs#operation/TradeService_Refunds)  # 签名 为保证安全，JUSTAP 所有接口均需要对请求进行签名。服务器收到请求后进行签名的验证。如果签名验证不通过，将会拒绝处理请求，并返回 401 Unauthorized。  签名算法：  ``` base64Encode(hamc-sha256(md5(请求 body + 请求时间戳 + 一次性随机字符串) + 一次性随机字符串)) ```  ## 准备 首先需要在 Justap 创建一个应用，商户需要生成一对 RSA 密钥对，并将公钥配置到 `商户中心 -> 开发配置`。 RSA 可以使用支付宝提供的 [密钥生成工具](https://opendocs.alipay.com/common/02kipl) 来生成。  商户在使用时，可以按照下述步骤生成请求的签名。   ## 算法描述: - 在请求发送前，取完整的**请求 body** - 生成一个随机的32位字符串，得到 **一次性随机字符串** - 获取当前时间的时间戳，得到 **请求时间戳** - 在请求字符串后面拼接上 **请求时间戳** 和 **一次性随机字符串**，得到 **待 Hash 字符串** - 对 **待 Hash 字符串** 转换为 utf8 编码并计算 md5，得到 **待签名字符串** - **待签名字符串** 后面拼接上 一次性随机字符串，得到完整的 **待签名字符串** - 使用商户 RSA 私钥，对 **待签名字符串** 计算签名，并对 结果 进行 base64 编码，即可得到 **签名**  ## 设置HTTP头 Justap 要求请求通过 自定义头部 来传递签名。具体定义如下:  ``` X-Justap-Signature: 签名 X-Justap-Request-Time: 请求时间戳 X-Justap-Nonce: 一次性随机字符串 X-Justap-Body-Hash: 待签名字符串 ```  具体的签名算法实现，可参考我们提供的各语言 SDK。  # WebHooks   # noqa: E501
 
     OpenAPI spec version: 1.0
     Contact: support@justap.net
@@ -33,6 +33,787 @@ class DefaultApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def business_user_service_create_user(self, body, **kwargs):  # noqa: E501
+        """创建 Business User 对象  # noqa: E501
+
+        创建 Business User 对象。商业用户是本系统中的一种账户类型，在交易完成之后可以对该类型的账户进行分账等操作。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_create_user(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateUserRequest body: (required)
+        :return: V1UserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.business_user_service_create_user_with_http_info(body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.business_user_service_create_user_with_http_info(body, **kwargs)  # noqa: E501
+            return data
+
+    def business_user_service_create_user_with_http_info(self, body, **kwargs):  # noqa: E501
+        """创建 Business User 对象  # noqa: E501
+
+        创建 Business User 对象。商业用户是本系统中的一种账户类型，在交易完成之后可以对该类型的账户进行分账等操作。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_create_user_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateUserRequest body: (required)
+        :return: V1UserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method business_user_service_create_user" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `business_user_service_create_user`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/business_users', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1UserResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def business_user_service_delete_user(self, id, **kwargs):  # noqa: E501
+        """删除 Business User 对象  # noqa: E501
+
+        删除 Business User 对象  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_delete_user(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param str app_id:
+        :return: V1DeleteUserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.business_user_service_delete_user_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.business_user_service_delete_user_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def business_user_service_delete_user_with_http_info(self, id, **kwargs):  # noqa: E501
+        """删除 Business User 对象  # noqa: E501
+
+        删除 Business User 对象  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_delete_user_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param str app_id:
+        :return: V1DeleteUserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method business_user_service_delete_user" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in params or
+                                                       params['id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `business_user_service_delete_user`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/business_users/{id}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1DeleteUserResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def business_user_service_list_all_users(self, **kwargs):  # noqa: E501
+        """查询 Business User 对象列表  # noqa: E501
+
+        查询 Business User 对象列表  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_list_all_users(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str app_id:
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :param int created_lt: 大于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param bool disabled: [OPTIONAL] 是否禁用，默认为 false
+        :return: V1UserListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.business_user_service_list_all_users_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.business_user_service_list_all_users_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def business_user_service_list_all_users_with_http_info(self, **kwargs):  # noqa: E501
+        """查询 Business User 对象列表  # noqa: E501
+
+        查询 Business User 对象列表  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_list_all_users_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str app_id:
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :param int created_lt: 大于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param bool disabled: [OPTIONAL] 是否禁用，默认为 false
+        :return: V1UserListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['app_id', 'limit', 'starting_after', 'ending_before', 'created_lt', 'created_lte', 'created_gt', 'created_gte', 'disabled']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method business_user_service_list_all_users" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'starting_after' in params:
+            query_params.append(('starting_after', params['starting_after']))  # noqa: E501
+        if 'ending_before' in params:
+            query_params.append(('ending_before', params['ending_before']))  # noqa: E501
+        if 'created_lt' in params:
+            query_params.append(('created.lt', params['created_lt']))  # noqa: E501
+        if 'created_lte' in params:
+            query_params.append(('created.lte', params['created_lte']))  # noqa: E501
+        if 'created_gt' in params:
+            query_params.append(('created.gt', params['created_gt']))  # noqa: E501
+        if 'created_gte' in params:
+            query_params.append(('created.gte', params['created_gte']))  # noqa: E501
+        if 'disabled' in params:
+            query_params.append(('disabled', params['disabled']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/business_users', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1UserListResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def business_user_service_retrieve_user(self, id, **kwargs):  # noqa: E501
+        """查询 Business User 对象  # noqa: E501
+
+        查询 Business User 对象  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_retrieve_user(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param str app_id:
+        :return: V1UserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.business_user_service_retrieve_user_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.business_user_service_retrieve_user_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def business_user_service_retrieve_user_with_http_info(self, id, **kwargs):  # noqa: E501
+        """查询 Business User 对象  # noqa: E501
+
+        查询 Business User 对象  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_retrieve_user_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param str app_id:
+        :return: V1UserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method business_user_service_retrieve_user" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in params or
+                                                       params['id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `business_user_service_retrieve_user`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/business_users/{id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1UserResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def business_user_service_search_users(self, **kwargs):  # noqa: E501
+        """查询 Business User 对象列表  # noqa: E501
+
+        查询 Business User 对象列表  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_search_users(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str app_id:
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param int created_lt: 大于 BusinessUser 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 BusinessUser 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 BusinessUser 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 BusinessUser 对象的创建时间，用 Unix 时间戳表示
+        :param str email: [OPTIONAL] BusinessUser 对象的邮箱地址。支持模糊匹配
+        :param str name: [OPTIONAL] BusinessUser 对象的用户名。支持模糊匹配
+        :param str phone: [OPTIONAL] BusinessUser 对象的手机号码
+        :return: V1UserListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.business_user_service_search_users_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.business_user_service_search_users_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def business_user_service_search_users_with_http_info(self, **kwargs):  # noqa: E501
+        """查询 Business User 对象列表  # noqa: E501
+
+        查询 Business User 对象列表  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_search_users_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str app_id:
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param int created_lt: 大于 BusinessUser 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 BusinessUser 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 BusinessUser 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 BusinessUser 对象的创建时间，用 Unix 时间戳表示
+        :param str email: [OPTIONAL] BusinessUser 对象的邮箱地址。支持模糊匹配
+        :param str name: [OPTIONAL] BusinessUser 对象的用户名。支持模糊匹配
+        :param str phone: [OPTIONAL] BusinessUser 对象的手机号码
+        :return: V1UserListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['app_id', 'limit', 'created_lt', 'created_lte', 'created_gt', 'created_gte', 'email', 'name', 'phone']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method business_user_service_search_users" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'created_lt' in params:
+            query_params.append(('created.lt', params['created_lt']))  # noqa: E501
+        if 'created_lte' in params:
+            query_params.append(('created.lte', params['created_lte']))  # noqa: E501
+        if 'created_gt' in params:
+            query_params.append(('created.gt', params['created_gt']))  # noqa: E501
+        if 'created_gte' in params:
+            query_params.append(('created.gte', params['created_gte']))  # noqa: E501
+        if 'email' in params:
+            query_params.append(('email', params['email']))  # noqa: E501
+        if 'name' in params:
+            query_params.append(('name', params['name']))  # noqa: E501
+        if 'phone' in params:
+            query_params.append(('phone', params['phone']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/business_users/search', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1UserListResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def business_user_service_update_user(self, user_id, body, **kwargs):  # noqa: E501
+        """更新 Business User 对象  # noqa: E501
+
+        更新 Business User 对象  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_update_user(user_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str user_id: (required)
+        :param V1BusinessUser body: (required)
+        :param str update_mask:
+        :return: V1UserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.business_user_service_update_user_with_http_info(user_id, body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.business_user_service_update_user_with_http_info(user_id, body, **kwargs)  # noqa: E501
+            return data
+
+    def business_user_service_update_user_with_http_info(self, user_id, body, **kwargs):  # noqa: E501
+        """更新 Business User 对象  # noqa: E501
+
+        更新 Business User 对象  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_update_user_with_http_info(user_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str user_id: (required)
+        :param V1BusinessUser body: (required)
+        :param str update_mask:
+        :return: V1UserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['user_id', 'body', 'update_mask']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method business_user_service_update_user" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'user_id' is set
+        if self.api_client.client_side_validation and ('user_id' not in params or
+                                                       params['user_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `user_id` when calling `business_user_service_update_user`")  # noqa: E501
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `business_user_service_update_user`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'user_id' in params:
+            path_params['user.id'] = params['user_id']  # noqa: E501
+
+        query_params = []
+        if 'update_mask' in params:
+            query_params.append(('updateMask', params['update_mask']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/business_users/{user.id}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1UserResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def business_user_service_update_user2(self, user_id, body, **kwargs):  # noqa: E501
+        """更新 Business User 对象  # noqa: E501
+
+        更新 Business User 对象  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_update_user2(user_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str user_id: (required)
+        :param V1BusinessUser body: (required)
+        :param str update_mask:
+        :return: V1UserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.business_user_service_update_user2_with_http_info(user_id, body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.business_user_service_update_user2_with_http_info(user_id, body, **kwargs)  # noqa: E501
+            return data
+
+    def business_user_service_update_user2_with_http_info(self, user_id, body, **kwargs):  # noqa: E501
+        """更新 Business User 对象  # noqa: E501
+
+        更新 Business User 对象  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.business_user_service_update_user2_with_http_info(user_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str user_id: (required)
+        :param V1BusinessUser body: (required)
+        :param str update_mask:
+        :return: V1UserResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['user_id', 'body', 'update_mask']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method business_user_service_update_user2" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'user_id' is set
+        if self.api_client.client_side_validation and ('user_id' not in params or
+                                                       params['user_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `user_id` when calling `business_user_service_update_user2`")  # noqa: E501
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `business_user_service_update_user2`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'user_id' in params:
+            path_params['user.id'] = params['user_id']  # noqa: E501
+
+        query_params = []
+        if 'update_mask' in params:
+            query_params.append(('updateMask', params['update_mask']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/business_users/{user.id}', 'PATCH',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1UserResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def charge_service_charges(self, body, **kwargs):  # noqa: E501
         """创建 Charge 对象  # noqa: E501
 
@@ -43,7 +824,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateChargeRequest body: 你可以创建一个 charge 对象向用户收款。charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 charge 对象，也可以随时查询一个或者多个 charge 对象的状态。每个 charge 对象都拥有一个标识 id，该 id 在系统内唯一。 (required)
+        :param V1CreateChargeRequest body: (required)
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -65,7 +846,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateChargeRequest body: 你可以创建一个 charge 对象向用户收款。charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 charge 对象，也可以随时查询一个或者多个 charge 对象的状态。每个 charge 对象都拥有一个标识 id，该 id 在系统内唯一。 (required)
+        :param V1CreateChargeRequest body: (required)
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -142,7 +923,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateChargeRequest body: 你可以创建一个 charge 对象向用户收款。charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 charge 对象，也可以随时查询一个或者多个 charge 对象的状态。每个 charge 对象都拥有一个标识 id，该 id 在系统内唯一。 (required)
+        :param V1CreateChargeRequest body: (required)
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -164,7 +945,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateChargeRequest body: 你可以创建一个 charge 对象向用户收款。charge 是一个支付凭据对象，所有和支付相关的要素信息都存储在这个对象中，你的服务端可以通过发起支付请求来创建一个新的 charge 对象，也可以随时查询一个或者多个 charge 对象的状态。每个 charge 对象都拥有一个标识 id，该 id 在系统内唯一。 (required)
+        :param V1CreateChargeRequest body: (required)
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -456,7 +1237,7 @@ class DefaultApi(object):
         :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
         :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
         :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
-        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付
+        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - AlipayJSAPI: 支付宝 JSAPI 支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付  - UnionPayQr: 银联二维码支付（云闪付扫码）
         :param bool paid: [OPTIONAL] 是否已付款
         :param bool refunded: [OPTIONAL] 是否存在退款信息，无论退款是否成功。
         :param bool reversed: [OPTIONAL] 是否已撤销
@@ -492,7 +1273,7 @@ class DefaultApi(object):
         :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
         :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
         :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
-        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付
+        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - AlipayJSAPI: 支付宝 JSAPI 支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付  - UnionPayQr: 银联二维码支付（云闪付扫码）
         :param bool paid: [OPTIONAL] 是否已付款
         :param bool refunded: [OPTIONAL] 是否存在退款信息，无论退款是否成功。
         :param bool reversed: [OPTIONAL] 是否已撤销
@@ -607,7 +1388,7 @@ class DefaultApi(object):
         :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
         :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
         :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
-        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付
+        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - AlipayJSAPI: 支付宝 JSAPI 支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付  - UnionPayQr: 银联二维码支付（云闪付扫码）
         :param bool paid: [OPTIONAL] 是否已付款
         :param bool refunded: [OPTIONAL] 是否存在退款信息，无论退款是否成功。
         :param bool reversed: [OPTIONAL] 是否已撤销
@@ -643,7 +1424,7 @@ class DefaultApi(object):
         :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
         :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
         :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
-        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付
+        :param str channel: [OPTIONAL] 渠道名称   - BALANCE: 余额支付  - AlipayQR: 支付宝扫码支付  - AlipayScan: 支付宝条码支付  - AlipayApp: 支付宝 App 支付  - AlipayWap: 支付宝手机网站支付  - AlipayPage: 支付宝电脑网站支付  - AlipayFace: 支付宝刷脸支付  - AlipayLite: 支付宝小程序支付  - AlipayJSAPI: 支付宝 JSAPI 支付  - WechatpayApp: 微信 App 支付  - WechatpayJSAPI: 微信 JSAPI 支付  - WechatpayH5: 微信 H5 支付  - WechatpayNative: 微信 Native 支付  - WechatpayLite: 微信小程序支付  - WechatpayFace: 刷脸支付  - WechatpayScan: 微信付款码支付  - UnionPayQr: 银联二维码支付（云闪付扫码）
         :param bool paid: [OPTIONAL] 是否已付款
         :param bool refunded: [OPTIONAL] 是否存在退款信息，无论退款是否成功。
         :param bool reversed: [OPTIONAL] 是否已撤销
@@ -750,7 +1531,6 @@ class DefaultApi(object):
 
         :param async_req bool
         :param str charge_id: Charge 对象 id (required)
-        :param str app_id: [REQUIRED] 应用 id
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -773,13 +1553,12 @@ class DefaultApi(object):
 
         :param async_req bool
         :param str charge_id: Charge 对象 id (required)
-        :param str app_id: [REQUIRED] 应用 id
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['charge_id', 'app_id']  # noqa: E501
+        all_params = ['charge_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -806,8 +1585,6 @@ class DefaultApi(object):
             path_params['charge_id'] = params['charge_id']  # noqa: E501
 
         query_params = []
-        if 'app_id' in params:
-            query_params.append(('app_id', params['app_id']))  # noqa: E501
 
         header_params = {}
 
@@ -853,7 +1630,6 @@ class DefaultApi(object):
 
         :param async_req bool
         :param str charge_id: Charge 对象 id (required)
-        :param str app_id: [REQUIRED] 应用 id
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -876,13 +1652,12 @@ class DefaultApi(object):
 
         :param async_req bool
         :param str charge_id: Charge 对象 id (required)
-        :param str app_id: [REQUIRED] 应用 id
         :return: V1ChargeResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['charge_id', 'app_id']  # noqa: E501
+        all_params = ['charge_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -909,8 +1684,6 @@ class DefaultApi(object):
             path_params['charge_id'] = params['charge_id']  # noqa: E501
 
         query_params = []
-        if 'app_id' in params:
-            query_params.append(('app_id', params['app_id']))  # noqa: E501
 
         header_params = {}
 
@@ -1399,7 +2172,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateRefundRequest body: 通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。 (required)
+        :param V1CreateRefundRequest body: (required)
         :return: V1RefundResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1421,7 +2194,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateRefundRequest body: 通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。 (required)
+        :param V1CreateRefundRequest body: (required)
         :return: V1RefundResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1498,7 +2271,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateRefundRequest body: 通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。 (required)
+        :param V1CreateRefundRequest body: (required)
         :return: V1RefundResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1520,7 +2293,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param V1CreateRefundRequest body: 通过发起一次退款请求创建一个新的 refund 对象，只能对已经发生交易并且没有全额退款的 charge 对象发起退款。当进行全额退款之前，可以进行多次退款，直至全额退款。当一次退款成功后，会发送 Webhooks 通知。 (required)
+        :param V1CreateRefundRequest body: (required)
         :return: V1RefundResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1580,6 +2353,1212 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='V1RefundResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def royalty_service_create_royalty(self, body, **kwargs):  # noqa: E501
+        """创建 Royalty 对象  # noqa: E501
+
+        对一个 Charge 对象进行分账，分账的金额和分账接收方由 Royalty 对象指定。Royalty 创建仅代表本系统成功接收分账申请，尚未提交到支付机构清分，更不代表分账立即成功，相关结果信息请调用查询接口确认  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.royalty_service_create_royalty(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateRoyaltyRequest body: (required)
+        :return: V1RoyaltyResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.royalty_service_create_royalty_with_http_info(body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.royalty_service_create_royalty_with_http_info(body, **kwargs)  # noqa: E501
+            return data
+
+    def royalty_service_create_royalty_with_http_info(self, body, **kwargs):  # noqa: E501
+        """创建 Royalty 对象  # noqa: E501
+
+        对一个 Charge 对象进行分账，分账的金额和分账接收方由 Royalty 对象指定。Royalty 创建仅代表本系统成功接收分账申请，尚未提交到支付机构清分，更不代表分账立即成功，相关结果信息请调用查询接口确认  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.royalty_service_create_royalty_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateRoyaltyRequest body: (required)
+        :return: V1RoyaltyResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method royalty_service_create_royalty" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `royalty_service_create_royalty`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/royalties', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1RoyaltyResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def royalty_service_list_all_royalties(self, **kwargs):  # noqa: E501
+        """查询 Royalty 对象列表  # noqa: E501
+
+        查询 Royalty 对象的列表信息  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.royalty_service_list_all_royalties(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :param str merchant_trade_id: [OPTIONAL] 客户系统订单号
+        :param int created_lt: 大于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param str app_id:
+        :param str settle_account_id:
+        :param str royalty_settlement_id:
+        :return: V1ListAllRoyaltiesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.royalty_service_list_all_royalties_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.royalty_service_list_all_royalties_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def royalty_service_list_all_royalties_with_http_info(self, **kwargs):  # noqa: E501
+        """查询 Royalty 对象列表  # noqa: E501
+
+        查询 Royalty 对象的列表信息  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.royalty_service_list_all_royalties_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :param str merchant_trade_id: [OPTIONAL] 客户系统订单号
+        :param int created_lt: 大于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param str app_id:
+        :param str settle_account_id:
+        :param str royalty_settlement_id:
+        :return: V1ListAllRoyaltiesResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['limit', 'starting_after', 'ending_before', 'merchant_trade_id', 'created_lt', 'created_lte', 'created_gt', 'created_gte', 'app_id', 'settle_account_id', 'royalty_settlement_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method royalty_service_list_all_royalties" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'starting_after' in params:
+            query_params.append(('starting_after', params['starting_after']))  # noqa: E501
+        if 'ending_before' in params:
+            query_params.append(('ending_before', params['ending_before']))  # noqa: E501
+        if 'merchant_trade_id' in params:
+            query_params.append(('merchant_trade_id', params['merchant_trade_id']))  # noqa: E501
+        if 'created_lt' in params:
+            query_params.append(('created.lt', params['created_lt']))  # noqa: E501
+        if 'created_lte' in params:
+            query_params.append(('created.lte', params['created_lte']))  # noqa: E501
+        if 'created_gt' in params:
+            query_params.append(('created.gt', params['created_gt']))  # noqa: E501
+        if 'created_gte' in params:
+            query_params.append(('created.gte', params['created_gte']))  # noqa: E501
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+        if 'settle_account_id' in params:
+            query_params.append(('settle_account_id', params['settle_account_id']))  # noqa: E501
+        if 'royalty_settlement_id' in params:
+            query_params.append(('royalty_settlement_id', params['royalty_settlement_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/royalties', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1ListAllRoyaltiesResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def royalty_service_retrieve_royalty(self, id, **kwargs):  # noqa: E501
+        """查询 Royalty 对象  # noqa: E501
+
+        查询 Royalty 对象的信息  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.royalty_service_retrieve_royalty(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :return: V1RoyaltyResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.royalty_service_retrieve_royalty_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.royalty_service_retrieve_royalty_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def royalty_service_retrieve_royalty_with_http_info(self, id, **kwargs):  # noqa: E501
+        """查询 Royalty 对象  # noqa: E501
+
+        查询 Royalty 对象的信息  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.royalty_service_retrieve_royalty_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :return: V1RoyaltyResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method royalty_service_retrieve_royalty" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in params or
+                                                       params['id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `royalty_service_retrieve_royalty`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/royalties/{id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1RoyaltyResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def settlement_service_create_settlement_account(self, body, **kwargs):  # noqa: E501
+        """创建结算账户  # noqa: E501
+
+        为用户创建一个结算账户。添加结算账户信息后方可对该用进行分账、余额充值、转账等操作。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_create_settlement_account(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateSettlementAccountRequest body: (required)
+        :return: V1SettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.settlement_service_create_settlement_account_with_http_info(body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.settlement_service_create_settlement_account_with_http_info(body, **kwargs)  # noqa: E501
+            return data
+
+    def settlement_service_create_settlement_account_with_http_info(self, body, **kwargs):  # noqa: E501
+        """创建结算账户  # noqa: E501
+
+        为用户创建一个结算账户。添加结算账户信息后方可对该用进行分账、余额充值、转账等操作。  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_create_settlement_account_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param V1CreateSettlementAccountRequest body: (required)
+        :return: V1SettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method settlement_service_create_settlement_account" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `settlement_service_create_settlement_account`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/settlement_accounts', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1SettlementAccountResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def settlement_service_delete_settlement_account(self, id, **kwargs):  # noqa: E501
+        """删除结算账户  # noqa: E501
+
+        删除结算账户  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_delete_settlement_account(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param str app_id:
+        :return: V1DeleteSettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.settlement_service_delete_settlement_account_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.settlement_service_delete_settlement_account_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def settlement_service_delete_settlement_account_with_http_info(self, id, **kwargs):  # noqa: E501
+        """删除结算账户  # noqa: E501
+
+        删除结算账户  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_delete_settlement_account_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param str app_id:
+        :return: V1DeleteSettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method settlement_service_delete_settlement_account" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in params or
+                                                       params['id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `settlement_service_delete_settlement_account`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/settlement_accounts/{id}', 'DELETE',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1DeleteSettlementAccountResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def settlement_service_list_all_settlement_accounts(self, **kwargs):  # noqa: E501
+        """查询结算账户列表  # noqa: E501
+
+        查询结算账户列表  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_list_all_settlement_accounts(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str app_id:
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :param int created_lt: 大于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param bool disabled: [OPTIONAL] 是否禁用，默认为 false
+        :param str customer_id: [OPTIONAL] 客户 ID
+        :param str business_user_id: [OPTIONAL] 商户用户 ID
+        :return: V1SettlementAccountListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.settlement_service_list_all_settlement_accounts_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.settlement_service_list_all_settlement_accounts_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def settlement_service_list_all_settlement_accounts_with_http_info(self, **kwargs):  # noqa: E501
+        """查询结算账户列表  # noqa: E501
+
+        查询结算账户列表  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_list_all_settlement_accounts_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str app_id:
+        :param int limit: [OPTIONAL] 限制有多少对象可以被返回，限制范围是从 1~100 项，默认是 10 项
+        :param str starting_after: [OPTIONAL] 在分页时使用的指针，决定了列表的第一项从何处开始。假设你的一次请求返回列表的最后一项的 id 是 obj_end，你可以使用 starting_after = obj_end 去获取下一页
+        :param str ending_before: [OPTIONAL] 在分页时使用的指针，决定了列表的最末项在何处结束。假设你的一次请求返回列表的第一项的 id 是 obj_start，你可以使用 ending_before = obj_start 去获取上一页
+        :param int created_lt: 大于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_lte: 大于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gt: 小于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param int created_gte: 小于或等于 charge 对象的创建时间，用 Unix 时间戳表示
+        :param bool disabled: [OPTIONAL] 是否禁用，默认为 false
+        :param str customer_id: [OPTIONAL] 客户 ID
+        :param str business_user_id: [OPTIONAL] 商户用户 ID
+        :return: V1SettlementAccountListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['app_id', 'limit', 'starting_after', 'ending_before', 'created_lt', 'created_lte', 'created_gt', 'created_gte', 'disabled', 'customer_id', 'business_user_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method settlement_service_list_all_settlement_accounts" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'starting_after' in params:
+            query_params.append(('starting_after', params['starting_after']))  # noqa: E501
+        if 'ending_before' in params:
+            query_params.append(('ending_before', params['ending_before']))  # noqa: E501
+        if 'created_lt' in params:
+            query_params.append(('created.lt', params['created_lt']))  # noqa: E501
+        if 'created_lte' in params:
+            query_params.append(('created.lte', params['created_lte']))  # noqa: E501
+        if 'created_gt' in params:
+            query_params.append(('created.gt', params['created_gt']))  # noqa: E501
+        if 'created_gte' in params:
+            query_params.append(('created.gte', params['created_gte']))  # noqa: E501
+        if 'disabled' in params:
+            query_params.append(('disabled', params['disabled']))  # noqa: E501
+        if 'customer_id' in params:
+            query_params.append(('customer_id', params['customer_id']))  # noqa: E501
+        if 'business_user_id' in params:
+            query_params.append(('business_user_id', params['business_user_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/settlement_accounts', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1SettlementAccountListResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def settlement_service_retrieve_settlement_account(self, id, **kwargs):  # noqa: E501
+        """查询结算账户  # noqa: E501
+
+        查询结算账户  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_retrieve_settlement_account(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param str app_id:
+        :param str object: 对象类型
+        :param str data_id: 分账接收方的唯一标识
+        :param str data_app_id: 分账接收方所在的应用 ID
+        :param str data_business_user_id: 分账接收方的用户 ID
+        :param str data_customer_id: 分账接收方的用户 ID
+        :param str data_channel: 分账接收方的账户类型
+        :param str data_recipient_wechatpay_account: openid 或者商户号，由类型决定. 微信支付分账接收方账户，OPENID或者商户号
+        :param str data_recipient_wechatpay_name: 微信支付分账接收方姓名或名称
+        :param bool data_recipient_wechatpay_force_check: 是否强制校验收款人姓名
+        :param str data_recipient_wechatpay_type: 微信支付分账接收方类型
+        :param str data_recipient_wechatpay_account_type: 微信支付分账接收方账户类型
+        :param str data_recipient_wechatpay_app_id: 微信支付分账接收方 openid 所对应的服务商公众号 ID
+        :param str data_recipient_wechatpay_sub_app_id: 微信支付分账接收方 openid 所对应的商户公众号 ID
+        :param str data_recipient_payment_alipay_account: 支付宝账号，账号ID或者登录邮箱
+        :param str data_recipient_payment_alipay_name: 支付宝账号真实姓名
+        :param str data_recipient_payment_alipay_type: 支付宝账号类型
+        :param str data_recipient_payment_alipay_account_type: 支付宝账号类型
+        :param str data_recipient_bank_account: 银行卡号
+        :param str data_recipient_bank_name: 银行卡开户名
+        :param str data_recipient_bank_type: 银行卡类型
+        :param str data_recipient_bank_bank_name: 银行卡开户行编码
+        :param str data_recipient_bank_bank_branch: 银行卡开户支行
+        :param str data_recipient_bank_bank_province: 银行卡开户省份
+        :param str data_recipient_bank_bank_city: 银行卡开户城市
+        :param str data_recipient_ysepay_merchant_division_mer_usercode: 银盛商户号
+        :param int data_created: 分账接收方的创建时间
+        :param int data_updated: 分账接收方的更新时间
+        :param str data_object: 对象类型
+        :return: V1SettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.settlement_service_retrieve_settlement_account_with_http_info(id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.settlement_service_retrieve_settlement_account_with_http_info(id, **kwargs)  # noqa: E501
+            return data
+
+    def settlement_service_retrieve_settlement_account_with_http_info(self, id, **kwargs):  # noqa: E501
+        """查询结算账户  # noqa: E501
+
+        查询结算账户  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_retrieve_settlement_account_with_http_info(id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str id: (required)
+        :param str app_id:
+        :param str object: 对象类型
+        :param str data_id: 分账接收方的唯一标识
+        :param str data_app_id: 分账接收方所在的应用 ID
+        :param str data_business_user_id: 分账接收方的用户 ID
+        :param str data_customer_id: 分账接收方的用户 ID
+        :param str data_channel: 分账接收方的账户类型
+        :param str data_recipient_wechatpay_account: openid 或者商户号，由类型决定. 微信支付分账接收方账户，OPENID或者商户号
+        :param str data_recipient_wechatpay_name: 微信支付分账接收方姓名或名称
+        :param bool data_recipient_wechatpay_force_check: 是否强制校验收款人姓名
+        :param str data_recipient_wechatpay_type: 微信支付分账接收方类型
+        :param str data_recipient_wechatpay_account_type: 微信支付分账接收方账户类型
+        :param str data_recipient_wechatpay_app_id: 微信支付分账接收方 openid 所对应的服务商公众号 ID
+        :param str data_recipient_wechatpay_sub_app_id: 微信支付分账接收方 openid 所对应的商户公众号 ID
+        :param str data_recipient_payment_alipay_account: 支付宝账号，账号ID或者登录邮箱
+        :param str data_recipient_payment_alipay_name: 支付宝账号真实姓名
+        :param str data_recipient_payment_alipay_type: 支付宝账号类型
+        :param str data_recipient_payment_alipay_account_type: 支付宝账号类型
+        :param str data_recipient_bank_account: 银行卡号
+        :param str data_recipient_bank_name: 银行卡开户名
+        :param str data_recipient_bank_type: 银行卡类型
+        :param str data_recipient_bank_bank_name: 银行卡开户行编码
+        :param str data_recipient_bank_bank_branch: 银行卡开户支行
+        :param str data_recipient_bank_bank_province: 银行卡开户省份
+        :param str data_recipient_bank_bank_city: 银行卡开户城市
+        :param str data_recipient_ysepay_merchant_division_mer_usercode: 银盛商户号
+        :param int data_created: 分账接收方的创建时间
+        :param int data_updated: 分账接收方的更新时间
+        :param str data_object: 对象类型
+        :return: V1SettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['id', 'app_id', 'object', 'data_id', 'data_app_id', 'data_business_user_id', 'data_customer_id', 'data_channel', 'data_recipient_wechatpay_account', 'data_recipient_wechatpay_name', 'data_recipient_wechatpay_force_check', 'data_recipient_wechatpay_type', 'data_recipient_wechatpay_account_type', 'data_recipient_wechatpay_app_id', 'data_recipient_wechatpay_sub_app_id', 'data_recipient_payment_alipay_account', 'data_recipient_payment_alipay_name', 'data_recipient_payment_alipay_type', 'data_recipient_payment_alipay_account_type', 'data_recipient_bank_account', 'data_recipient_bank_name', 'data_recipient_bank_type', 'data_recipient_bank_bank_name', 'data_recipient_bank_bank_branch', 'data_recipient_bank_bank_province', 'data_recipient_bank_bank_city', 'data_recipient_ysepay_merchant_division_mer_usercode', 'data_created', 'data_updated', 'data_object']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method settlement_service_retrieve_settlement_account" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'id' is set
+        if self.api_client.client_side_validation and ('id' not in params or
+                                                       params['id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `id` when calling `settlement_service_retrieve_settlement_account`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'id' in params:
+            path_params['id'] = params['id']  # noqa: E501
+
+        query_params = []
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+        if 'object' in params:
+            query_params.append(('object', params['object']))  # noqa: E501
+        if 'data_id' in params:
+            query_params.append(('data.id', params['data_id']))  # noqa: E501
+        if 'data_app_id' in params:
+            query_params.append(('data.app_id', params['data_app_id']))  # noqa: E501
+        if 'data_business_user_id' in params:
+            query_params.append(('data.business_user_id', params['data_business_user_id']))  # noqa: E501
+        if 'data_customer_id' in params:
+            query_params.append(('data.customer_id', params['data_customer_id']))  # noqa: E501
+        if 'data_channel' in params:
+            query_params.append(('data.channel', params['data_channel']))  # noqa: E501
+        if 'data_recipient_wechatpay_account' in params:
+            query_params.append(('data.recipient.wechatpay.account', params['data_recipient_wechatpay_account']))  # noqa: E501
+        if 'data_recipient_wechatpay_name' in params:
+            query_params.append(('data.recipient.wechatpay.name', params['data_recipient_wechatpay_name']))  # noqa: E501
+        if 'data_recipient_wechatpay_force_check' in params:
+            query_params.append(('data.recipient.wechatpay.force_check', params['data_recipient_wechatpay_force_check']))  # noqa: E501
+        if 'data_recipient_wechatpay_type' in params:
+            query_params.append(('data.recipient.wechatpay.type', params['data_recipient_wechatpay_type']))  # noqa: E501
+        if 'data_recipient_wechatpay_account_type' in params:
+            query_params.append(('data.recipient.wechatpay.account_type', params['data_recipient_wechatpay_account_type']))  # noqa: E501
+        if 'data_recipient_wechatpay_app_id' in params:
+            query_params.append(('data.recipient.wechatpay.app_id', params['data_recipient_wechatpay_app_id']))  # noqa: E501
+        if 'data_recipient_wechatpay_sub_app_id' in params:
+            query_params.append(('data.recipient.wechatpay.sub_app_id', params['data_recipient_wechatpay_sub_app_id']))  # noqa: E501
+        if 'data_recipient_payment_alipay_account' in params:
+            query_params.append(('data.recipient.payment_alipay.account', params['data_recipient_payment_alipay_account']))  # noqa: E501
+        if 'data_recipient_payment_alipay_name' in params:
+            query_params.append(('data.recipient.payment_alipay.name', params['data_recipient_payment_alipay_name']))  # noqa: E501
+        if 'data_recipient_payment_alipay_type' in params:
+            query_params.append(('data.recipient.payment_alipay.type', params['data_recipient_payment_alipay_type']))  # noqa: E501
+        if 'data_recipient_payment_alipay_account_type' in params:
+            query_params.append(('data.recipient.payment_alipay.account_type', params['data_recipient_payment_alipay_account_type']))  # noqa: E501
+        if 'data_recipient_bank_account' in params:
+            query_params.append(('data.recipient.bank.account', params['data_recipient_bank_account']))  # noqa: E501
+        if 'data_recipient_bank_name' in params:
+            query_params.append(('data.recipient.bank.name', params['data_recipient_bank_name']))  # noqa: E501
+        if 'data_recipient_bank_type' in params:
+            query_params.append(('data.recipient.bank.type', params['data_recipient_bank_type']))  # noqa: E501
+        if 'data_recipient_bank_bank_name' in params:
+            query_params.append(('data.recipient.bank.bank_name', params['data_recipient_bank_bank_name']))  # noqa: E501
+        if 'data_recipient_bank_bank_branch' in params:
+            query_params.append(('data.recipient.bank.bank_branch', params['data_recipient_bank_bank_branch']))  # noqa: E501
+        if 'data_recipient_bank_bank_province' in params:
+            query_params.append(('data.recipient.bank.bank_province', params['data_recipient_bank_bank_province']))  # noqa: E501
+        if 'data_recipient_bank_bank_city' in params:
+            query_params.append(('data.recipient.bank.bank_city', params['data_recipient_bank_bank_city']))  # noqa: E501
+        if 'data_recipient_ysepay_merchant_division_mer_usercode' in params:
+            query_params.append(('data.recipient.ysepay_merchant.division_mer_usercode', params['data_recipient_ysepay_merchant_division_mer_usercode']))  # noqa: E501
+        if 'data_created' in params:
+            query_params.append(('data.created', params['data_created']))  # noqa: E501
+        if 'data_updated' in params:
+            query_params.append(('data.updated', params['data_updated']))  # noqa: E501
+        if 'data_object' in params:
+            query_params.append(('data.object', params['data_object']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/settlement_accounts/{id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1SettlementAccountResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def settlement_service_search_settlement_accounts(self, **kwargs):  # noqa: E501
+        """查询结算账户列表  # noqa: E501
+
+        查询结算账户列表  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_search_settlement_accounts(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str user_id:
+        :param str app_id:
+        :return: V1SettlementAccountListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.settlement_service_search_settlement_accounts_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.settlement_service_search_settlement_accounts_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def settlement_service_search_settlement_accounts_with_http_info(self, **kwargs):  # noqa: E501
+        """查询结算账户列表  # noqa: E501
+
+        查询结算账户列表  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_search_settlement_accounts_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str user_id:
+        :param str app_id:
+        :return: V1SettlementAccountListResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['user_id', 'app_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method settlement_service_search_settlement_accounts" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'user_id' in params:
+            query_params.append(('user_id', params['user_id']))  # noqa: E501
+        if 'app_id' in params:
+            query_params.append(('app_id', params['app_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/settlement_accounts/search', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1SettlementAccountListResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def settlement_service_update_settlement_account(self, settlement_account_id, body, **kwargs):  # noqa: E501
+        """更新结算账户  # noqa: E501
+
+        更新结算账户  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_update_settlement_account(settlement_account_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str settlement_account_id: (required)
+        :param V1UpdateAndPatchRequestBody body: (required)
+        :param str update_mask:
+        :return: V1SettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.settlement_service_update_settlement_account_with_http_info(settlement_account_id, body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.settlement_service_update_settlement_account_with_http_info(settlement_account_id, body, **kwargs)  # noqa: E501
+            return data
+
+    def settlement_service_update_settlement_account_with_http_info(self, settlement_account_id, body, **kwargs):  # noqa: E501
+        """更新结算账户  # noqa: E501
+
+        更新结算账户  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_update_settlement_account_with_http_info(settlement_account_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str settlement_account_id: (required)
+        :param V1UpdateAndPatchRequestBody body: (required)
+        :param str update_mask:
+        :return: V1SettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['settlement_account_id', 'body', 'update_mask']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method settlement_service_update_settlement_account" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'settlement_account_id' is set
+        if self.api_client.client_side_validation and ('settlement_account_id' not in params or
+                                                       params['settlement_account_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `settlement_account_id` when calling `settlement_service_update_settlement_account`")  # noqa: E501
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `settlement_service_update_settlement_account`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'settlement_account_id' in params:
+            path_params['settlementAccount.id'] = params['settlement_account_id']  # noqa: E501
+
+        query_params = []
+        if 'update_mask' in params:
+            query_params.append(('updateMask', params['update_mask']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/settlement_accounts/{settlementAccount.id}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1SettlementAccountResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def settlement_service_update_settlement_account2(self, settlement_account_id, body, **kwargs):  # noqa: E501
+        """更新结算账户  # noqa: E501
+
+        更新结算账户  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_update_settlement_account2(settlement_account_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str settlement_account_id: (required)
+        :param V1UpdateAndPatchRequestBody body: (required)
+        :param str update_mask:
+        :return: V1SettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.settlement_service_update_settlement_account2_with_http_info(settlement_account_id, body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.settlement_service_update_settlement_account2_with_http_info(settlement_account_id, body, **kwargs)  # noqa: E501
+            return data
+
+    def settlement_service_update_settlement_account2_with_http_info(self, settlement_account_id, body, **kwargs):  # noqa: E501
+        """更新结算账户  # noqa: E501
+
+        更新结算账户  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.settlement_service_update_settlement_account2_with_http_info(settlement_account_id, body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str settlement_account_id: (required)
+        :param V1UpdateAndPatchRequestBody body: (required)
+        :param str update_mask:
+        :return: V1SettlementAccountResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['settlement_account_id', 'body', 'update_mask']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method settlement_service_update_settlement_account2" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'settlement_account_id' is set
+        if self.api_client.client_side_validation and ('settlement_account_id' not in params or
+                                                       params['settlement_account_id'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `settlement_account_id` when calling `settlement_service_update_settlement_account2`")  # noqa: E501
+        # verify the required parameter 'body' is set
+        if self.api_client.client_side_validation and ('body' not in params or
+                                                       params['body'] is None):  # noqa: E501
+            raise ValueError("Missing the required parameter `body` when calling `settlement_service_update_settlement_account2`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'settlement_account_id' in params:
+            path_params['settlementAccount.id'] = params['settlement_account_id']  # noqa: E501
+
+        query_params = []
+        if 'update_mask' in params:
+            query_params.append(('updateMask', params['update_mask']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['ApiKeyAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/v1/settlement_accounts/{settlementAccount.id}', 'PATCH',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='V1SettlementAccountResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

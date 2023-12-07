@@ -304,7 +304,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **customer_service_update_customer**
-> V1CustomerResponse customer_service_update_customer(id, app_id=app_id, address=address, currency=currency, description=description, email=email, name=name, phone=phone, avatar=avatar, disabled=disabled, gender=gender, parent_customer_id=parent_customer_id, out_customer_id=out_customer_id)
+> V1CustomerResponse customer_service_update_customer(id)
 
 
 
@@ -325,21 +325,9 @@ configuration.api_key['X-JUSTAP-API-KEY'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = justap_server_sdk_python.CustomerServiceApi(justap_server_sdk_python.ApiClient(configuration))
 id = 'id_example' # str | 
-app_id = 'app_id_example' # str |  (optional)
-address = 'address_example' # str |  (optional)
-currency = 'currency_example' # str |  (optional)
-description = 'description_example' # str |  (optional)
-email = 'email_example' # str |  (optional)
-name = 'name_example' # str |  (optional)
-phone = 'phone_example' # str |  (optional)
-avatar = 'avatar_example' # str |  (optional)
-disabled = true # bool |  (optional)
-gender = 'GENDER_UNKNOWN' # str |  - GENDER_UNKNOWN: 未设置  - MALE: 男  - FE_MALE: 女  - PRIVACY: 保密  - ThirdGender: 第三性别 (optional) (default to GENDER_UNKNOWN)
-parent_customer_id = 'parent_customer_id_example' # str |  (optional)
-out_customer_id = 'out_customer_id_example' # str |  (optional)
 
 try:
-    api_response = api_instance.customer_service_update_customer(id, app_id=app_id, address=address, currency=currency, description=description, email=email, name=name, phone=phone, avatar=avatar, disabled=disabled, gender=gender, parent_customer_id=parent_customer_id, out_customer_id=out_customer_id)
+    api_response = api_instance.customer_service_update_customer(id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CustomerServiceApi->customer_service_update_customer: %s\n" % e)
@@ -350,18 +338,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **str**|  | 
- **app_id** | **str**|  | [optional] 
- **address** | **str**|  | [optional] 
- **currency** | **str**|  | [optional] 
- **description** | **str**|  | [optional] 
- **email** | **str**|  | [optional] 
- **name** | **str**|  | [optional] 
- **phone** | **str**|  | [optional] 
- **avatar** | **str**|  | [optional] 
- **disabled** | **bool**|  | [optional] 
- **gender** | **str**|  - GENDER_UNKNOWN: 未设置  - MALE: 男  - FE_MALE: 女  - PRIVACY: 保密  - ThirdGender: 第三性别 | [optional] [default to GENDER_UNKNOWN]
- **parent_customer_id** | **str**|  | [optional] 
- **out_customer_id** | **str**|  | [optional] 
 
 ### Return type
 
