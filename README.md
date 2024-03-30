@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**charge_service_charges2**](docs/DefaultApi.md#charge_service_charges2) | **POST** /v1/charges | 创建 Charge 对象
 *DefaultApi* | [**charge_service_query_charge**](docs/DefaultApi.md#charge_service_query_charge) | **GET** /transaction/v1/charges/{charge_id} | 查询 Charge 对象
 *DefaultApi* | [**charge_service_query_charge2**](docs/DefaultApi.md#charge_service_query_charge2) | **GET** /v1/charges/{charge_id} | 查询 Charge 对象
+*DefaultApi* | [**charge_service_query_charge3**](docs/DefaultApi.md#charge_service_query_charge3) | **GET** /v1/charges/merchant_trade_id/{merchant_trade_id} | 查询 Charge 对象
 *DefaultApi* | [**charge_service_query_charge_list**](docs/DefaultApi.md#charge_service_query_charge_list) | **GET** /transaction/v1/charges | 查询 Charge 对象列表
 *DefaultApi* | [**charge_service_query_charge_list2**](docs/DefaultApi.md#charge_service_query_charge_list2) | **GET** /v1/charges | 查询 Charge 对象列表
 *DefaultApi* | [**charge_service_reverse_charge**](docs/DefaultApi.md#charge_service_reverse_charge) | **POST** /transaction/v1/charges/{charge_id}/reverse | 撤销 Charge 对象
@@ -123,10 +124,12 @@ Class | Method | HTTP request | Description
  - [CreateRoyaltyRequestRoyaltyMode](docs/CreateRoyaltyRequestRoyaltyMode.md)
  - [CreateRoyaltyRequestRoyaltyReceiver](docs/CreateRoyaltyRequestRoyaltyReceiver.md)
  - [ExtraAlipayInvoiceInfoKeyInfo](docs/ExtraAlipayInvoiceInfoKeyInfo.md)
+ - [ExtraAlipayJSAPIPayer](docs/ExtraAlipayJSAPIPayer.md)
  - [ExtraAlipaySettleInfoSettleDetailInfos](docs/ExtraAlipaySettleInfoSettleDetailInfos.md)
  - [ExtraWechatpayDetailGoodsDetail](docs/ExtraWechatpayDetailGoodsDetail.md)
  - [ExtraWechatpaySceneInfoH5Info](docs/ExtraWechatpaySceneInfoH5Info.md)
  - [ExtraWechatpaySceneInfoStoreInfo](docs/ExtraWechatpaySceneInfoStoreInfo.md)
+ - [GooglerpcStatus](docs/GooglerpcStatus.md)
  - [OpenApiRoyaltyDetailInfoPojoTradeFundBillItem](docs/OpenApiRoyaltyDetailInfoPojoTradeFundBillItem.md)
  - [ProtobufAny](docs/ProtobufAny.md)
  - [RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo](docs/RefundExtraAlipayOpenApiRoyaltyDetailInfoPojo.md)
@@ -135,7 +138,7 @@ Class | Method | HTTP request | Description
  - [RefundRoutingRequestRefundMethod](docs/RefundRoutingRequestRefundMethod.md)
  - [RoyaltyReceiverRoyaltyFeeMode](docs/RoyaltyReceiverRoyaltyFeeMode.md)
  - [RoyaltySettlementRoyaltySettlementStatus](docs/RoyaltySettlementRoyaltySettlementStatus.md)
- - [RpcStatus](docs/RpcStatus.md)
+ - [RoyaltySettlementTransactionRoyaltyTransactionStatus](docs/RoyaltySettlementTransactionRoyaltyTransactionStatus.md)
  - [SettlementAccountRecipientAccountType](docs/SettlementAccountRecipientAccountType.md)
  - [SettlementAccountRecipientAlipayChannelRecipient](docs/SettlementAccountRecipientAlipayChannelRecipient.md)
  - [SettlementAccountRecipientBalanceChannelRecipient](docs/SettlementAccountRecipientBalanceChannelRecipient.md)
@@ -186,6 +189,7 @@ Class | Method | HTTP request | Description
  - [V1ExtraAlipayFundBillList](docs/V1ExtraAlipayFundBillList.md)
  - [V1ExtraAlipayGoodsDetail](docs/V1ExtraAlipayGoodsDetail.md)
  - [V1ExtraAlipayInvoiceInfo](docs/V1ExtraAlipayInvoiceInfo.md)
+ - [V1ExtraAlipayJSAPI](docs/V1ExtraAlipayJSAPI.md)
  - [V1ExtraAlipayLite](docs/V1ExtraAlipayLite.md)
  - [V1ExtraAlipayLogisticsDetail](docs/V1ExtraAlipayLogisticsDetail.md)
  - [V1ExtraAlipayPage](docs/V1ExtraAlipayPage.md)
@@ -240,6 +244,7 @@ Class | Method | HTTP request | Description
  - [V1RoyaltySettlementTransaction](docs/V1RoyaltySettlementTransaction.md)
  - [V1RoyaltySettlementTransactionListResponse](docs/V1RoyaltySettlementTransactionListResponse.md)
  - [V1RoyaltySettlementTransactionResponse](docs/V1RoyaltySettlementTransactionResponse.md)
+ - [V1RoyaltyStatus](docs/V1RoyaltyStatus.md)
  - [V1SearchCustomersRequestCreated](docs/V1SearchCustomersRequestCreated.md)
  - [V1SearchRoyaltiesResponse](docs/V1SearchRoyaltiesResponse.md)
  - [V1SearchUsersRequestCreated](docs/V1SearchUsersRequestCreated.md)

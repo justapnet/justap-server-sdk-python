@@ -33,7 +33,7 @@ class V1ListAllRoyaltiesResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'data': 'V1Royalty',
+        'data': 'list[V1Royalty]',
         'has_more': 'bool',
         'object': 'str'
     }
@@ -66,7 +66,7 @@ class V1ListAllRoyaltiesResponse(object):
         分账列表  # noqa: E501
 
         :return: The data of this V1ListAllRoyaltiesResponse.  # noqa: E501
-        :rtype: V1Royalty
+        :rtype: list[V1Royalty]
         """
         return self._data
 
@@ -77,7 +77,7 @@ class V1ListAllRoyaltiesResponse(object):
         分账列表  # noqa: E501
 
         :param data: The data of this V1ListAllRoyaltiesResponse.  # noqa: E501
-        :type: V1Royalty
+        :type: list[V1Royalty]
         """
         if self._configuration.client_side_validation and data is None:
             raise ValueError("Invalid value for `data`, must not be `None`")  # noqa: E501

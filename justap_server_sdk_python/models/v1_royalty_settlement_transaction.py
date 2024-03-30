@@ -42,7 +42,7 @@ class V1RoyaltySettlementTransaction(object):
         'recipient_app_id': 'str',
         'recipient_user_id': 'str',
         'royalty_settlement_id': 'str',
-        'status': 'str',
+        'status': 'RoyaltySettlementTransactionRoyaltyTransactionStatus',
         'transfer_id': 'str',
         'user_settlement_account_id': 'str'
     }
@@ -94,7 +94,8 @@ class V1RoyaltySettlementTransaction(object):
         self.recipient_user_id = recipient_user_id
         if royalty_settlement_id is not None:
             self.royalty_settlement_id = royalty_settlement_id
-        self.status = status
+        if status is not None:
+            self.status = status
         self.transfer_id = transfer_id
         self.user_settlement_account_id = user_settlement_account_id
 
@@ -318,7 +319,7 @@ class V1RoyaltySettlementTransaction(object):
         结算状态  # noqa: E501
 
         :return: The status of this V1RoyaltySettlementTransaction.  # noqa: E501
-        :rtype: str
+        :rtype: RoyaltySettlementTransactionRoyaltyTransactionStatus
         """
         return self._status
 
@@ -329,10 +330,8 @@ class V1RoyaltySettlementTransaction(object):
         结算状态  # noqa: E501
 
         :param status: The status of this V1RoyaltySettlementTransaction.  # noqa: E501
-        :type: str
+        :type: RoyaltySettlementTransactionRoyaltyTransactionStatus
         """
-        if self._configuration.client_side_validation and status is None:
-            raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501
 
         self._status = status
 

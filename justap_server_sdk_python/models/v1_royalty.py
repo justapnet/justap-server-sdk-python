@@ -33,7 +33,6 @@ class V1Royalty(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'amount': 'float',
         'charge_id': 'str',
         'created': 'int',
         'description': 'str',
@@ -47,13 +46,11 @@ class V1Royalty(object):
         'payer_settle_account_id': 'str',
         'payer_user_id': 'str',
         'royalty_settlement_id': 'str',
-        'royalty_settlement_transaction_id': 'str',
-        'status': 'str',
+        'status': 'V1RoyaltyStatus',
         'time_settled': 'int'
     }
 
     attribute_map = {
-        'amount': 'amount',
         'charge_id': 'charge_id',
         'created': 'created',
         'description': 'description',
@@ -67,18 +64,16 @@ class V1Royalty(object):
         'payer_settle_account_id': 'payer_settle_account_id',
         'payer_user_id': 'payer_user_id',
         'royalty_settlement_id': 'royalty_settlement_id',
-        'royalty_settlement_transaction_id': 'royalty_settlement_transaction_id',
         'status': 'status',
         'time_settled': 'time_settled'
     }
 
-    def __init__(self, amount=None, charge_id=None, created=0, description=None, id=None, livemode=None, metadata=None, method=None, object='Royalty', order_id=None, payer_app_id=None, payer_settle_account_id=None, payer_user_id=None, royalty_settlement_id=None, royalty_settlement_transaction_id=None, status=None, time_settled=0, _configuration=None):  # noqa: E501
+    def __init__(self, charge_id=None, created=0, description=None, id=None, livemode=None, metadata=None, method=None, object='Royalty', order_id=None, payer_app_id=None, payer_settle_account_id=None, payer_user_id=None, royalty_settlement_id=None, status=None, time_settled=0, _configuration=None):  # noqa: E501
         """V1Royalty - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
 
-        self._amount = None
         self._charge_id = None
         self._created = None
         self._description = None
@@ -92,12 +87,10 @@ class V1Royalty(object):
         self._payer_settle_account_id = None
         self._payer_user_id = None
         self._royalty_settlement_id = None
-        self._royalty_settlement_transaction_id = None
         self._status = None
         self._time_settled = None
         self.discriminator = None
 
-        self.amount = amount
         self.charge_id = charge_id
         self.created = created
         self.description = description
@@ -112,35 +105,8 @@ class V1Royalty(object):
         self.payer_settle_account_id = payer_settle_account_id
         self.payer_user_id = payer_user_id
         self.royalty_settlement_id = royalty_settlement_id
-        if royalty_settlement_transaction_id is not None:
-            self.royalty_settlement_transaction_id = royalty_settlement_transaction_id
         self.status = status
         self.time_settled = time_settled
-
-    @property
-    def amount(self):
-        """Gets the amount of this V1Royalty.  # noqa: E501
-
-        分账金额  # noqa: E501
-
-        :return: The amount of this V1Royalty.  # noqa: E501
-        :rtype: float
-        """
-        return self._amount
-
-    @amount.setter
-    def amount(self, amount):
-        """Sets the amount of this V1Royalty.
-
-        分账金额  # noqa: E501
-
-        :param amount: The amount of this V1Royalty.  # noqa: E501
-        :type: float
-        """
-        if self._configuration.client_side_validation and amount is None:
-            raise ValueError("Invalid value for `amount`, must not be `None`")  # noqa: E501
-
-        self._amount = amount
 
     @property
     def charge_id(self):
@@ -464,34 +430,13 @@ class V1Royalty(object):
         self._royalty_settlement_id = royalty_settlement_id
 
     @property
-    def royalty_settlement_transaction_id(self):
-        """Gets the royalty_settlement_transaction_id of this V1Royalty.  # noqa: E501
-
-
-        :return: The royalty_settlement_transaction_id of this V1Royalty.  # noqa: E501
-        :rtype: str
-        """
-        return self._royalty_settlement_transaction_id
-
-    @royalty_settlement_transaction_id.setter
-    def royalty_settlement_transaction_id(self, royalty_settlement_transaction_id):
-        """Sets the royalty_settlement_transaction_id of this V1Royalty.
-
-
-        :param royalty_settlement_transaction_id: The royalty_settlement_transaction_id of this V1Royalty.  # noqa: E501
-        :type: str
-        """
-
-        self._royalty_settlement_transaction_id = royalty_settlement_transaction_id
-
-    @property
     def status(self):
         """Gets the status of this V1Royalty.  # noqa: E501
 
         分账状态  # noqa: E501
 
         :return: The status of this V1Royalty.  # noqa: E501
-        :rtype: str
+        :rtype: V1RoyaltyStatus
         """
         return self._status
 
@@ -502,7 +447,7 @@ class V1Royalty(object):
         分账状态  # noqa: E501
 
         :param status: The status of this V1Royalty.  # noqa: E501
-        :type: str
+        :type: V1RoyaltyStatus
         """
         if self._configuration.client_side_validation and status is None:
             raise ValueError("Invalid value for `status`, must not be `None`")  # noqa: E501

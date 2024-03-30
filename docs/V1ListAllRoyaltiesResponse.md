@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**V1Royalty**](V1Royalty.md) | 分账列表 | 
+**data** | [**list[V1Royalty]**](V1Royalty.md) | 分账列表 | 
 **has_more** | **bool** | 是否还有更多 | [default to False]
 **object** | **str** | 对象类型 | [default to 'RoyaltyList']
 

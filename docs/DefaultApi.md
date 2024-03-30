@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**charge_service_charges2**](DefaultApi.md#charge_service_charges2) | **POST** /v1/charges | 创建 Charge 对象
 [**charge_service_query_charge**](DefaultApi.md#charge_service_query_charge) | **GET** /transaction/v1/charges/{charge_id} | 查询 Charge 对象
 [**charge_service_query_charge2**](DefaultApi.md#charge_service_query_charge2) | **GET** /v1/charges/{charge_id} | 查询 Charge 对象
+[**charge_service_query_charge3**](DefaultApi.md#charge_service_query_charge3) | **GET** /v1/charges/merchant_trade_id/{merchant_trade_id} | 查询 Charge 对象
 [**charge_service_query_charge_list**](DefaultApi.md#charge_service_query_charge_list) | **GET** /transaction/v1/charges | 查询 Charge 对象列表
 [**charge_service_query_charge_list2**](DefaultApi.md#charge_service_query_charge_list2) | **GET** /v1/charges | 查询 Charge 对象列表
 [**charge_service_reverse_charge**](DefaultApi.md#charge_service_reverse_charge) | **POST** /transaction/v1/charges/{charge_id}/reverse | 撤销 Charge 对象
@@ -568,7 +569,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **charge_service_query_charge**
-> V1ChargeResponse charge_service_query_charge(charge_id, app_id=app_id)
+> V1ChargeResponse charge_service_query_charge(charge_id, app_id=app_id, merchant_trade_id=merchant_trade_id)
 
 查询 Charge 对象
 
@@ -592,10 +593,11 @@ configuration.api_key['X-JUSTAP-API-KEY'] = 'YOUR_API_KEY'
 api_instance = justap_server_sdk_python.DefaultApi(justap_server_sdk_python.ApiClient(configuration))
 charge_id = 'charge_id_example' # str | [REQUIRED] Charge 对象 id
 app_id = 'app_id_example' # str | [REQUIRED] 应用 id (optional)
+merchant_trade_id = 'merchant_trade_id_example' # str | [OPTIONAL] 商户订单号 (optional)
 
 try:
     # 查询 Charge 对象
-    api_response = api_instance.charge_service_query_charge(charge_id, app_id=app_id)
+    api_response = api_instance.charge_service_query_charge(charge_id, app_id=app_id, merchant_trade_id=merchant_trade_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->charge_service_query_charge: %s\n" % e)
@@ -607,6 +609,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **charge_id** | **str**| [REQUIRED] Charge 对象 id | 
  **app_id** | **str**| [REQUIRED] 应用 id | [optional] 
+ **merchant_trade_id** | **str**| [OPTIONAL] 商户订单号 | [optional] 
 
 ### Return type
 
@@ -624,7 +627,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **charge_service_query_charge2**
-> V1ChargeResponse charge_service_query_charge2(charge_id, app_id=app_id)
+> V1ChargeResponse charge_service_query_charge2(charge_id, app_id=app_id, merchant_trade_id=merchant_trade_id)
 
 查询 Charge 对象
 
@@ -648,10 +651,11 @@ configuration.api_key['X-JUSTAP-API-KEY'] = 'YOUR_API_KEY'
 api_instance = justap_server_sdk_python.DefaultApi(justap_server_sdk_python.ApiClient(configuration))
 charge_id = 'charge_id_example' # str | [REQUIRED] Charge 对象 id
 app_id = 'app_id_example' # str | [REQUIRED] 应用 id (optional)
+merchant_trade_id = 'merchant_trade_id_example' # str | [OPTIONAL] 商户订单号 (optional)
 
 try:
     # 查询 Charge 对象
-    api_response = api_instance.charge_service_query_charge2(charge_id, app_id=app_id)
+    api_response = api_instance.charge_service_query_charge2(charge_id, app_id=app_id, merchant_trade_id=merchant_trade_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->charge_service_query_charge2: %s\n" % e)
@@ -662,6 +666,65 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **charge_id** | **str**| [REQUIRED] Charge 对象 id | 
+ **app_id** | **str**| [REQUIRED] 应用 id | [optional] 
+ **merchant_trade_id** | **str**| [OPTIONAL] 商户订单号 | [optional] 
+
+### Return type
+
+[**V1ChargeResponse**](V1ChargeResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **charge_service_query_charge3**
+> V1ChargeResponse charge_service_query_charge3(merchant_trade_id, charge_id=charge_id, app_id=app_id)
+
+查询 Charge 对象
+
+你可以在后台异步通知之前，通过查询接口确认支付状态。通过charge对象的id查询一个已创建的charge对象。
+
+### Example
+```python
+from __future__ import print_function
+import time
+import justap_server_sdk_python
+from justap_server_sdk_python.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: ApiKeyAuth
+configuration = justap_server_sdk_python.Configuration()
+configuration.api_key['X-JUSTAP-API-KEY'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-JUSTAP-API-KEY'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = justap_server_sdk_python.DefaultApi(justap_server_sdk_python.ApiClient(configuration))
+merchant_trade_id = 'merchant_trade_id_example' # str | [OPTIONAL] 商户订单号
+charge_id = 'charge_id_example' # str | [REQUIRED] Charge 对象 id (optional)
+app_id = 'app_id_example' # str | [REQUIRED] 应用 id (optional)
+
+try:
+    # 查询 Charge 对象
+    api_response = api_instance.charge_service_query_charge3(merchant_trade_id, charge_id=charge_id, app_id=app_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->charge_service_query_charge3: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **merchant_trade_id** | **str**| [OPTIONAL] 商户订单号 | 
+ **charge_id** | **str**| [REQUIRED] Charge 对象 id | [optional] 
  **app_id** | **str**| [REQUIRED] 应用 id | [optional] 
 
 ### Return type

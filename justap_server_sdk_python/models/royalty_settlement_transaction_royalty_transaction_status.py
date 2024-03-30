@@ -11,248 +11,94 @@
 """
 
 
-from __future__ import absolute_import
-
-import unittest
-
-import justap_server_sdk_python
-from justap_server_sdk_python.api.default_api import DefaultApi  # noqa: E501
-from justap_server_sdk_python.rest import ApiException
-
-
-class TestDefaultApi(unittest.TestCase):
-    """DefaultApi unit test stubs"""
-
-    def setUp(self):
-        self.api = justap_server_sdk_python.api.default_api.DefaultApi()  # noqa: E501
-
-    def tearDown(self):
-        pass
-
-    def test_business_user_service_create_user(self):
-        """Test case for business_user_service_create_user
-
-        创建 Business User 对象  # noqa: E501
-        """
-        pass
-
-    def test_business_user_service_delete_user(self):
-        """Test case for business_user_service_delete_user
-
-        删除 Business User 对象  # noqa: E501
-        """
-        pass
-
-    def test_business_user_service_list_all_users(self):
-        """Test case for business_user_service_list_all_users
-
-        查询 Business User 对象列表  # noqa: E501
-        """
-        pass
-
-    def test_business_user_service_retrieve_user(self):
-        """Test case for business_user_service_retrieve_user
-
-        查询 Business User 对象  # noqa: E501
-        """
-        pass
-
-    def test_business_user_service_search_users(self):
-        """Test case for business_user_service_search_users
-
-        查询 Business User 对象列表  # noqa: E501
-        """
-        pass
-
-    def test_business_user_service_update_user(self):
-        """Test case for business_user_service_update_user
-
-        更新 Business User 对象  # noqa: E501
-        """
-        pass
-
-    def test_business_user_service_update_user2(self):
-        """Test case for business_user_service_update_user2
-
-        更新 Business User 对象  # noqa: E501
-        """
-        pass
-
-    def test_charge_service_charges(self):
-        """Test case for charge_service_charges
-
-        创建 Charge 对象  # noqa: E501
-        """
-        pass
-
-    def test_charge_service_charges2(self):
-        """Test case for charge_service_charges2
-
-        创建 Charge 对象  # noqa: E501
-        """
-        pass
-
-    def test_charge_service_query_charge(self):
-        """Test case for charge_service_query_charge
-
-        查询 Charge 对象  # noqa: E501
-        """
-        pass
-
-    def test_charge_service_query_charge2(self):
-        """Test case for charge_service_query_charge2
-
-        查询 Charge 对象  # noqa: E501
-        """
-        pass
-
-    def test_charge_service_query_charge3(self):
-        """Test case for charge_service_query_charge3
-
-        查询 Charge 对象  # noqa: E501
-        """
-        pass
-
-    def test_charge_service_query_charge_list(self):
-        """Test case for charge_service_query_charge_list
-
-        查询 Charge 对象列表  # noqa: E501
-        """
-        pass
-
-    def test_charge_service_query_charge_list2(self):
-        """Test case for charge_service_query_charge_list2
-
-        查询 Charge 对象列表  # noqa: E501
-        """
-        pass
-
-    def test_charge_service_reverse_charge(self):
-        """Test case for charge_service_reverse_charge
-
-        撤销 Charge 对象  # noqa: E501
-        """
-        pass
-
-    def test_charge_service_reverse_charge2(self):
-        """Test case for charge_service_reverse_charge2
-
-        撤销 Charge 对象  # noqa: E501
-        """
-        pass
-
-    def test_refund_service_query_refund(self):
-        """Test case for refund_service_query_refund
-
-        查询 Refund 对象  # noqa: E501
-        """
-        pass
-
-    def test_refund_service_query_refund2(self):
-        """Test case for refund_service_query_refund2
-
-        查询 Refund 对象  # noqa: E501
-        """
-        pass
-
-    def test_refund_service_query_refund_list(self):
-        """Test case for refund_service_query_refund_list
-
-        查询 Refund 对象列表  # noqa: E501
-        """
-        pass
-
-    def test_refund_service_query_refund_list2(self):
-        """Test case for refund_service_query_refund_list2
-
-        查询 Refund 对象列表  # noqa: E501
-        """
-        pass
-
-    def test_refund_service_refunds(self):
-        """Test case for refund_service_refunds
-
-        创建 Refund 对象  # noqa: E501
-        """
-        pass
-
-    def test_refund_service_refunds2(self):
-        """Test case for refund_service_refunds2
-
-        创建 Refund 对象  # noqa: E501
-        """
-        pass
-
-    def test_royalty_service_create_royalty(self):
-        """Test case for royalty_service_create_royalty
-
-        创建 Royalty 对象  # noqa: E501
-        """
-        pass
-
-    def test_royalty_service_list_all_royalties(self):
-        """Test case for royalty_service_list_all_royalties
-
-        查询 Royalty 对象列表  # noqa: E501
-        """
-        pass
-
-    def test_royalty_service_retrieve_royalty(self):
-        """Test case for royalty_service_retrieve_royalty
-
-        查询 Royalty 对象  # noqa: E501
-        """
-        pass
-
-    def test_settlement_service_create_settlement_account(self):
-        """Test case for settlement_service_create_settlement_account
-
-        创建结算账户  # noqa: E501
-        """
-        pass
-
-    def test_settlement_service_delete_settlement_account(self):
-        """Test case for settlement_service_delete_settlement_account
-
-        删除结算账户  # noqa: E501
-        """
-        pass
-
-    def test_settlement_service_list_all_settlement_accounts(self):
-        """Test case for settlement_service_list_all_settlement_accounts
-
-        查询结算账户列表  # noqa: E501
-        """
-        pass
-
-    def test_settlement_service_retrieve_settlement_account(self):
-        """Test case for settlement_service_retrieve_settlement_account
-
-        查询结算账户  # noqa: E501
-        """
-        pass
-
-    def test_settlement_service_search_settlement_accounts(self):
-        """Test case for settlement_service_search_settlement_accounts
-
-        查询结算账户列表  # noqa: E501
-        """
-        pass
-
-    def test_settlement_service_update_settlement_account(self):
-        """Test case for settlement_service_update_settlement_account
-
-        更新结算账户  # noqa: E501
-        """
-        pass
-
-    def test_settlement_service_update_settlement_account2(self):
-        """Test case for settlement_service_update_settlement_account2
-
-        更新结算账户  # noqa: E501
-        """
-        pass
-
-
-if __name__ == '__main__':
-    unittest.main()
+import pprint
+import re  # noqa: F401
+
+import six
+
+from justap_server_sdk_python.configuration import Configuration
+
+
+class RoyaltySettlementTransactionRoyaltyTransactionStatus(object):
+    """NOTE: This class is auto generated by the swagger code generator program.
+
+    Do not edit the class manually.
+    """
+
+    """
+    allowed enum values
+    """
+    UNKNOWN = "UNKNOWN"
+    SUCCESS = "SUCCESS"
+    PENDING = "PENDING"
+    FAILED = "FAILED"
+    CLOSED = "CLOSED"
+
+    """
+    Attributes:
+      swagger_types (dict): The key is attribute name
+                            and the value is attribute type.
+      attribute_map (dict): The key is attribute name
+                            and the value is json key in definition.
+    """
+    swagger_types = {
+    }
+
+    attribute_map = {
+    }
+
+    def __init__(self, _configuration=None):  # noqa: E501
+        """RoyaltySettlementTransactionRoyaltyTransactionStatus - a model defined in Swagger"""  # noqa: E501
+        if _configuration is None:
+            _configuration = Configuration()
+        self._configuration = _configuration
+        self.discriminator = None
+
+    def to_dict(self):
+        """Returns the model properties as a dict"""
+        result = {}
+
+        for attr, _ in six.iteritems(self.swagger_types):
+            value = getattr(self, attr)
+            if isinstance(value, list):
+                result[attr] = list(map(
+                    lambda x: x.to_dict() if hasattr(x, "to_dict") else x,
+                    value
+                ))
+            elif hasattr(value, "to_dict"):
+                result[attr] = value.to_dict()
+            elif isinstance(value, dict):
+                result[attr] = dict(map(
+                    lambda item: (item[0], item[1].to_dict())
+                    if hasattr(item[1], "to_dict") else item,
+                    value.items()
+                ))
+            else:
+                result[attr] = value
+        if issubclass(RoyaltySettlementTransactionRoyaltyTransactionStatus, dict):
+            for key, value in self.items():
+                result[key] = value
+
+        return result
+
+    def to_str(self):
+        """Returns the string representation of the model"""
+        return pprint.pformat(self.to_dict())
+
+    def __repr__(self):
+        """For `print` and `pprint`"""
+        return self.to_str()
+
+    def __eq__(self, other):
+        """Returns true if both objects are equal"""
+        if not isinstance(other, RoyaltySettlementTransactionRoyaltyTransactionStatus):
+            return False
+
+        return self.to_dict() == other.to_dict()
+
+    def __ne__(self, other):
+        """Returns true if both objects are not equal"""
+        if not isinstance(other, RoyaltySettlementTransactionRoyaltyTransactionStatus):
+            return True
+
+        return self.to_dict() != other.to_dict()

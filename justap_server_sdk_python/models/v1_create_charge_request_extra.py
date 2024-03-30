@@ -35,6 +35,7 @@ class V1CreateChargeRequestExtra(object):
     swagger_types = {
         'alipay_app': 'V1ExtraAlipayApp',
         'alipay_face': 'V1ExtraAlipayFace',
+        'alipay_jsapi': 'V1ExtraAlipayJSAPI',
         'alipay_lite': 'V1ExtraAlipayLite',
         'alipay_page': 'V1ExtraAlipayPage',
         'alipay_qr': 'V1ExtraAlipayQr',
@@ -51,6 +52,7 @@ class V1CreateChargeRequestExtra(object):
     attribute_map = {
         'alipay_app': 'alipay_app',
         'alipay_face': 'alipay_face',
+        'alipay_jsapi': 'alipay_jsapi',
         'alipay_lite': 'alipay_lite',
         'alipay_page': 'alipay_page',
         'alipay_qr': 'alipay_qr',
@@ -64,7 +66,7 @@ class V1CreateChargeRequestExtra(object):
         'wechatpay_scan': 'wechatpay_scan'
     }
 
-    def __init__(self, alipay_app=None, alipay_face=None, alipay_lite=None, alipay_page=None, alipay_qr=None, alipay_scan=None, alipay_wap=None, wechatpay_app=None, wechatpay_h5=None, wechatpay_jsapi=None, wechatpay_lite=None, wechatpay_native=None, wechatpay_scan=None, _configuration=None):  # noqa: E501
+    def __init__(self, alipay_app=None, alipay_face=None, alipay_jsapi=None, alipay_lite=None, alipay_page=None, alipay_qr=None, alipay_scan=None, alipay_wap=None, wechatpay_app=None, wechatpay_h5=None, wechatpay_jsapi=None, wechatpay_lite=None, wechatpay_native=None, wechatpay_scan=None, _configuration=None):  # noqa: E501
         """V1CreateChargeRequestExtra - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -72,6 +74,7 @@ class V1CreateChargeRequestExtra(object):
 
         self._alipay_app = None
         self._alipay_face = None
+        self._alipay_jsapi = None
         self._alipay_lite = None
         self._alipay_page = None
         self._alipay_qr = None
@@ -89,6 +92,8 @@ class V1CreateChargeRequestExtra(object):
             self.alipay_app = alipay_app
         if alipay_face is not None:
             self.alipay_face = alipay_face
+        if alipay_jsapi is not None:
+            self.alipay_jsapi = alipay_jsapi
         if alipay_lite is not None:
             self.alipay_lite = alipay_lite
         if alipay_page is not None:
@@ -157,6 +162,29 @@ class V1CreateChargeRequestExtra(object):
         """
 
         self._alipay_face = alipay_face
+
+    @property
+    def alipay_jsapi(self):
+        """Gets the alipay_jsapi of this V1CreateChargeRequestExtra.  # noqa: E501
+
+        支付宝 JSAPI 支付元数据  # noqa: E501
+
+        :return: The alipay_jsapi of this V1CreateChargeRequestExtra.  # noqa: E501
+        :rtype: V1ExtraAlipayJSAPI
+        """
+        return self._alipay_jsapi
+
+    @alipay_jsapi.setter
+    def alipay_jsapi(self, alipay_jsapi):
+        """Sets the alipay_jsapi of this V1CreateChargeRequestExtra.
+
+        支付宝 JSAPI 支付元数据  # noqa: E501
+
+        :param alipay_jsapi: The alipay_jsapi of this V1CreateChargeRequestExtra.  # noqa: E501
+        :type: V1ExtraAlipayJSAPI
+        """
+
+        self._alipay_jsapi = alipay_jsapi
 
     @property
     def alipay_lite(self):

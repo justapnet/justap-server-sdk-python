@@ -33,17 +33,103 @@ class V1AcquirerQueryRefundResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'charge_id': 'int',
+        'error': 'V1ServiceError',
+        'refund_id': 'int'
     }
 
     attribute_map = {
+        'charge_id': 'charge_id',
+        'error': 'error',
+        'refund_id': 'refund_id'
     }
 
-    def __init__(self, _configuration=None):  # noqa: E501
+    def __init__(self, charge_id=0, error=None, refund_id=0, _configuration=None):  # noqa: E501
         """V1AcquirerQueryRefundResponse - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
+
+        self._charge_id = None
+        self._error = None
+        self._refund_id = None
         self.discriminator = None
+
+        self.charge_id = charge_id
+        if error is not None:
+            self.error = error
+        self.refund_id = refund_id
+
+    @property
+    def charge_id(self):
+        """Gets the charge_id of this V1AcquirerQueryRefundResponse.  # noqa: E501
+
+        支付单 ID  # noqa: E501
+
+        :return: The charge_id of this V1AcquirerQueryRefundResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._charge_id
+
+    @charge_id.setter
+    def charge_id(self, charge_id):
+        """Sets the charge_id of this V1AcquirerQueryRefundResponse.
+
+        支付单 ID  # noqa: E501
+
+        :param charge_id: The charge_id of this V1AcquirerQueryRefundResponse.  # noqa: E501
+        :type: int
+        """
+        if self._configuration.client_side_validation and charge_id is None:
+            raise ValueError("Invalid value for `charge_id`, must not be `None`")  # noqa: E501
+
+        self._charge_id = charge_id
+
+    @property
+    def error(self):
+        """Gets the error of this V1AcquirerQueryRefundResponse.  # noqa: E501
+
+
+        :return: The error of this V1AcquirerQueryRefundResponse.  # noqa: E501
+        :rtype: V1ServiceError
+        """
+        return self._error
+
+    @error.setter
+    def error(self, error):
+        """Sets the error of this V1AcquirerQueryRefundResponse.
+
+
+        :param error: The error of this V1AcquirerQueryRefundResponse.  # noqa: E501
+        :type: V1ServiceError
+        """
+
+        self._error = error
+
+    @property
+    def refund_id(self):
+        """Gets the refund_id of this V1AcquirerQueryRefundResponse.  # noqa: E501
+
+        退款单号  # noqa: E501
+
+        :return: The refund_id of this V1AcquirerQueryRefundResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._refund_id
+
+    @refund_id.setter
+    def refund_id(self, refund_id):
+        """Sets the refund_id of this V1AcquirerQueryRefundResponse.
+
+        退款单号  # noqa: E501
+
+        :param refund_id: The refund_id of this V1AcquirerQueryRefundResponse.  # noqa: E501
+        :type: int
+        """
+        if self._configuration.client_side_validation and refund_id is None:
+            raise ValueError("Invalid value for `refund_id`, must not be `None`")  # noqa: E501
+
+        self._refund_id = refund_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""
