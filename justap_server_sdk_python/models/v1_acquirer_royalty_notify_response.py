@@ -33,17 +33,74 @@ class V1AcquirerRoyaltyNotifyResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'error': 'V1ServiceError',
+        'royalty_id': 'int'
     }
 
     attribute_map = {
+        'error': 'error',
+        'royalty_id': 'royalty_id'
     }
 
-    def __init__(self, _configuration=None):  # noqa: E501
+    def __init__(self, error=None, royalty_id=0, _configuration=None):  # noqa: E501
         """V1AcquirerRoyaltyNotifyResponse - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
         self._configuration = _configuration
+
+        self._error = None
+        self._royalty_id = None
         self.discriminator = None
+
+        if error is not None:
+            self.error = error
+        self.royalty_id = royalty_id
+
+    @property
+    def error(self):
+        """Gets the error of this V1AcquirerRoyaltyNotifyResponse.  # noqa: E501
+
+
+        :return: The error of this V1AcquirerRoyaltyNotifyResponse.  # noqa: E501
+        :rtype: V1ServiceError
+        """
+        return self._error
+
+    @error.setter
+    def error(self, error):
+        """Sets the error of this V1AcquirerRoyaltyNotifyResponse.
+
+
+        :param error: The error of this V1AcquirerRoyaltyNotifyResponse.  # noqa: E501
+        :type: V1ServiceError
+        """
+
+        self._error = error
+
+    @property
+    def royalty_id(self):
+        """Gets the royalty_id of this V1AcquirerRoyaltyNotifyResponse.  # noqa: E501
+
+        分账单号  # noqa: E501
+
+        :return: The royalty_id of this V1AcquirerRoyaltyNotifyResponse.  # noqa: E501
+        :rtype: int
+        """
+        return self._royalty_id
+
+    @royalty_id.setter
+    def royalty_id(self, royalty_id):
+        """Sets the royalty_id of this V1AcquirerRoyaltyNotifyResponse.
+
+        分账单号  # noqa: E501
+
+        :param royalty_id: The royalty_id of this V1AcquirerRoyaltyNotifyResponse.  # noqa: E501
+        :type: int
+        """
+        if self._configuration.client_side_validation and royalty_id is None:
+            raise ValueError("Invalid value for `royalty_id`, must not be `None`")  # noqa: E501
+
+        self._royalty_id = royalty_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

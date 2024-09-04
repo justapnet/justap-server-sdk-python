@@ -35,6 +35,7 @@ class V1ExtraAlipayWap(object):
     swagger_types = {
         'auth_token': 'str',
         'business_params': 'str',
+        'direct_pay_form': 'ExtraAlipayPageAlipayDirectPayForm',
         'disable_pay_channels': 'str',
         'enable_pay_channels': 'str',
         'extend_params': 'V1ExtraAlipayExtendParams',
@@ -55,6 +56,7 @@ class V1ExtraAlipayWap(object):
     attribute_map = {
         'auth_token': 'auth_token',
         'business_params': 'business_params',
+        'direct_pay_form': 'direct_pay_form',
         'disable_pay_channels': 'disable_pay_channels',
         'enable_pay_channels': 'enable_pay_channels',
         'extend_params': 'extend_params',
@@ -72,7 +74,7 @@ class V1ExtraAlipayWap(object):
         'voucher_detail_list': 'voucher_detail_list'
     }
 
-    def __init__(self, auth_token=None, business_params=None, disable_pay_channels=None, enable_pay_channels=None, extend_params=None, fund_bill_list=None, goods_detail=None, goods_type=None, merchant_trade_id=None, pay_url=None, product_code=None, promo_params=None, quit_url=None, return_url=None, seller_id=None, store_id=None, voucher_detail_list=None, _configuration=None):  # noqa: E501
+    def __init__(self, auth_token=None, business_params=None, direct_pay_form=None, disable_pay_channels=None, enable_pay_channels=None, extend_params=None, fund_bill_list=None, goods_detail=None, goods_type=None, merchant_trade_id=None, pay_url=None, product_code=None, promo_params=None, quit_url=None, return_url=None, seller_id=None, store_id=None, voucher_detail_list=None, _configuration=None):  # noqa: E501
         """V1ExtraAlipayWap - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -80,6 +82,7 @@ class V1ExtraAlipayWap(object):
 
         self._auth_token = None
         self._business_params = None
+        self._direct_pay_form = None
         self._disable_pay_channels = None
         self._enable_pay_channels = None
         self._extend_params = None
@@ -99,6 +102,8 @@ class V1ExtraAlipayWap(object):
 
         self.auth_token = auth_token
         self.business_params = business_params
+        if direct_pay_form is not None:
+            self.direct_pay_form = direct_pay_form
         self.disable_pay_channels = disable_pay_channels
         self.enable_pay_channels = enable_pay_channels
         if extend_params is not None:
@@ -168,6 +173,27 @@ class V1ExtraAlipayWap(object):
             raise ValueError("Invalid value for `business_params`, must not be `None`")  # noqa: E501
 
         self._business_params = business_params
+
+    @property
+    def direct_pay_form(self):
+        """Gets the direct_pay_form of this V1ExtraAlipayWap.  # noqa: E501
+
+
+        :return: The direct_pay_form of this V1ExtraAlipayWap.  # noqa: E501
+        :rtype: ExtraAlipayPageAlipayDirectPayForm
+        """
+        return self._direct_pay_form
+
+    @direct_pay_form.setter
+    def direct_pay_form(self, direct_pay_form):
+        """Sets the direct_pay_form of this V1ExtraAlipayWap.
+
+
+        :param direct_pay_form: The direct_pay_form of this V1ExtraAlipayWap.  # noqa: E501
+        :type: ExtraAlipayPageAlipayDirectPayForm
+        """
+
+        self._direct_pay_form = direct_pay_form
 
     @property
     def disable_pay_channels(self):

@@ -39,7 +39,9 @@ class V1CreateRefundRequest(object):
         'description': 'str',
         'extra': 'ProtobufAny',
         'merchant_refund_id': 'str',
-        'metadata': 'dict(str, str)'
+        'metadata': 'dict(str, str)',
+        'notification_area': 'str',
+        'notify_url': 'str'
     }
 
     attribute_map = {
@@ -49,10 +51,12 @@ class V1CreateRefundRequest(object):
         'description': 'description',
         'extra': 'extra',
         'merchant_refund_id': 'merchant_refund_id',
-        'metadata': 'metadata'
+        'metadata': 'metadata',
+        'notification_area': 'notification_area',
+        'notify_url': 'notify_url'
     }
 
-    def __init__(self, amount=None, app_id=None, charge_id=None, description=None, extra=None, merchant_refund_id=None, metadata=None, _configuration=None):  # noqa: E501
+    def __init__(self, amount=None, app_id=None, charge_id=None, description=None, extra=None, merchant_refund_id=None, metadata=None, notification_area='CN', notify_url=None, _configuration=None):  # noqa: E501
         """V1CreateRefundRequest - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -65,6 +69,8 @@ class V1CreateRefundRequest(object):
         self._extra = None
         self._merchant_refund_id = None
         self._metadata = None
+        self._notification_area = None
+        self._notify_url = None
         self.discriminator = None
 
         self.amount = amount
@@ -76,6 +82,9 @@ class V1CreateRefundRequest(object):
         self.merchant_refund_id = merchant_refund_id
         if metadata is not None:
             self.metadata = metadata
+        self.notification_area = notification_area
+        if notify_url is not None:
+            self.notify_url = notify_url
 
     @property
     def amount(self):
@@ -247,6 +256,54 @@ class V1CreateRefundRequest(object):
         """
 
         self._metadata = metadata
+
+    @property
+    def notification_area(self):
+        """Gets the notification_area of this V1CreateRefundRequest.  # noqa: E501
+
+        [OPTIONAL] 接受通知服务器所在区域，为确保消息能够送达，请选择服务器所在国家的国家码。如不填默认为 CN  # noqa: E501
+
+        :return: The notification_area of this V1CreateRefundRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._notification_area
+
+    @notification_area.setter
+    def notification_area(self, notification_area):
+        """Sets the notification_area of this V1CreateRefundRequest.
+
+        [OPTIONAL] 接受通知服务器所在区域，为确保消息能够送达，请选择服务器所在国家的国家码。如不填默认为 CN  # noqa: E501
+
+        :param notification_area: The notification_area of this V1CreateRefundRequest.  # noqa: E501
+        :type: str
+        """
+        if self._configuration.client_side_validation and notification_area is None:
+            raise ValueError("Invalid value for `notification_area`, must not be `None`")  # noqa: E501
+
+        self._notification_area = notification_area
+
+    @property
+    def notify_url(self):
+        """Gets the notify_url of this V1CreateRefundRequest.  # noqa: E501
+
+        [OPTIONAL] 退款成功后的异步通知地址。  # noqa: E501
+
+        :return: The notify_url of this V1CreateRefundRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._notify_url
+
+    @notify_url.setter
+    def notify_url(self, notify_url):
+        """Sets the notify_url of this V1CreateRefundRequest.
+
+        [OPTIONAL] 退款成功后的异步通知地址。  # noqa: E501
+
+        :param notify_url: The notify_url of this V1CreateRefundRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._notify_url = notify_url
 
     def to_dict(self):
         """Returns the model properties as a dict"""

@@ -41,6 +41,7 @@ class V1ChargeExtra(object):
         'alipay_qr': 'V1ExtraAlipayQr',
         'alipay_scan': 'V1ExtraAlipayScan',
         'alipay_wap': 'V1ExtraAlipayWap',
+        'unionpay_cardless_quick_pay': 'V1ExtraUnionPayCardlessQuickPay',
         'wechatpay_app': 'V1ExtraWechatpayApp',
         'wechatpay_h5': 'V1ExtraWechatpayH5',
         'wechatpay_jsapi': 'V1ExtraWechatpayJsapi',
@@ -58,6 +59,7 @@ class V1ChargeExtra(object):
         'alipay_qr': 'alipay_qr',
         'alipay_scan': 'alipay_scan',
         'alipay_wap': 'alipay_wap',
+        'unionpay_cardless_quick_pay': 'unionpay_cardless_quick_pay',
         'wechatpay_app': 'wechatpay_app',
         'wechatpay_h5': 'wechatpay_h5',
         'wechatpay_jsapi': 'wechatpay_jsapi',
@@ -66,7 +68,7 @@ class V1ChargeExtra(object):
         'wechatpay_scan': 'wechatpay_scan'
     }
 
-    def __init__(self, alipay_app=None, alipay_face=None, alipay_jsapi=None, alipay_lite=None, alipay_page=None, alipay_qr=None, alipay_scan=None, alipay_wap=None, wechatpay_app=None, wechatpay_h5=None, wechatpay_jsapi=None, wechatpay_lite=None, wechatpay_native=None, wechatpay_scan=None, _configuration=None):  # noqa: E501
+    def __init__(self, alipay_app=None, alipay_face=None, alipay_jsapi=None, alipay_lite=None, alipay_page=None, alipay_qr=None, alipay_scan=None, alipay_wap=None, unionpay_cardless_quick_pay=None, wechatpay_app=None, wechatpay_h5=None, wechatpay_jsapi=None, wechatpay_lite=None, wechatpay_native=None, wechatpay_scan=None, _configuration=None):  # noqa: E501
         """V1ChargeExtra - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -80,6 +82,7 @@ class V1ChargeExtra(object):
         self._alipay_qr = None
         self._alipay_scan = None
         self._alipay_wap = None
+        self._unionpay_cardless_quick_pay = None
         self._wechatpay_app = None
         self._wechatpay_h5 = None
         self._wechatpay_jsapi = None
@@ -104,6 +107,8 @@ class V1ChargeExtra(object):
             self.alipay_scan = alipay_scan
         if alipay_wap is not None:
             self.alipay_wap = alipay_wap
+        if unionpay_cardless_quick_pay is not None:
+            self.unionpay_cardless_quick_pay = unionpay_cardless_quick_pay
         if wechatpay_app is not None:
             self.wechatpay_app = wechatpay_app
         if wechatpay_h5 is not None:
@@ -300,6 +305,29 @@ class V1ChargeExtra(object):
         """
 
         self._alipay_wap = alipay_wap
+
+    @property
+    def unionpay_cardless_quick_pay(self):
+        """Gets the unionpay_cardless_quick_pay of this V1ChargeExtra.  # noqa: E501
+
+        银联无卡快捷支付渠道元数据  # noqa: E501
+
+        :return: The unionpay_cardless_quick_pay of this V1ChargeExtra.  # noqa: E501
+        :rtype: V1ExtraUnionPayCardlessQuickPay
+        """
+        return self._unionpay_cardless_quick_pay
+
+    @unionpay_cardless_quick_pay.setter
+    def unionpay_cardless_quick_pay(self, unionpay_cardless_quick_pay):
+        """Sets the unionpay_cardless_quick_pay of this V1ChargeExtra.
+
+        银联无卡快捷支付渠道元数据  # noqa: E501
+
+        :param unionpay_cardless_quick_pay: The unionpay_cardless_quick_pay of this V1ChargeExtra.  # noqa: E501
+        :type: V1ExtraUnionPayCardlessQuickPay
+        """
+
+        self._unionpay_cardless_quick_pay = unionpay_cardless_quick_pay
 
     @property
     def wechatpay_app(self):

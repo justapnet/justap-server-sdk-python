@@ -46,6 +46,8 @@ class Tradev1Channel(object):
     WECHATPAYFACE = "WechatpayFace"
     WECHATPAYSCAN = "WechatpayScan"
     UNIONPAYQR = "UnionPayQr"
+    UNIONPAYCARDLESSQUICKPAY = "UnionPayCardlessQuickPay"
+    UNIONPAYAGREEMENTQUICKPAY = "UnionPayAgreementQuickPay"
 
     """
     Attributes:

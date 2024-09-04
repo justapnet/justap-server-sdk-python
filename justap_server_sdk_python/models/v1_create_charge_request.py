@@ -46,6 +46,7 @@ class V1CreateChargeRequest(object):
         'metadata': 'dict(str, str)',
         'notification_area': 'str',
         'notify_url': 'str',
+        'source': 'str',
         'subject': 'str',
         'ttl': 'int'
     }
@@ -64,11 +65,12 @@ class V1CreateChargeRequest(object):
         'metadata': 'metadata',
         'notification_area': 'notification_area',
         'notify_url': 'notify_url',
+        'source': 'source',
         'subject': 'subject',
         'ttl': 'ttl'
     }
 
-    def __init__(self, amount=None, app_id=None, body=None, callback_url=None, channel=None, client_ip=None, currency='CNY', description=None, extra=None, merchant_trade_id=None, metadata=None, notification_area='CN', notify_url=None, subject=None, ttl=None, _configuration=None):  # noqa: E501
+    def __init__(self, amount=None, app_id=None, body=None, callback_url=None, channel=None, client_ip=None, currency='CNY', description=None, extra=None, merchant_trade_id=None, metadata=None, notification_area='CN', notify_url=None, source='Default', subject=None, ttl=None, _configuration=None):  # noqa: E501
         """V1CreateChargeRequest - a model defined in Swagger"""  # noqa: E501
         if _configuration is None:
             _configuration = Configuration()
@@ -87,6 +89,7 @@ class V1CreateChargeRequest(object):
         self._metadata = None
         self._notification_area = None
         self._notify_url = None
+        self._source = None
         self._subject = None
         self._ttl = None
         self.discriminator = None
@@ -106,6 +109,7 @@ class V1CreateChargeRequest(object):
             self.metadata = metadata
         self.notification_area = notification_area
         self.notify_url = notify_url
+        self.source = source
         self.subject = subject
         self.ttl = ttl
 
@@ -429,6 +433,31 @@ class V1CreateChargeRequest(object):
             raise ValueError("Invalid value for `notify_url`, must not be `None`")  # noqa: E501
 
         self._notify_url = notify_url
+
+    @property
+    def source(self):
+        """Gets the source of this V1CreateChargeRequest.  # noqa: E501
+
+        [OPTIONAL] 支付来源。固定值: DEFAULT  # noqa: E501
+
+        :return: The source of this V1CreateChargeRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._source
+
+    @source.setter
+    def source(self, source):
+        """Sets the source of this V1CreateChargeRequest.
+
+        [OPTIONAL] 支付来源。固定值: DEFAULT  # noqa: E501
+
+        :param source: The source of this V1CreateChargeRequest.  # noqa: E501
+        :type: str
+        """
+        if self._configuration.client_side_validation and source is None:
+            raise ValueError("Invalid value for `source`, must not be `None`")  # noqa: E501
+
+        self._source = source
 
     @property
     def subject(self):

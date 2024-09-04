@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **business_params** | **float** | 业务扩展参数 | 
+**direct_pay_form** | [**ExtraAlipayPageAlipayDirectPayForm**](ExtraAlipayPageAlipayDirectPayForm.md) |  | [optional] 
 **disable_pay_channels** | **str** | 禁用渠道 | 
 **enable_pay_channels** | **str** | 可用渠道 | 
 **extend_params** | [**V1ExtraAlipayExtendParams**](V1ExtraAlipayExtendParams.md) | 业务扩展参数 | [optional] 
